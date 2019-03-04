@@ -1,0 +1,4 @@
+2016-03-09 02:54:24.138 PM	****** Start Logging ******
+2016-03-09 02:54:24.205 PM	doWork	--------Start----------
+2016-03-09 02:54:24.206 PM	doWork	Send New Document email to Validator
+2016-03-09 02:54:25.623 PM	doWork	Send Expired Document Email to CC

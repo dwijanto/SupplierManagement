@@ -1,0 +1,1695 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{16635B6B-18A3-400A-82EB-B1897C02F626}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SupplierManagement.My.MyApplication</StartupObject>
+    <RootNamespace>SupplierManagement</RootNamespace>
+    <AssemblyName>SupplierManagement</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SupplierManagement.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SupplierManagement.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SuppliersManagement.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="npgsql, Version=2.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\Npgsql\v4.0_2.1.3.0__5d8b90d52f46fda7\npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ActionPlanEmail.vb" />
+    <Compile Include="Class\Adapter\BaseAdapter.vb" />
+    <Compile Include="Class\Controller\ActionPlanController.vb" />
+    <Compile Include="Class\Controller\AssetPurchaseController.vb" />
+    <Compile Include="Class\Controller\IController.vb" />
+    <Compile Include="Class\Controller\ImportPlant.vb" />
+    <Compile Include="Class\Controller\ImportZF0041.vb" />
+    <Compile Include="Class\Controller\ModificationTypeController.vb" />
+    <Compile Include="Class\Controller\PriceChangeHDController.vb" />
+    <Compile Include="Class\ExportVendorInformationModification.vb" />
+    <Compile Include="Class\Model\ActionPlanModel.vb" />
+    <Compile Include="Class\Model\AssetPurchaseModel.vb" />
+    <Compile Include="Class\Model\FamilyVCModel.vb" />
+    <Compile Include="Class\Model\IModel.vb" />
+    <Compile Include="Class\Model\ModificationTypeModel.vb" />
+    <Compile Include="Class\Model\OfficerSEBModel.vb" />
+    <Compile Include="Class\Model\ParamDTLAdapter.vb" />
+    <Compile Include="Class\Model\PaymentTermEffDateModel.vb" />
+    <Compile Include="Class\Model\PaymentTermModel.vb" />
+    <Compile Include="Class\Model\PriceChangeHDModel.vb" />
+    <Compile Include="Class\Model\SubFamilyVCModel.vb" />
+    <Compile Include="Class\Model\UserModel.vb" />
+    <Compile Include="Class\Model\VendorCurrModel.vb" />
+    <Compile Include="Class\Model\VendorFamilyPMExModel.vb" />
+    <Compile Include="Class\Model\VendorFamilyPMModel.vb" />
+    <Compile Include="Class\Model\VendorFamilySubFamilyVCModel.vb" />
+    <Compile Include="Class\Model\VendorInformationModificationModel.vb" />
+    <Compile Include="Class\Model\VendorModel.vb" />
+    <Compile Include="Class\Model\VendorPMModel.vb" />
+    <Compile Include="Class\RoleAssetPurchaseTask.vb" />
+    <Compile Include="Class\TXAdapter\BudgetForecastAdapter.vb" />
+    <Compile Include="Class\Adapter\DataTypeLabelAdapter.vb" />
+    <Compile Include="Class\Adapter\GroupDataTypeAdapter.vb" />
+    <Compile Include="Class\Adapter\IAdapter.vb" />
+    <Compile Include="Class\Adapter\IModel.vb" />
+    <Compile Include="Class\Adapter\IToolbarAction.vb" />
+    <Compile Include="Class\AutoClass.vb" />
+    <Compile Include="Class\AutoReport.vb" />
+    <Compile Include="Class\ClassBaseImportSIFIdentity.vb" />
+    <Compile Include="Class\ClassBaseTx.vb" />
+    <Compile Include="Class\Model\FamilyModel.vb" />
+    <Compile Include="Class\Model\FamilyCodeModel.vb" />
+    <Compile Include="Class\TXAdapter\FamilyVCAdapter.vb" />
+    <Compile Include="Class\TXAdapter\IndirectFamilyAdapter.vb" />
+    <Compile Include="Class\TXAdapter\ModificationTypeAdapter.vb" />
+    <Compile Include="Class\TXAdapter\PaymentTermAdapter.vb" />
+    <Compile Include="Class\TXAdapter\PaymentTermEffDateAdapter.vb" />
+    <Compile Include="Class\TXAdapter\SubFamilyVCAdapter.vb" />
+    <Compile Include="Class\TXAdapter\UserAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorCurrAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorFamilyPMExAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorFamilySubFamilyVCAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorInformationModificationAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorInformationTaskAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorPMAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorTxAdapter.vb" />
+    <Compile Include="Class\TXAdapter\FamilyAdapter.vb" />
+    <Compile Include="Class\ClassFilterTO.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\ClassImportActionPlan.vb" />
+    <Compile Include="Class\ClassImportBuyerInput.vb" />
+    <Compile Include="Class\ClassImportIdentity.vb" />
+    <Compile Include="Class\ClassImportSIF.vb" />
+    <Compile Include="Class\ClassSEBTO.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\ClassSelectQuery.vb" />
+    <Compile Include="Class\ClassSIFTO.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\ClassSupplierDashBoard.vb" />
+    <Compile Include="Class\Adapter\DataTypeAdapter.vb" />
+    <Compile Include="Class\TXAdapter\FamilyPMAdapter.vb" />
+    <Compile Include="Class\Model\FamilyPMModel.vb" />
+    <Compile Include="Class\Model\PMModel.vb" />
+    <Compile Include="Class\TXAdapter\PMAdapter.vb" />
+    <Compile Include="Class\TXAdapter\SupplierGSMAdapter.vb" />
+    <Compile Include="Class\TXAdapter\SupplierPhotosAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorFamilyPMAdapter.vb" />
+    <Compile Include="Class\UserControl\UCBudgetForecast.Designer.vb">
+      <DependentUpon>UCBudgetForecast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCBudgetForecast.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\TXAdapter\VendorAdapter.vb" />
+    <Compile Include="Class\DataGridViewCheckBoxHeaderCell.vb" />
+    <Compile Include="Class\Adapter\DbAdapter.vb" />
+    <Compile Include="Class\Email.vb" />
+    <Compile Include="Class\EnumHelper.vb" />
+    <Compile Include="Class\ExportBuyerInputAdapter.vb" />
+    <Compile Include="Class\ExportSAPClass.vb" />
+    <Compile Include="Class\ExportToExcelFile.vb" />
+    <Compile Include="Class\ExtensionModule.vb" />
+    <Compile Include="Class\UserControl\UCBuyerInput.Designer.vb">
+      <DependentUpon>UCBuyerInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCBuyerInput.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContact.Designer.vb">
+      <DependentUpon>UCContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContact.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContractualTermDGV.Designer.vb">
+      <DependentUpon>UCContractualTermDGV.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContractualTermDGV.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContractualTerms.Designer.vb">
+      <DependentUpon>UCContractualTerms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCContractualTerms.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDocuments.Designer.vb">
+      <DependentUpon>UCDocuments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCDocuments.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCFactory.Designer.vb">
+      <DependentUpon>UCFactory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCFactory.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCFactoryContact.Designer.vb">
+      <DependentUpon>UCFactoryContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCFactoryContact.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCPriceCMMF.Designer.vb">
+      <DependentUpon>UCPriceCMMF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCPriceCMMF.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSIFIdentity.Designer.vb">
+      <DependentUpon>UCSIFIdentity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSIFIdentity.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSSSBuyerInput.Designer.vb">
+      <DependentUpon>UCSSSBuyerInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSSSBuyerInput.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSustainableDevelopment.Designer.vb">
+      <DependentUpon>UCSustainableDevelopment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSustainableDevelopment.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTextWithHelper.Designer.vb">
+      <DependentUpon>UCTextWithHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTextWithHelper.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTooling.Designer.vb">
+      <DependentUpon>UCTooling.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTooling.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\Model\VendorGSMModel.vb" />
+    <Compile Include="Class\UserControl\UCVendorInformationModification.Designer.vb">
+      <DependentUpon>UCVendorInformationModification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCVendorInformationModification.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\VIMEmail.vb" />
+    <Compile Include="Form\DialogAssetPurchaseComments.Designer.vb">
+      <DependentUpon>DialogAssetPurchaseComments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAssetPurchaseComments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogAssetPurchaseFinance.Designer.vb">
+      <DependentUpon>DialogAssetPurchaseFinance.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogAssetPurchaseFinance.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogFinanceAssetNo.Designer.vb">
+      <DependentUpon>DialogFinanceAssetNo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogFinanceAssetNo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogModificationTypeMaster.Designer.vb">
+      <DependentUpon>DialogModificationTypeMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogModificationTypeMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogPaymentTerm.Designer.vb">
+      <DependentUpon>DialogPaymentTerm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogPaymentTerm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogPaymentTermDate.Designer.vb">
+      <DependentUpon>DialogPaymentTermDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogPaymentTermDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogReguiredDocument.Designer.vb">
+      <DependentUpon>DialogReguiredDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogReguiredDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogValidator.Designer.vb">
+      <DependentUpon>DialogValidator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogValidator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogActionPlan.Designer.vb">
+      <DependentUpon>DialogActionPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogActionPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogCMMFHelper.Designer.vb">
+      <DependentUpon>DialogCMMFHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogCMMFHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogContractTerms.Designer.vb">
+      <DependentUpon>DialogContractTerms.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogContractTerms.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogExportBuyerInput.Designer.vb">
+      <DependentUpon>DialogExportBuyerInput.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogExportBuyerInput.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogExportBuyerInput2.Designer.vb">
+      <DependentUpon>DialogExportBuyerInput2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogExportBuyerInput2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogFamilyPM.Designer.vb">
+      <DependentUpon>DialogFamilyPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogFamilyPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogGeneralContractOther.Designer.vb">
+      <DependentUpon>DialogGeneralContractOther.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogGeneralContractOther.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogInputNewToolingID.Designer.vb">
+      <DependentUpon>DialogInputNewToolingID.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogInputNewToolingID.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogLKPFilter.Designer.vb">
+      <DependentUpon>DialogLKPFilter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogLKPFilter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogQualityAppendixOther.Designer.vb">
+      <DependentUpon>DialogQualityAppendixOther.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogQualityAppendixOther.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogSupplierGSM.Designer.vb">
+      <DependentUpon>DialogSupplierGSM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogSupplierGSM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogSupplierPhotos.Designer.vb">
+      <DependentUpon>DialogSupplierPhotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogSupplierPhotos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogSupplyChainOther.Designer.vb">
+      <DependentUpon>DialogSupplyChainOther.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogSupplyChainOther.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorCurr.Designer.vb">
+      <DependentUpon>DialogVendorCurr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorCurr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorFamilyPM.Designer.vb">
+      <DependentUpon>DialogVendorFamilyPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorFamilyPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorFamilyPMEx.Designer.vb">
+      <DependentUpon>DialogVendorFamilyPMEx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorFamilyPMEx.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorPM.Designer.vb">
+      <DependentUpon>DialogVendorPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\DialogVendorSelection.Designer.vb">
+      <DependentUpon>DialogVendorSelection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogVendorSelection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAssetPurchase001.Designer.vb">
+      <DependentUpon>FormAssetPurchase001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAssetPurchase001.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAutoSendAssetPurchase.Designer.vb">
+      <DependentUpon>FormAutoSendAssetPurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAutoSendAssetPurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFindVendorInformationModification.Designer.vb">
+      <DependentUpon>FormFindVendorInformationModification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFindVendorInformationModification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormIndirectFamily.Designer.vb">
+      <DependentUpon>FormIndirectFamily.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormIndirectFamily.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormModificationTypeMaster.Designer.vb">
+      <DependentUpon>FormModificationTypeMaster.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormModificationTypeMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormOtherTask.Designer.vb">
+      <DependentUpon>FormOtherTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormOtherTask.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormParamDTL.Designer.vb">
+      <DependentUpon>FormParamDTL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormParamDTL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormPaymentTerm.Designer.vb">
+      <DependentUpon>FormPaymentTerm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormPaymentTerm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormPTEffectiveDate.Designer.vb">
+      <DependentUpon>FormPTEffectiveDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormPTEffectiveDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilyPMEx.Designer.vb">
+      <DependentUpon>FormVendorFamilyPMEx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilyPMEx.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilySubFamilyVC.Designer.vb">
+      <DependentUpon>FormVendorFamilySubFamilyVC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilySubFamilyVC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAdvancedSearchSupplier.Designer.vb">
+      <DependentUpon>FormAdvancedSearchSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAdvancedSearchSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAutoSendActonPlan.Designer.vb">
+      <DependentUpon>FormAutoSendActonPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAutoSendActonPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDataType.Designer.vb">
+      <DependentUpon>FormDataType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDataType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDataTypeLabel.Designer.vb">
+      <DependentUpon>FormDataTypeLabel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDataTypeLabel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor3.Designer.vb">
+      <DependentUpon>FormDocumentVendor3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor3.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor4.Designer.vb">
+      <DependentUpon>FormDocumentVendor4.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor4.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor5.Designer.vb">
+      <DependentUpon>FormDocumentVendor5.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor5.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor6.Designer.vb">
+      <DependentUpon>FormDocumentVendor6.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor6.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor7.Designer.vb">
+      <DependentUpon>FormDocumentVendor7.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor7.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFamilyPM.Designer.vb">
+      <DependentUpon>FormFamilyPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFamilyPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFamilyVC.Designer.vb">
+      <DependentUpon>FormFamilyVC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFamilyVC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportBudgetForecast.Designer.vb">
+      <DependentUpon>FormImportBudgetForecast.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportBudgetForecast.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportPlant.Designer.vb">
+      <DependentUpon>FormImportPlant.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportPlant.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportZF0041.Designer.vb">
+      <DependentUpon>FormImportZF0041.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportZF0041.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMyTaskDocument2.Designer.vb">
+      <DependentUpon>FormMyTaskDocument2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMyTaskDocument2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportTOSC.Designer.vb">
+      <DependentUpon>FormReportTOSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportTOSC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportVendorFamilyAssignment.Designer.vb">
+      <DependentUpon>FormReportVendorFamilyAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportVendorFamilyAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSearchSupplierPhoto.Designer.vb">
+      <DependentUpon>FormSearchSupplierPhoto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSearchSupplierPhoto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSSSActionPlanFollowUP.Designer.vb">
+      <DependentUpon>FormSSSActionPlanFollowUP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSSSActionPlanFollowUP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSubFamilyVC.Designer.vb">
+      <DependentUpon>FormSubFamilyVC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSubFamilyVC.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentContract.Designer.vb">
+      <DependentUpon>FormSupplierDocumentContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentSIFID.Designer.vb">
+      <DependentUpon>FormSupplierDocumentSIFID.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentSIFID.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentSocialAudit.Designer.vb">
+      <DependentUpon>FormSupplierDocumentSocialAudit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentSocialAudit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierGSM.Designer.vb">
+      <DependentUpon>FormSupplierGSM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierGSM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierManagementAutoReport.Designer.vb">
+      <DependentUpon>FormSupplierManagementAutoReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierManagementAutoReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDialogAddVendor.Designer.vb">
+      <DependentUpon>FormDialogAddVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDialogAddVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDialogContact.Designer.vb">
+      <DependentUpon>FormDialogContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDialogContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDialogDeleteFactoryContact.Designer.vb">
+      <DependentUpon>FormDialogDeleteFactoryContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDialogDeleteFactoryContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDialogFactory.Designer.vb">
+      <DependentUpon>FormDialogFactory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDialogFactory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor2.Designer.vb">
+      <DependentUpon>FormDocumentVendor2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFactoryAndContact.Designer.vb">
+      <DependentUpon>FormFactoryAndContact.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFactoryAndContact.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFactoryAndContactHistory.Designer.vb">
+      <DependentUpon>FormFactoryAndContactHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFactoryAndContactHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportCitiProgram.Designer.vb">
+      <DependentUpon>FormImportCitiProgram.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportCitiProgram.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportProjectStatus.Designer.vb">
+      <DependentUpon>FormImportProjectStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportProjectStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\HelperClass.vb" />
+    <Compile Include="Class\IDocumentTask.vb" />
+    <Compile Include="Class\Logger.vb" />
+    <Compile Include="Class\PublicClass.vb" />
+    <Compile Include="Class\RoleDocumentTask.vb" />
+    <Compile Include="Class\RoleTasks.vb" />
+    <Compile Include="Class\SharedClass.vb" />
+    <Compile Include="Class\TaskDocumentExpired.vb" />
+    <Compile Include="Class\TaskDocumentNew.vb" />
+    <Compile Include="Class\UserControl\UCChart.Designer.vb">
+      <DependentUpon>UCChart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCChart.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCGroupBy.Designer.vb">
+      <DependentUpon>UCGroupBy.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCGroupBy.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCScorecardDetail.Designer.vb">
+      <DependentUpon>UCScorecardDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCScorecardDetail.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCScorecardHeader.Designer.vb">
+      <DependentUpon>UCScorecardHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCScorecardHeader.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSupplierDashboard.Designer.vb">
+      <DependentUpon>UCSupplierDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSupplierDashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSupplierInfo.Designer.vb">
+      <DependentUpon>UCSupplierInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCSupplierInfo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTOHeader.Designer.vb">
+      <DependentUpon>UCTOHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCTOHeader.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UTODetail.Designer.vb">
+      <DependentUpon>UTODetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UTODetail.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\ValidateSAPPrice.vb" />
+    <Compile Include="Class\VendorSBU.vb" />
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImportNQSU.Designer.vb">
+      <DependentUpon>FormImportNQSU.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormImportNQSU.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMenu.designer.vb">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrintAssetsPurchase.Designer.vb">
+      <DependentUpon>FormPrintAssetsPurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrintAssetsPurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAssetsPurchase.Designer.vb">
+      <DependentUpon>FormAssetsPurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAssetsPurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormAutoSendExpired.Designer.vb">
+      <DependentUpon>FormAutoSendExpired.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormAutoSendExpired.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentDetails.Designer.vb">
+      <DependentUpon>FormDocumentDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentTemplate.Designer.vb">
+      <DependentUpon>FormDocumentTemplate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentTemplate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFindAssetsPurchase.Designer.vb">
+      <DependentUpon>FormFindAssetsPurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFindAssetsPurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGroupUser.Designer.vb">
+      <DependentUpon>FormGroupUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGroupUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGroupVendor.Designer.vb">
+      <DependentUpon>FormGroupVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGroupVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocType.Designer.vb">
+      <DependentUpon>FormDocType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentHeader.Designer.vb">
+      <DependentUpon>FormDocumentHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor.Designer.vb">
+      <DependentUpon>FormDocumentVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormDocumentVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormFullContract.Designer.vb">
+      <DependentUpon>FormFullContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFullContract.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormGetValidator.designer.vb">
+      <DependentUpon>FormGetValidator.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormGetValidator.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHelper.Designer.vb">
+      <DependentUpon>FormHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormHelper.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHelperMulti.Designer.vb">
+      <DependentUpon>FormHelperMulti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormHelperMulti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormHistorySPMPMAssignment.Designer.vb">
+      <DependentUpon>FormHistorySPMPMAssignment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormHistorySPMPMAssignment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportGroupVendor.Designer.vb">
+      <DependentUpon>FormImportGroupVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportGroupVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportToolingList.Designer.vb">
+      <DependentUpon>FormImportToolingList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportToolingList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportTurnover.Designer.vb">
+      <DependentUpon>FormImportTurnover.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportTurnover.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportVendorPaymentTerm.Designer.vb">
+      <DependentUpon>FormImportVendorPaymentTerm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportVendorPaymentTerm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportVendorSPMPM.Designer.vb">
+      <DependentUpon>FormImportVendorSPMPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportVendorSPMPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormInputInvoice.Designer.vb">
+      <DependentUpon>FormInputInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormInputInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportLogistics.Designer.vb">
+      <DependentUpon>FormImportLogistics.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportLogistics.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterCountry.Designer.vb">
+      <DependentUpon>FormMasterCountry.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterCountry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterDocType.Designer.vb">
+      <DependentUpon>FormMasterDocType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterDocType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterGroup.Designer.vb">
+      <DependentUpon>FormMasterGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterProvince.Designer.vb">
+      <DependentUpon>FormMasterProvince.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterProvince.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterStatus.Designer.vb">
+      <DependentUpon>FormMasterStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterTechnology.Designer.vb">
+      <DependentUpon>FormMasterTechnology.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterTechnology.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMasterVendor.Designer.vb">
+      <DependentUpon>FormMasterVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMasterVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormMyTaskDocument.Designer.vb">
+      <DependentUpon>FormMyTaskDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormMyTaskDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormPanelHistory.Designer.vb">
+      <DependentUpon>FormPanelHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormPanelHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormPanelStatus.Designer.vb">
+      <DependentUpon>FormPanelStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormPanelStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormPriceHistory.Designer.vb">
+      <DependentUpon>FormPriceHistory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormPriceHistory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportAssetsPurchase.Designer.vb">
+      <DependentUpon>FormReportAssetsPurchase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportAssetsPurchase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportDocumentCount.Designer.vb">
+      <DependentUpon>FormReportDocumentCount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportDocumentCount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportMasterSupplier.Designer.vb">
+      <DependentUpon>FormReportMasterSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportMasterSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSearchDocument.Designer.vb">
+      <DependentUpon>FormSearchDocument.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSearchDocument.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormImportSEBAsiaPlatform.Designer.vb">
+      <DependentUpon>FormImportSEBAsiaPlatform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormImportSEBAsiaPlatform.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierCategory.Designer.vb">
+      <DependentUpon>FormSupplierCategory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDashboard.Designer.vb">
+      <DependentUpon>FormSupplierDashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDashboard.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDashboardChart.Designer.vb">
+      <DependentUpon>FormSupplierDashboardChart.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDashboardChart.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentRawData.Designer.vb">
+      <DependentUpon>FormSupplierDocumentRawData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierDocumentRawData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierMasterData.Designer.vb">
+      <DependentUpon>FormSupplierMasterData.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierMasterData.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierPanel.Designer.vb">
+      <DependentUpon>FormSupplierPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierPanel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormSupplierPhotos.Designer.vb">
+      <DependentUpon>FormSupplierPhotos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierPhotos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormUpdateFamily.Designer.vb">
+      <DependentUpon>FormUpdateFamily.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormUpdateFamily.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormUpdateToolingStatus.Designer.vb">
+      <DependentUpon>FormUpdateToolingStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormUpdateToolingStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormUser.Designer.vb">
+      <DependentUpon>FormUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormUserVendorGroup.Designer.vb">
+      <DependentUpon>FormUserVendorGroup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormUserVendorGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorCurr.Designer.vb">
+      <DependentUpon>FormVendorCurr.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorCurr.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilyPM.Designer.vb">
+      <DependentUpon>FormVendorFamilyPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorFamilyPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorIndirectFamily.Designer.vb">
+      <DependentUpon>FormVendorIndirectFamily.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorIndirectFamily.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorInformationModification.Designer.vb">
+      <DependentUpon>FormVendorInformationModification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorInformationModification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorInformationTask.Designer.vb">
+      <DependentUpon>FormVendorInformationTask.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorInformationTask.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorPM.Designer.vb">
+      <DependentUpon>FormVendorPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorStatus.Designer.vb">
+      <DependentUpon>FormVendorStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorStatus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorStatus001.Designer.vb">
+      <DependentUpon>FormVendorStatus001.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorStatus001.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorTechnology.Designer.vb">
+      <DependentUpon>FormVendorTechnology.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorTechnology.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormViewToolingList.Designer.vb">
+      <DependentUpon>FormViewToolingList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormViewToolingList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVIMEmailModification.Designer.vb">
+      <DependentUpon>FormVIMEmailModification.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVIMEmailModification.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\SplashScreenSM.Designer.vb">
+      <DependentUpon>SplashScreenSM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\SplashScreenSM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model\ModelPriceHistory.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Class\UserControl\UCBudgetForecast.resx">
+      <DependentUpon>UCBudgetForecast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCBuyerInput.resx">
+      <DependentUpon>UCBuyerInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCContact.resx">
+      <DependentUpon>UCContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCContractualTermDGV.resx">
+      <DependentUpon>UCContractualTermDGV.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCContractualTerms.resx">
+      <DependentUpon>UCContractualTerms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCDocuments.resx">
+      <DependentUpon>UCDocuments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCFactory.resx">
+      <DependentUpon>UCFactory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCFactoryContact.resx">
+      <DependentUpon>UCFactoryContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCPriceCMMF.resx">
+      <DependentUpon>UCPriceCMMF.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCSIFIdentity.resx">
+      <DependentUpon>UCSIFIdentity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCSSSBuyerInput.resx">
+      <DependentUpon>UCSSSBuyerInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCSustainableDevelopment.resx">
+      <DependentUpon>UCSustainableDevelopment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCTextWithHelper.resx">
+      <DependentUpon>UCTextWithHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCTooling.resx">
+      <DependentUpon>UCTooling.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCVendorInformationModification.resx">
+      <DependentUpon>UCVendorInformationModification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAssetPurchaseComments.resx">
+      <DependentUpon>DialogAssetPurchaseComments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogAssetPurchaseFinance.resx">
+      <DependentUpon>DialogAssetPurchaseFinance.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogFinanceAssetNo.resx">
+      <DependentUpon>DialogFinanceAssetNo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogModificationTypeMaster.resx">
+      <DependentUpon>DialogModificationTypeMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogPaymentTerm.resx">
+      <DependentUpon>DialogPaymentTerm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogPaymentTermDate.resx">
+      <DependentUpon>DialogPaymentTermDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogReguiredDocument.resx">
+      <DependentUpon>DialogReguiredDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogValidator.resx">
+      <DependentUpon>DialogValidator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogActionPlan.resx">
+      <DependentUpon>DialogActionPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogCMMFHelper.resx">
+      <DependentUpon>DialogCMMFHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogContractTerms.resx">
+      <DependentUpon>DialogContractTerms.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogExportBuyerInput.resx">
+      <DependentUpon>DialogExportBuyerInput.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogExportBuyerInput2.resx">
+      <DependentUpon>DialogExportBuyerInput2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogFamilyPM.resx">
+      <DependentUpon>DialogFamilyPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogGeneralContractOther.resx">
+      <DependentUpon>DialogGeneralContractOther.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogInputNewToolingID.resx">
+      <DependentUpon>DialogInputNewToolingID.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogLKPFilter.resx">
+      <DependentUpon>DialogLKPFilter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogQualityAppendixOther.resx">
+      <DependentUpon>DialogQualityAppendixOther.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogSupplierGSM.resx">
+      <DependentUpon>DialogSupplierGSM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogSupplierPhotos.resx">
+      <DependentUpon>DialogSupplierPhotos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogSupplyChainOther.resx">
+      <DependentUpon>DialogSupplyChainOther.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorCurr.resx">
+      <DependentUpon>DialogVendorCurr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorFamilyPM.resx">
+      <DependentUpon>DialogVendorFamilyPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorFamilyPMEx.resx">
+      <DependentUpon>DialogVendorFamilyPMEx.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorPM.resx">
+      <DependentUpon>DialogVendorPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogVendorSelection.resx">
+      <DependentUpon>DialogVendorSelection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAdvancedSearchSupplier.resx">
+      <DependentUpon>FormAdvancedSearchSupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAssetPurchase001.resx">
+      <DependentUpon>FormAssetPurchase001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAutoSendActonPlan.resx">
+      <DependentUpon>FormAutoSendActonPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAutoSendAssetPurchase.resx">
+      <DependentUpon>FormAutoSendAssetPurchase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDataType.resx">
+      <DependentUpon>FormDataType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDataTypeLabel.resx">
+      <DependentUpon>FormDataTypeLabel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor3.resx">
+      <DependentUpon>FormDocumentVendor3.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor4.resx">
+      <DependentUpon>FormDocumentVendor4.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor5.resx">
+      <DependentUpon>FormDocumentVendor5.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor6.resx">
+      <DependentUpon>FormDocumentVendor6.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor7.resx">
+      <DependentUpon>FormDocumentVendor7.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFamilyPM.resx">
+      <DependentUpon>FormFamilyPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFamilyVC.resx">
+      <DependentUpon>FormFamilyVC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFindVendorInformationModification.resx">
+      <DependentUpon>FormFindVendorInformationModification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportBudgetForecast.resx">
+      <DependentUpon>FormImportBudgetForecast.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportPlant.resx">
+      <DependentUpon>FormImportPlant.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportZF0041.resx">
+      <DependentUpon>FormImportZF0041.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormIndirectFamily.resx">
+      <DependentUpon>FormIndirectFamily.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormModificationTypeMaster.resx">
+      <DependentUpon>FormModificationTypeMaster.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMyTaskDocument2.resx">
+      <DependentUpon>FormMyTaskDocument2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormOtherTask.resx">
+      <DependentUpon>FormOtherTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormParamDTL.resx">
+      <DependentUpon>FormParamDTL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormPaymentTerm.resx">
+      <DependentUpon>FormPaymentTerm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormPTEffectiveDate.resx">
+      <DependentUpon>FormPTEffectiveDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportTOSC.resx">
+      <DependentUpon>FormReportTOSC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportVendorFamilyAssignment.resx">
+      <DependentUpon>FormReportVendorFamilyAssignment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSearchSupplierPhoto.resx">
+      <DependentUpon>FormSearchSupplierPhoto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSSSActionPlanFollowUP.resx">
+      <DependentUpon>FormSSSActionPlanFollowUP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSubFamilyVC.resx">
+      <DependentUpon>FormSubFamilyVC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDocumentContract.resx">
+      <DependentUpon>FormSupplierDocumentContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDocumentSIFID.resx">
+      <DependentUpon>FormSupplierDocumentSIFID.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDocumentSocialAudit.resx">
+      <DependentUpon>FormSupplierDocumentSocialAudit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierGSM.resx">
+      <DependentUpon>FormSupplierGSM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierManagementAutoReport.resx">
+      <DependentUpon>FormSupplierManagementAutoReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDialogAddVendor.resx">
+      <DependentUpon>FormDialogAddVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDialogContact.resx">
+      <DependentUpon>FormDialogContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDialogDeleteFactoryContact.resx">
+      <DependentUpon>FormDialogDeleteFactoryContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDialogFactory.resx">
+      <DependentUpon>FormDialogFactory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor2.resx">
+      <DependentUpon>FormDocumentVendor2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFactoryAndContact.resx">
+      <DependentUpon>FormFactoryAndContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFactoryAndContactHistory.resx">
+      <DependentUpon>FormFactoryAndContactHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportCitiProgram.resx">
+      <DependentUpon>FormImportCitiProgram.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportProjectStatus.resx">
+      <DependentUpon>FormImportProjectStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCChart.resx">
+      <DependentUpon>UCChart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCGroupBy.resx">
+      <DependentUpon>UCGroupBy.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCScorecardDetail.resx">
+      <DependentUpon>UCScorecardDetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCScorecardHeader.resx">
+      <DependentUpon>UCScorecardHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCSupplierDashboard.resx">
+      <DependentUpon>UCSupplierDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCSupplierInfo.resx">
+      <DependentUpon>UCSupplierInfo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCTOHeader.resx">
+      <DependentUpon>UCTOHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UTODetail.resx">
+      <DependentUpon>UTODetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImportNQSU.resx">
+      <DependentUpon>FormImportNQSU.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenu.resx">
+      <DependentUpon>FormMenu.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrintAssetsPurchase.resx">
+      <DependentUpon>FormPrintAssetsPurchase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAssetsPurchase.resx">
+      <DependentUpon>FormAssetsPurchase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormAutoSendExpired.resx">
+      <DependentUpon>FormAutoSendExpired.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocType.resx">
+      <DependentUpon>FormDocType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentDetails.resx">
+      <DependentUpon>FormDocumentDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentHeader.resx">
+      <DependentUpon>FormDocumentHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentTemplate.resx">
+      <DependentUpon>FormDocumentTemplate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormDocumentVendor.resx">
+      <DependentUpon>FormDocumentVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFindAssetsPurchase.resx">
+      <DependentUpon>FormFindAssetsPurchase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFullContract.resx">
+      <DependentUpon>FormFullContract.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGetValidator.resx">
+      <DependentUpon>FormGetValidator.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGroupUser.resx">
+      <DependentUpon>FormGroupUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormGroupVendor.resx">
+      <DependentUpon>FormGroupVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormHelper.resx">
+      <DependentUpon>FormHelper.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormHelperMulti.resx">
+      <DependentUpon>FormHelperMulti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormHistorySPMPMAssignment.resx">
+      <DependentUpon>FormHistorySPMPMAssignment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportGroupVendor.resx">
+      <DependentUpon>FormImportGroupVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportToolingList.resx">
+      <DependentUpon>FormImportToolingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportTurnover.resx">
+      <DependentUpon>FormImportTurnover.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportVendorPaymentTerm.resx">
+      <DependentUpon>FormImportVendorPaymentTerm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportVendorSPMPM.resx">
+      <DependentUpon>FormImportVendorSPMPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormInputInvoice.resx">
+      <DependentUpon>FormInputInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportLogistics.resx">
+      <DependentUpon>FormImportLogistics.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterCountry.resx">
+      <DependentUpon>FormMasterCountry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterDocType.resx">
+      <DependentUpon>FormMasterDocType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterGroup.resx">
+      <DependentUpon>FormMasterGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterProvince.resx">
+      <DependentUpon>FormMasterProvince.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterStatus.resx">
+      <DependentUpon>FormMasterStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterTechnology.resx">
+      <DependentUpon>FormMasterTechnology.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMasterVendor.resx">
+      <DependentUpon>FormMasterVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormMyTaskDocument.resx">
+      <DependentUpon>FormMyTaskDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormPanelHistory.resx">
+      <DependentUpon>FormPanelHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormPanelStatus.resx">
+      <DependentUpon>FormPanelStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormPriceHistory.resx">
+      <DependentUpon>FormPriceHistory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportAssetsPurchase.resx">
+      <DependentUpon>FormReportAssetsPurchase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportDocumentCount.resx">
+      <DependentUpon>FormReportDocumentCount.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportMasterSupplier.resx">
+      <DependentUpon>FormReportMasterSupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSearchDocument.resx">
+      <DependentUpon>FormSearchDocument.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormImportSEBAsiaPlatform.resx">
+      <DependentUpon>FormImportSEBAsiaPlatform.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierCategory.resx">
+      <DependentUpon>FormSupplierCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDashboard.resx">
+      <DependentUpon>FormSupplierDashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDashboardChart.resx">
+      <DependentUpon>FormSupplierDashboardChart.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierDocumentRawData.resx">
+      <DependentUpon>FormSupplierDocumentRawData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierMasterData.resx">
+      <DependentUpon>FormSupplierMasterData.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierPanel.resx">
+      <DependentUpon>FormSupplierPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierPhotos.resx">
+      <DependentUpon>FormSupplierPhotos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormUpdateFamily.resx">
+      <DependentUpon>FormUpdateFamily.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormUpdateToolingStatus.resx">
+      <DependentUpon>FormUpdateToolingStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormUser.resx">
+      <DependentUpon>FormUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormUserVendorGroup.resx">
+      <DependentUpon>FormUserVendorGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorCurr.resx">
+      <DependentUpon>FormVendorCurr.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorFamilyPM.resx">
+      <DependentUpon>FormVendorFamilyPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorFamilyPMEx.resx">
+      <DependentUpon>FormVendorFamilyPMEx.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorFamilySubFamilyVC.resx">
+      <DependentUpon>FormVendorFamilySubFamilyVC.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorIndirectFamily.resx">
+      <DependentUpon>FormVendorIndirectFamily.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorInformationModification.resx">
+      <DependentUpon>FormVendorInformationModification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorInformationTask.resx">
+      <DependentUpon>FormVendorInformationTask.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorPM.resx">
+      <DependentUpon>FormVendorPM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorStatus.resx">
+      <DependentUpon>FormVendorStatus.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorStatus001.resx">
+      <DependentUpon>FormVendorStatus001.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorTechnology.resx">
+      <DependentUpon>FormVendorTechnology.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormViewToolingList.resx">
+      <DependentUpon>FormViewToolingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVIMEmailModification.resx">
+      <DependentUpon>FormVIMEmailModification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\SplashScreenSM.resx">
+      <DependentUpon>SplashScreenSM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SM.ico" />
+    <Content Include="SuppliersManagement.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
