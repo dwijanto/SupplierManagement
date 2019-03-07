@@ -7,7 +7,7 @@ Public Class FormFindVendorInformationModification
     WithEvents EPCheckBox1 As New CheckBox
     Dim dtpicker1 As New DateTimePicker
     'Dim fieldList() As String = {"v.vendorname", "v.shortname", "u.applicantname", "v.vendorcode::character varying", "lateststatus", "cr.username"}
-    Dim fieldList() As String = {"vendorname", "shortname", "applicantname", "vendorcode::character varying", "lateststatus", "creatorname"}
+    Dim fieldList() As String = {"vendorname", "shortname", "applicantname", "vendorcode::character varying", "lateststatus", "creatorname", "doc.getmodifiedfield(q.id)"}
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
         getCriteria()

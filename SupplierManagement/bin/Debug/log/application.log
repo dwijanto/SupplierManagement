@@ -5366,3 +5366,15 @@ Parameter name: sourceFileName**
 2019-03-01 04:23:11.144 PM	send	SMTP Send
 2019-03-01 04:23:17.858 PM	send	SMTP Send Done
 2019-03-01 04:23:38.149 PM	SendEmail	Email Sent
+2019-03-05 04:17:14.793 PM	SendEmail	SendTo: feyu@groupeseb.com, SendTo Name: FELICITY YU, StatusName: NEW
+2019-03-05 04:17:30.773 PM	send	SMTP Send
+2019-03-05 04:17:34.342 PM	send	SMTP Send Done
+2019-03-05 04:17:41.131 PM	SendEmail	Email Sent
+2019-03-05 04:25:47.797 PM	SendEmail	SendTo: wwan@groupeseb.com, SendTo Name: WHAM WAN, StatusName: NEW
+2019-03-05 04:25:59.242 PM	send	SMTP Send
+2019-03-05 04:26:03.039 PM	send	SMTP Send Done
+2019-03-05 04:26:11.052 PM	SendEmail	Email Sent
+2019-03-06 09:43:06.895 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: ISABELLE HERBET, StatusName: Validated by SPM/ Category Leader
+2019-03-06 09:46:50.020 AM	send	SMTP Send
+2019-03-06 09:46:53.516 AM	send	SMTP Send Done
+2019-03-06 09:47:00.633 AM	SendEmail	Email Sent

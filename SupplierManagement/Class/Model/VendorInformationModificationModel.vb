@@ -43,7 +43,7 @@ Public Class VendorInformationModificationModel
 
             Dim mycriteria = String.Format("where v.vendorcode = {0}", _vendorcode)
             'Header 00
-            sb.Append(String.Format("select u.*,v.vendorcode::text || ' - ' || v.vendorname::text as vendorcodename,v.vendorname::text,v.shortname::text,spm.username as spmusername,pd.username as pdusername,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,app.email as appemail from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
+            sb.Append(String.Format("select u.*,v.vendorcode::text || ' - ' || v.vendorname::text as vendorcodename,v.vendorname::text,v.shortname::text,spm.username as spmusername,pd.username as pdusername,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,app.email as appemail, doc.getmodifiedfield(u.id) as modifiedfield from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
                                     " left join doc.user spm on lower(spm.userid) = lower(u.approvaldept)" &
                                     " left join doc.user pd on lower(pd.userid) = lower(u.approvaldept2)" &
                                     " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
@@ -112,7 +112,7 @@ Public Class VendorInformationModificationModel
             '                        " left join doc.user afc on afc.userid = u.approvalfc" &
             '                        " left join doc.user avp on avp.userid = u.approvalvp " &
             '                        " left join doc.user cr on cr.userid = u.creator {1};", tablename, Criteria))
-            sb.Append(String.Format("with q as (select u.*,v.vendorname::text,v.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
+            sb.Append(String.Format("with q as (select u.*,v.vendorname::text,v.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
                                    " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
                                    " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
                                    " left join doc.user avp on lower(avp.userid) = lower(u.approvalvp) " &
