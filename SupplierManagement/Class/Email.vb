@@ -66,6 +66,8 @@ Public Class Email
                         mail.Attachments.Add(New Attachment(mystr))
                     Next
                 End If
+
+                Logger.log("Create SMTPClient")
                 'smtp.office365.com
                 Using smtp = New SmtpClient(My.Settings.smtpclient)
                     'MessageBox.Show(My.Settings.smtpclient)     

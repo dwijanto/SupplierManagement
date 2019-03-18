@@ -25,6 +25,7 @@ Public Class FormMenu
     Private Sub FormMenu_Load(ByVal sender As Object, ByVal e As System.EventArgs)
         Try
             'HelperClass1 = New HelperClass
+
             HelperClass1 = HelperClass.getInstance
 
             DbAdapter1 = New DbAdapter

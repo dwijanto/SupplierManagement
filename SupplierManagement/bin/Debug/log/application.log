@@ -5378,3 +5378,7 @@ Parameter name: sourceFileName**
 2019-03-06 09:46:50.020 AM	send	SMTP Send
 2019-03-06 09:46:53.516 AM	send	SMTP Send Done
 2019-03-06 09:47:00.633 AM	SendEmail	Email Sent
+2019-03-08 02:39:18.711 PM	SendEmail	SendTo: alchan@groupeseb.com, SendTo Name: ALBERT CHAN, StatusName: NEW
+2019-03-08 02:42:25.515 PM	send	SMTP Send
+2019-03-08 02:42:28.824 PM	send	SMTP Send Done
+2019-03-08 02:42:32.712 PM	SendEmail	Email Sent
