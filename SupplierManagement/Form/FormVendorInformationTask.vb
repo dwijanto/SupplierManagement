@@ -6,7 +6,7 @@ Public Class FormVendorInformationTask
     Dim DS As DataSet
     WithEvents EPCheckBox1 As New CheckBox
     Dim dtpicker1 As New DateTimePicker
-    Dim fieldList() As String = {"statusname", "applicantname", "v.vendorcode", "vendorname", "shortname", "modifiedfield", "suppliermodificationid"}
+    Dim fieldList() As String = {"statusname", "applicantname", "vendorcode", "vendorname", "shortname", "modifiedfield", "suppliermodificationid"}
     Dim criteria As String
     Private Sub loaddata()
         If Not myThread.IsAlive Then
@@ -152,4 +152,6 @@ Public Class FormVendorInformationTask
        
 
     End Sub
+
+    
 End Class
