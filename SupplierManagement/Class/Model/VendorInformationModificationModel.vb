@@ -186,7 +186,7 @@ Public Class VendorInformationModificationModel
             sb.Append(String.Format("select vim.*,v.vendorname::text,v.shortname::text,doc.getstatusvendorinfmodi(vim.status)::text as statusname,doc.getmodifiedfield(vim.id) as modifiedfield from doc.vendorinfmodi vim" &
                                     " left join vendor v on v.vendorcode = vim.vendorcode" &
                                     " left join doc.user u on lower(u.userid) = '{0}'" &
-                                    " where status < 13 and ( (vim.creator = lower(u.userid) and (status >= 8 and status <= 12 )) " &
+                                    " where status < 13 and ( (lower(vim.creator) = lower(u.userid) and (status >= 8 and status <= 12 )) " &
                                     " or (vim.approvaldept = lower(u.userid) and (status = 1 or status = 2)) or (vim.approvaldept2 = lower(u.userid) and status = 3 ) " &
                                     " or (lower(u.userid) in (select lower(u.userid) from doc.groupuser gu" &
                                     " left join doc.user u on u.id = gu.userid" &

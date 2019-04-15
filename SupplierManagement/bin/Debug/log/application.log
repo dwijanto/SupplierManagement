@@ -5382,3 +5382,8 @@ Parameter name: sourceFileName**
 2019-03-08 02:42:25.515 PM	send	SMTP Send
 2019-03-08 02:42:28.824 PM	send	SMTP Send Done
 2019-03-08 02:42:32.712 PM	SendEmail	Email Sent
+2019-04-01 12:04:23.953 PM	SendEmail	SendTo: rlo@groupeseb.com, SendTo Name: RITA LO, StatusName: NEW
+2019-04-01 12:05:11.402 PM	send	Create SMTPClient
+2019-04-01 12:05:20.639 PM	send	SMTP Send
+2019-04-01 12:05:30.961 PM	send	SMTP Send Done
+2019-04-01 12:05:37.002 PM	SendEmail	Email Sent

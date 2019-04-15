@@ -834,7 +834,7 @@ Partial Class UCScorecardDetail
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(111, 96)
         Me.Label16.TabIndex = 98
-        Me.Label16.Text = "Price Index"
+        Me.Label16.Text = "Service Level"
         Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'TextBox46
