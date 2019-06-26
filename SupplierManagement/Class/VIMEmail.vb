@@ -14,34 +14,38 @@ Public Class VIMEmail
 
     Public Function Execute(ByVal sendto As String, ByVal sendtoname As String, ByVal statusname As String, ByVal drv As DataRowView, Optional ByVal cc As String = "") As Boolean
         Dim myret As Boolean = False
-        'Prepare Email
-        Me.statusname = statusname
-        Me.sendtoname = sendtoname
-        Me.drv = drv
-        Me.sendto = Trim(sendto)
-        Me.subject = String.Format("Vendor Information Modification: Tasks status. ({0:dd-MMM-yyyy}).", Today.Date)
+        Try
+            'Prepare Email
+            Me.statusname = statusname
+            Me.sendtoname = sendtoname
+            Me.drv = drv
+            Me.sendto = Trim(sendto)
+            Me.subject = String.Format("Vendor Information Modification: Tasks status. ({0:dd-MMM-yyyy}).", Today.Date)
 
-        If Not IsNothing(Me.sendto) Then
+            If Not IsNothing(Me.sendto) Then
 
-            Dim mycontent = getBodyMessage()
+                Dim mycontent = getBodyMessage()
 
-            Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString(String.Format("{0} <br>Or click the Supplier Management icon on your desktop: <br><p> <img src=cid:myLogo> <br></p><p>Supplier Management System Administrator</p></body></html>", mycontent), Nothing, MediaTypeNames.Text.Html)
+                Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString(String.Format("{0} <br>Or click the Supplier Management icon on your desktop: <br><p> <img src=cid:myLogo> <br></p><p>Supplier Management System Administrator</p></body></html>", mycontent), Nothing, MediaTypeNames.Text.Html)
 
-            Dim logo As New LinkedResource(Application.StartupPath & "\SupplierManagement.png")
-            logo.ContentId = "myLogo"
-            htmlView.LinkedResources.Add(logo)
+                Dim logo As New LinkedResource(Application.StartupPath & "\SupplierManagement.png")
+                logo.ContentId = "myLogo"
+                htmlView.LinkedResources.Add(logo)
 
-            Me.htmlView = htmlView
-            Me.isBodyHtml = True
-            Me.sender = "no-reply@groupeseb.com"
-            Me.body = mycontent 'roleTask.getbodymessage(n.data)
-            Me.cc = String.Format("{0}afok@groupeseb.com", cc)
-            'If Not Me.send(errorMessage) Then
-            '    Logger.log(errorMessage)
-            'End If
-            myret = Me.send(errorMessage)
-        End If
-        'myret = True
+                Me.htmlView = htmlView
+                Me.isBodyHtml = True
+                Me.sender = "no-reply@groupeseb.com"
+                Me.body = mycontent 'roleTask.getbodymessage(n.data)
+                Me.cc = String.Format("{0}afok@groupeseb.com", cc)
+                'If Not Me.send(errorMessage) Then
+                '    Logger.log(errorMessage)
+                'End If
+                myret = Me.send(errorMessage)
+            End If
+        Catch ex As Exception
+            Logger.log(ex.Message)
+            MessageBox.Show(ex.Message)
+        End Try
 
         Return myret
     End Function

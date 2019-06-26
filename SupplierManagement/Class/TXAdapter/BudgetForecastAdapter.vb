@@ -552,12 +552,13 @@ Public Class BudgetForecastAdapter
     End Function
 
     Public Function GetBudgetForecast(ByVal period As Date, ByVal vendorcode As Long, ByVal DataTypeEnum As DataTypeEnum) As Decimal
-        Dim sqlstr = String.Format("select  v.vendorcode,amountlineorder, sum(amount)::numeric as amount  from doc.budgetforecast bf " &
+        Dim sqlstr = String.Format("select  sum(amount)::numeric as amount  from doc.budgetforecast bf " &
                      " left join doc.datatypemaster dm on dm.id = bf.datatypeid" &
                      " left join vendor v on v.vendorcode = bf.vendorcode " &
-                     " where period = '{0:yyyy-MM-yy}' and v.vendorcode = {1} and  datatypeid = {2}", period, vendorcode, DataTypeEnum)
-        Dim ra As Decimal
+                     " where period = '{0:yyyy-MM-01}' and v.vendorcode = {1} and  datatypeid = {2:d} ", period, vendorcode, DataTypeEnum)
+        Dim ra As Object = Nothing
         DbAdapter1.ExecuteScalar(sqlstr, ra)
+        If IsDBNull(ra) Then ra = 0
         Return ra
     End Function
 
@@ -566,8 +567,9 @@ Public Class BudgetForecastAdapter
                      " left join vendor v on v.vendorcode = d.vendorcode " &
                      " where(Year = {0} and v.vendorcode = {1} )" &
                      " group by year;", yearref, vendorcode)
-        Dim ra As Decimal
+        Dim ra As Object = Nothing
         DbAdapter1.ExecuteScalar(sqlstr, ra)
+        If IsDBNull(ra) Then ra = 0
         Return ra
     End Function
 End Class

@@ -834,12 +834,13 @@ Public Class FormSupplierDashboard
         End If
 
         bFAdapter = New BudgetForecastAdapter(_vendorcode, _shortname)
+        ProgressReport(1, "Processing.. Please wait. Loading Budget & Forecast..")
         If bFAdapter.loaddata(BFCriteria) Then
             ProgressReport(9, "Fill Forecast budget")
         Else
             ProgressReport(9, "Loading Forecast Error.")
         End If
-
+        ProgressReport(1, "Loading Budget & Forecast.. Done")
         ProgressReport(6, "Continuous")
     End Sub
 

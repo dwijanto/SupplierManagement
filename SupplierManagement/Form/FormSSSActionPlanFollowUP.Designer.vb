@@ -706,7 +706,7 @@ Partial Class FormSSSActionPlanFollowUP
         Me.Column15.DataPropertyName = "statuschangedate"
         DataGridViewCellStyle4.Format = "dd-MMM-yyyy"
         Me.Column15.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column15.HeaderText = "Status Chnanged Date"
+        Me.Column15.HeaderText = "Status Changed Date"
         Me.Column15.Name = "Column15"
         Me.Column15.ReadOnly = True
         '

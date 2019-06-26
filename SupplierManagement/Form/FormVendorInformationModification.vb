@@ -418,6 +418,7 @@ Public Class FormVendorInformationModification
     End Function
 
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
+        Me.validate()
         SaveRecord()
     End Sub
 
@@ -456,6 +457,7 @@ Public Class FormVendorInformationModification
                 approvaldrv.Row.Item("modifiedby") = HelperClass1.UserId
                 approvaldrv.Row.Item("vendorinfomodiid") = drv.Item("id")
                 approvaldrv.EndEdit()
+                Logger.log(String.Format("** Submit {0}**", HelperClass1.UserId))
                 If SaveRecord() Then SendEmail(drv)
             End If
 
@@ -580,153 +582,160 @@ Public Class FormVendorInformationModification
     End Sub
 
     Public Sub SendEmail(ByVal drv As DataRowView)
-        Dim SPMUserName = drv.Row.Item("spmusername")
-        Dim PDUserName = drv.Row.Item("pdusername")
-        Dim DBUserName = drv.Row.Item("dbusername")
-        Dim FCUserName = drv.Row.Item("fcusername")
-        Dim StatusName As String = String.Empty
-        Dim SendTo As String = String.Empty
-        Dim SendToName As String = String.Empty
+        Try
+            Dim SPMUserName = drv.Row.Item("spmusername")
+            Dim PDUserName = drv.Row.Item("pdusername")
+            Dim DBUserName = drv.Row.Item("dbusername")
+            Dim FCUserName = drv.Row.Item("fcusername")
+            Dim StatusName As String = String.Empty
+            Dim SendTo As String = String.Empty
+            Dim SendToName As String = String.Empty
 
 
-        Dim cc As String = String.Empty
-        ' 1::New
-        ' 2::Re-submit
-        ' 3::Validated by SPM/ Category Leader
-        ' 4::Validated by Purchasing Director
-        ' 5::Validated by Database Management Team
-        ' 6::Validated by Financial Controller
-        ' 7::Validated by VP Sourcing/Industry 
-        ' 8::Rejected by SPM/Category Leader
-        ' 9::Rejected by Purchasing Director
-        '10::Rejected by Database Management Team
-        '11::Rejected by Financial Controller
-        '12::Rejected by Financial Controller
-        '13::Cancelled
-        '14::Completed 
+            Dim cc As String = String.Empty
+            ' 1::New
+            ' 2::Re-submit
+            ' 3::Validated by SPM/ Category Leader
+            ' 4::Validated by Purchasing Director
+            ' 5::Validated by Database Management Team
+            ' 6::Validated by Financial Controller
+            ' 7::Validated by VP Sourcing/Industry 
+            ' 8::Rejected by SPM/Category Leader
+            ' 9::Rejected by Purchasing Director
+            '10::Rejected by Database Management Team
+            '11::Rejected by Financial Controller
+            '12::Rejected by Financial Controller
+            '13::Cancelled
+            '14::Completed 
 
 
-        'check validator and sensitivity level then assign the email to
-        Dim SendTos As String() = Nothing
-        Dim CCs As String() = Nothing
-        Dim Creators As String() = Nothing
-        Dim CCDBdrv As DataRowView = UserAdapter1.getCCDBBS.Current
-        Dim CCDBListBS As BindingSource = UserAdapter1.getApprovalDBListBS
-        Dim ccdblistsb As New StringBuilder
-        For Each edrv In CCDBListBS.List
-            If ccdblistsb.Length > 0 Then ccdblistsb.Append(";")
-            ccdblistsb.Append(edrv.Row.Item("email"))
-        Next
-        Dim senddblist As Boolean = False
-        Select Case drv.Item("status")
-            Case 1
-                StatusName = "NEW"
-                Select Case drv.Row.Item("sensitivitylevel")
-                    Case 0
-                        SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
-                        SendToName = drv.Row.Item("dbusername")
-                    Case Else
-                        SendTos = drv.Row.Item("approvaldept").ToString.Split("\")
-                        SendToName = drv.Row.Item("spmusername")
-                End Select
-            Case 2
-                StatusName = "Re-Submit"
-                Select Case drv.Row.Item("sensitivitylevel")
-                    Case 0
-                        SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
-                        SendToName = drv.Row.Item("dbusername")
+            'check validator and sensitivity level then assign the email to
+            Dim SendTos As String() = Nothing
+            Dim CCs As String() = Nothing
+            Dim Creators As String() = Nothing
+            Dim CCDBdrv As DataRowView = UserAdapter1.getCCDBBS.Current
+            Dim CCDBListBS As BindingSource = UserAdapter1.getApprovalDBListBS
+            Dim ccdblistsb As New StringBuilder
+            For Each edrv In CCDBListBS.List
+                If ccdblistsb.Length > 0 Then ccdblistsb.Append(";")
+                ccdblistsb.Append(edrv.Row.Item("email"))
+            Next
+            Dim senddblist As Boolean = False
+            Select Case drv.Item("status")
+                Case 1
+                    StatusName = "NEW"
+                    Select Case drv.Row.Item("sensitivitylevel")
+                        Case 0
+                            'SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
+                            'SendToName = drv.Row.Item("dbusername")
+                            senddblist = True
+                        Case Else
+                            SendTos = drv.Row.Item("approvaldept").ToString.Split("\")
+                            SendToName = drv.Row.Item("spmusername")
+                    End Select
+                Case 2
+                    StatusName = "Re-Submit"
+                    Select Case drv.Row.Item("sensitivitylevel")
+                        Case 0
+                            SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
+                            SendToName = drv.Row.Item("dbusername")
 
 
-                    Case Else
-                        SendTos = drv.Row.Item("approvaldept").ToString.Split("\")
-                        SendToName = drv.Row.Item("spmusername")
-                End Select
-            Case 3
-                StatusName = "Validated by SPM/ Category Leader"
-                Select Case drv.Item("sensitivitylevel")
-                    Case 3                       
-                        'SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
-                        'SendToName = drv.Row.Item("dbusername")                       
-                        senddblist = True
-                    Case Else
-                        SendTos = drv.Row.Item("approvaldept2").ToString.Split("\")
-                        SendToName = drv.Row.Item("pdusername")
-                End Select
-            Case 4
-                StatusName = "Validated by Purchasing Director"
-                SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
-                SendToName = drv.Row.Item("dbusername")
-            Case 5
-                StatusName = "Validated by Database Management Team"
-                SendTos = drv.Row.Item("approvalfc").ToString.Split("\")
-                SendToName = drv.Row.Item("fcusername")
-            Case 6
-                StatusName = "Validated by Financial Controller"
-                'Check Sensitivity Level
-                If drv.Row.Item("turnovervalue") > 5000000 And drv.Item("sensitivitylevel") = 1 Then
-                    SendTos = drv.Row.Item("approvalvp").ToString.Split("\")
-                    SendToName = drv.Row.Item("vpusername")
-                Else
+                        Case Else
+                            SendTos = drv.Row.Item("approvaldept").ToString.Split("\")
+                            SendToName = drv.Row.Item("spmusername")
+                    End Select
+                Case 3
+                    StatusName = "Validated by SPM/ Category Leader"
+                    Select Case drv.Item("sensitivitylevel")
+                        Case 3
+                            'SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
+                            'SendToName = drv.Row.Item("dbusername")                       
+                            senddblist = True
+                        Case Else
+                            SendTos = drv.Row.Item("approvaldept2").ToString.Split("\")
+                            SendToName = drv.Row.Item("pdusername")
+                    End Select
+                Case 4
+                    StatusName = "Validated by Purchasing Director"
                     SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
                     SendToName = drv.Row.Item("dbusername")
-                    CCs = CCDBdrv.Row.Item("userid").ToString.Split("\")
+                Case 5
+                    StatusName = "Validated by Database Management Team"
+                    SendTos = drv.Row.Item("approvalfc").ToString.Split("\")
+                    SendToName = drv.Row.Item("fcusername")
+                Case 6
+                    StatusName = "Validated by Financial Controller"
+                    'Check Sensitivity Level
+                    If drv.Row.Item("turnovervalue") > 5000000 And drv.Item("sensitivitylevel") = 1 Then
+                        SendTos = drv.Row.Item("approvalvp").ToString.Split("\")
+                        SendToName = drv.Row.Item("vpusername")
+                    Else
+                        SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
+                        SendToName = drv.Row.Item("dbusername")
+                        CCs = CCDBdrv.Row.Item("userid").ToString.Split("\")
+                        cc = String.Format("{0}@groupeseb.com;", CCs(1))
+                    End If
+                Case 7
+                    StatusName = "Validated by VP Sourcing/Industry"
+                    SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
+                    SendToName = drv.Row.Item("dbusername")
+                    CCs = CCDBdrv.Row.Item("username").ToString.Split("\")
                     cc = String.Format("{0}@groupeseb.com;", CCs(1))
-                End If
-            Case 7
-                StatusName = "Validated by VP Sourcing/Industry"
-                SendTos = drv.Row.Item("approvaldb").ToString.Split("\")
-                SendToName = drv.Row.Item("dbusername")
-                CCs = CCDBdrv.Row.Item("username").ToString.Split("\")
-                cc = String.Format("{0}@groupeseb.com;", CCs(1))
-        End Select
-
-        If drv.Item("status") >= 1 And drv.Item("status") <= 7 Then
-            If senddblist Then               
-                SendTo = ccdblistsb.ToString
-                SendToName = "All"
-            Else
-                SendTo = String.Format("{0}@groupeseb.com", SendTos(1))
-            End If            
-        End If
-
-        If drv.Item("status") >= 8 And drv.Item("status") <= 13 Then
-            Select Case drv.Item("status")
-                Case 8
-                    StatusName = "Rejected by SPM/Category Leader"
-                Case 9
-                    StatusName = "Rejected by Purchasing Director"
-                Case 10
-                    StatusName = "Rejected by Database Management Team"
-                Case 11
-                    StatusName = "Rejected by Financial Controller"
-                Case 12
-                    StatusName = "Rejected by Financial Controller"
-                Case 13
-                    StatusName = "Cancelled"
             End Select
-            Creators = drv.Row.Item("creator").ToString.Split("\")
 
-            'SendTo = String.Format("{0}@groupeseb.com;{1};{2}", drv.Item("creator"), drv.Item("appemail"), "afok@groupeseb.com")
-            SendTo = String.Format("{0}@groupeseb.com;{1};{2}", Creators(1), drv.Item("appemail"), "afok@groupeseb.com")
-            SendToName = "All"
-        End If
+            If drv.Item("status") >= 1 And drv.Item("status") <= 7 Then
+                If senddblist Then
+                    SendTo = ccdblistsb.ToString
+                    SendToName = "All"
+                Else
+                    SendTo = String.Format("{0}@groupeseb.com", SendTos(1))
+                End If
+            End If
+
+            If drv.Item("status") >= 8 And drv.Item("status") <= 13 Then
+                Select Case drv.Item("status")
+                    Case 8
+                        StatusName = "Rejected by SPM/Category Leader"
+                    Case 9
+                        StatusName = "Rejected by Purchasing Director"
+                    Case 10
+                        StatusName = "Rejected by Database Management Team"
+                    Case 11
+                        StatusName = "Rejected by Financial Controller"
+                    Case 12
+                        StatusName = "Rejected by Financial Controller"
+                    Case 13
+                        StatusName = "Cancelled"
+                End Select
+                Creators = drv.Row.Item("creator").ToString.Split("\")
+
+                'SendTo = String.Format("{0}@groupeseb.com;{1};{2}", drv.Item("creator"), drv.Item("appemail"), "afok@groupeseb.com")
+                SendTo = String.Format("{0}@groupeseb.com;{1};{2}", Creators(1), drv.Item("appemail"), "afok@groupeseb.com")
+                SendToName = "All"
+            End If
 
 
-        If drv.Item("status") = VendorInfoModiStatusEnum.StatusCompleted Then
-            StatusName = "Completed"
-            Creators = drv.Row.Item("creator").ToString.Split("\")
-            SendTo = String.Format("{0}@groupeseb.com;{1};{2}", Creators(1), drv.Item("appemail"), "afok@groupeseb.com;ttom@groupeseb.com")
-            cc = String.Format("{0};", ccdblistsb.ToString)
-            SendToName = "All"
-        End If
+            If drv.Item("status") = VendorInfoModiStatusEnum.StatusCompleted Then
+                StatusName = "Completed"
+                Creators = drv.Row.Item("creator").ToString.Split("\")
+                SendTo = String.Format("{0}@groupeseb.com;{1};{2}", Creators(1), drv.Item("appemail"), "afok@groupeseb.com;ttom@groupeseb.com")
+                cc = String.Format("{0};", ccdblistsb.ToString)
+                SendToName = "All"
+            End If
 
-        Dim myEmail As VIMEmail = New VIMEmail
-        Logger.log(String.Format("SendTo: {0}, SendTo Name: {1}, StatusName: {2}", SendTo, SendToName, StatusName))
-        If Not myEmail.Execute(SendTo, SendToName, StatusName, drv, cc) Then
-            Logger.log(String.Format("Error Message: {0}", myEmail.errorMessage))
-        Else
-            Logger.log("Email Sent")
-        End If
+            Dim myEmail As VIMEmail = New VIMEmail
+            Logger.log(String.Format("SendTo: {0}, SendTo Name: {1}, StatusName: {2}", SendTo, SendToName, StatusName))
+            If Not myEmail.Execute(SendTo, SendToName, StatusName, drv, cc) Then
+                Logger.log(String.Format("Error Message: {0}", myEmail.errorMessage))
+            Else
+                Logger.log("Email Sent")
+            End If
+        Catch ex As Exception
+            Logger.log(ex.Message)
+            MessageBox.Show(ex.Message)
+        End Try
+        
 
     End Sub
 

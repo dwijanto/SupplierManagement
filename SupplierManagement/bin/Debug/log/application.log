@@ -5387,3 +5387,17 @@ Parameter name: sourceFileName**
 2019-04-01 12:05:20.639 PM	send	SMTP Send
 2019-04-01 12:05:30.961 PM	send	SMTP Send Done
 2019-04-01 12:05:37.002 PM	SendEmail	Email Sent
+2019-04-15 05:51:56.539 PM	SendEmail	SendTo: shxu@groupeseb.com, SendTo Name: SHOT XU, StatusName: NEW
+2019-04-15 05:52:51.686 PM	send	Create SMTPClient
+2019-04-15 05:52:51.729 PM	send	SMTP Send
+2019-04-15 05:53:13.654 PM	send	SMTP Send Done
+2019-04-15 05:53:18.839 PM	SendEmail	Email Sent
+2019-05-08 10:24:47.389 AM	ToolStripButton4_Click	** Submit AS\stleung**
+2019-05-08 10:25:46.933 AM	SendEmail	SendTo: wwan@groupeseb.com, SendTo Name: WHAM WAN, StatusName: NEW
+2019-05-08 10:26:12.114 AM	send	Create SMTPClient
+2019-05-08 10:26:12.154 AM	send	SMTP Send
+2019-05-08 10:26:20.441 AM	send	SMTP Send Done
+2019-05-08 10:26:24.386 AM	SendEmail	Email Sent
+2019-06-18 03:13:17.350 PM	ToolStripButton4_Click	** Submit AS\stleung**
+2019-06-18 03:37:01.625 PM	ToolStripButton4_Click	** Submit AS\stleung**
+2019-06-18 04:06:53.500 PM	SendEmail	SendTo: kuwong@groupeseb.com;wchang@groupeseb.com, SendTo Name: All, StatusName: NEW
