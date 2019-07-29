@@ -5401,3 +5401,7 @@ Parameter name: sourceFileName**
 2019-06-18 03:13:17.350 PM	ToolStripButton4_Click	** Submit AS\stleung**
 2019-06-18 03:37:01.625 PM	ToolStripButton4_Click	** Submit AS\stleung**
 2019-06-18 04:06:53.500 PM	SendEmail	SendTo: kuwong@groupeseb.com;wchang@groupeseb.com, SendTo Name: All, StatusName: NEW
+2019-07-03 12:07:33.330 PM	doWork	Send email completed to Applicant
+2019-07-03 12:17:48.511 PM	doWork	--------Start----------
+2019-07-03 12:17:48.535 PM	doWork	Send email to Purchasing Validator1
+2019-07-03 12:18:20.178 PM	doWork	Send email completed to Applicant
