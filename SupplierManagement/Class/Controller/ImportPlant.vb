@@ -25,7 +25,7 @@ Public Class ImportPlant
         'If Not
         Dim myret As Boolean = False
         SB.Append("select salesdoc,shiptoparty,plant from aasdhd;")
-        SB.Append("select salesdoc,salesdocitem,pohd,poitem from aasdpo;")
+        SB.Append("select salesdoc,salesdocitem,pohd,poitem from aasdpo where not salesdoc isnull;")
         DS = New DataSet
         If DbAdapter1.TbgetDataSet(SB.ToString, DS, ErrorMessage) Then
             Try
