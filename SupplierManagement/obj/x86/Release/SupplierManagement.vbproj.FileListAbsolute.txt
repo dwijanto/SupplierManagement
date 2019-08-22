@@ -577,3 +577,4 @@ C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Rel
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.exe
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.xml
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.pdb
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\bin\Release\npgsql.dll

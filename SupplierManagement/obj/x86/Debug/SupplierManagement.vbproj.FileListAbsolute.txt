@@ -577,3 +577,4 @@ C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Deb
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.SplashScreenSM.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.Resources.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.vbproj.GenerateResource.Cache
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\bin\Debug\npgsql.dll
