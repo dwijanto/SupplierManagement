@@ -135,7 +135,7 @@ Public Class VendorInformationModificationModel
         '                          " left join doc.user afc on afc.userid = u.approvalfc" &
         '                          " left join doc.user avp on avp.userid = u.approvalvp " &
         '                          " left join doc.user cr on cr.userid = u.creator ) select * from q {1};", tablename, criteria))
-        sb.Append(String.Format("with q as (select u.suppliermodificationid,u.vendorcode as vendorcode,v.vendorname::text,v.shortname::text,u.applicantname," &
+        sb.Append(String.Format("with q as (select u.id,u.suppliermodificationid,u.vendorcode as vendorcode,v.vendorname::text,v.shortname::text,u.applicantname," &
                                 " case m.informationtype when 1 then 'Basic Information' when 2 then 'Bank Information' else '' end as modificationtype," &
                                 " m.modifytype,dt.newvalue,m.sensitivitylevel,u.applicantdate,doc.getstatusvendorinfmodi(u.status) as lateststatus,doc.getlateststatusmodifieddate(u.id,u.status) as lateststatusmodifieddate,cr.username as creatorname " &
                                 " from doc.vendorinfmodi u left join doc.vendorinfmodidt dt on dt.id = u.id left join doc.modificationtype m on m.id = dt.fieldid" &

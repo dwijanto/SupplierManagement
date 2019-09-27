@@ -197,7 +197,7 @@ Public Class FormPrintAssetsPurchase
         APACTBS.Sort = "status asc"
         For Each drv As DataRowView In APACTBS.List
             If drv.Row.Item("status") = 4 Then
-                osheet.Range("approvaldate").Value = String.Format("{0:dd-MM-yyyy}", drv.Row.Item("latestupdate"))
+                osheet.Range("approvaldate").Value = String.Format("{0:dd-MMM-yyyy}", drv.Row.Item("latestupdate"))
                 If IsDBNull(APdrv.Row.Item("approvalname2")) Then
                     osheet.Range("signature").Value = String.Format("Approved by {0}", APdrv.Row.Item("approvalname"))
                 Else
@@ -206,7 +206,7 @@ Public Class FormPrintAssetsPurchase
                 Exit For
             End If
             If drv.Row.Item("status") = 5 Then
-                osheet.Range("approvaldate").Value = String.Format("{0:dd-MM-yyyy}", drv.Row.Item("latestupdate"))
+                osheet.Range("approvaldate").Value = String.Format("{0:dd-MMM-yyyy}", drv.Row.Item("latestupdate"))
                 If IsDBNull(APdrv.Row.Item("approvalname2")) Then
                     osheet.Range("signature").Value = String.Format("Approved by {0}", APdrv.Row.Item("approvalname"))
                 Else
