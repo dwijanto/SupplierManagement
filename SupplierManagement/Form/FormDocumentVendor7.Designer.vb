@@ -23,20 +23,33 @@ Partial Class FormDocumentVendor7
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormDocumentVendor7))
         Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormDocumentVendor7))
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -244,6 +257,38 @@ Partial Class FormDocumentVendor7
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip2.SuspendLayout()
         CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -304,8 +349,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn42
         '
         Me.DataGridViewTextBoxColumn42.DataPropertyName = "zename"
-        DataGridViewCellStyle14.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn42.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn42.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn42.HeaderText = "ZeName"
         Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
         Me.DataGridViewTextBoxColumn42.ReadOnly = True
@@ -352,8 +397,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn40
         '
         Me.DataGridViewTextBoxColumn40.DataPropertyName = "nqsu"
-        DataGridViewCellStyle15.Format = "#,##0.00"
-        Me.DataGridViewTextBoxColumn40.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle2.Format = "#,##0.00"
+        Me.DataGridViewTextBoxColumn40.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn40.HeaderText = "NQSU"
         Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
         Me.DataGridViewTextBoxColumn40.ReadOnly = True
@@ -362,8 +407,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn41
         '
         Me.DataGridViewTextBoxColumn41.DataPropertyName = "otherdate"
-        DataGridViewCellStyle16.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle3.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn41.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn41.HeaderText = "Doc Date"
         Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
         Me.DataGridViewTextBoxColumn41.ReadOnly = True
@@ -423,8 +468,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn39
         '
         Me.DataGridViewTextBoxColumn39.DataPropertyName = "otherdate"
-        DataGridViewCellStyle17.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn39.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle4.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn39.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn39.HeaderText = "Doc Date"
         Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
         Me.DataGridViewTextBoxColumn39.ReadOnly = True
@@ -457,8 +502,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn33
         '
         Me.DataGridViewTextBoxColumn33.DataPropertyName = "payt"
-        DataGridViewCellStyle18.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn33.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle5.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn33.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn33.HeaderText = "PaymentTerm"
         Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
         Me.DataGridViewTextBoxColumn33.ReadOnly = True
@@ -467,8 +512,8 @@ Partial Class FormDocumentVendor7
         'DataGridViewTextBoxColumn34
         '
         Me.DataGridViewTextBoxColumn34.DataPropertyName = "otherdate"
-        DataGridViewCellStyle19.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn34.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn34.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn34.HeaderText = "otherdate"
         Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
         Me.DataGridViewTextBoxColumn34.ReadOnly = True
@@ -554,8 +599,8 @@ Partial Class FormDocumentVendor7
         'Column9
         '
         Me.Column9.DataPropertyName = "docdate"
-        DataGridViewCellStyle23.Format = "dd-MMM-yyyy"
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle7.Format = "dd-MMM-yyyy"
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle7
         Me.Column9.HeaderText = "Doc Date"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
@@ -577,8 +622,8 @@ Partial Class FormDocumentVendor7
         'Column5
         '
         Me.Column5.DataPropertyName = "vendorname"
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle8
         Me.Column5.HeaderText = "Vendor Name"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
@@ -587,8 +632,8 @@ Partial Class FormDocumentVendor7
         'Column6
         '
         Me.Column6.DataPropertyName = "shortname"
-        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle9
         Me.Column6.HeaderText = "Short Name"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
@@ -682,7 +727,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox10.Controls.Add(Me.Label53)
         Me.GroupBox10.Controls.Add(Me.TextBox16)
         Me.GroupBox10.Controls.Add(Me.Label54)
-        Me.GroupBox10.Location = New System.Drawing.Point(7, 414)
+        Me.GroupBox10.Location = New System.Drawing.Point(6, 403)
         Me.GroupBox10.Name = "GroupBox10"
         Me.GroupBox10.Size = New System.Drawing.Size(422, 58)
         Me.GroupBox10.TabIndex = 141
@@ -720,7 +765,7 @@ Partial Class FormDocumentVendor7
         '
         Me.GroupBox6.Controls.Add(Me.TextBox18)
         Me.GroupBox6.Controls.Add(Me.Label26)
-        Me.GroupBox6.Location = New System.Drawing.Point(434, 348)
+        Me.GroupBox6.Location = New System.Drawing.Point(434, 343)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(419, 57)
         Me.GroupBox6.TabIndex = 139
@@ -762,7 +807,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox5.Controls.Add(Me.TextBox15)
         Me.GroupBox5.Controls.Add(Me.Label23)
         Me.GroupBox5.Controls.Add(Me.Label24)
-        Me.GroupBox5.Location = New System.Drawing.Point(434, 85)
+        Me.GroupBox5.Location = New System.Drawing.Point(434, 80)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(425, 194)
         Me.GroupBox5.TabIndex = 138
@@ -899,7 +944,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox4.Controls.Add(Me.Label10)
         Me.GroupBox4.Controls.Add(Me.TextBox14)
         Me.GroupBox4.Controls.Add(Me.Label21)
-        Me.GroupBox4.Location = New System.Drawing.Point(434, 285)
+        Me.GroupBox4.Location = New System.Drawing.Point(434, 280)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(425, 58)
         Me.GroupBox4.TabIndex = 140
@@ -939,7 +984,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox3.Controls.Add(Me.Label37)
         Me.GroupBox3.Controls.Add(Me.TextBox13)
         Me.GroupBox3.Controls.Add(Me.Label22)
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 307)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 298)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(422, 99)
         Me.GroupBox3.TabIndex = 137
@@ -982,7 +1027,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox2.Controls.Add(Me.Label20)
         Me.GroupBox2.Controls.Add(Me.TextBox11)
         Me.GroupBox2.Controls.Add(Me.Label19)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 201)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 192)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(422, 100)
         Me.GroupBox2.TabIndex = 136
@@ -1050,7 +1095,7 @@ Partial Class FormDocumentVendor7
         Me.GroupBox1.Controls.Add(Me.ComboBox5)
         Me.GroupBox1.Controls.Add(Me.Label18)
         Me.GroupBox1.Enabled = False
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 85)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 76)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(422, 113)
         Me.GroupBox1.TabIndex = 135
@@ -1103,7 +1148,7 @@ Partial Class FormDocumentVendor7
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(849, 338)
+        Me.TabPage2.Size = New System.Drawing.Size(865, 338)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "SIF & Identity Sheet"
         '
@@ -1144,8 +1189,8 @@ Partial Class FormDocumentVendor7
         '
         Me.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Column12.DataPropertyName = "value"
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column12.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column12.DefaultCellStyle = DataGridViewCellStyle10
         Me.Column12.HeaderText = "Value"
         Me.Column12.Name = "Column12"
         Me.Column12.ReadOnly = True
@@ -1367,7 +1412,7 @@ Partial Class FormDocumentVendor7
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(849, 338)
+        Me.TabPage3.Size = New System.Drawing.Size(865, 338)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "SSS Buyer Input"
         '
@@ -1381,7 +1426,7 @@ Partial Class FormDocumentVendor7
         Me.FlowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(6, 40)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(837, 289)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(853, 289)
         Me.FlowLayoutPanel1.TabIndex = 145
         '
         'UcsssBuyerInput1
@@ -1470,8 +1515,8 @@ Partial Class FormDocumentVendor7
         'Column24
         '
         Me.Column24.DataPropertyName = "startdate"
-        DataGridViewCellStyle20.Format = "MMM-yyyy"
-        Me.Column24.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle11.Format = "MMM-yyyy"
+        Me.Column24.DefaultCellStyle = DataGridViewCellStyle11
         Me.Column24.HeaderText = "Start Date"
         Me.Column24.Name = "Column24"
         Me.Column24.ReadOnly = True
@@ -1480,8 +1525,8 @@ Partial Class FormDocumentVendor7
         'Column25
         '
         Me.Column25.DataPropertyName = "enddate"
-        DataGridViewCellStyle21.Format = "MMM-yyyy"
-        Me.Column25.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle12.Format = "MMM-yyyy"
+        Me.Column25.DefaultCellStyle = DataGridViewCellStyle12
         Me.Column25.HeaderText = "Expected End Date"
         Me.Column25.Name = "Column25"
         Me.Column25.ReadOnly = True
@@ -1497,8 +1542,8 @@ Partial Class FormDocumentVendor7
         'Column27
         '
         Me.Column27.DataPropertyName = "finishdate"
-        DataGridViewCellStyle22.Format = "MMM-yyyy"
-        Me.Column27.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle13.Format = "MMM-yyyy"
+        Me.Column27.DefaultCellStyle = DataGridViewCellStyle13
         Me.Column27.HeaderText = "Actual Finish date"
         Me.Column27.Name = "Column27"
         Me.Column27.ReadOnly = True
@@ -2017,7 +2062,7 @@ Partial Class FormDocumentVendor7
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripButton1, Me.ToolStripButton4, Me.ToolStripSeparator3, Me.ToolStripButton3})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(411, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(410, 25)
         Me.ToolStrip1.TabIndex = 134
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -2027,7 +2072,7 @@ Partial Class FormDocumentVendor7
         Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
         Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(53, 22)
+        Me.ToolStripButton5.Size = New System.Drawing.Size(52, 22)
         Me.ToolStripButton5.Text = "Validate"
         '
         'ToolStripButton6
@@ -2296,6 +2341,277 @@ Partial Class FormDocumentVendor7
         '
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "zename"
+        DataGridViewCellStyle14.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle14
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ZeName"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 280
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "nqsu"
+        DataGridViewCellStyle15.Format = "#,##0.00"
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle15
+        Me.DataGridViewTextBoxColumn2.HeaderText = "NQSU"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 200
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "otherdate"
+        DataGridViewCellStyle16.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle16
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Doc Date"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 200
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "leadtimehd"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "LeadTimeHD"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "leadtime"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "leadtime"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 50
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "saslhd"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "SASLHD"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 50
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "sasl"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "sasl"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 50
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "otherdate"
+        DataGridViewCellStyle17.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn8.DefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Doc Date"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 280
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "payt"
+        DataGridViewCellStyle18.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn9.DefaultCellStyle = DataGridViewCellStyle18
+        Me.DataGridViewTextBoxColumn9.HeaderText = "PaymentTerm"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 280
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "otherdate"
+        DataGridViewCellStyle19.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle19
+        Me.DataGridViewTextBoxColumn10.HeaderText = "otherdate"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Width = 80
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "labelname"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Label"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Width = 150
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "value"
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle20
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Value"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "priority"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Priority"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Width = 50
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "situation"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "Situation"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "target"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "Target"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "proposal"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "Proposal / Action Plan"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "responsibleperson"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Responsible person"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "startdate"
+        DataGridViewCellStyle21.Format = "MMM-yyyy"
+        Me.DataGridViewTextBoxColumn18.DefaultCellStyle = DataGridViewCellStyle21
+        Me.DataGridViewTextBoxColumn18.HeaderText = "Start Date"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.Width = 70
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "enddate"
+        DataGridViewCellStyle22.Format = "MMM-yyyy"
+        Me.DataGridViewTextBoxColumn19.DefaultCellStyle = DataGridViewCellStyle22
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Expected End Date"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.ReadOnly = True
+        Me.DataGridViewTextBoxColumn19.Width = 70
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "result"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "Actual / Evidence / status"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "finishdate"
+        DataGridViewCellStyle23.Format = "MMM-yyyy"
+        Me.DataGridViewTextBoxColumn21.DefaultCellStyle = DataGridViewCellStyle23
+        Me.DataGridViewTextBoxColumn21.HeaderText = "Actual Finish date"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.ReadOnly = True
+        Me.DataGridViewTextBoxColumn21.Width = 70
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "status"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Status"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "docdate"
+        DataGridViewCellStyle24.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn23.DefaultCellStyle = DataGridViewCellStyle24
+        Me.DataGridViewTextBoxColumn23.HeaderText = "Doc Date"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        Me.DataGridViewTextBoxColumn23.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "version"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "Version"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn25
+        '
+        Me.DataGridViewTextBoxColumn25.DataPropertyName = "vendorcode"
+        Me.DataGridViewTextBoxColumn25.HeaderText = "Vendor Code"
+        Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
+        Me.DataGridViewTextBoxColumn25.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn26
+        '
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "vendorname"
+        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle25
+        Me.DataGridViewTextBoxColumn26.HeaderText = "Vendor Name"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.ReadOnly = True
+        Me.DataGridViewTextBoxColumn26.Width = 300
+        '
+        'DataGridViewTextBoxColumn27
+        '
+        Me.DataGridViewTextBoxColumn27.DataPropertyName = "shortname"
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn27.DefaultCellStyle = DataGridViewCellStyle26
+        Me.DataGridViewTextBoxColumn27.HeaderText = "Short Name"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        Me.DataGridViewTextBoxColumn27.ReadOnly = True
+        Me.DataGridViewTextBoxColumn27.Width = 175
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "doctypename"
+        Me.DataGridViewTextBoxColumn28.HeaderText = "Document Type"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        Me.DataGridViewTextBoxColumn28.ReadOnly = True
+        Me.DataGridViewTextBoxColumn28.Width = 200
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "levelname"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "Document Level"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.ReadOnly = True
+        Me.DataGridViewTextBoxColumn29.Width = 150
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        Me.DataGridViewTextBoxColumn30.DataPropertyName = "statusname"
+        Me.DataGridViewTextBoxColumn30.HeaderText = "status"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        Me.DataGridViewTextBoxColumn30.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        Me.DataGridViewTextBoxColumn31.DataPropertyName = "documentid"
+        Me.DataGridViewTextBoxColumn31.HeaderText = "documentid"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        Me.DataGridViewTextBoxColumn31.ReadOnly = True
+        Me.DataGridViewTextBoxColumn31.Visible = False
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "headerid"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "headerid"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.ReadOnly = True
+        Me.DataGridViewTextBoxColumn32.Visible = False
         '
         'FormDocumentVendor7
         '
@@ -2570,4 +2886,36 @@ Partial Class FormDocumentVendor7
     Public WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
+    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn14 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn25 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

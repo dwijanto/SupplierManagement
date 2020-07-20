@@ -85,6 +85,9 @@
   <ItemGroup>
     <Compile Include="Class\ActionPlanEmail.vb" />
     <Compile Include="Class\Adapter\BaseAdapter.vb" />
+    <Compile Include="Class\ClassBaseImportSIFIdentityAttachment.vb" />
+    <Compile Include="Class\ClassImportIdentityAttachment.vb" />
+    <Compile Include="Class\ClassImportSIFAttachment.vb" />
     <Compile Include="Class\Controller\ActionPlanController.vb" />
     <Compile Include="Class\Controller\AssetPurchaseController.vb" />
     <Compile Include="Class\Controller\IController.vb" />
@@ -98,6 +101,7 @@
     <Compile Include="Class\Model\FamilyVCModel.vb" />
     <Compile Include="Class\Model\IModel.vb" />
     <Compile Include="Class\Model\ModificationTypeModel.vb" />
+    <Compile Include="Class\Model\NewVendorModel.vb" />
     <Compile Include="Class\Model\OfficerSEBModel.vb" />
     <Compile Include="Class\Model\ParamDTLAdapter.vb" />
     <Compile Include="Class\Model\PaymentTermEffDateModel.vb" />
@@ -112,6 +116,7 @@
     <Compile Include="Class\Model\VendorInformationModificationModel.vb" />
     <Compile Include="Class\Model\VendorModel.vb" />
     <Compile Include="Class\Model\VendorPMModel.vb" />
+    <Compile Include="Class\NSEmail.vb" />
     <Compile Include="Class\RoleAssetPurchaseTask.vb" />
     <Compile Include="Class\TXAdapter\BudgetForecastAdapter.vb" />
     <Compile Include="Class\Adapter\DataTypeLabelAdapter.vb" />
@@ -128,6 +133,7 @@
     <Compile Include="Class\TXAdapter\FamilyVCAdapter.vb" />
     <Compile Include="Class\TXAdapter\IndirectFamilyAdapter.vb" />
     <Compile Include="Class\TXAdapter\ModificationTypeAdapter.vb" />
+    <Compile Include="Class\TXAdapter\NewVendorAdapter.vb" />
     <Compile Include="Class\TXAdapter\PaymentTermAdapter.vb" />
     <Compile Include="Class\TXAdapter\PaymentTermEffDateAdapter.vb" />
     <Compile Include="Class\TXAdapter\SubFamilyVCAdapter.vb" />
@@ -184,6 +190,12 @@
     <Compile Include="Class\UserControl\UCBuyerInput.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Class\UserControl\UCCheck.Designer.vb">
+      <DependentUpon>UCCheck.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCCheck.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Class\UserControl\UCContact.Designer.vb">
       <DependentUpon>UCContact.vb</DependentUpon>
     </Compile>
@@ -218,6 +230,30 @@
       <DependentUpon>UCFactoryContact.vb</DependentUpon>
     </Compile>
     <Compile Include="Class\UserControl\UCFactoryContact.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNewVendor.Designer.vb">
+      <DependentUpon>UCNewVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNewVendor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSBasicInformation.Designer.vb">
+      <DependentUpon>UCNSBasicInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSBasicInformation.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSDocumentHeader.Designer.vb">
+      <DependentUpon>UCNSDocumentHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSDocumentHeader.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSGeneralContract.Designer.vb">
+      <DependentUpon>UCNSGeneralContract.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\UserControl\UCNSGeneralContract.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Class\UserControl\UCPriceCMMF.Designer.vb">
@@ -264,6 +300,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Class\VIMEmail.vb" />
+    <Compile Include="Form\DialogFamilySubVendor.Designer.vb">
+      <DependentUpon>DialogFamilySubVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\DialogFamilySubVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\DialogAssetPurchaseComments.Designer.vb">
       <DependentUpon>DialogAssetPurchaseComments.vb</DependentUpon>
     </Compile>
@@ -432,6 +474,12 @@
     <Compile Include="Form\FormAutoSendAssetPurchase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormFindNewVendor.Designer.vb">
+      <DependentUpon>FormFindNewVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormFindNewVendor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormFindVendorInformationModification.Designer.vb">
       <DependentUpon>FormFindVendorInformationModification.vb</DependentUpon>
     </Compile>
@@ -448,6 +496,12 @@
       <DependentUpon>FormModificationTypeMaster.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormModificationTypeMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormNewVendor.Designer.vb">
+      <DependentUpon>FormNewVendor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormNewVendor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormOtherTask.Designer.vb">
@@ -472,6 +526,12 @@
       <DependentUpon>FormPTEffectiveDate.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormPTEffectiveDate.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormReportCMMF3750.Designer.vb">
+      <DependentUpon>FormReportCMMF3750.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormReportCMMF3750.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormVendorFamilyPMEx.Designer.vb">
@@ -1164,6 +1224,9 @@
     <EmbeddedResource Include="Class\UserControl\UCBuyerInput.resx">
       <DependentUpon>UCBuyerInput.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCCheck.resx">
+      <DependentUpon>UCCheck.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Class\UserControl\UCContact.resx">
       <DependentUpon>UCContact.vb</DependentUpon>
     </EmbeddedResource>
@@ -1181,6 +1244,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\UserControl\UCFactoryContact.resx">
       <DependentUpon>UCFactoryContact.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCNewVendor.resx">
+      <DependentUpon>UCNewVendor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCNSBasicInformation.resx">
+      <DependentUpon>UCNSBasicInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCNSDocumentHeader.resx">
+      <DependentUpon>UCNSDocumentHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\UserControl\UCNSGeneralContract.resx">
+      <DependentUpon>UCNSGeneralContract.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Class\UserControl\UCPriceCMMF.resx">
       <DependentUpon>UCPriceCMMF.vb</DependentUpon>
@@ -1202,6 +1277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Class\UserControl\UCVendorInformationModification.resx">
       <DependentUpon>UCVendorInformationModification.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\DialogFamilySubVendor.resx">
+      <DependentUpon>DialogFamilySubVendor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\DialogAssetPurchaseComments.resx">
       <DependentUpon>DialogAssetPurchaseComments.vb</DependentUpon>
@@ -1320,6 +1398,9 @@
     <EmbeddedResource Include="Form\FormFamilyVC.resx">
       <DependentUpon>FormFamilyVC.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormFindNewVendor.resx">
+      <DependentUpon>FormFindNewVendor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormFindVendorInformationModification.resx">
       <DependentUpon>FormFindVendorInformationModification.vb</DependentUpon>
     </EmbeddedResource>
@@ -1341,6 +1422,9 @@
     <EmbeddedResource Include="Form\FormMyTaskDocument2.resx">
       <DependentUpon>FormMyTaskDocument2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormNewVendor.resx">
+      <DependentUpon>FormNewVendor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FormOtherTask.resx">
       <DependentUpon>FormOtherTask.vb</DependentUpon>
     </EmbeddedResource>
@@ -1352,6 +1436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormPTEffectiveDate.resx">
       <DependentUpon>FormPTEffectiveDate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormReportCMMF3750.resx">
+      <DependentUpon>FormReportCMMF3750.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormReportTOSC.resx">
       <DependentUpon>FormReportTOSC.vb</DependentUpon>

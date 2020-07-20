@@ -5,7 +5,7 @@ Public Class FamilyVCAdapter
     Dim DS As DataSet
     Dim DbAdapter1 As DbAdapter = DbAdapter.getInstance
     Public BS As BindingSource
-    Dim FamilyVCModel1 As FamilyVCModel
+    Dim FamilyVCModel1 As New FamilyVCModel
 
     Public ReadOnly Property GetTableFamilyVC As DataTable
         Get
@@ -19,6 +19,12 @@ Public Class FamilyVCAdapter
             BS.DataSource = GetTableFamilyVC
             BS.Sort = FamilyVCModel1.SortField
             Return BS
+        End Get
+    End Property
+
+    Public ReadOnly Property GetFamilyVCBS As BindingSource
+        Get
+            Return FamilyVCModel1.getFamilyVCBS
         End Get
     End Property
 

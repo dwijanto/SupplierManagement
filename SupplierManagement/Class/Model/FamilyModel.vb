@@ -17,6 +17,16 @@ Public Class FamilyModel
         End Get
     End Property
 
+    Public Function getFamilyBS() As BindingSource
+        Dim sqlstr As String = String.Format("select 0::integer as familyid,null::text as familyname,null::text as familydesc union all (select familyid,familyname::text ,familyid::text || ' - ' || familyname::text as familydesc from family order by {0});", SortField)
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If myadapter.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Public Function LoadData(ByVal DS As DataSet) As Boolean Implements IModel.LoadData
         Dim dataadapter As NpgsqlDataAdapter = myadapter.getDbDataAdapter
         Dim myret As Boolean = False

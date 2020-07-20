@@ -89,9 +89,15 @@ Public Class FormInputInvoice
         TextBox19.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "exrate", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
         TextBox39.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "description", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
+        Dim myCurr() As String = DS.Tables(15).Rows(0).Item("cvalue").ToString.Split(",")
 
-        CurrencyList.Add(New Currency("USD"))
-        CurrencyList.Add(New Currency("EUR"))
+        For i = 0 To myCurr.Count - 1
+            CurrencyList.Add(New Currency(myCurr(i)))
+        Next
+
+        'CurrencyList.Add(New Currency("USD"))
+        'CurrencyList.Add(New Currency("EUR"))
+        'CurrencyList.Add(New Currency("CNY"))
 
         ComboBox2.DataSource = CurrencyList
         ComboBox2.DisplayMember = "currency"

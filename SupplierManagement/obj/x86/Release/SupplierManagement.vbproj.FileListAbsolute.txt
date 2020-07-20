@@ -578,3 +578,12 @@ C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Rel
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.xml
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.pdb
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\bin\Release\npgsql.dll
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormNewVendor.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.UCNewVendor.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.DialogFamilySubVendor.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormFindNewVendor.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.UCCheck.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.UCNSBasicInformation.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.UCNSDocumentHeader.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.UCNSGeneralContract.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormReportCMMF3750.resources

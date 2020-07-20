@@ -4,7 +4,22 @@ Public Class FormParamDTL
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
     Dim DbAdapter1 = DbAdapter.getInstance
     Dim myController As New ParamDTLAdapter
-    Private Const ParamHDName As String = "vendorinfomodiattachmenttype"
+    ' Private Const ParamHDName As String = "vendorinfomodiattachmenttype"
+    Private ParamHDName As String = "vendorinfomodiattachmenttype"
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
+    Public Sub New(ByVal ParamHDName)
+        InitializeComponent()
+        Me.ParamHDName = ParamHDName
+    End Sub
 
     Private Sub FormParamDTL_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         loaddata()

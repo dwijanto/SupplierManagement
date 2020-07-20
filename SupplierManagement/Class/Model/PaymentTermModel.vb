@@ -15,6 +15,18 @@ Public Class PaymentTermModel
             Return "payt"
         End Get
     End Property
+
+
+    Public Function getPaymentTermBS() As BindingSource
+        Dim sqlstr As String = String.Format("select 0::integer as paymenttermid,null::character varying as payt,null::character varying as days,null::character varying as details,null::character varying as paymenttermdesc union all (select pt.paymenttermid,pt.payt,pt.days::character varying,pt.details,pt.payt || ' - ' || pt.details as paymenttermdesc from paymentterm pt order by {0});", SortField)
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If myadapter.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Public Function LoadData(ByVal DS As DataSet) As Boolean Implements IModel.LoadData
         Dim dataadapter As NpgsqlDataAdapter = myadapter.getDbDataAdapter
         Dim myret As Boolean = False

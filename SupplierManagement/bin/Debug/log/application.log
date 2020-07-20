@@ -5405,3 +5405,129 @@ Parameter name: sourceFileName**
 2019-07-03 12:17:48.511 PM	doWork	--------Start----------
 2019-07-03 12:17:48.535 PM	doWork	Send email to Purchasing Validator1
 2019-07-03 12:18:20.178 PM	doWork	Send email completed to Applicant
+2019-10-04 10:15:35.893 AM	doWork	--------Start----------
+2019-10-04 10:15:35.897 AM	doWork	Send email to Purchasing Validator1
+2019-10-04 10:15:53.238 AM	doWork	Send email to CompletedInvestmentApproval
+2019-10-04 10:17:03.127 AM	doWork	Send email Amortization to ControllingDept
+2019-10-17 12:04:43.134 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-17 12:11:34.834 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-17 12:25:03.097 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-17 12:40:49.931 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-17 02:21:47.360 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-18 03:25:27.362 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-25 10:54:34.328 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-25 11:01:35.045 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-25 11:30:39.441 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-10-25 11:40:32.651 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-11-12 03:46:56.489 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-11-12 03:47:35.023 PM	SendEmail	Column 'spmusername' does not belong to table Master.
+2019-11-12 04:21:12.269 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-11-12 04:52:47.759 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-11-12 04:54:42.781 PM	SendEmail	SendTo: stleung@groupeseb.com, SendTo Name: STELLA LEUNG, StatusName: NEW
+2019-11-12 05:00:01.800 PM	send	Create SMTPClient
+2019-11-12 05:00:06.390 PM	send	SMTP Send
+2019-11-12 05:00:10.398 PM	send	SMTP Send Done
+2019-11-12 05:00:53.398 PM	SendEmail	Email Sent
+2019-11-12 05:06:01.840 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2019-11-12 05:06:52.182 PM	SendEmail	SendTo: stleung@groupeseb.com, SendTo Name: STELLA LEUNG, StatusName: NEW
+2019-11-12 05:08:38.293 PM	send	Create SMTPClient
+2019-11-12 05:08:41.651 PM	send	SMTP Send
+2019-11-12 05:08:46.069 PM	send	SMTP Send Done
+2019-11-12 05:08:59.648 PM	SendEmail	Email Sent
+2019-11-13 10:17:17.250 AM	SendEmail	SendTo: cchiu@groupeseb.com, SendTo Name: CHLOE CHIU, StatusName: Validated by SPM/ Category Leader
+2019-11-13 10:19:09.823 AM	send	Create SMTPClient
+2019-11-13 10:19:12.041 AM	send	SMTP Send
+2019-11-13 10:19:15.509 AM	send	SMTP Send Done
+2019-11-13 10:19:27.819 AM	SendEmail	Email Sent
+2019-11-13 12:04:30.630 PM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: INGRID CHAN, StatusName: Validated by Purchasing Director
+2019-11-13 12:05:37.208 PM	send	Create SMTPClient
+2019-11-13 12:05:37.240 PM	send	SMTP Send
+2019-11-13 12:05:43.113 PM	send	SMTP Send Done
+2019-11-13 12:05:46.675 PM	SendEmail	Email Sent
+2019-11-13 12:09:14.504 PM	SendEmail	Conversion from type 'DBNull' to type 'String' is not valid.
+2019-11-13 12:15:10.551 PM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: All, StatusName: Validated by Financial Controller
+2019-11-13 12:15:42.169 PM	send	Create SMTPClient
+2019-11-13 12:15:42.169 PM	send	SMTP Send
+2019-11-13 12:15:49.417 PM	send	SMTP Send Done
+2019-11-13 12:15:58.212 PM	SendEmail	Email Sent
+2019-11-13 12:22:00.198 PM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: All, StatusName: Vendor Code Created in SAP
+2019-11-13 12:22:26.816 PM	send	Create SMTPClient
+2019-11-13 12:22:26.816 PM	send	SMTP Send
+2019-11-13 12:22:31.175 PM	send	SMTP Send Done
+2019-11-13 12:22:36.439 PM	SendEmail	Email Sent
+2019-11-13 12:44:51.809 PM	SendEmail	SendTo: dlie@groupeseb.com;, SendTo Name: All, StatusName: Completed
+2019-11-13 12:45:29.238 PM	send	Create SMTPClient
+2019-11-13 12:45:29.285 PM	send	SMTP Send
+2019-11-13 12:45:33.987 PM	send	SMTP Send Done
+2019-11-13 12:45:37.408 PM	SendEmail	Email Sent
+2019-11-13 05:44:18.603 PM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: All, StatusName: Rejected by SPM/Category Leader
+2019-11-13 05:47:32.379 PM	SendEmail	SendTo: dlie@groupeseb.com;dlim@groupeseb.com;afok@groupeseb.com, SendTo Name: All, StatusName: Rejected by Purchasing Director
+2019-11-13 05:52:05.964 PM	SendEmail	SendTo: dlie@groupeseb.com;dlim@groupeseb.com;afok@groupeseb.com, SendTo Name: All, StatusName: Rejected by Financial Controller
+2019-11-13 05:54:53.067 PM	SendEmail	SendTo: dlie@groupeseb.com;dlim@groupeseb.com;afok@groupeseb.com, SendTo Name: All, StatusName: Cancelled
+2019-11-22 10:13:57.231 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: STELLA LEUNG, StatusName: Validated by SPM/ Category Leader
+2019-11-22 10:14:55.717 AM	send	Create SMTPClient
+2019-11-22 10:14:57.982 AM	send	SMTP Send
+2019-11-22 10:15:06.059 AM	send	SMTP Send Done
+2019-11-22 10:15:11.182 AM	SendEmail	Email Sent
+2019-11-22 10:17:23.943 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: TERI CHEN, StatusName: Validated by Purchasing Director
+2019-11-22 10:18:00.277 AM	send	Create SMTPClient
+2019-11-22 10:18:03.604 AM	send	SMTP Send
+2019-11-22 10:18:08.556 AM	send	SMTP Send Done
+2019-11-22 10:18:13.602 AM	SendEmail	Email Sent
+2019-11-22 10:21:22.812 AM	SendEmail	SendTo: dlie@groupeseb.com, SendTo Name: All, StatusName: Validated by Financial Controller
+2019-11-22 10:22:01.706 AM	send	Create SMTPClient
+2019-11-22 10:22:07.158 AM	send	SMTP Send
+2019-11-22 10:22:13.046 AM	send	SMTP Send Done
+2019-11-22 10:22:17.389 AM	SendEmail	Email Sent
+2019-11-22 10:25:15.899 AM	SendEmail	SendTo: dlie@groupeseb.com;, SendTo Name: All, StatusName: Vendor Code Created in SAP
+2019-11-22 10:25:31.395 AM	send	Create SMTPClient
+2019-11-22 10:25:31.395 AM	send	SMTP Send
+2019-11-22 10:26:40.345 AM	send	SMTP Send Done
+2019-11-22 10:26:49.334 AM	SendEmail	Email Sent
+2020-01-14 02:36:27.837 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-01-14 02:37:02.525 PM	SendEmail	SendTo: alchan@groupeseb.com, SendTo Name: ALBERT CHAN, StatusName: NEW
+2020-01-23 11:25:16.608 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-01-23 11:30:36.274 AM	SendEmail	SendTo: alchan@groupeseb.com, SendTo Name: ALBERT CHAN, StatusName: NEW
+2020-02-17 10:14:38.515 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-02-17 11:01:02.207 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-02-17 11:03:38.481 AM	SendEmail	SendTo: alchan@groupeseb.com, SendTo Name: ALBERT CHAN, StatusName: NEW
+2020-02-17 11:05:35.310 AM	send	Create SMTPClient
+2020-02-17 11:06:19.317 AM	send	SMTP Send
+2020-02-17 11:06:23.076 AM	send	SMTP Send Done
+2020-02-17 11:06:34.310 AM	SendEmail	Email Sent
+2020-02-17 11:10:34.506 AM	SendEmail	SendTo: cchiu@groupeseb.com, SendTo Name: CHLOE CHIU, StatusName: Validated by SPM/ Category Leader
+2020-02-17 11:10:51.813 AM	SendEmail	Email Sent
+2020-02-17 11:12:55.538 AM	SendEmail	SendTo: inchan@groupeseb.com, SendTo Name: INGRID CHAN, StatusName: Validated by Purchasing Director
+2020-02-17 11:12:59.176 AM	SendEmail	Email Sent
+2020-02-25 10:49:18.648 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-02-25 01:11:04.378 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-02-25 01:13:03.960 PM	SendEmail	SendTo: stleung@groupeseb.com, SendTo Name: STELLA LEUNG, StatusName: NEW
+2020-02-25 01:13:11.912 PM	send	Create SMTPClient
+2020-02-25 01:13:13.255 PM	send	SMTP Send
+2020-02-25 01:13:17.941 PM	send	SMTP Send Done
+2020-02-25 01:13:20.722 PM	SendEmail	Email Sent
+2020-02-26 11:22:04.686 AM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-02-26 11:23:50.532 AM	SendEmail	SendTo: stleung@groupeseb.com, SendTo Name: STELLA LEUNG, StatusName: NEW
+2020-02-26 11:23:59.223 AM	send	Create SMTPClient
+2020-02-26 11:24:00.938 AM	send	SMTP Send
+2020-02-26 11:24:05.112 AM	send	SMTP Send Done
+2020-02-26 11:24:48.273 AM	SendEmail	Email Sent
+2020-02-27 01:51:40.705 PM	ToolStripButton4_Click	** Submit AS\dlie**
+2020-02-27 01:52:44.028 PM	SendEmail	SendTo: rlo@groupeseb.com, SendTo Name: RITA LO, StatusName: NEW
+2020-03-19 12:35:31.416 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-03-19 02:48:10.251 PM	ToolStripButtonSubmit_Click	** Submit AS\dlie**
+2020-05-07 04:30:47.867 PM	ToolStripButton2_Click	**Start Submit***
+2020-05-07 04:30:47.875 PM	Validate	**Start Validate***
+2020-05-07 04:30:47.878 PM	Validate	**For each***
+2020-05-07 04:30:47.885 PM	Validate	**For each***
+2020-05-07 04:30:47.887 PM	Validate	**For each***
+2020-05-07 04:30:47.889 PM	Validate	**For each***
+2020-05-07 04:30:47.890 PM	Validate	**End Validate Myret True**
+2020-05-07 04:30:49.941 PM	ToolStripButton2_Click	**DS2 is nothing False**
+2020-05-07 04:30:49.943 PM	ToolStripButton2_Click	** Delete Original File **
+2020-05-07 04:30:50.901 PM	ToolStripButton2_Click	**DbAdapter**
+2020-05-07 04:30:57.395 PM	ToolStripButton2_Click	**DbAdapter True**
+2020-05-07 04:30:58.403 PM	ToolStripButton2_Click	**Row Deleted**
+2020-05-07 04:30:58.405 PM	ToolStripButton2_Click	**DS Merged**
+2020-05-07 04:31:01.199 PM	ToolStripButton2_Click	**Copy File**
+2020-05-07 04:31:03.373 PM	ToolStripButton2_Click	**End Submit***

@@ -36,7 +36,7 @@ Public Class FormFindVendorInformationModification
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")
         Try
-
+            Criteria = " order by applicantdate desc"
             If myAdapter.loaddata(Criteria) Then
                 ProgressReport(4, "InitData")
                 ProgressReport(1, "Loading Data.Done!")

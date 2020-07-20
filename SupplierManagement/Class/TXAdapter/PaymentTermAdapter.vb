@@ -6,7 +6,7 @@ Public Class PaymentTermAdapter
     Dim DbAdapter1 As DbAdapter = DbAdapter.getInstance
     Public bs As BindingSource
 
-    Dim PaymentTermModel1 As PaymentTermModel
+    Dim PaymentTermModel1 As New PaymentTermModel
 
     Public ReadOnly Property GetTable As DataTable
         Get
@@ -22,6 +22,13 @@ Public Class PaymentTermAdapter
             Return BS
         End Get
     End Property
+
+    Public ReadOnly Property GetPaymentTermBS As BindingSource
+        Get
+            Return PaymentTermModel1.getPaymentTermBS
+        End Get
+    End Property
+
     Public Function loaddata() As Boolean Implements IAdapter.loaddata
         Dim myret As Boolean = False
         PaymentTermModel1 = New PaymentTermModel
@@ -36,6 +43,9 @@ Public Class PaymentTermAdapter
         End If
         Return myret
     End Function
+
+
+
 
     Public Function save() As Boolean Implements IAdapter.save
         Dim myret As Boolean = False

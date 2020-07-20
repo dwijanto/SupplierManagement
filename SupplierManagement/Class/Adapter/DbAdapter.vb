@@ -511,6 +511,24 @@ Public Class DbAdapter
         End Using
     End Sub
 
+    Sub ExecuteStoreProcedure(ByVal storeprocedurename As String, ByRef param() As NpgsqlParameter)
+        Using conn As New NpgsqlConnection(Connectionstring)
+            Try
+                conn.Open()
+                Dim cmd As NpgsqlCommand = New NpgsqlCommand(storeprocedurename, conn)
+                cmd.CommandType = CommandType.StoredProcedure
+                If param.Length > 0 Then
+                    cmd.Parameters.AddRange(param)
+                End If
+
+                cmd.ExecuteScalar()
+            Catch ex As Exception
+
+            End Try
+
+        End Using
+    End Sub
+
     Public Function getproglock(ByVal programname As String, ByVal userid As String, ByVal status As Integer) As Boolean
         Dim result As Object
         Using conn As New NpgsqlConnection(Connectionstring)
@@ -2392,11 +2410,13 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand = New NpgsqlCommand(sqlstr, conn)
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "groupid").SourceVersion = DataRowVersion.Original
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "groupname").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "newvendorcreation").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
                 sqlstr = "doc.sp_insertgroupauth"
                 DataAdapter.InsertCommand = New NpgsqlCommand(sqlstr, conn)
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "groupname").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "newvendorcreation").Direction = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "groupid").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
@@ -3303,6 +3323,7 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "city").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "provinceid").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "countryid").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "main").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0).Value = Environment.UserDomainName & "\" & Environment.UserName
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
                 DataAdapter.UpdateCommand.Transaction = mytransaction
@@ -3319,6 +3340,7 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "city").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "provinceid").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "countryid").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "main").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0).Value = Environment.UserDomainName & "\" & Environment.UserName
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure

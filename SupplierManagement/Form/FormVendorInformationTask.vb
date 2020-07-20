@@ -5,6 +5,9 @@ Public Class FormVendorInformationTask
     Dim helper1 As HelperClass = HelperClass.getInstance
     Dim DS As DataSet
     WithEvents EPCheckBox1 As New CheckBox
+
+
+
     Dim dtpicker1 As New DateTimePicker
     Dim fieldList() As String = {"statusname", "applicantname", "vendorcode", "vendorname", "shortname", "modifiedfield", "suppliermodificationid"}
     Dim criteria As String
@@ -86,13 +89,32 @@ Public Class FormVendorInformationTask
 
     Private Sub DataGridView1_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
         Dim drv As DataRowView = myAdapter.getCurrentRecordTx
-        Dim myform = New FormVendorInformationModification(TxEnum.ValidateRecord, drv.Item("id"))
+        Dim myform As Object
+        If IsDBNull(drv.Row.Item("extid")) Then
+            myform = New FormVendorInformationModification(TxEnum.ValidateRecord, drv.Item("id"))
+        Else
+            myform = New FormNewVendor(TxEnum.ValidateRecord, drv.Item("id"))           
+        End If
+
         myform.Show()
+        'If IsDBNull(drv.Row.Item("extid")) Then
+        '    Dim myform = New FormVendorInformationModification(TxEnum.ValidateRecord, drv.Item("id"))
+        'Else
+        '    Dim myform = New FormNewVendor(TxEnum.ValidateRecord, drv.Item("id"))
+        '    AddHandler FormNewVendor.myRefreshData, AddressOf loaddata
+
+        'End If
     End Sub
 
     Private Sub DataGridView2_CellDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView2.CellDoubleClick
         Dim drv As DataRowView = myAdapter.getCurrentRecordHistory
-        Dim myform = New FormVendorInformationModification(TxEnum.HistoryRecord, drv.Item("id"))
+        Dim myform As Object
+        If IsDBNull(drv.Row.Item("extid")) Then
+            myform = New FormVendorInformationModification(TxEnum.HistoryRecord, drv.Item("id"))
+        Else
+            myform = New FormNewVendor(TxEnum.HistoryRecord, drv.Item("id"))
+        End If
+
         myform.Show()
     End Sub
 
@@ -105,6 +127,9 @@ Public Class FormVendorInformationTask
         ' This call is required by the designer.
         InitializeComponent()
 
+        RemoveHandler FormNewVendor.RefreshDataGridView, AddressOf RefreshDataGridView
+        AddHandler FormNewVendor.RefreshDataGridView, AddressOf RefreshDataGridView
+
         ' Add any initialization after the InitializeComponent() call.
         ToolStripComboBox1.SelectedIndex = 0
         EPCheckBox1.Text = "Applicant Date"
@@ -114,6 +139,9 @@ Public Class FormVendorInformationTask
         dtpicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         dtpicker1.Size = New Point(100, 20)
         ToolStrip1.Items.Insert(6, New ToolStripControlHost(dtpicker1))
+
+        'RemoveHandler FormNewVendor.RefreshData, AddressOf loaddata
+        'AddHandler FormNewVendor.RefreshData, AddressOf loaddata
     End Sub
 
     Private Sub ToolStripTextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.TextChanged
@@ -151,6 +179,10 @@ Public Class FormVendorInformationTask
         End If
        
 
+    End Sub
+
+    Private Sub RefreshDataGridView(ByVal obj As Object, ByVal e As EventArgs)
+        loaddata()
     End Sub
 
     

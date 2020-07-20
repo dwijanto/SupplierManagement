@@ -289,7 +289,7 @@ Public Class FormMenu
     Private Sub ProvinceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProvinceToolStripMenuItem.Click, A2ProvinceToolStripMenuItem.Click
         Dim myfunction As New DBAdapterTable(AddressOf DbAdapter1.ProvinceTx)
         Dim myform As New FormMasterCountry(myfunction)
-        Dim abc As New FormSupplierDashboard
+        'Dim abc As New FormSupplierDashboard
         myform.TableName = "Province"
         myform.Sqlstr = "select p.paramname as provincename, p.paramdtid as id from doc.paramdt p" &
                       " left join doc.paramhd ph on ph.paramhdid = p.paramhdid" &
@@ -433,6 +433,8 @@ Public Class FormMenu
             AddHandler A8VendorModificationTypeMasterToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
             AddHandler A9ModificationDocumentTypeMasterToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
+            AddHandler CMMF3750ToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
             'AddHandler FindAssetPurchaseToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
             'Admin
             MasterToolStripMenuItem.Visible = HelperClass1.UserInfo.IsAdmin 'And Not HelperClass1.UserInfo.isOfficer
@@ -496,8 +498,42 @@ Public Class FormMenu
 
   
     Private Sub VendorInformationApprovalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VendorInformationApprovalToolStripMenuItem.Click, VendorInformationApprovalToolStripMenuItem1.Click
-        Dim myform As New FormVendorInformationTask
+        Dim myform As New FormVendorInformationTask()
+
         myform.Show()
     End Sub
 
+    Private Sub CreateNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateNewVendorToolStripMenuItem.Click
+        Dim myform As New FormNewVendor(SupplierManagement.TxEnum.NewRecord, 0)
+        'Dim myform As New FormNewVendor(SupplierManagement.TxEnum.UpdateRecord, 251)
+        myform.Show()
+    End Sub
+
+    Private Sub FindNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FindNewVendorToolStripMenuItem.Click
+        Dim myform As New FormFindNewVendor
+        myform.Show()
+    End Sub
+
+    Private Sub CurrencyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CurrencyToolStripMenuItem.Click
+
+        Dim myform As New FormParamDTL("currency")
+        With myform.DataGridView1.Columns(0)
+            .HeaderText = "Currency"
+            .Width = 150
+        End With
+        With myform.DataGridView1.Columns(1)
+            .HeaderText = "Sort Order"
+            .Visible = True
+        End With
+        myform.DataGridView1.Columns(1).Visible = True
+        myform.Show()
+    End Sub
+
+    Private Sub CMMF3750ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CMMF3750ToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub MasterSupplierToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MasterSupplierToolStripMenuItem.Click
+
+    End Sub
 End Class

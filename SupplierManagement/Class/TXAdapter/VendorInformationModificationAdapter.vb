@@ -295,4 +295,16 @@
         Return FileSourceFullPath
     End Function
 
+    Function loaddataNewVendor(ByVal Criteria As String) As Boolean
+        Dim myret As Boolean = False
+        DS = New DataSet
+        myModel = New VendorInformationModificationModel
+        If myModel.LoadDataNewVendor(DS, Criteria) Then
+            BS = New BindingSource
+            BS.DataSource = DS.Tables(0)
+            myret = True
+        End If
+        Return myret
+    End Function
+
 End Class

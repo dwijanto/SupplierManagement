@@ -22,11 +22,11 @@ Partial Class FormVendorPM
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormVendorPM))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -98,7 +98,7 @@ Partial Class FormVendorPM
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(897, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(928, 17)
         Me.ToolStripStatusLabel1.Spring = True
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -156,8 +156,8 @@ Partial Class FormVendorPM
         'Column6
         '
         Me.Column6.DataPropertyName = "pmeffectivedate"
-        DataGridViewCellStyle5.Format = "dd-MMM-yyyy"
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column6.HeaderText = "PM Effective Date"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
@@ -173,8 +173,8 @@ Partial Class FormVendorPM
         'Column8
         '
         Me.Column8.DataPropertyName = "spmeffectivedate"
-        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Format = "dd-MMM-yyyy"
+        Me.Column8.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column8.HeaderText = "SPM Effectivedate"
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
@@ -281,8 +281,8 @@ Partial Class FormVendorPM
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "pmeffectivedate"
-        DataGridViewCellStyle7.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn5.HeaderText = "PM Effective Date"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -298,8 +298,8 @@ Partial Class FormVendorPM
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "spmeffectivedate"
-        DataGridViewCellStyle8.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn7.HeaderText = "SPM Effectivedate"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True

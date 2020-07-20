@@ -14,6 +14,16 @@ Public Class FormMasterGroup
         loaddata()
     End Sub
 
+    Public Function getGroupSBUBS() As BindingSource
+        Dim sqlstr As String = String.Format("select null::character varying as groupname, 0 as groupid union all (select groupname,groupid from doc.groupauth where newvendorcreation order by groupname);")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Sub DoWork()
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")
@@ -26,7 +36,7 @@ Public Class FormMasterGroup
         'sb.Append("select p.paramname as status, p.ivalue as statusid from doc.paramdt p" &
         '          " left join doc.paramhd ph on ph.paramname = 'vendorstatus'" &
         '          " order by p.ivalue ")
-        sb.Append("select groupname,groupid from doc.groupauth;")
+        sb.Append("select groupname,groupid,newvendorcreation from doc.groupauth;")
 
 
         If DbAdapter1.TbgetDataSet(sb.ToString, DS, mymessage) Then
@@ -78,9 +88,10 @@ Public Class FormMasterGroup
                             DataGridView1.RowTemplate.Height = 22
 
                             TextBox1.DataBindings.Clear()
-
+                            CheckBox1.DataBindings.Clear()
 
                             TextBox1.DataBindings.Add(New Binding("Text", GroupBS, "groupname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+                            CheckBox1.DataBindings.Add(New Binding("checked", GroupBS, "newvendorcreation", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
 
                         Catch ex As Exception
@@ -122,7 +133,9 @@ Public Class FormMasterGroup
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
-        GroupBS.AddNew()
+        Dim drv As DataRowView = GroupBS.AddNew()
+        drv.Row.Item("newvendorcreation") = False
+        drv.EndEdit()
     End Sub
     Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
         GroupBS.EndEdit()

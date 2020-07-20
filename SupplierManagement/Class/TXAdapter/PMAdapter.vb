@@ -7,7 +7,7 @@ Public Class PMAdapter
     Dim DbAdapter1 As DbAdapter = DbAdapter.getInstance
     Public bs As BindingSource
 
-    Dim PMModel1 As PMModel
+    Dim PMModel1 As New PMModel
 
     Public ReadOnly Property GetTablePM As DataTable
         Get
@@ -23,6 +23,13 @@ Public Class PMAdapter
             Return BS
         End Get
     End Property
+
+    Public ReadOnly Property getPMBS As BindingSource
+        Get
+            Return PMModel1.getPMBS
+        End Get
+    End Property
+
     Public Function loaddata() As Boolean Implements IAdapter.loaddata
         Dim myret As Boolean = False
         PMModel1 = New PMModel

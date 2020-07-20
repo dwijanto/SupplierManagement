@@ -20,6 +20,23 @@ Public Class FormVendorIndirectFamily
         loaddata()
     End Sub
 
+    Public Function getIndirectFamilyBS() As BindingSource
+        'Dim sqlstr As String = String.Format("select u.id,u.familycode,p.pop,p.description as popdesc,f.family,f.description as familydesc,sb.sbfam,sb.description as sbfamdesc,u.familycode || ' ' || p.pop  || ' ' || p.description || ' ' || f.family || ' ' || f.description || ' ' || sb.sbfam || ' ' || sb.description as helperdescription from {0} u " &
+        '                                " left join doc.ipopulation p on p.id = u.popid " &
+        '                                " left join doc.ifamily f on f.id = u.familyid" &
+        '                                " left join doc.isubfamily sb on sb.id = u.subfamid  order by u.familycode;", "doc.ifamilycode")
+        Dim sqlstr As String = String.Format("select 0::bigint as id,null::character varying as familycode,null::character varying as pop," &
+                                             " null::character varying as popdesc,null::character varying as family,null::character varying as familydesc," &
+                                             " null::character varying as sbfam,null::character varying as sbfamdesc,null::text as helperdescription" &
+                                             " union all (select u.id,u.familycode,p.pop,p.description as popdesc,f.family,f.description as familydesc,sb.sbfam,sb.description as sbfamdesc,u.familycode || ' ' || p.pop  || ' ' || p.description || ' ' || f.family || ' ' || f.description || ' ' || sb.sbfam || ' ' || sb.description as helperdescription from doc.ifamilycode u  left join doc.ipopulation p on p.id = u.popid  left join doc.ifamily f on f.id = u.familyid left join doc.isubfamily sb on sb.id = u.subfamid  order by u.familycode);", "doc.ifamilycode")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Sub DoWork()
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")
@@ -290,6 +307,14 @@ Public Class FormVendorIndirectFamily
 
     End Sub
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim myform = New FormHelper(IFBSHelperBS)

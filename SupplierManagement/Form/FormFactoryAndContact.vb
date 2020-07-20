@@ -395,7 +395,8 @@ Public Class FormFactoryAndContact
         '                        " left join vendor v on v.vendorcode = vf.vendorcode {0};", myCriteria2))
         sb.Append(String.Format("select distinct vf.*,v.shortname::text,v.vendorname from doc.vendorfactory vf" &
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0};", myCriteria))
-        sb.Append(String.Format("select distinct f.* from doc.factorydtl f" &
+        sb.Append(String.Format("with h as (select  id,max(stamp) as modifieddate from doc.factorydtl_audit group by id order by id ) select distinct f.*,h.modifieddate from doc.factorydtl f" &
+                                " left join h on h.id = f.id" &
                                 " left join doc.vendorfactory vf on vf.factoryid = f.id" &
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0} order by f.id;", myCriteria))
         sb.Append(String.Format("select distinct fh.* from doc.factoryhd fh" &
@@ -404,7 +405,8 @@ Public Class FormFactoryAndContact
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0}; ", myCriteria))
         sb.Append(String.Format("select vc.*,v.shortname::text,v.vendorname from doc.vendorcontact vc" &
                                 " left join vendor v on v.vendorcode = vc.vendorcode {0};", myCriteria))
-        sb.Append(String.Format("select distinct c.* from doc.contact c" &
+        sb.Append(String.Format("with h as (select  id,max(stamp) as modifieddate from doc.contact_audit group by id order by id ) select distinct c.*,h.modifieddate from doc.contact c" &
+                                " left join h on h.id = c.id" &
                                 " left join doc.vendorcontact vc on vc.contactid = c.id" &
                                 " left join vendor v on v.vendorcode = vc.vendorcode {0};", myCriteria))
         'sb.Append(String.Format("select distinct vf.*,v.shortname::text,v.vendorname from doc.vendorfactory vf" &
@@ -451,6 +453,7 @@ Public Class FormFactoryAndContact
             drvdt.Item("chinesename") = ""
             drvdt.Item("englishname") = ""
             drvdt.Item("englishaddress") = ""
+            drvdt.Item("main") = False
             drvdt.EndEdit()
 
             Dim myform = New FormDialogFactory(FDTBS, ProvinceBS, CountryBS)
@@ -488,7 +491,7 @@ Public Class FormFactoryAndContact
     End Sub
 
     Private Sub DataGridView2_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles DataGridView2.CellBeginEdit
-        If e.ColumnIndex = 0 Then
+        If e.ColumnIndex = 1 Then
             Dim obj = DirectCast(sender, DataGridView)
             'obj.Invalidate()
             'If Not IsNothing(obj.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) Then
@@ -496,6 +499,7 @@ Public Class FormFactoryAndContact
                 obj.Rows(i).Cells(e.ColumnIndex).Value = False
             Next
             'obj.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = True
+        
         End If
     End Sub
 
@@ -529,7 +533,7 @@ Public Class FormFactoryAndContact
         Return hasChanges
     End Function
     Private Sub DataGridView2_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView2.CellClick
-        If e.ColumnIndex = 0 Then
+        If e.ColumnIndex = 1 Then
             If MessageBox.Show("Use this Factory as custom name?", "Custom Name", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) = Windows.Forms.DialogResult.OK Then
                 Try
                     Dim drv As DataRowView = FDTBS.Current
@@ -708,10 +712,33 @@ Public Class FormFactoryAndContact
         '                                           " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
         '                                            " where  not (vf.factoryid isnull and  vc.contactid isnull) {0} order by v.vendorcode", sb.ToString)
         'viewvendorpmeffectivedate replace viewvendorfamilypmeffectivedate
-        sqlstrReport = String.Format("with tu as (select distinct vendorcode,fpcp from doc.turnover order by vendorcode)" &
-                                                   " select distinct v.vendorcode,vendorname::text,v.shortname::text," &
+        'sqlstrReport = String.Format("with tu as (select distinct vendorcode,fpcp from doc.turnover order by vendorcode)" &
+        '                                           " select distinct v.vendorcode,vendorname::text,v.shortname::text," &
+        '                                           " mu2.username as spm,vfp.spmeffectivedate, mu1.username as gsm,gsm.effectivedate as gsmeffectivedate,mu.username as pm,vfp.pmeffectivedate," &
+        '                                           " tu.fpcp as producttype,pr.paramname as status, fhd.customname,fdt.chinesename,fdt.englishname,fdt.englishaddress,fdt.chineseaddress,fdt.area,fdt.city,fdt.main,fdt.modifiedby,doc.getstampfactorydtlaudit(fdt.id) as modifieddate,prov.paramname as province,cty.paramname as country,c.contactname,c.title,c.email,c.officeph,c.factoryph,c.officemb,c.factorymb,upper(c.isecoqualitycontact::text) as isecoqualitycontact from vendor v " &
+        '                                           "LEFT JOIN doc.viewvendorpmeffectivedate vfp ON vfp.vendorcode = v.vendorcode " &
+        '                                           " LEFT JOIN officerseb os ON os.ofsebid = vfp.pmid " &
+        '                                           " LEFT JOIN masteruser mu ON mu.id = os.muid " &
+        '                                           " LEFT JOIN officerseb o ON o.ofsebid = os.parent " &
+        '                                           " LEFT JOIN masteruser mu2 ON mu2.id = o.muid " &
+        '                                           " LEFT JOIN doc.vendorgsm gsm ON gsm.vendorcode = v.vendorcode " &
+        '                                           " LEFT JOIN officerseb o1 ON o1.ofsebid = gsm.gsmid " &
+        '                                           " LEFT JOIN masteruser mu1 ON mu1.id = o1.muid" &
+        '                                           " left join doc.vendorfactory vf on vf.vendorcode = v.vendorcode" &
+        '                                           " left join doc.factorydtl fdt on fdt.id = vf.factoryid" &
+        '                                           " left join doc.factoryhd fhd on fhd.id = fdt.factoryhdid" &
+        '                                           " left join doc.vendorcontact vc on vc.vendorcode = v.vendorcode" &
+        '                                           " left join doc.contact c on c.id = vc.contactid" &
+        '                                           " left join doc.paramdt prov on prov.paramdtid = fdt.provinceid" &
+        '                                           " left join doc.paramdt cty on cty.paramdtid = fdt.countryid" &
+        '                                           " left join tu on tu.vendorcode = v.vendorcode" &
+        '                                           " left join doc.vendorstatus vs on vs.vendorcode = v.vendorcode" &
+        '                                           " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
+        '                                           " left join doc.paramdt pt on pt.ivalue = vs.producttypeid and pt.paramhdid = 3" &
+        '                                            " where  not (vf.factoryid isnull and  vc.contactid isnull) {0} order by v.vendorcode", sb.ToString)
+        sqlstrReport = String.Format("select distinct v.vendorcode,vendorname::text,v.shortname::text," &
                                                    " mu2.username as spm,vfp.spmeffectivedate, mu1.username as gsm,gsm.effectivedate as gsmeffectivedate,mu.username as pm,vfp.pmeffectivedate," &
-                                                   " tu.fpcp as producttype,pr.paramname as status, fhd.customname,fdt.chinesename,fdt.englishname,fdt.englishaddress,fdt.chineseaddress,fdt.area,fdt.city,prov.paramname as province,cty.paramname as country,c.contactname,c.title,c.email,c.officeph,c.factoryph,c.officemb,c.factorymb,upper(c.isecoqualitycontact::text) as isecoqualitycontact from vendor v " &
+                                                   " pt.paramname as producttype,pr.paramname as status, fhd.customname,fdt.chinesename,fdt.englishname,fdt.englishaddress,fdt.chineseaddress,fdt.area,fdt.city,fdt.main,fdt.modifiedby,doc.getstampfactorydtlaudit(fdt.id) as modifieddate,prov.paramname as province,cty.paramname as country,c.contactname,c.title,c.email,c.officeph,c.factoryph,c.officemb,c.factorymb,upper(c.isecoqualitycontact::text) as isecoqualitycontact from vendor v " &
                                                    "LEFT JOIN doc.viewvendorpmeffectivedate vfp ON vfp.vendorcode = v.vendorcode " &
                                                    " LEFT JOIN officerseb os ON os.ofsebid = vfp.pmid " &
                                                    " LEFT JOIN masteruser mu ON mu.id = os.muid " &
@@ -727,9 +754,9 @@ Public Class FormFactoryAndContact
                                                    " left join doc.contact c on c.id = vc.contactid" &
                                                    " left join doc.paramdt prov on prov.paramdtid = fdt.provinceid" &
                                                    " left join doc.paramdt cty on cty.paramdtid = fdt.countryid" &
-                                                   " left join tu on tu.vendorcode = v.vendorcode" &
                                                    " left join doc.vendorstatus vs on vs.vendorcode = v.vendorcode" &
                                                    " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
+                                                   " left join doc.paramdt pt on pt.ivalue = vs.producttypeid and pt.paramhdid = 3" &
                                                     " where  not (vf.factoryid isnull and  vc.contactid isnull) {0} order by v.vendorcode", sb.ToString)
         ' " where not vf.factoryid isnull  {0} order by v.vendorcode", sb.ToString)
         loadReport()

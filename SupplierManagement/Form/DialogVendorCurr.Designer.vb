@@ -127,7 +127,7 @@ Partial Class DialogVendorCurr
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(117, 67)
+        Me.Label3.Location = New System.Drawing.Point(109, 67)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 13)
         Me.Label3.TabIndex = 45

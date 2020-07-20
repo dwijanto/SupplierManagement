@@ -21,6 +21,32 @@ Public Class FormVendorStatus001
         loaddata()
     End Sub
 
+    Public Function getStatusBS() As BindingSource
+        Dim sqlstr As String = String.Format("select p.paramname as status, p.ivalue as statusid from doc.paramdt p" &
+                   " left join doc.paramhd ph on ph.paramhdid = p.paramhdid" &
+                   " where ph.paramname = 'vendorstatus'" &
+                   " order by p.ivalue;")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
+    Public Function getProductTypeBS() As BindingSource
+        Dim sqlstr As String = String.Format("select ''::text as producttype,0::integer as producttypeid union all (select p.paramname as producttype, p.ivalue as producttypeid from doc.paramdt p" &
+                   " left join doc.paramhd ph on ph.paramhdid = p.paramhdid" &
+                   " where ph.paramname = 'producttype'" &
+                   " order by p.ivalue);")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Sub DoWork()
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")

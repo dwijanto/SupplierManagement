@@ -460,7 +460,7 @@ Partial Class FormInputInvoice
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Items.AddRange(New Object() {"USD", "EUR"})
+        Me.ComboBox2.Items.AddRange(New Object() {"USD", "EUR", "CNY"})
         Me.ComboBox2.Location = New System.Drawing.Point(525, 107)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(55, 21)

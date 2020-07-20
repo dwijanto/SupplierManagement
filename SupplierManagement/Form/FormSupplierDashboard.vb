@@ -582,41 +582,83 @@ Public Class FormSupplierDashboard
                                 " {0} order by c.contactname;", toCriteria2))
 
         'SIF & Identity 34,35,36
+        'sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,dt.doctypename  from doc.vendordoc vd" &
+        '                        " left join doc.document d on d.id = vd.documentid" &
+        '                        " left join vendor v on v.vendorcode = vd.vendorcode " &
+        '                        " left join doc.doctype dt on dt.id = d.doctypeid " &
+        '                        " where(d.doctypeid = {1} Or d.doctypeid = {2})" &
+        '                        " {0}" &
+        '                        " order by docdate desc limit 1)" &
+        '                        " select sl.name,sx.value,myd.docdate,doctypeid,doctypename from myd " &
+        '                        " left join  doc.sitx sx on sx.documentid = myd.id " &
+        '                        " left join doc.silabel sl on sl.id = sx.labelid " &
+        '                        " where iscommon" &
+        '                        " order by orderline;", toCriteria2.Replace("where", " and "), SIF, IDENTITY_SHEET))
         sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,dt.doctypename  from doc.vendordoc vd" &
-                                " left join doc.document d on d.id = vd.documentid" &
-                                " left join vendor v on v.vendorcode = vd.vendorcode " &
-                                " left join doc.doctype dt on dt.id = d.doctypeid " &
-                                " where(d.doctypeid = {1} Or d.doctypeid = {2})" &
-                                " {0}" &
-                                " order by docdate desc limit 1)" &
-                                " select sl.name,sx.value,myd.docdate,doctypeid,doctypename from myd " &
-                                " left join  doc.sitx sx on sx.documentid = myd.id " &
-                                " left join doc.silabel sl on sl.id = sx.labelid " &
-                                " where iscommon" &
-                                " order by orderline;", toCriteria2.Replace("where", " and "), SIF, IDENTITY_SHEET))
-        sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,v.vendorcode  from doc.vendordoc vd " &
-                                " left join doc.document d on d.id = vd.documentid " &
-                                " left join vendor v on v.vendorcode = vd.vendorcode " &
-                                " where(d.doctypeid = {1})" &
-                                " {0}" &
-                                " order by docdate desc limit 1)" &
-                                " select sl.name,sx.value,myd.docdate from myd" &
-                                " left join  doc.sitx sx on sx.documentid = myd.id " &
-                                " left join doc.silabel sl on sl.id = sx.labelid " &
-                                " where not iscommon" &
-                                " order by orderline;", toCriteria2.Replace("where", " and "), SIF))
+                               " left join doc.document d on d.id = vd.documentid" &
+                               " left join vendor v on v.vendorcode = vd.vendorcode " &
+                               " left join doc.doctype dt on dt.id = d.doctypeid " &
+                               " where(d.doctypeid = {1} Or d.doctypeid = {2})" &
+                               " {0}" &
+                               " order by docdate desc limit 1)" &
+                               " select coalesce(sl.name,sla.name) as name,coalesce(sx.value,sa.value) as value,myd.docdate,myd.doctypeid,doctypename from myd " &
+                               " left join  doc.sitx sx on sx.documentid = myd.id " &
+                               " left join doc.silabel sl on sl.id = sx.labelid " &
+                               " left join doc.vendorinfmodiattachment vma on vma.documentid = myd.id" &
+                               " left join doc.sitxattachment sa on sa.attachmentid = vma.id" &
+                               " left join doc.silabel sla on sla.id = sa.labelid" &
+                               " where (sl.iscommon or sla.iscommon) order by sl.orderline,sla.orderline;", toCriteria2.Replace("where", " and "), SIF, IDENTITY_SHEET))
 
+
+        'sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,v.vendorcode  from doc.vendordoc vd " &
+        '                        " left join doc.document d on d.id = vd.documentid " &
+        '                        " left join vendor v on v.vendorcode = vd.vendorcode " &
+        '                        " where(d.doctypeid = {1})" &
+        '                        " {0}" &
+        '                        " order by docdate desc limit 1)" &
+        '                        " select sl.name,sx.value,myd.docdate from myd" &
+        '                        " left join  doc.sitx sx on sx.documentid = myd.id " &
+        '                        " left join doc.silabel sl on sl.id = sx.labelid " &
+        '                        " where not iscommon" &
+        '                        " order by orderline;", toCriteria2.Replace("where", " and "), SIF))
         sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,v.vendorcode  from doc.vendordoc vd " &
                                 " left join doc.document d on d.id = vd.documentid " &
                                 " left join vendor v on v.vendorcode = vd.vendorcode " &
                                 " where(d.doctypeid = {1})" &
                                 " {0}" &
                                 " order by docdate desc limit 1)" &
-                                " select sl.name,sx.value,myd.docdate from myd" &
+                                " select coalesce(sl.name,sla.name) as name,coalesce(sx.value,sa.value) as value,myd.docdate from myd" &
                                 " left join  doc.sitx sx on sx.documentid = myd.id " &
                                 " left join doc.silabel sl on sl.id = sx.labelid " &
-                                " where not iscommon" &
-                                " order by orderline;", toCriteria2.Replace("where", " and "), IDENTITY_SHEET))
+                                " left join doc.vendorinfmodiattachment vma on vma.documentid = myd.id" &
+                                " left join doc.sitxattachment sa on sa.attachmentid = vma.id" &
+                                " left join doc.silabel sla on sla.id = sa.labelid " &
+                                " where (sl.iscommon or sla.iscommon) order by sl.orderline,sla.orderline;", toCriteria2.Replace("where", " and "), SIF))
+
+        'sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,v.vendorcode  from doc.vendordoc vd " &
+        '                        " left join doc.document d on d.id = vd.documentid " &
+        '                        " left join vendor v on v.vendorcode = vd.vendorcode " &
+        '                        " where(d.doctypeid = {1})" &
+        '                        " {0}" &
+        '                        " order by docdate desc limit 1)" &
+        '                        " select sl.name,sx.value,myd.docdate from myd" &
+        '                        " left join  doc.sitx sx on sx.documentid = myd.id " &
+        '                        " left join doc.silabel sl on sl.id = sx.labelid " &
+        '                        " where not iscommon" &
+        '                        " order by orderline;", toCriteria2.Replace("where", " and "), IDENTITY_SHEET))
+        sb.Append(String.Format("with myd as (select distinct d.docdate,d.id,d.doctypeid,v.vendorcode  from doc.vendordoc vd " &
+                               " left join doc.document d on d.id = vd.documentid " &
+                               " left join vendor v on v.vendorcode = vd.vendorcode " &
+                               " where(d.doctypeid = {1})" &
+                               " {0}" &
+                               " order by docdate desc limit 1)" &
+                               " select coalesce(sl.name,sla.name) as name,coalesce(sx.value,sa.value) as value,myd.docdate from myd" &
+                               " left join  doc.sitx sx on sx.documentid = myd.id " &
+                               " left join doc.silabel sl on sl.id = sx.labelid " &
+                               " left join doc.vendorinfmodiattachment vma on vma.documentid = myd.id" &
+                                " left join doc.sitxattachment sa on sa.attachmentid = vma.id" &
+                                " left join doc.silabel sla on sla.id = sa.labelid " &
+                                " where (sl.iscommon or sla.iscommon) order by sl.orderline,sla.orderline;", toCriteria2.Replace("where", " and "), IDENTITY_SHEET))
         '***************** Purchasing Data Base on fpcp
         'PriceIndex
         'YearToDate

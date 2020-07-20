@@ -28,6 +28,8 @@ Partial Class FormFamilyPM
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
@@ -38,8 +40,6 @@ Partial Class FormFamilyPM
         Me.ToolStripTextBox1 = New System.Windows.Forms.ToolStripTextBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -109,13 +109,29 @@ Partial Class FormFamilyPM
         Me.DataGridView1.Size = New System.Drawing.Size(871, 468)
         Me.DataGridView1.TabIndex = 0
         '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "familydesc"
+        Me.Column1.HeaderText = "Family Name"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 300
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "pm"
+        Me.Column2.HeaderText = "PM"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 200
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripTextBox1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(482, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(513, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1
@@ -192,22 +208,6 @@ Partial Class FormFamilyPM
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Width = 200
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "familydesc"
-        Me.Column1.HeaderText = "Family Name"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 300
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "pm"
-        Me.Column2.HeaderText = "PM"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 200
         '
         'FormFamilyPM
         '

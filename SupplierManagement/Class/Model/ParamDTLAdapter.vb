@@ -4,10 +4,9 @@ Public Class ParamDTLAdapter
     Inherits BaseAdapter
     Public errormessage As String = String.Empty
 
-    Public Function LoadData(ByVal paramname)
+    Public Function GetParamDTLBS(ByVal paramname) As BindingSource
         Dim sb As New StringBuilder
-        Dim myret As Boolean = False
-        sb.Append(String.Format("select pd.* from doc.paramdt pd left join doc.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramhdname;"))
+        sb.Append(String.Format("select pd.* from doc.paramdt pd left join doc.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramhdname order by pd.ivalue;"))
         Dim sqlstr = sb.ToString
         DS = New DataSet
         BS = New BindingSource
@@ -15,6 +14,28 @@ Public Class ParamDTLAdapter
         myparam(0) = New NpgsqlParameter("paramhdname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, paramname)
 
         If DbAdapter1.TbgetDataSet(sqlstr, DS, myparam, errormessage) Then
+            Dim pk(0) As DataColumn
+            BS.DataSource = DS.Tables(0)
+        End If
+        Return BS
+    End Function
+
+    Public Function LoadData(ByVal paramname)
+        'If not avail ParamName then Create first
+        Dim myparam(0) As NpgsqlParameter
+        myparam(0) = New NpgsqlParameter("iparamhdname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, paramname)
+        DbAdapter1.ExecuteStoreProcedure("doc.validateparamheadername", myparam)
+
+        Dim sb As New StringBuilder
+        Dim myret As Boolean = False
+        sb.Append(String.Format("select pd.* from doc.paramdt pd left join doc.paramhd ph on ph.paramhdid = pd.paramhdid where ph.paramname = :paramhdname;"))
+        Dim sqlstr = sb.ToString
+        DS = New DataSet
+        BS = New BindingSource
+        Dim myparam1(0) As NpgsqlParameter
+        myparam1(0) = New NpgsqlParameter("paramhdname", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "", ParameterDirection.Input, True, 0, 0, DataRowVersion.Default, paramname)
+
+        If DbAdapter1.TbgetDataSet(sqlstr, DS, myparam1, errormessage) Then
             Dim pk(0) As DataColumn
             pk(0) = DS.Tables(0).Columns("paramdtid")
             DS.Tables(0).PrimaryKey = pk

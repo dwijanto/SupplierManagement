@@ -20,6 +20,17 @@ Public Class FamilyVCModel
             Return "[familyvc] like '*{0}*' or [description] like '*{0}*'"
         End Get
     End Property
+
+    Public Function getFamilyVCBS() As BindingSource
+        Dim sqlstr As String = String.Format("select *,familyvc || ' - ' || description as familyvcdesc from doc.familyvc fvc order by {0};", SortField)
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If myadapter.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Public Function LoadData(ByVal DS As DataSet) As Boolean Implements IModel.LoadData
         Dim dataadapter As NpgsqlDataAdapter = myadapter.getDbDataAdapter
         Dim myret As Boolean = False

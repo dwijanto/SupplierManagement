@@ -25,9 +25,19 @@
         End Get
     End Property
 
+    Public ReadOnly Property getApprovalDeptBLBS As BindingSource
+        Get
+            Return UserModel1.getApprovalDeptBLBS
+        End Get
+    End Property
     Public ReadOnly Property getApprovalDirectorBS As BindingSource
         Get
             Return UserModel1.getApprovalDirectorBS
+        End Get
+    End Property
+    Public ReadOnly Property getApprovalDirectorBLBS As BindingSource
+        Get
+            Return UserModel1.getApprovalDirectorBLBS
         End Get
     End Property
 

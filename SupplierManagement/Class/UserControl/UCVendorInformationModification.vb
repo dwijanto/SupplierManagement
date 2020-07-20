@@ -1,5 +1,5 @@
 ﻿Imports System.Text
-
+Imports SupplierManagement.PublicClass
 Public Class UCVendorInformationModification
     Private CBS As New BindingSource
     Private VCBS As New BindingSource
@@ -16,7 +16,10 @@ Public Class UCVendorInformationModification
     Public ToCompleteByDBDept As Boolean = False
 
     Public Sub DisableDataGridViewMenu()
-        DataGridView1.ContextMenuStrip = Nothing
+        If Not HelperClass1.UserInfo.IsAdmin Then
+            DataGridView1.ContextMenuStrip = Nothing
+        End If
+
     End Sub
     Public Sub DataGridViewEndEdit()
         Me.Validate()
@@ -39,7 +42,10 @@ Public Class UCVendorInformationModification
         End Set
     End Property
 
-
+    Public Sub HistoryMode()
+        Button1.Enabled = False
+        DisableDataGridViewMenu()
+    End Sub
     Public Function ValidateField() As Boolean
         Dim myret As Boolean = True
         ErrorProvider1.SetError(ComboBox1, "")
@@ -251,6 +257,20 @@ Public Class UCVendorInformationModification
         DisplayValidControl()
 
     End Sub
+
+    Public Function getModifiedfield() As String
+        Dim sb As New StringBuilder
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            Dim mycell As DataGridViewComboBoxCell = DirectCast(row.Cells(0), DataGridViewComboBoxCell)
+            If mycell.FormattedValue <> "" Then
+                If sb.Length > 0 Then
+                    sb.Append(",")
+                End If
+                sb.Append(mycell.FormattedValue)
+            End If
+        Next
+        Return sb.ToString
+    End Function
 
     Sub SetEnabledControl(ByVal status As Boolean)
         'TextBox1.Enabled = False
@@ -481,4 +501,25 @@ Public Class UCVendorInformationModification
 
 
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
+
+
+    Private Sub ComboBox2_SelectionChangeCommitted(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox2.SelectionChangeCommitted, ComboBox3.SelectionChangeCommitted
+        Dim myCB As ComboBox = DirectCast(sender, ComboBox)
+        Dim mydrv As DataRowView = myCB.SelectedItem
+        Select Case myCB.Name
+            Case "ComboBox2"
+                drv.Row.Item("spmusername") = mydrv.Row.Item("username")
+            Case "ComboBox3"
+                drv.Row.Item("pdusername") = mydrv.Row.Item("username")
+        End Select
+    End Sub
 End Class

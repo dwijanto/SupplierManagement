@@ -19,6 +19,19 @@ Public Class SupplierGSMAdapter
         End Get
     End Property
 
+    Public Function getGSMBS() As BindingSource
+        Dim sqlstr As String = String.Format("select o.ofsebid as gsmid,mu.username as gsm from officerseb o" &
+                  " left join masteruser mu on mu.id = o.muid" &
+                  " left join teamtitle tt on tt.teamtitleid = o.teamtitleid" &
+                  " where teamtitleshortname = 'GSM' and mu.isactive order by mu.username;")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Public Function loaddata() As Boolean Implements IAdapter.loaddata
         Dim myret As Boolean = False
         Dim sb As New StringBuilder

@@ -24,6 +24,11 @@ Public Class UCDocuments
 
     End Sub
 
+    Public Sub HistoryMode()
+        If Not HelperClass1.UserInfo.IsAdmin Then
+            DataGridView1.ContextMenuStrip = Nothing
+        End If
+    End Sub
 
 
     Public Sub BindingControl(ByRef myform As Object, ByRef bs As BindingSource, ByVal DataTypeBS As BindingSource, ByVal FileSourceFullPath As String)

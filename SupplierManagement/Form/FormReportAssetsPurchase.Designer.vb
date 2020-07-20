@@ -25,6 +25,8 @@ Partial Class FormReportAssetsPurchase
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.ComboBox5 = New System.Windows.Forms.ComboBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
@@ -62,8 +64,8 @@ Partial Class FormReportAssetsPurchase
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -85,6 +87,7 @@ Partial Class FormReportAssetsPurchase
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -116,6 +119,8 @@ Partial Class FormReportAssetsPurchase
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Button8)
+        Me.GroupBox1.Controls.Add(Me.Button7)
         Me.GroupBox1.Controls.Add(Me.Button6)
         Me.GroupBox1.Controls.Add(Me.ComboBox5)
         Me.GroupBox1.Controls.Add(Me.CheckBox4)
@@ -156,6 +161,28 @@ Partial Class FormReportAssetsPurchase
         Me.GroupBox1.TabIndex = 70
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Set Filter"
+        '
+        'Button8
+        '
+        Me.Button8.Enabled = False
+        Me.Button8.Location = New System.Drawing.Point(530, 64)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(33, 23)
+        Me.Button8.TabIndex = 157
+        Me.Button8.Tag = "aeb"
+        Me.Button8.Text = "..."
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Enabled = False
+        Me.Button7.Location = New System.Drawing.Point(530, 38)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(33, 23)
+        Me.Button7.TabIndex = 156
+        Me.Button7.Tag = "shortname"
+        Me.Button7.Text = "..."
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -333,7 +360,7 @@ Partial Class FormReportAssetsPurchase
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(530, 11)
+        Me.Button2.Location = New System.Drawing.Point(569, 11)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(69, 103)
         Me.Button2.TabIndex = 137
@@ -495,11 +522,6 @@ Partial Class FormReportAssetsPurchase
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(997, 17)
         Me.ToolStripStatusLabel2.Spring = True
         '
-        'ToolStripProgressBar1
-        '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -518,6 +540,11 @@ Partial Class FormReportAssetsPurchase
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1090, 190)
         Me.DataGridView1.TabIndex = 73
+        '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
         '
         'DataGridViewTextBoxColumn1
         '
@@ -670,6 +697,14 @@ Partial Class FormReportAssetsPurchase
         Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
         Me.DataGridViewTextBoxColumn21.ReadOnly = True
         Me.DataGridViewTextBoxColumn21.Visible = False
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Id"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.ReadOnly = True
+        Me.DataGridViewTextBoxColumn22.Visible = False
         '
         'Column1
         '
@@ -869,7 +904,6 @@ Partial Class FormReportAssetsPurchase
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Public WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
-    Public WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
@@ -933,4 +967,8 @@ Partial Class FormReportAssetsPurchase
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column22 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents DataGridViewTextBoxColumn22 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Public WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
 End Class

@@ -27,7 +27,6 @@ Partial Class FormMasterGroup
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
@@ -39,6 +38,9 @@ Partial Class FormMasterGroup
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -47,7 +49,7 @@ Partial Class FormMasterGroup
         'TextBox1
         '
         Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(131, 350)
+        Me.TextBox1.Location = New System.Drawing.Point(136, 350)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(190, 20)
         Me.TextBox1.TabIndex = 108
@@ -56,7 +58,7 @@ Partial Class FormMasterGroup
         '
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(58, 353)
+        Me.Label1.Location = New System.Drawing.Point(63, 353)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 13)
         Me.Label1.TabIndex = 107
@@ -66,7 +68,7 @@ Partial Class FormMasterGroup
         '
         Me.Label4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(327, 353)
+        Me.Label4.Location = New System.Drawing.Point(332, 353)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(11, 13)
         Me.Label4.TabIndex = 106
@@ -82,21 +84,13 @@ Partial Class FormMasterGroup
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 40
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
         Me.DataGridView1.Location = New System.Drawing.Point(0, 28)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(538, 276)
         Me.DataGridView1.TabIndex = 105
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "groupname"
-        Me.Column1.HeaderText = "Group Name"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 300
         '
         'ToolStrip1
         '
@@ -158,7 +152,7 @@ Partial Class FormMasterGroup
         Me.ToolStripButton6.Image = CType(resources.GetObject("ToolStripButton6.Image"), System.Drawing.Image)
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(85, 22)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(84, 22)
         Me.ToolStripButton6.Text = "Vendor Group"
         '
         'StatusStrip1
@@ -187,11 +181,41 @@ Partial Class FormMasterGroup
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
         '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "groupname"
+        Me.Column1.HeaderText = "Group Name"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 300
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "newvendorcreation"
+        Me.Column2.HeaderText = "IsCreationVendorList?"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column2.Width = 120
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(23, 376)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CheckBox1.Size = New System.Drawing.Size(128, 17)
+        Me.CheckBox1.TabIndex = 109
+        Me.CheckBox1.Text = "?isCreationVendorList"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'FormMasterGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(538, 444)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label4)
@@ -214,7 +238,6 @@ Partial Class FormMasterGroup
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
@@ -226,4 +249,7 @@ Partial Class FormMasterGroup
     Public WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton6 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
 End Class

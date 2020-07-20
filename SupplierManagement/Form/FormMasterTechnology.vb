@@ -15,6 +15,16 @@ Public Class FormMasterTechnology
         loaddata()
     End Sub
 
+    Public Function getTechnologyBS() As BindingSource
+        Dim sqlstr As String = String.Format("select null::text as technologyname,0::integer as id union all (select technologyname,id from doc.technology  order by technologyname);")
+        Dim DS As New DataSet
+        Dim bs As New BindingSource
+        If DbAdapter1.TbgetDataSet(sqlstr, DS) Then
+            bs.DataSource = DS.Tables(0)
+        End If
+        Return bs
+    End Function
+
     Sub DoWork()
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")
@@ -24,9 +34,6 @@ Public Class FormMasterTechnology
         Dim mymessage As String = String.Empty
         sb.Clear()
 
-        'sb.Append("select p.paramname as status, p.ivalue as statusid from doc.paramdt p" &
-        '          " left join doc.paramhd ph on ph.paramname = 'vendorstatus'" &
-        '          " order by p.ivalue ")
         sb.Append("select technologyname,id from doc.technology  order by id;")
 
         If DbAdapter1.TbgetDataSet(sb.ToString, DS, mymessage) Then

@@ -35,7 +35,9 @@ Partial Class FormParamDTL
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.paramname = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -100,10 +102,11 @@ Partial Class FormParamDTL
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.paramname})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.paramname, Me.Column1})
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(653, 406)
         Me.DataGridView1.TabIndex = 0
         '
@@ -155,9 +158,17 @@ Partial Class FormParamDTL
         '
         'DataGridViewTextBoxColumn1
         '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "cvalue"
         Me.DataGridViewTextBoxColumn1.HeaderText = "Document Type Name"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.Width = 500
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ivalue"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ivalue"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Visible = False
         '
         'paramname
         '
@@ -165,6 +176,13 @@ Partial Class FormParamDTL
         Me.paramname.HeaderText = "Document Type Name"
         Me.paramname.Name = "paramname"
         Me.paramname.Width = 500
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "ivalue"
+        Me.Column1.HeaderText = "ivalue"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Visible = False
         '
         'FormParamDTL
         '
@@ -194,7 +212,6 @@ Partial Class FormParamDTL
     Public WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
     Public WithEvents ToolStripProgressBar1 As System.Windows.Forms.ToolStripProgressBar
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
@@ -202,4 +219,7 @@ Partial Class FormParamDTL
     Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents paramname As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Public WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

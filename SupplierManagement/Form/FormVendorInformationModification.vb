@@ -18,6 +18,7 @@ Public Enum VendorInfoModiStatusEnum
     StatusRejectedbyVPSourcingIndustry = 12
     StatusCancelled = 13
     StatusCompleted = 14
+    StatusCreatedInSAP = 15
 End Enum
 
 Public Class FormVendorInformationModification
@@ -172,7 +173,7 @@ Public Class FormVendorInformationModification
                                 drv.Row.Item("currency") = IIf(IsNothing(crcy), "USD", crcy)
                                 drv.Row.Item("familycode") = VendorFamilySubFamilyVCAdapter1.GetFamilyCode(_vendorcode)
                                 drv.Row.Item("subfamilycode") = VendorFamilySubFamilyVCAdapter1.GetSubFamilyCode(_vendorcode)
-                                drv.Row.Item("subfamilycode") = VendorFamilySubFamilyVCAdapter1.GetSubFamilyCode(_vendorcode)
+                                'drv.Row.Item("subfamilycode") = VendorFamilySubFamilyVCAdapter1.GetSubFamilyCode(_vendorcode)
 
                                 drv.Row.Item("ecoqualitycontactname") = VendorTxAdapter1.GetVendorEcoContactName(_vendorcode)
                                 drv.Row.Item("ecoqualitycontactemail") = VendorTxAdapter1.GetVendorEcoContactEmail(_vendorcode)
@@ -287,9 +288,13 @@ Public Class FormVendorInformationModification
                                 End If
                                 'Cancel button enabled-disable if admin
                                 ToolStripButton3.Visible = HelperClass1.UserInfo.IsAdmin
+                                ToolStripButton2.Visible = HelperClass1.UserInfo.IsAdmin
                             Case TxEnum.HistoryRecord
-                                UcVendorInformationModification1.DisableDataGridViewMenu()
-                                UcDocuments1.DisableDataGridViewMenu()
+                                UcVendorInformationModification1.HistoryMode()
+                                UcDocuments1.HistoryMode()
+                                ToolStripButton2.Visible = HelperClass1.UserInfo.IsAdmin
+                                'UcVendorInformationModification1.DisableDataGridViewMenu()
+                                'UcDocuments1.DisableDataGridViewMenu()
                         End Select
 
                         'If IsDBNull(drv.Row.Item("status")) Then
@@ -458,7 +463,14 @@ Public Class FormVendorInformationModification
                 approvaldrv.Row.Item("vendorinfomodiid") = drv.Item("id")
                 approvaldrv.EndEdit()
                 Logger.log(String.Format("** Submit {0}**", HelperClass1.UserId))
-                If SaveRecord() Then SendEmail(drv)
+
+                'get 
+
+                If SaveRecord() Then
+                    drv.Row.Item("modifiedfield") = UcVendorInformationModification1.getModifiedfield
+                    SendEmail(drv)
+                End If
+
             End If
 
         Else

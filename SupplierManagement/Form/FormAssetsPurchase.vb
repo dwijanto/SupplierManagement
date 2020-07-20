@@ -296,7 +296,8 @@ Public Class FormAssetsPurchase
         '14 Table AssetPurchaseAction get blank table for validation purpose
         sb.Append(String.Format("select *,doc.getassetpurchasestatusname(status) as statusname from doc.assetpurchaseaction where assetpurchaseid = {0} order by id desc;", myId))
         myUser = HelperClass1.UserId.ToLower
-
+        '15 FormInvoiceCurrencyList
+        sb.Append(String.Format("select cvalue from doc.paramhd where paramname = 'forminputinvoicecurrencylist';"))
 
         If DbAdapter1.TbgetDataSet(sb.ToString, DS, mymessage) Then
             Try

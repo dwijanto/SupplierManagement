@@ -23,9 +23,10 @@ Partial Class FormFactoryAndContact
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
@@ -45,16 +46,6 @@ Partial Class FormFactoryAndContact
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Column15 = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ColumnProvince = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.ColumnCountry = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddFactoryToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -68,6 +59,7 @@ Partial Class FormFactoryAndContact
         Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column23 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip2 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddContactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -79,6 +71,18 @@ Partial Class FormFactoryAndContact
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Column26 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column15 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ColumnProvince = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.ColumnCountry = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -212,8 +216,8 @@ Partial Class FormFactoryAndContact
         'Column22
         '
         Me.Column22.DataPropertyName = "gsmeffectivedate"
-        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
-        Me.Column22.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Format = "dd-MMM-yyyy"
+        Me.Column22.DefaultCellStyle = DataGridViewCellStyle9
         Me.Column22.HeaderText = "Since"
         Me.Column22.Name = "Column22"
         Me.Column22.ReadOnly = True
@@ -228,8 +232,8 @@ Partial Class FormFactoryAndContact
         'Column4
         '
         Me.Column4.DataPropertyName = "spmeffectivedate"
-        DataGridViewCellStyle2.Format = "dd-MMM-yyyy"
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Format = "dd-MMM-yyyy"
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle10
         Me.Column4.HeaderText = "Since"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -244,8 +248,8 @@ Partial Class FormFactoryAndContact
         'Column6
         '
         Me.Column6.DataPropertyName = "pmeffectivedate"
-        DataGridViewCellStyle3.Format = "dd-MMM-yyyy"
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle11.Format = "dd-MMM-yyyy"
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle11
         Me.Column6.HeaderText = "Since"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
@@ -267,89 +271,13 @@ Partial Class FormFactoryAndContact
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView2.ColumnHeadersHeight = 24
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column15, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.ColumnProvince, Me.ColumnCountry, Me.Column20})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column26, Me.Column15, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.Column8, Me.Column9, Me.Column10, Me.Column11, Me.ColumnProvince, Me.ColumnCountry, Me.Column20, Me.Column25})
         Me.DataGridView2.ContextMenuStrip = Me.ContextMenuStrip1
         Me.DataGridView2.Location = New System.Drawing.Point(12, 288)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(973, 152)
         Me.DataGridView2.TabIndex = 151
-        '
-        'Column15
-        '
-        Me.Column15.HeaderText = "Custom Name"
-        Me.Column15.Name = "Column15"
-        Me.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column15.Text = "Set as Default Custom"
-        Me.Column15.UseColumnTextForButtonValue = True
-        Me.Column15.Width = 150
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "englishname"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Factory Name"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "englishaddress"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Address"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 300
-        '
-        'Column8
-        '
-        Me.Column8.DataPropertyName = "chinesename"
-        Me.Column8.HeaderText = "Chinese Name"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "chineseaddress"
-        Me.Column9.HeaderText = "Chinese Address"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        Me.Column9.Width = 300
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "area"
-        Me.Column10.HeaderText = "Area"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        '
-        'Column11
-        '
-        Me.Column11.DataPropertyName = "city"
-        Me.Column11.HeaderText = "City"
-        Me.Column11.Name = "Column11"
-        Me.Column11.ReadOnly = True
-        '
-        'ColumnProvince
-        '
-        Me.ColumnProvince.DataPropertyName = "provinceid"
-        Me.ColumnProvince.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
-        Me.ColumnProvince.HeaderText = "Province"
-        Me.ColumnProvince.Name = "ColumnProvince"
-        Me.ColumnProvince.ReadOnly = True
-        '
-        'ColumnCountry
-        '
-        Me.ColumnCountry.DataPropertyName = "countryid"
-        Me.ColumnCountry.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
-        Me.ColumnCountry.HeaderText = "Country"
-        Me.ColumnCountry.Name = "ColumnCountry"
-        Me.ColumnCountry.ReadOnly = True
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "id"
-        Me.Column20.HeaderText = "id"
-        Me.Column20.Name = "Column20"
-        Me.Column20.Visible = False
         '
         'ContextMenuStrip1
         '
@@ -378,7 +306,7 @@ Partial Class FormFactoryAndContact
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView3.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView3.ColumnHeadersHeight = 40
-        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.Column12, Me.Column13, Me.Column14, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column19})
+        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.Column12, Me.Column13, Me.Column14, Me.Column16, Me.Column17, Me.Column18, Me.Column23, Me.Column19, Me.Column24})
         Me.DataGridView3.ContextMenuStrip = Me.ContextMenuStrip2
         Me.DataGridView3.Location = New System.Drawing.Point(12, 446)
         Me.DataGridView3.Name = "DataGridView3"
@@ -452,6 +380,15 @@ Partial Class FormFactoryAndContact
         Me.Column19.Name = "Column19"
         Me.Column19.ReadOnly = True
         Me.Column19.Visible = False
+        '
+        'Column24
+        '
+        Me.Column24.DataPropertyName = "modifieddate"
+        DataGridViewCellStyle12.Format = "dd-MMM-yyyy"
+        Me.Column24.DefaultCellStyle = DataGridViewCellStyle12
+        Me.Column24.HeaderText = "Modified Date"
+        Me.Column24.Name = "Column24"
+        Me.Column24.ReadOnly = True
         '
         'ContextMenuStrip2
         '
@@ -537,6 +474,95 @@ Partial Class FormFactoryAndContact
         Me.Button5.Text = "Save"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'Column26
+        '
+        Me.Column26.DataPropertyName = "main"
+        Me.Column26.HeaderText = "Main"
+        Me.Column26.Name = "Column26"
+        Me.Column26.Width = 40
+        '
+        'Column15
+        '
+        Me.Column15.HeaderText = "Custom Name"
+        Me.Column15.Name = "Column15"
+        Me.Column15.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column15.Text = "Set as Default Custom"
+        Me.Column15.UseColumnTextForButtonValue = True
+        Me.Column15.Width = 150
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "englishname"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Factory Name"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "englishaddress"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Address"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 300
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "chinesename"
+        Me.Column8.HeaderText = "Chinese Name"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "chineseaddress"
+        Me.Column9.HeaderText = "Chinese Address"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        Me.Column9.Width = 300
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "area"
+        Me.Column10.HeaderText = "Area"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        '
+        'Column11
+        '
+        Me.Column11.DataPropertyName = "city"
+        Me.Column11.HeaderText = "City"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        '
+        'ColumnProvince
+        '
+        Me.ColumnProvince.DataPropertyName = "provinceid"
+        Me.ColumnProvince.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.ColumnProvince.HeaderText = "Province"
+        Me.ColumnProvince.Name = "ColumnProvince"
+        Me.ColumnProvince.ReadOnly = True
+        '
+        'ColumnCountry
+        '
+        Me.ColumnCountry.DataPropertyName = "countryid"
+        Me.ColumnCountry.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.[Nothing]
+        Me.ColumnCountry.HeaderText = "Country"
+        Me.ColumnCountry.Name = "ColumnCountry"
+        Me.ColumnCountry.ReadOnly = True
+        '
+        'Column20
+        '
+        Me.Column20.DataPropertyName = "id"
+        Me.Column20.HeaderText = "id"
+        Me.Column20.Name = "Column20"
+        Me.Column20.Visible = False
+        '
+        'Column25
+        '
+        Me.Column25.DataPropertyName = "modifieddate"
+        Me.Column25.HeaderText = "Modified Date"
+        Me.Column25.Name = "Column25"
+        '
         'FormFactoryAndContact
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -590,6 +616,27 @@ Partial Class FormFactoryAndContact
     Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddFactoryToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column22 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column14 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column16 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column23 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column24 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column26 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Column15 As System.Windows.Forms.DataGridViewButtonColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -600,23 +647,5 @@ Partial Class FormFactoryAndContact
     Friend WithEvents ColumnProvince As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents ColumnCountry As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents Column20 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column12 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column13 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column14 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column16 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column23 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column22 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column25 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

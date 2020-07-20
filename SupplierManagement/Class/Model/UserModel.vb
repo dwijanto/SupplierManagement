@@ -44,7 +44,14 @@ Public Class UserModel
                                " order by username"
         Return getBindingsource(sqlstr)
     End Function
-
+    Public Function getApprovalDirectorBLBS() As BindingSource
+        Dim sqlstr As String = "select null::text as username,null::text as userid union all (select u.username,u.userid from doc.user u" &
+                               " left join doc.groupuser gu on gu.userid = u.id" &
+                               " left join doc.groupauth ga on ga.groupid = gu.groupid" &
+                               " where groupname = 'Approval Director'" &
+                               " order by username)"
+        Return getBindingsource(sqlstr)
+    End Function
     Public Function getCCDBBS() As BindingSource
         Dim sqlstr As String = "select u.username,u.userid from doc.user u" &
                                " left join doc.groupuser gu on gu.userid = u.id" &
@@ -86,7 +93,8 @@ Public Class UserModel
                                " left join doc.groupuser gu on gu.userid = u.id" &
                                " left join doc.groupauth ga on ga.groupid = gu.groupid" &
                                " where groupname = 'Approval Financial Controller'" &
-                               " order by username limit 1"
+                                " order by username"
+        ' " order by username limit 1"
         Return getBindingsource(sqlstr)
     End Function
 
@@ -98,7 +106,14 @@ Public Class UserModel
                                " order by username limit 1"
         Return getBindingsource(sqlstr)
     End Function
-
+    Public Function getApprovalDeptBLBS() As BindingSource
+        Dim sqlstr As String = "select null::text as username,null::text as userid union all (select u.username,u.userid from doc.user u" &
+                               " left join doc.groupuser gu on gu.userid = u.id" &
+                               " left join doc.groupauth ga on ga.groupid = gu.groupid" &
+                               " where groupname = 'Approval Dept'" &
+                               " order by username)"
+        Return getBindingsource(sqlstr)
+    End Function
     Public Function getApprovalDeptBS() As BindingSource
         Dim sqlstr As String = "select u.username,u.userid from doc.user u" &
                                " left join doc.groupuser gu on gu.userid = u.id" &

@@ -15,7 +15,7 @@ Public Class FormVendorStatus
     Dim bsVendorNameHelper As BindingSource
     Dim myDict As Dictionary(Of String, Integer)
 
-    Private Enum SupEnum
+    Public Enum SupEnum
         <EnumDescription("Active")> Active = 1
         <EnumDescription("2nd Tier")> SecondTier = 2
         <EnumDescription("No Business")> No_Business = 3
@@ -109,6 +109,7 @@ Public Class FormVendorStatus
                             ComboBox1.DataBindings.Add("SelectedValue", VSBS, "vendorcode", True, DataSourceUpdateMode.OnPropertyChanged)
 
 
+                            'ComboBox2.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
                             ComboBox2.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
                             ComboBox2.DisplayMember = "Key"
                             ComboBox2.ValueMember = "Value"
