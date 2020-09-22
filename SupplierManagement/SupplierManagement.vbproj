@@ -534,6 +534,12 @@
     <Compile Include="Form\FormReportCMMF3750.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FormSupplierListTO.Designer.vb">
+      <DependentUpon>FormSupplierListTO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormSupplierListTO.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FormVendorFamilyPMEx.Designer.vb">
       <DependentUpon>FormVendorFamilyPMEx.vb</DependentUpon>
     </Compile>
@@ -1466,6 +1472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSupplierGSM.resx">
       <DependentUpon>FormSupplierGSM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormSupplierListTO.resx">
+      <DependentUpon>FormSupplierListTO.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSupplierManagementAutoReport.resx">
       <DependentUpon>FormSupplierManagementAutoReport.vb</DependentUpon>

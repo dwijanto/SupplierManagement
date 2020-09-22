@@ -471,7 +471,7 @@
         If Not IsNothing(_Logisticsdrv3) Then
             TextBox42.Text = "" & String.Format("{0:##0%}", _Logisticsdrv3.Row("sasl"))
             TextBox37.Text = "" & String.Format("{0:#,##0%}", _Logisticsdrv3.Row("ssl"))
-            TextBox22.Text = "" & String.Format("{0:#,##0}", _Logisticsdrv3.Row("lt"))
+            TextBox32.Text = "" & String.Format("{0:#,##0}", _Logisticsdrv3.Row("lt"))
             TextBox27.Text = "" & String.Format("{0:#,##0}", _Logisticsdrv3.Row("orderno"))
             TextBox47.Text = "" & String.Format("{0:#,##0}", _Logisticsdrv3.Row("shipment"))
             TextBox72.Text = "" & String.Format("{0:#,##0%}", _Logisticsdrv3.Row("sslnet"))

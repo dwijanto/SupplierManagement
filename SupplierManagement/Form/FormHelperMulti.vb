@@ -1,11 +1,19 @@
 ﻿Imports System.Text
 
 Public Class FormHelperMulti
-    Dim bs As BindingSource
+    Public bs As BindingSource
     Public Property SelectedResult As String
     Public Property Key As Integer
     Dim SB As StringBuilder
     Public SelectedDrv As New List(Of DataRowView)
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
     Public Sub New(ByRef bs As BindingSource)
 
         ' This call is required by the designer.

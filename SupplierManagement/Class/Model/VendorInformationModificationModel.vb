@@ -111,7 +111,7 @@ Public Class VendorInformationModificationModel
             '                       " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
             '                       " left join doc.user avp on lower(avp.userid) = lower(u.approvalvp) " &
             '                       " left join doc.user cr on lower(cr.userid) = lower(u.creator) ) select * from q {1};", tablename, Criteria))
-            sb.Append(String.Format("with q as (select u.*,v.vendorname::text,v.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
+            sb.Append(String.Format("with q as (select u.*,v.vendorcode::text as vendorcodetext,v.vendorname::text,v.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
                                     " left join vendor v on v.vendorcode = u.vendorcode" &
                                  " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
                                  " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
@@ -139,7 +139,7 @@ Public Class VendorInformationModificationModel
             conn.Open()
             sb = New StringBuilder
             
-            sb.Append(String.Format("with q as (select u.*,e.vendorname::text,e.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
+            sb.Append(String.Format("with q as (select u.*,u.vendorcode::text as vendorcodetext,e.vendorname::text,e.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
                                  " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
                                  " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
                                  " left join doc.user avp on lower(avp.userid) = lower(u.approvalvp) " &

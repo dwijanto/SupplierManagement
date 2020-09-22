@@ -7,7 +7,7 @@ Public Class FormFindVendorInformationModification
     WithEvents EPCheckBox1 As New CheckBox
     Dim dtpicker1 As New DateTimePicker
     'Dim fieldList() As String = {"v.vendorname", "v.shortname", "u.applicantname", "v.vendorcode::character varying", "lateststatus", "cr.username"}
-    Dim fieldList() As String = {"vendorname", "shortname", "applicantname", "vendorcode::character varying", "lateststatus", "creatorname", "doc.getmodifiedfield(q.id)"}
+    Dim fieldList() As String = {"All", "vendorname", "shortname", "applicantname", "vendorcode::character varying", "lateststatus", "creatorname", "doc.getmodifiedfield(q.id)"}
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
         getCriteria()
@@ -36,7 +36,7 @@ Public Class FormFindVendorInformationModification
         ProgressReport(6, "Marquee")
         ProgressReport(1, "Loading Data.")
         Try
-            Criteria = " order by applicantdate desc"
+            Criteria = String.Format("{0} order by applicantdate desc", Criteria)
             If myAdapter.loaddata(Criteria) Then
                 ProgressReport(4, "InitData")
                 ProgressReport(1, "Loading Data.Done!")
@@ -156,11 +156,29 @@ Public Class FormFindVendorInformationModification
     Private Sub getCriteria()
         Criteria = ""
         If ToolStripTextBox1.Text <> "" Then
-            Criteria = String.Format("where lower({0}) like '%{1}%'", fieldList(ToolStripComboBox1.SelectedIndex), ToolStripTextBox1.Text.ToLower)
+            If ToolStripComboBox1.SelectedIndex > 0 Then
+                Criteria = String.Format("where lower({0}) like '%{1}%'", fieldList(ToolStripComboBox1.SelectedIndex), ToolStripTextBox1.Text.ToLower)
+            End If
+
         End If
         If EPCheckBox1.Checked Then
             Criteria = Criteria + IIf(Criteria = "", "where", " and") + String.Format(" q.applicantdate = '{0:yyyy-MM-dd}'", dtpicker1.Value)
         End If
     End Sub
 
+    Private Sub ToolStripTextBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.Click
+
+    End Sub
+
+    Private Sub ToolStripTextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.TextChanged
+        If ToolStripComboBox1.SelectedIndex = 0 Then
+            Dim obj As ToolStripTextBox = DirectCast(sender, ToolStripTextBox)
+            myAdapter.ApplyFilter = obj.Text
+        End If
+       
+    End Sub
+
+    Private Sub ToolStripComboBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripComboBox1.Click
+
+    End Sub
 End Class

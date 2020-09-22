@@ -48,7 +48,7 @@ Partial Class FormReportCMMF3750
         '
         Me.ToolStripStatusLabel2.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(454, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(423, 17)
         Me.ToolStripStatusLabel2.Spring = True
         '
         'ToolStripProgressBar1

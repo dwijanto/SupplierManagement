@@ -434,6 +434,9 @@ Public Class FormMenu
             AddHandler A9ModificationDocumentTypeMasterToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
 
             AddHandler CMMF3750ToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+            AddHandler SupplierListWithTONQSUSSLToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
+            AddHandler AssetPurchaseApprovalToolStripMenuItem1.Click, AddressOf ToolStripMenuItem_Click
 
             'AddHandler FindAssetPurchaseToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
             'Admin
@@ -482,7 +485,7 @@ Public Class FormMenu
 
   
 
-    Private Sub CreateVendorInformationModificationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateVendorInformationModificationToolStripMenuItem.Click
+    Private Sub CreateVendorInformationModificationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateVendorInformationModificationToolStripMenuItem.Click, Button15.Click
         Dim myvendor As New DialogVendorSelection
         If myvendor.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim myFormVendor = New FormVendorInformationModification(myvendor.VendorDR, myvendor.YearRef, myvendor.ComboBox1.SelectedIndex, TxEnum.NewRecord, 0)
@@ -491,25 +494,25 @@ Public Class FormMenu
         End If
     End Sub
 
-    Private Sub FindVendorInformationModificationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FindVendorInformationModificationToolStripMenuItem.Click
+    Private Sub FindVendorInformationModificationToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FindVendorInformationModificationToolStripMenuItem.Click, Button17.Click
         Dim myVendor As New FormFindVendorInformationModification
         myVendor.ShowDialog()
     End Sub
 
   
-    Private Sub VendorInformationApprovalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VendorInformationApprovalToolStripMenuItem.Click, VendorInformationApprovalToolStripMenuItem1.Click
+    Private Sub VendorInformationApprovalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VendorInformationApprovalToolStripMenuItem.Click, VendorInformationApprovalToolStripMenuItem1.Click, SupplierInformationApprovalToolStripMenuItem.Click
         Dim myform As New FormVendorInformationTask()
 
         myform.Show()
     End Sub
 
-    Private Sub CreateNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateNewVendorToolStripMenuItem.Click
+    Private Sub CreateNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CreateNewVendorToolStripMenuItem.Click, Button14.Click
         Dim myform As New FormNewVendor(SupplierManagement.TxEnum.NewRecord, 0)
         'Dim myform As New FormNewVendor(SupplierManagement.TxEnum.UpdateRecord, 251)
         myform.Show()
     End Sub
 
-    Private Sub FindNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FindNewVendorToolStripMenuItem.Click
+    Private Sub FindNewVendorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FindNewVendorToolStripMenuItem.Click, Button16.Click
         Dim myform As New FormFindNewVendor
         myform.Show()
     End Sub
@@ -534,6 +537,38 @@ Public Class FormMenu
     End Sub
 
     Private Sub MasterSupplierToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MasterSupplierToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
+
+    End Sub
+
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button15.Click
+
+    End Sub
+
+    Private Sub Button16_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button16.Click
+
+    End Sub
+
+    Private Sub Button17_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button17.Click
+
+    End Sub
+
+    Private Sub AssetPurchaseApprovalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssetPurchaseApprovalToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub SupplierInformationApprovalToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SupplierInformationApprovalToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub AssetPurchaseApprovalToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssetPurchaseApprovalToolStripMenuItem1.Click
+
+    End Sub
+
+    Private Sub SupplierListWithTONQSUSSLToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SupplierListWithTONQSUSSLToolStripMenuItem.Click
 
     End Sub
 End Class

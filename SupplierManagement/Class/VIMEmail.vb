@@ -57,7 +57,7 @@ Public Class VIMEmail
                   " <p>Please be informed that we have the following Vendor Information Modification tasks need to follow up:<br><br>List of Tasks:</p>  <table border=1 cellspacing=0 class=""defaultfont"">" &
                   "<tr><th>Status</th><th>Vendor Code</th> <th>Vendor Name</th> <th>Short Name</th> <th>Application Date</th><th>Applicant Name</th><th>Creator</th><th>Supplier Modification ID</th><th>Modification Field</th></tr>")
 
-        sb.Append(String.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4:dd-MMM-yyyy}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td></tr>", statusname, drv.Item("vendorcode"), drv.Item("vendorname"), drv.Item("vendorname"), drv.Item("applicantdate"), drv.Item("applicantname"), drv.Item("creator"), drv.Item("suppliermodificationid"), drv.Item("modifiedfield")))
+        sb.Append(String.Format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td>{3}</td><td>{4:dd-MMM-yyyy}</td><td>{5}</td><td>{6}</td><td>{7}</td><td>{8}</td></tr>", statusname, drv.Item("vendorcode"), drv.Item("vendorname"), drv.Item("shortname"), drv.Item("applicantdate"), drv.Item("applicantname"), drv.Item("creator"), drv.Item("suppliermodificationid"), drv.Item("modifiedfield")))
         sb.Append("</table>  <br>  <p>Thank you.<br><br>You can access the system in RD Web Access by below link:<br>   <a href=""https://sw07e601/RDWeb"">Supplier Management</a></p><br>")
         Return sb.ToString
     End Function

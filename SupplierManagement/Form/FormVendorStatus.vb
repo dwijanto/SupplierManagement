@@ -110,6 +110,7 @@ Public Class FormVendorStatus
 
 
                             'ComboBox2.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
+
                             ComboBox2.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
                             ComboBox2.DisplayMember = "Key"
                             ComboBox2.ValueMember = "Value"
@@ -117,10 +118,10 @@ Public Class FormVendorStatus
 
                             TextBox1.DataBindings.Clear()
 
-                            'ComboBox3.DataSource = New BindingSource(myDict, Nothing)
-                            'ComboBox3.DisplayMember = "Key"
-                            'ComboBox3.ValueMember = "Value"
-                            'ComboBox3.DataBindings.Add("SelectedValue", VSBS, "status", True, DataSourceUpdateMode.OnPropertyChanged)
+                            ComboBox3.DataSource = New BindingSource(myDict, Nothing)
+                            ComboBox3.DisplayMember = "Key"
+                            ComboBox3.ValueMember = "Value"
+                            ComboBox3.DataBindings.Add("SelectedValue", VSBS, "status", True, DataSourceUpdateMode.OnPropertyChanged)
 
                             TextBox1.DataBindings.Add(New Binding("Text", VSBS, "rank", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
@@ -194,10 +195,10 @@ Public Class FormVendorStatus
 
                             TextBox1.DataBindings.Clear()
 
-                            ComboBox3.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
-                            ComboBox3.DisplayMember = "Key"
-                            ComboBox3.ValueMember = "Value"
-                            ComboBox3.DataBindings.Add("SelectedValue", VSBS, "status", True, DataSourceUpdateMode.OnPropertyChanged)
+                            'ComboBox3.DataSource = New BindingSource(GetType(SupEnum).EnumToDictionary, Nothing)
+                            'ComboBox3.DisplayMember = "Key"
+                            'ComboBox3.ValueMember = "Value"
+                            'ComboBox3.DataBindings.Add("SelectedValue", VSBS, "status", True, DataSourceUpdateMode.OnPropertyChanged)
 
                             TextBox1.DataBindings.Add(New Binding("Text", VSBS, "rank", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 

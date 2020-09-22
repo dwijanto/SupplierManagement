@@ -218,13 +218,14 @@
         End If
         Return myret
     End Function
+    '{"vendorname", "shortname", "applicantname", "vendorcode::character varying", "lateststatus", "creatorname", "doc.getmodifiedfield(q.id)"}
 
     Public Property ApplyFilter As String Implements IToolbarAction.ApplyFilter
         Get
-            Return Nothing
+            Return BS.Filter
         End Get
         Set(ByVal value As String)
-
+            BS.Filter = String.Format("[vendorname] like '*{0}*' or [shortname] like '*{0}*' or [vendorcodetext] like '*{0}*' or [applicantname] like '*{0}*' or [creatorname] like '*{0}*'", value)
         End Set
     End Property
 

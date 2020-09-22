@@ -22,17 +22,26 @@ Partial Class FormFindVendorInformationModification
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormFindVendorInformationModification))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
@@ -48,15 +57,6 @@ Partial Class FormFindVendorInformationModification
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -134,6 +134,76 @@ Partial Class FormFindVendorInformationModification
         Me.DataGridView1.Size = New System.Drawing.Size(1124, 320)
         Me.DataGridView1.TabIndex = 0
         '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "suppliermodificationid"
+        Me.Column1.HeaderText = "Supplier Modification ID"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 150
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "vendorcode"
+        Me.Column2.HeaderText = "Vendor Code"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "vendorname"
+        Me.Column3.HeaderText = "Vendor Name"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 200
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "shortname"
+        Me.Column8.HeaderText = "Short Name"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.DataPropertyName = "applicantname"
+        Me.Column4.HeaderText = "Applicant Name"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 150
+        '
+        'Column6
+        '
+        Me.Column6.DataPropertyName = "lateststatus"
+        Me.Column6.HeaderText = "Latest Status"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "applicantdate"
+        DataGridViewCellStyle17.Format = "dd-MMM-yyyy"
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle17
+        Me.Column5.HeaderText = "Applicant Date"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 150
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "creatorname"
+        Me.Column7.HeaderText = "Creator"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "modifiedfield"
+        Me.Column9.HeaderText = "Modification Field"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        Me.Column9.Width = 300
+        '
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
@@ -165,7 +235,7 @@ Partial Class FormFindVendorInformationModification
         '
         Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ToolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ToolStripComboBox1.Items.AddRange(New Object() {"Vendor Name", "Short Name", "Applicant Name", "Vendor Code", "Latest Status", "Creator", "Modification Field"})
+        Me.ToolStripComboBox1.Items.AddRange(New Object() {"All", "Vendor Name", "Short Name", "Applicant Name", "Vendor Code", "Latest Status", "Creator", "Modification Field"})
         Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
         Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 25)
         '
@@ -217,8 +287,8 @@ Partial Class FormFindVendorInformationModification
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "applicantdate"
-        DataGridViewCellStyle2.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle18.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle18
         Me.DataGridViewTextBoxColumn5.HeaderText = "Applicant Date"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -227,8 +297,8 @@ Partial Class FormFindVendorInformationModification
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "applicantdate"
-        DataGridViewCellStyle3.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle19.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle19
         Me.DataGridViewTextBoxColumn6.HeaderText = "Applicant Date"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -237,8 +307,8 @@ Partial Class FormFindVendorInformationModification
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "creator"
-        DataGridViewCellStyle4.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle20.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle20
         Me.DataGridViewTextBoxColumn7.HeaderText = "Creator"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -256,76 +326,6 @@ Partial Class FormFindVendorInformationModification
         Me.DataGridViewTextBoxColumn9.HeaderText = "Modification Field"
         Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
         Me.DataGridViewTextBoxColumn9.Width = 300
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "suppliermodificationid"
-        Me.Column1.HeaderText = "Supplier Modification ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 150
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "vendorcode"
-        Me.Column2.HeaderText = "Vendor Code"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "vendorname"
-        Me.Column3.HeaderText = "Vendor Name"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 200
-        '
-        'Column8
-        '
-        Me.Column8.DataPropertyName = "shortname"
-        Me.Column8.HeaderText = "Short Name"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "applicantname"
-        Me.Column4.HeaderText = "Applicant Name"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 150
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "lateststatus"
-        Me.Column6.HeaderText = "Latest Status"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "applicantdate"
-        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column5.HeaderText = "Applicant Date"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 150
-        '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "creatorname"
-        Me.Column7.HeaderText = "Creator"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "modifiedfield"
-        Me.Column9.HeaderText = "Modification Field"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        Me.Column9.Width = 300
         '
         'FormFindVendorInformationModification
         '

@@ -43,6 +43,9 @@ Partial Class FormMenu
         Me.ImportPlantZZA013ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssetPurchaseApprovalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorInformationApprovalToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ApprovalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SupplierInformationApprovalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AssetPurchaseApprovalToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MasterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SupplierCategoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -139,6 +142,7 @@ Partial Class FormMenu
         Me.AssetsPurchaseReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SupplierFamilyAssignmenttToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CMMF3750ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserGuideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserGuideAdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserGuideAssetsPurchaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -161,16 +165,17 @@ Partial Class FormMenu
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Panel14 = New System.Windows.Forms.Panel()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Button14 = New System.Windows.Forms.Button()
+        Me.Panel15 = New System.Windows.Forms.Panel()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Button15 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -183,6 +188,16 @@ Partial Class FormMenu
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Panel16 = New System.Windows.Forms.Panel()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.Panel17 = New System.Windows.Forms.Panel()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Button17 = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -193,6 +208,16 @@ Partial Class FormMenu
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Button10 = New System.Windows.Forms.Button()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Button8 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -218,14 +243,18 @@ Partial Class FormMenu
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.Panel8.SuspendLayout()
-        Me.Panel9.SuspendLayout()
+        Me.Panel14.SuspendLayout()
+        Me.Panel15.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel16.SuspendLayout()
+        Me.Panel17.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel10.SuspendLayout()
+        Me.Panel9.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
@@ -237,10 +266,10 @@ Partial Class FormMenu
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupplierDocumentsToolStripMenuItem, Me.AssetManagementToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminActionToolStripMenuItem, Me.ReportToolStripMenuItem, Me.UserGuideToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupplierDocumentsToolStripMenuItem, Me.AssetManagementToolStripMenuItem, Me.ApprovalToolStripMenuItem, Me.MasterToolStripMenuItem, Me.AdminActionToolStripMenuItem, Me.ReportToolStripMenuItem, Me.UserGuideToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1005, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1025, 24)
         Me.MenuStrip1.TabIndex = 0
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -255,67 +284,68 @@ Partial Class FormMenu
         'UploadDocumentToolStripMenuItem
         '
         Me.UploadDocumentToolStripMenuItem.Name = "UploadDocumentToolStripMenuItem"
-        Me.UploadDocumentToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.UploadDocumentToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
         Me.UploadDocumentToolStripMenuItem.Tag = "FormMyTaskDocument2"
         Me.UploadDocumentToolStripMenuItem.Text = "Upload Document"
         '
         'SupplierDashboardToolStripMenuItem
         '
         Me.SupplierDashboardToolStripMenuItem.Name = "SupplierDashboardToolStripMenuItem"
-        Me.SupplierDashboardToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.SupplierDashboardToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
         Me.SupplierDashboardToolStripMenuItem.Tag = "FormSupplierDashBoard"
         Me.SupplierDashboardToolStripMenuItem.Text = "Supplier Dashboard"
         '
         'FactoryContactToolStripMenuItem1
         '
         Me.FactoryContactToolStripMenuItem1.Name = "FactoryContactToolStripMenuItem1"
-        Me.FactoryContactToolStripMenuItem1.Size = New System.Drawing.Size(285, 22)
+        Me.FactoryContactToolStripMenuItem1.Size = New System.Drawing.Size(291, 22)
         Me.FactoryContactToolStripMenuItem1.Tag = "FormFactoryAndContact"
         Me.FactoryContactToolStripMenuItem1.Text = "Factory && Contact"
         '
         'SupplierPhotosToolStripMenuItem
         '
         Me.SupplierPhotosToolStripMenuItem.Name = "SupplierPhotosToolStripMenuItem"
-        Me.SupplierPhotosToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.SupplierPhotosToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
         Me.SupplierPhotosToolStripMenuItem.Tag = "FormSearchSupplierPhoto"
         Me.SupplierPhotosToolStripMenuItem.Text = "Supplier Photos"
         '
         'SSSActionPlanFollowUpToolStripMenuItem
         '
         Me.SSSActionPlanFollowUpToolStripMenuItem.Name = "SSSActionPlanFollowUpToolStripMenuItem"
-        Me.SSSActionPlanFollowUpToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
+        Me.SSSActionPlanFollowUpToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
         Me.SSSActionPlanFollowUpToolStripMenuItem.Tag = "FormSSSActionPlanFollowUp"
         Me.SSSActionPlanFollowUpToolStripMenuItem.Text = "SSS/SPR Action Plan Follow Up"
         '
         'CreateVendorInformationModificationToolStripMenuItem
         '
         Me.CreateVendorInformationModificationToolStripMenuItem.Name = "CreateVendorInformationModificationToolStripMenuItem"
-        Me.CreateVendorInformationModificationToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.CreateVendorInformationModificationToolStripMenuItem.Text = "Create Vendor Information Modification"
+        Me.CreateVendorInformationModificationToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.CreateVendorInformationModificationToolStripMenuItem.Text = "Create Supplier Information Modification"
         '
         'FindVendorInformationModificationToolStripMenuItem
         '
         Me.FindVendorInformationModificationToolStripMenuItem.Name = "FindVendorInformationModificationToolStripMenuItem"
-        Me.FindVendorInformationModificationToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.FindVendorInformationModificationToolStripMenuItem.Text = "Find Vendor Information Modification"
+        Me.FindVendorInformationModificationToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.FindVendorInformationModificationToolStripMenuItem.Text = "Find Supplier Information Modification"
         '
         'VendorInformationApprovalToolStripMenuItem
         '
         Me.VendorInformationApprovalToolStripMenuItem.Name = "VendorInformationApprovalToolStripMenuItem"
-        Me.VendorInformationApprovalToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.VendorInformationApprovalToolStripMenuItem.Text = "Vendor Information Approval"
+        Me.VendorInformationApprovalToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.VendorInformationApprovalToolStripMenuItem.Text = "Supplier Information Approval"
+        Me.VendorInformationApprovalToolStripMenuItem.Visible = False
         '
         'CreateNewVendorToolStripMenuItem
         '
         Me.CreateNewVendorToolStripMenuItem.Name = "CreateNewVendorToolStripMenuItem"
-        Me.CreateNewVendorToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.CreateNewVendorToolStripMenuItem.Text = "Create New Vendor"
+        Me.CreateNewVendorToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.CreateNewVendorToolStripMenuItem.Text = "Create New Supplier"
         '
         'FindNewVendorToolStripMenuItem
         '
         Me.FindNewVendorToolStripMenuItem.Name = "FindNewVendorToolStripMenuItem"
-        Me.FindNewVendorToolStripMenuItem.Size = New System.Drawing.Size(285, 22)
-        Me.FindNewVendorToolStripMenuItem.Text = "Find New Vendor"
+        Me.FindNewVendorToolStripMenuItem.Size = New System.Drawing.Size(291, 22)
+        Me.FindNewVendorToolStripMenuItem.Text = "Find New Supplier"
         '
         'AssetManagementToolStripMenuItem
         '
@@ -364,12 +394,33 @@ Partial Class FormMenu
         Me.AssetPurchaseApprovalToolStripMenuItem.Size = New System.Drawing.Size(307, 22)
         Me.AssetPurchaseApprovalToolStripMenuItem.Tag = "FormOtherTask"
         Me.AssetPurchaseApprovalToolStripMenuItem.Text = "Asset Purchase Approval"
+        Me.AssetPurchaseApprovalToolStripMenuItem.Visible = False
         '
         'VendorInformationApprovalToolStripMenuItem1
         '
         Me.VendorInformationApprovalToolStripMenuItem1.Name = "VendorInformationApprovalToolStripMenuItem1"
         Me.VendorInformationApprovalToolStripMenuItem1.Size = New System.Drawing.Size(307, 22)
         Me.VendorInformationApprovalToolStripMenuItem1.Text = "Vendor Information Approval"
+        '
+        'ApprovalToolStripMenuItem
+        '
+        Me.ApprovalToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupplierInformationApprovalToolStripMenuItem, Me.AssetPurchaseApprovalToolStripMenuItem1})
+        Me.ApprovalToolStripMenuItem.Name = "ApprovalToolStripMenuItem"
+        Me.ApprovalToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
+        Me.ApprovalToolStripMenuItem.Text = "Approval"
+        '
+        'SupplierInformationApprovalToolStripMenuItem
+        '
+        Me.SupplierInformationApprovalToolStripMenuItem.Name = "SupplierInformationApprovalToolStripMenuItem"
+        Me.SupplierInformationApprovalToolStripMenuItem.Size = New System.Drawing.Size(234, 22)
+        Me.SupplierInformationApprovalToolStripMenuItem.Text = "Supplier Information Approval"
+        '
+        'AssetPurchaseApprovalToolStripMenuItem1
+        '
+        Me.AssetPurchaseApprovalToolStripMenuItem1.Name = "AssetPurchaseApprovalToolStripMenuItem1"
+        Me.AssetPurchaseApprovalToolStripMenuItem1.Size = New System.Drawing.Size(234, 22)
+        Me.AssetPurchaseApprovalToolStripMenuItem1.Tag = "FormOtherTask"
+        Me.AssetPurchaseApprovalToolStripMenuItem1.Text = "Asset Purchase Approval"
         '
         'MasterToolStripMenuItem
         '
@@ -495,7 +546,7 @@ Partial Class FormMenu
         Me.SupplierFamilyToolStripMenuItem.Name = "SupplierFamilyToolStripMenuItem"
         Me.SupplierFamilyToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
         Me.SupplierFamilyToolStripMenuItem.Tag = "FormVendorFamilyPM"
-        Me.SupplierFamilyToolStripMenuItem.Text = "Supplier Family"
+        Me.SupplierFamilyToolStripMenuItem.Text = "Supplier Family (FP)"
         '
         'SupplierFamilyExceptionToolStripMenuItem
         '
@@ -509,7 +560,7 @@ Partial Class FormMenu
         Me.SupplierPMToolStripMenuItem.Name = "SupplierPMToolStripMenuItem"
         Me.SupplierPMToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
         Me.SupplierPMToolStripMenuItem.Tag = "FormVendorPM"
-        Me.SupplierPMToolStripMenuItem.Text = "Supplier PM"
+        Me.SupplierPMToolStripMenuItem.Text = "Supplier PM (CP)"
         '
         'SupplierCurrencyToolStripMenuItem
         '
@@ -944,7 +995,7 @@ Partial Class FormMenu
         '
         'ReportToolStripMenuItem
         '
-        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupplierDocumentRawDataToolStripMenuItem, Me.SupplierDocumentSIFIDToolStripMenuItem, Me.SupplierDocumentSocialAuditToolStripMenuItem, Me.SupplierDocumentContractToolStripMenuItem, Me.DocumentCountToolStripMenuItem, Me.SearchInterfaceToolStripMenuItem, Me.SearchDocumentToolStripMenuItem, Me.MasterSupplierToolStripMenuItem, Me.AssetsPurchaseReportToolStripMenuItem, Me.SupplierFamilyAssignmenttToolStripMenuItem, Me.CMMF3750ToolStripMenuItem})
+        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SupplierDocumentRawDataToolStripMenuItem, Me.SupplierDocumentSIFIDToolStripMenuItem, Me.SupplierDocumentSocialAuditToolStripMenuItem, Me.SupplierDocumentContractToolStripMenuItem, Me.DocumentCountToolStripMenuItem, Me.SearchInterfaceToolStripMenuItem, Me.SearchDocumentToolStripMenuItem, Me.MasterSupplierToolStripMenuItem, Me.AssetsPurchaseReportToolStripMenuItem, Me.SupplierFamilyAssignmenttToolStripMenuItem, Me.CMMF3750ToolStripMenuItem, Me.SupplierListWithTONQSUSSLToolStripMenuItem})
         Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "Report"
@@ -952,35 +1003,35 @@ Partial Class FormMenu
         'SupplierDocumentRawDataToolStripMenuItem
         '
         Me.SupplierDocumentRawDataToolStripMenuItem.Name = "SupplierDocumentRawDataToolStripMenuItem"
-        Me.SupplierDocumentRawDataToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SupplierDocumentRawDataToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SupplierDocumentRawDataToolStripMenuItem.Tag = "FormSupplierDocumentRawData"
         Me.SupplierDocumentRawDataToolStripMenuItem.Text = "Supplier Document Raw Data"
         '
         'SupplierDocumentSIFIDToolStripMenuItem
         '
         Me.SupplierDocumentSIFIDToolStripMenuItem.Name = "SupplierDocumentSIFIDToolStripMenuItem"
-        Me.SupplierDocumentSIFIDToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SupplierDocumentSIFIDToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SupplierDocumentSIFIDToolStripMenuItem.Tag = "FormSupplierDocumentSIFID"
         Me.SupplierDocumentSIFIDToolStripMenuItem.Text = "Supplier Document SIF && ID"
         '
         'SupplierDocumentSocialAuditToolStripMenuItem
         '
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Name = "SupplierDocumentSocialAuditToolStripMenuItem"
-        Me.SupplierDocumentSocialAuditToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SupplierDocumentSocialAuditToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Tag = "FormSupplierDocumentSocialAudit"
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Text = "Supplier Document Social Audit"
         '
         'SupplierDocumentContractToolStripMenuItem
         '
         Me.SupplierDocumentContractToolStripMenuItem.Name = "SupplierDocumentContractToolStripMenuItem"
-        Me.SupplierDocumentContractToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SupplierDocumentContractToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SupplierDocumentContractToolStripMenuItem.Tag = "FormSupplierDocumentContract"
         Me.SupplierDocumentContractToolStripMenuItem.Text = "Supplier Document Contract"
         '
         'DocumentCountToolStripMenuItem
         '
         Me.DocumentCountToolStripMenuItem.Name = "DocumentCountToolStripMenuItem"
-        Me.DocumentCountToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.DocumentCountToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.DocumentCountToolStripMenuItem.Tag = "FormReportDocumentCount"
         Me.DocumentCountToolStripMenuItem.Text = "Document Count"
         Me.DocumentCountToolStripMenuItem.Visible = False
@@ -989,7 +1040,7 @@ Partial Class FormMenu
         '
         Me.SearchInterfaceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContractToolStripMenuItem, Me.DocumentToolStripMenuItem})
         Me.SearchInterfaceToolStripMenuItem.Name = "SearchInterfaceToolStripMenuItem"
-        Me.SearchInterfaceToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SearchInterfaceToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SearchInterfaceToolStripMenuItem.Text = "Status Summary Report"
         '
         'ContractToolStripMenuItem
@@ -1009,38 +1060,45 @@ Partial Class FormMenu
         'SearchDocumentToolStripMenuItem
         '
         Me.SearchDocumentToolStripMenuItem.Name = "SearchDocumentToolStripMenuItem"
-        Me.SearchDocumentToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SearchDocumentToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SearchDocumentToolStripMenuItem.Tag = "FormSearchDocument"
         Me.SearchDocumentToolStripMenuItem.Text = "Search Document"
         '
         'MasterSupplierToolStripMenuItem
         '
         Me.MasterSupplierToolStripMenuItem.Name = "MasterSupplierToolStripMenuItem"
-        Me.MasterSupplierToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.MasterSupplierToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.MasterSupplierToolStripMenuItem.Tag = "FormReportMasterSupplier"
         Me.MasterSupplierToolStripMenuItem.Text = "Supplier Master List"
         '
         'AssetsPurchaseReportToolStripMenuItem
         '
         Me.AssetsPurchaseReportToolStripMenuItem.Name = "AssetsPurchaseReportToolStripMenuItem"
-        Me.AssetsPurchaseReportToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.AssetsPurchaseReportToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.AssetsPurchaseReportToolStripMenuItem.Text = "Assets Purchase Report"
         Me.AssetsPurchaseReportToolStripMenuItem.Visible = False
         '
         'SupplierFamilyAssignmenttToolStripMenuItem
         '
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Name = "SupplierFamilyAssignmenttToolStripMenuItem"
-        Me.SupplierFamilyAssignmenttToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.SupplierFamilyAssignmenttToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Tag = "FormReportVendorFamilyAssignment"
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Text = "Supplier Family Assignment"
         '
         'CMMF3750ToolStripMenuItem
         '
         Me.CMMF3750ToolStripMenuItem.Name = "CMMF3750ToolStripMenuItem"
-        Me.CMMF3750ToolStripMenuItem.Size = New System.Drawing.Size(242, 22)
+        Me.CMMF3750ToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
         Me.CMMF3750ToolStripMenuItem.Tag = "FormReportCMMF3750"
         Me.CMMF3750ToolStripMenuItem.Text = "CMMF 3750"
         Me.CMMF3750ToolStripMenuItem.Visible = False
+        '
+        'SupplierListWithTONQSUSSLToolStripMenuItem
+        '
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Name = "SupplierListWithTONQSUSSLToolStripMenuItem"
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Tag = "FormSupplierListTO"
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Text = "Supplier List with TO, NQSU, SSL"
         '
         'UserGuideToolStripMenuItem
         '
@@ -1086,16 +1144,17 @@ Partial Class FormMenu
         'ToolStripContainer1.ContentPanel
         '
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.FlowLayoutPanel1)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1005, 633)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1025, 632)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(1005, 658)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(1025, 657)
         Me.ToolStripContainer1.TabIndex = 2
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
         'FlowLayoutPanel1
         '
+        Me.FlowLayoutPanel1.AutoScroll = True
         Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.White
         Me.FlowLayoutPanel1.Controls.Add(Me.Label1)
         Me.FlowLayoutPanel1.Controls.Add(Me.GroupBox2)
@@ -1104,7 +1163,7 @@ Partial Class FormMenu
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1005, 633)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(1025, 632)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'Label1
@@ -1132,8 +1191,8 @@ Partial Class FormMenu
         '
         Me.FlowLayoutPanel3.Controls.Add(Me.Panel2)
         Me.FlowLayoutPanel3.Controls.Add(Me.Panel3)
-        Me.FlowLayoutPanel3.Controls.Add(Me.Panel8)
-        Me.FlowLayoutPanel3.Controls.Add(Me.Panel9)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel14)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Panel15)
         Me.FlowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel3.Location = New System.Drawing.Point(3, 16)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
@@ -1248,110 +1307,122 @@ Partial Class FormMenu
         Me.Button3.TabIndex = 0
         Me.Button3.UseVisualStyleBackColor = False
         '
-        'Panel8
+        'Panel14
         '
-        Me.Panel8.Controls.Add(Me.Label26)
-        Me.Panel8.Controls.Add(Me.Label27)
-        Me.Panel8.Controls.Add(Me.Label29)
-        Me.Panel8.Controls.Add(Me.Button8)
-        Me.Panel8.Location = New System.Drawing.Point(397, 3)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(191, 172)
-        Me.Panel8.TabIndex = 3
+        Me.Panel14.Controls.Add(Me.Label32)
+        Me.Panel14.Controls.Add(Me.Label33)
+        Me.Panel14.Controls.Add(Me.Label34)
+        Me.Panel14.Controls.Add(Me.Label35)
+        Me.Panel14.Controls.Add(Me.Button14)
+        Me.Panel14.Location = New System.Drawing.Point(397, 3)
+        Me.Panel14.Name = "Panel14"
+        Me.Panel14.Size = New System.Drawing.Size(191, 172)
+        Me.Panel14.TabIndex = 2
         '
-        'Label26
+        'Label32
         '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(3, 142)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(119, 13)
-        Me.Label26.TabIndex = 4
-        Me.Label26.Text = "Review or add payment"
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(3, 155)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(167, 13)
+        Me.Label32.TabIndex = 5
+        Me.Label32.Text = "-Upload New Supplier Documents"
         '
-        'Label27
+        'Label33
         '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(3, 129)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(166, 13)
-        Me.Label27.TabIndex = 3
-        Me.Label27.Text = "- Find existing Asset Purchase for "
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(3, 142)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(155, 13)
+        Me.Label33.TabIndex = 4
+        Me.Label33.Text = "-Input New Supplier Information"
         '
-        'Label29
+        'Label34
         '
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(6, 90)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(182, 39)
-        Me.Label29.TabIndex = 1
-        Me.Label29.Text = "Search existing Asset Purchase and update"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(3, 129)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(141, 13)
+        Me.Label34.TabIndex = 3
+        Me.Label34.Text = "-Define Supplier Short Name"
         '
-        'Button8
+        'Label35
         '
-        Me.Button8.BackColor = System.Drawing.Color.White
-        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
-        Me.Button8.Location = New System.Drawing.Point(41, 3)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(105, 84)
-        Me.Button8.TabIndex = 0
-        Me.Button8.UseVisualStyleBackColor = False
+        Me.Label35.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Location = New System.Drawing.Point(6, 90)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(182, 28)
+        Me.Label35.TabIndex = 1
+        Me.Label35.Text = "Create New Supplier"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
-        'Panel9
+        'Button14
         '
-        Me.Panel9.Controls.Add(Me.Label3)
-        Me.Panel9.Controls.Add(Me.Label8)
-        Me.Panel9.Controls.Add(Me.Label14)
-        Me.Panel9.Controls.Add(Me.Button9)
-        Me.Panel9.Location = New System.Drawing.Point(594, 3)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(191, 172)
-        Me.Panel9.TabIndex = 4
+        Me.Button14.BackColor = System.Drawing.Color.White
+        Me.Button14.BackgroundImage = CType(resources.GetObject("Button14.BackgroundImage"), System.Drawing.Image)
+        Me.Button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button14.Location = New System.Drawing.Point(41, 3)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(105, 84)
+        Me.Button14.TabIndex = 0
+        Me.Button14.UseVisualStyleBackColor = False
         '
-        'Label3
+        'Panel15
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 142)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(89, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Transfer a tooling"
+        Me.Panel15.Controls.Add(Me.Label37)
+        Me.Panel15.Controls.Add(Me.Label38)
+        Me.Panel15.Controls.Add(Me.Label39)
+        Me.Panel15.Controls.Add(Me.Button15)
+        Me.Panel15.Location = New System.Drawing.Point(594, 3)
+        Me.Panel15.Name = "Panel15"
+        Me.Panel15.Size = New System.Drawing.Size(191, 172)
+        Me.Panel15.TabIndex = 3
         '
-        'Label8
+        'Label37
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 129)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(131, 13)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "- Dispose, scrap (EOL), or "
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(3, 142)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(165, 13)
+        Me.Label37.TabIndex = 4
+        Me.Label37.Text = "-Upload Documents for Validation"
         '
-        'Label14
+        'Label38
         '
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(6, 90)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(182, 39)
-        Me.Label14.TabIndex = 1
-        Me.Label14.Text = "Search Tooling and Update Status"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(3, 129)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(133, 13)
+        Me.Label38.TabIndex = 3
+        Me.Label38.Text = "-Input Updated Information"
         '
-        'Button9
+        'Label39
         '
-        Me.Button9.BackColor = System.Drawing.Color.White
-        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
-        Me.Button9.Location = New System.Drawing.Point(41, 3)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(105, 84)
-        Me.Button9.TabIndex = 0
-        Me.Button9.UseVisualStyleBackColor = False
+        Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label39.Location = New System.Drawing.Point(6, 90)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(182, 28)
+        Me.Label39.TabIndex = 1
+        Me.Label39.Text = "Modify Supplier Information"
+        Me.Label39.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button15
+        '
+        Me.Button15.BackColor = System.Drawing.Color.White
+        Me.Button15.BackgroundImage = CType(resources.GetObject("Button15.BackgroundImage"), System.Drawing.Image)
+        Me.Button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button15.Location = New System.Drawing.Point(41, 3)
+        Me.Button15.Name = "Button15"
+        Me.Button15.Size = New System.Drawing.Size(105, 84)
+        Me.Button15.TabIndex = 0
+        Me.Button15.UseVisualStyleBackColor = False
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.FlowLayoutPanel4)
         Me.GroupBox3.Location = New System.Drawing.Point(3, 229)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(996, 197)
+        Me.GroupBox3.Size = New System.Drawing.Size(996, 374)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Search / Report"
@@ -1360,12 +1431,16 @@ Partial Class FormMenu
         '
         Me.FlowLayoutPanel4.Controls.Add(Me.Panel1)
         Me.FlowLayoutPanel4.Controls.Add(Me.Panel4)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel16)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel17)
         Me.FlowLayoutPanel4.Controls.Add(Me.Panel7)
         Me.FlowLayoutPanel4.Controls.Add(Me.Panel10)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel9)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Panel8)
         Me.FlowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel4.Location = New System.Drawing.Point(3, 16)
         Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
-        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(990, 178)
+        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(990, 355)
         Me.FlowLayoutPanel4.TabIndex = 0
         '
         'Panel1
@@ -1465,13 +1540,113 @@ Partial Class FormMenu
         Me.Button4.TabIndex = 0
         Me.Button4.UseVisualStyleBackColor = False
         '
+        'Panel16
+        '
+        Me.Panel16.Controls.Add(Me.Label36)
+        Me.Panel16.Controls.Add(Me.Label40)
+        Me.Panel16.Controls.Add(Me.Label41)
+        Me.Panel16.Controls.Add(Me.Button16)
+        Me.Panel16.Location = New System.Drawing.Point(397, 3)
+        Me.Panel16.Name = "Panel16"
+        Me.Panel16.Size = New System.Drawing.Size(191, 172)
+        Me.Panel16.TabIndex = 5
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(3, 142)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(165, 13)
+        Me.Label36.TabIndex = 4
+        Me.Label36.Text = "- Search Supplier Creation History"
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(3, 129)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(149, 13)
+        Me.Label40.TabIndex = 3
+        Me.Label40.Text = "- Find Supplier Creation Status"
+        '
+        'Label41
+        '
+        Me.Label41.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label41.Location = New System.Drawing.Point(6, 90)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(182, 39)
+        Me.Label41.TabIndex = 1
+        Me.Label41.Text = "Find Supplier Creation"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button16
+        '
+        Me.Button16.BackColor = System.Drawing.Color.White
+        Me.Button16.BackgroundImage = CType(resources.GetObject("Button16.BackgroundImage"), System.Drawing.Image)
+        Me.Button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button16.Location = New System.Drawing.Point(41, 3)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(105, 84)
+        Me.Button16.TabIndex = 0
+        Me.Button16.UseVisualStyleBackColor = False
+        '
+        'Panel17
+        '
+        Me.Panel17.Controls.Add(Me.Label42)
+        Me.Panel17.Controls.Add(Me.Label43)
+        Me.Panel17.Controls.Add(Me.Label44)
+        Me.Panel17.Controls.Add(Me.Button17)
+        Me.Panel17.Location = New System.Drawing.Point(594, 3)
+        Me.Panel17.Name = "Panel17"
+        Me.Panel17.Size = New System.Drawing.Size(191, 172)
+        Me.Panel17.TabIndex = 6
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(3, 142)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(183, 13)
+        Me.Label42.TabIndex = 4
+        Me.Label42.Text = "- Search Supplier Modification History"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Location = New System.Drawing.Point(3, 129)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(167, 13)
+        Me.Label43.TabIndex = 3
+        Me.Label43.Text = "- Find Supplier Modification Status"
+        '
+        'Label44
+        '
+        Me.Label44.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label44.Location = New System.Drawing.Point(6, 90)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(182, 39)
+        Me.Label44.TabIndex = 1
+        Me.Label44.Text = "Find Supplier Modification"
+        Me.Label44.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button17
+        '
+        Me.Button17.BackColor = System.Drawing.Color.White
+        Me.Button17.BackgroundImage = CType(resources.GetObject("Button17.BackgroundImage"), System.Drawing.Image)
+        Me.Button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button17.Location = New System.Drawing.Point(41, 3)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(105, 84)
+        Me.Button17.TabIndex = 0
+        Me.Button17.UseVisualStyleBackColor = False
+        '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.Label22)
         Me.Panel7.Controls.Add(Me.Label23)
         Me.Panel7.Controls.Add(Me.Label25)
         Me.Panel7.Controls.Add(Me.Button7)
-        Me.Panel7.Location = New System.Drawing.Point(397, 3)
+        Me.Panel7.Location = New System.Drawing.Point(791, 3)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(191, 172)
         Me.Panel7.TabIndex = 1
@@ -1519,7 +1694,7 @@ Partial Class FormMenu
         Me.Panel10.Controls.Add(Me.Label20)
         Me.Panel10.Controls.Add(Me.Label24)
         Me.Panel10.Controls.Add(Me.Button10)
-        Me.Panel10.Location = New System.Drawing.Point(594, 3)
+        Me.Panel10.Location = New System.Drawing.Point(3, 181)
         Me.Panel10.Name = "Panel10"
         Me.Panel10.Size = New System.Drawing.Size(191, 172)
         Me.Panel10.TabIndex = 3
@@ -1562,10 +1737,108 @@ Partial Class FormMenu
         Me.Button10.TabIndex = 0
         Me.Button10.UseVisualStyleBackColor = True
         '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.Label3)
+        Me.Panel9.Controls.Add(Me.Label8)
+        Me.Panel9.Controls.Add(Me.Label14)
+        Me.Panel9.Controls.Add(Me.Button9)
+        Me.Panel9.Location = New System.Drawing.Point(200, 181)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(191, 172)
+        Me.Panel9.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 142)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(89, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Transfer a tooling"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(3, 129)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(131, 13)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "- Dispose, scrap (EOL), or "
+        '
+        'Label14
+        '
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(6, 90)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(182, 39)
+        Me.Label14.TabIndex = 1
+        Me.Label14.Text = "Search Tooling and Update Status"
+        Me.Label14.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button9
+        '
+        Me.Button9.BackColor = System.Drawing.Color.White
+        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
+        Me.Button9.Location = New System.Drawing.Point(41, 3)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(105, 84)
+        Me.Button9.TabIndex = 0
+        Me.Button9.UseVisualStyleBackColor = False
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.Label26)
+        Me.Panel8.Controls.Add(Me.Label27)
+        Me.Panel8.Controls.Add(Me.Label29)
+        Me.Panel8.Controls.Add(Me.Button8)
+        Me.Panel8.Location = New System.Drawing.Point(397, 181)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(191, 172)
+        Me.Panel8.TabIndex = 3
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(3, 142)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(119, 13)
+        Me.Label26.TabIndex = 4
+        Me.Label26.Text = "Review or add payment"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(3, 129)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(166, 13)
+        Me.Label27.TabIndex = 3
+        Me.Label27.Text = "- Find existing Asset Purchase for "
+        '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(6, 90)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(182, 39)
+        Me.Label29.TabIndex = 1
+        Me.Label29.Text = "Search existing Asset Purchase and update"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Button8
+        '
+        Me.Button8.BackColor = System.Drawing.Color.White
+        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
+        Me.Button8.Location = New System.Drawing.Point(41, 3)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(105, 84)
+        Me.Button8.TabIndex = 0
+        Me.Button8.UseVisualStyleBackColor = False
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel5)
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 432)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 609)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(996, 197)
         Me.GroupBox4.TabIndex = 3
@@ -1734,7 +2007,7 @@ Partial Class FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1005, 682)
+        Me.ClientSize = New System.Drawing.Size(1025, 681)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -1754,20 +2027,28 @@ Partial Class FormMenu
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
-        Me.Panel9.ResumeLayout(False)
-        Me.Panel9.PerformLayout()
+        Me.Panel14.ResumeLayout(False)
+        Me.Panel14.PerformLayout()
+        Me.Panel15.ResumeLayout(False)
+        Me.Panel15.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.FlowLayoutPanel4.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
+        Me.Panel16.ResumeLayout(False)
+        Me.Panel16.PerformLayout()
+        Me.Panel17.ResumeLayout(False)
+        Me.Panel17.PerformLayout()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel10.ResumeLayout(False)
         Me.Panel10.PerformLayout()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
@@ -1966,5 +2247,30 @@ Partial Class FormMenu
     Friend WithEvents FindNewVendorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CurrencyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CMMF3750ToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Panel14 As System.Windows.Forms.Panel
+    Friend WithEvents Label32 As System.Windows.Forms.Label
+    Friend WithEvents Label33 As System.Windows.Forms.Label
+    Friend WithEvents Label34 As System.Windows.Forms.Label
+    Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents Button14 As System.Windows.Forms.Button
+    Friend WithEvents Panel15 As System.Windows.Forms.Panel
+    Friend WithEvents Label37 As System.Windows.Forms.Label
+    Friend WithEvents Label38 As System.Windows.Forms.Label
+    Friend WithEvents Label39 As System.Windows.Forms.Label
+    Friend WithEvents Button15 As System.Windows.Forms.Button
+    Friend WithEvents Panel16 As System.Windows.Forms.Panel
+    Friend WithEvents Label36 As System.Windows.Forms.Label
+    Friend WithEvents Label40 As System.Windows.Forms.Label
+    Friend WithEvents Label41 As System.Windows.Forms.Label
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Panel17 As System.Windows.Forms.Panel
+    Friend WithEvents Label42 As System.Windows.Forms.Label
+    Friend WithEvents Label43 As System.Windows.Forms.Label
+    Friend WithEvents Label44 As System.Windows.Forms.Label
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents ApprovalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SupplierInformationApprovalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AssetPurchaseApprovalToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SupplierListWithTONQSUSSLToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

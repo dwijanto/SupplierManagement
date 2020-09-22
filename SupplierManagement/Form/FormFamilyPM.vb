@@ -126,4 +126,7 @@ Public Class FormFamilyPM
         myAdapter.save()
     End Sub
 
+    Private Sub ToolStripTextBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.Click
+
+    End Sub
 End Class

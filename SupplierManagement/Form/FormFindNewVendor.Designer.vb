@@ -45,7 +45,6 @@ Partial Class FormFindNewVendor
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,6 +53,7 @@ Partial Class FormFindNewVendor
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -137,7 +137,7 @@ Partial Class FormFindNewVendor
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripComboBox1, Me.ToolStripTextBox1, Me.ToolStripButton3})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(554, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(585, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1
@@ -162,7 +162,7 @@ Partial Class FormFindNewVendor
         '
         Me.ToolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ToolStripComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ToolStripComboBox1.Items.AddRange(New Object() {"Vendor Name", "Short Name", "Applicant Name", "Vendor Code", "Latest Status", "Creator"})
+        Me.ToolStripComboBox1.Items.AddRange(New Object() {"All", "Vendor Name", "Short Name", "Applicant Name", "Vendor Code", "Latest Status", "Creator"})
         Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
         Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 25)
         '
@@ -234,13 +234,6 @@ Partial Class FormFindNewVendor
         Me.DataGridViewTextBoxColumn8.HeaderText = "Creator"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "modifiedfield"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Modification Field"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.Width = 300
-        '
         'Column1
         '
         Me.Column1.DataPropertyName = "suppliermodificationid"
@@ -302,6 +295,13 @@ Partial Class FormFindNewVendor
         Me.Column7.HeaderText = "Creator"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "modifiedfield"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Modification Field"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.Width = 300
         '
         'FormFindNewVendor
         '

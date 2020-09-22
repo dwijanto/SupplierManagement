@@ -409,4 +409,64 @@ Public Class FormMasterVendor
         Dim myform = New FormHistorySPMPMAssignment
         myform.ShowDialog()
     End Sub
+
+    Private Sub ToolStripButton7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton7.Click
+        'loadReport()
+        DoReport()
+    End Sub
+
+    Private Sub loadReport()
+        If Not myThread.IsAlive Then
+            ToolStripStatusLabel1.Text = ""
+
+            myThread = New Thread(AddressOf DoReport)
+            myThread.SetApartmentState(ApartmentState.STA)
+            myThread.Start()
+        Else
+            MessageBox.Show("Please wait until the current process is finished.")
+        End If
+    End Sub
+
+    Sub DoReport()
+        ProgressReport(6, "Marquee")
+        ProgressReport(1, "Loading Data.")
+
+        'DS = New DataSet
+
+        Dim mymessage As String = String.Empty
+
+
+        Dim Sqlstr = "select vendorcode,vendorname,shortname2 as shortname,latestupdate,vendornameold,shortname2old as shortname,latestupdateold from vendor_audit;"
+
+        Dim mysaveform As New SaveFileDialog
+        mysaveform.FileName = String.Format("ReportHistoryVendor{0:yyyyMMdd}.xlsx", Date.Today)
+
+        If (mysaveform.ShowDialog() = Windows.Forms.DialogResult.OK) Then
+            Dim filename = IO.Path.GetDirectoryName(mysaveform.FileName)
+            Dim reportname = IO.Path.GetFileName(mysaveform.FileName)
+
+            Dim datasheet As Integer = 1
+
+            Dim mycallback As FormatReportDelegate = AddressOf FormattingReport
+            Dim PivotCallback As FormatReportDelegate = AddressOf PivotTable
+
+            Dim myreport As New ExportToExcelFile(Me, Sqlstr, filename, reportname, mycallback, PivotCallback, datasheet, "\templates\ExcelTemplate.xltx")
+            myreport.Run(Me, New System.EventArgs)
+        End If
+
+        ProgressReport(1, "Loading Data.Done!")
+        ProgressReport(5, "Continuous")
+    End Sub
+   
+    Private Sub FormattingReport(ByRef sender As Object, ByRef e As EventArgs)
+        'Throw New NotImplementedException
+    End Sub
+
+    Private Sub PivotTable(ByRef sender As Object, ByRef e As EventArgs)
+        'Throw New NotImplementedException
+    End Sub
+
+    Private Sub DataGridView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
+
+    End Sub
 End Class
