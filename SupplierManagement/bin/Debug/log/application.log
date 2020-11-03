@@ -5531,3 +5531,12 @@ Parameter name: sourceFileName**
 2020-05-07 04:30:58.405 PM	ToolStripButton2_Click	**DS Merged**
 2020-05-07 04:31:01.199 PM	ToolStripButton2_Click	**Copy File**
 2020-05-07 04:31:03.373 PM	ToolStripButton2_Click	**End Submit***
+2020-10-06 09:30:04.957 AM	doWork	--------Start----------
+2020-10-06 09:30:42.652 AM	doWork	Send email to AccountingDept
+2020-10-06 09:41:44.060 AM	doWork	--------Start----------
+2020-10-06 09:41:57.569 AM	doWork	Send email to AccountingDept
+2020-10-06 09:49:59.911 AM	doWork	Send email to CompletedInvestmentApproval
+2020-10-06 09:55:02.032 AM	send	Create SMTPClient
+2020-10-06 09:55:08.459 AM	send	SMTP Send
+2020-10-06 09:55:18.581 AM	send	SMTP Send Done
+2020-10-06 09:56:06.884 AM	doWork	Send email Amortization to ControllingDept

@@ -21,6 +21,7 @@ Public Enum AssetPurchaseStatusEnum
     StatusLogisticsEndEdit = 11
     StatusCompleted = 12
     StatusCancelled = 13
+    StatusPendingPayment = 14
 End Enum
 
 Public Enum PaymentMethodIDEnum
@@ -84,7 +85,7 @@ Public Class FormOtherTask
             ProgressReport(6, "Loading..")
 
             If HelperClass1.UserInfo.IsAdmin Then
-                MyCriteria = String.Format(" where status in({0:d},{1:d},{2:d},{3:d})", AssetPurchaseStatusEnum.StatusNew, AssetPurchaseStatusEnum.StatusRejectedByControlling, AssetPurchaseStatusEnum.StatusRejectedByPurchasing, AssetPurchaseStatusEnum.StatusReSubmit)
+                MyCriteria = String.Format(" where status in({0:d},{1:d},{2:d},{3:d},{4:d})", AssetPurchaseStatusEnum.StatusNew, AssetPurchaseStatusEnum.StatusRejectedByControlling, AssetPurchaseStatusEnum.StatusRejectedByPurchasing, AssetPurchaseStatusEnum.StatusReSubmit, AssetPurchaseStatusEnum.StatusPendingPayment)
                 HIstoryCriteria = " where status > 1"
             ElseIf HelperClass1.UserInfo.IsFinance Then
                 'Get Group

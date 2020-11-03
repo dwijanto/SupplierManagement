@@ -726,7 +726,8 @@ Public Class CreatorInvestmentBM
                                     n.Item("amortperunit_2"), n.Item("amortperiod_2"), n.Item("noofinvoice"), n.Item("totalinvoiceamount"), n.Item("totalpaid"), n.Item("totalofnotoolings"), n.Item("familyname"), n.Item("sbuname2"), n.Item("applicantdate"), n.Item("creatorname"), n.Item("approvalname")))
             If n.Item("status") = AssetPurchaseStatusEnum.StatusValidatedByPurchasing Then
                 n.Item("sendcomplete") = True
-                n.Item("status") = AssetPurchaseStatusEnum.StatusCompleted
+                'n.Item("status") = AssetPurchaseStatusEnum.StatusCompleted
+                n.Item("status") = AssetPurchaseStatusEnum.StatusPendingPayment
             End If
         Next
         APPBS.EndEdit()

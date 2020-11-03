@@ -14,7 +14,7 @@ Public Class FormMasterVendor
     Dim bsSSM As BindingSource
     Dim bsPM As BindingSource
     Dim myDict As Dictionary(Of String, Integer)
-    Dim myFields As String() = {"vendorcode", "vendorname", "shortname", "ssm", "pm"}
+    Dim myFields As String() = {"vendorcode", "vendorname", "shortname2", "ssm", "pm"}
 
 
     Private Sub FormSupplierCategory_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -467,6 +467,10 @@ Public Class FormMasterVendor
     End Sub
 
     Private Sub DataGridView1_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.DoubleClick
+
+    End Sub
+
+    Private Sub ToolStripTextBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripTextBox1.Click
 
     End Sub
 End Class

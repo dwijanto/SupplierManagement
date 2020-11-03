@@ -71,13 +71,14 @@ Partial Class FormSupplierListTO
         '
         Me.ToolStripStatusLabel2.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(481, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(450, 17)
         Me.ToolStripStatusLabel2.Spring = True
         '
         'ToolStripProgressBar1
         '
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.ToolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         '
         'Button1
         '

@@ -17,7 +17,7 @@ Public Class FormSupplierListTO
     Dim AppliedSupplierNameFilter As String = String.Empty
     Dim AppliedProductTypeFilter As String = String.Empty
     Dim GroupBy As String = "v.shortname"
-    Dim VendorInfo As String = "doc.getvendorcode(shortname,'status  in (Active supplier')"
+    Dim VendorInfo As String = "doc.getvendorcode(shortname,'(Active supplier,Active tooling supplier)')"
 
     Dim AllFilter As New StringBuilder
     Dim NQSUFilter As New StringBuilder
@@ -43,7 +43,7 @@ Public Class FormSupplierListTO
         Dim sb As New StringBuilder
         Dim mymessage As String = String.Empty
         Dim counter As Integer = 1
-
+        ProgressReport(6, "Preparing Helper Data. Please wait..")
 
         GetFilter()
 
@@ -207,6 +207,7 @@ Public Class FormSupplierListTO
             Dim myreport As New ExportToExcelFile(Me, sqlstr, filename, reportname, mycallback, PivotCallback, datasheet, "\templates\SupplierListTOTemplate.xltx")
             myreport.Run(Me, e)
         End If
+        ProgressReport(5, "Preparing Helper Data. Please wait..")
     End Sub
 
     Private Sub FormattingReport(ByRef sender As Object, ByRef e As EventArgs)

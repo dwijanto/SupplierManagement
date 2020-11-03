@@ -25,6 +25,11 @@ Partial Class FormMasterVendor
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMasterVendor))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
@@ -62,11 +67,6 @@ Partial Class FormMasterVendor
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -99,6 +99,46 @@ Partial Class FormMasterVendor
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(871, 322)
         Me.DataGridView1.TabIndex = 149
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "vendorcode"
+        Me.Column1.HeaderText = "Vendor Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "vendorname"
+        Me.Column3.HeaderText = "Vendor Name"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 300
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "shortname2"
+        Me.Column5.HeaderText = "Short Name"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "ssm"
+        Me.Column10.HeaderText = "SPM"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        Me.Column10.Visible = False
+        Me.Column10.Width = 150
+        '
+        'Column11
+        '
+        Me.Column11.DataPropertyName = "pm"
+        Me.Column11.HeaderText = "PM"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        Me.Column11.Visible = False
+        Me.Column11.Width = 150
         '
         'ToolStrip1
         '
@@ -325,11 +365,11 @@ Partial Class FormMasterVendor
         '
         Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(151, 447)
+        Me.Label9.Location = New System.Drawing.Point(121, 447)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(63, 13)
+        Me.Label9.Size = New System.Drawing.Size(93, 13)
         Me.Label9.TabIndex = 170
-        Me.Label9.Text = "Short Name"
+        Me.Label9.Text = "Short Name (SAP)"
         '
         'Label10
         '
@@ -386,23 +426,25 @@ Partial Class FormMasterVendor
         '
         Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(142, 473)
+        Me.Label3.Location = New System.Drawing.Point(154, 473)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(72, 13)
+        Me.Label3.Size = New System.Drawing.Size(63, 13)
         Me.Label3.TabIndex = 177
-        Me.Label3.Text = "Short Name 2"
+        Me.Label3.Text = "Short Name"
         '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "vendorcode"
         Me.DataGridViewTextBoxColumn1.HeaderText = "Vendor Code"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         '
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "vendorname"
         Me.DataGridViewTextBoxColumn2.HeaderText = "Vendor Name"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
         Me.DataGridViewTextBoxColumn2.Width = 300
         '
         'DataGridViewTextBoxColumn3
@@ -410,12 +452,14 @@ Partial Class FormMasterVendor
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "shortname"
         Me.DataGridViewTextBoxColumn3.HeaderText = "Short Name"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "ssm"
         Me.DataGridViewTextBoxColumn4.HeaderText = "SPM"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
         Me.DataGridViewTextBoxColumn4.Visible = False
         Me.DataGridViewTextBoxColumn4.Width = 150
         '
@@ -424,48 +468,9 @@ Partial Class FormMasterVendor
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "pm"
         Me.DataGridViewTextBoxColumn5.HeaderText = "PM"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Visible = False
         Me.DataGridViewTextBoxColumn5.Width = 150
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "vendorcode"
-        Me.Column1.HeaderText = "Vendor Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "vendorname"
-        Me.Column3.HeaderText = "Vendor Name"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 300
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "shortname"
-        Me.Column5.HeaderText = "Short Name"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "ssm"
-        Me.Column10.HeaderText = "SPM"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        Me.Column10.Visible = False
-        Me.Column10.Width = 150
-        '
-        'Column11
-        '
-        Me.Column11.DataPropertyName = "pm"
-        Me.Column11.HeaderText = "PM"
-        Me.Column11.Name = "Column11"
-        Me.Column11.ReadOnly = True
-        Me.Column11.Visible = False
-        Me.Column11.Width = 150
         '
         'FormMasterVendor
         '

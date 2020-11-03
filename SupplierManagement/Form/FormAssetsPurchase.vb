@@ -1033,7 +1033,7 @@ Public Class FormAssetsPurchase
                             ToolStripButton7.Visible = drv.Item("status") = AssetPurchaseStatusEnum.StatusNew Or drv.Item("status") = AssetPurchaseStatusEnum.StatusReSubmit Or drv.Item("status") = AssetPurchaseStatusEnum.StatusFirstValidatedByPurchasing
                             ToolStripButton8.Visible = False
                             ToolStripButton9.Visible = HelperClass1.UserInfo.IsAdmin
-                            If HelperClass1.UserInfo.IsAdmin Then ToolStripButton8.Visible = drv.Item("status") = AssetPurchaseStatusEnum.StatusValidatedByControlling
+                            If HelperClass1.UserInfo.IsAdmin Then ToolStripButton8.Visible = drv.Item("status") = AssetPurchaseStatusEnum.StatusValidatedByControlling Or drv.Item("status") = AssetPurchaseStatusEnum.StatusPendingPayment
                         End If
                         enabledComponents()
                     End If
@@ -1240,10 +1240,18 @@ Public Class FormAssetsPurchase
             If Me.validate Then
                 Try
                     'get modified rows, send all rows to stored procedure. let the stored procedure create a new record.
+                    Dim mydrv As DataRowView = APBS.Current
                     If Not DateTimePicker2.Checked Then
-                        Dim drv As DataRowView = APBS.Current
-                        drv.Row.Item("sapcapdate") = DBNull.Value
+
+                        mydrv.Row.Item("sapcapdate") = DBNull.Value
                     End If
+
+                    'Check Status if Pending Payment then Change it to Compeleted -- This modification moved to button Complete
+                    'If mydrv.Row.Item("status") = AssetPurchaseStatusEnum.StatusPendingPayment Then
+                    '    mydrv.Row.Item("status") = AssetPurchaseStatusEnum.StatusCompleted
+                    'End If
+
+
                     APBS.EndEdit() 'This is important, use this for merge
                     ToolingProjectHelperBS.EndEdit()
                     ToolingListDTBS.EndEdit()
@@ -2191,7 +2199,14 @@ Public Class FormAssetsPurchase
                     Else
                         Exit Sub
                     End If                    
-                    
+                Case AssetPurchaseStatusEnum.StatusPendingPayment
+                    Dim mydialog As New DialogAssetPurchaseFinance(drv)
+                    If mydialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                        drv.Item("status") = AssetPurchaseStatusEnum.StatusCompleted
+                        approvaldrv.Row.Item("remark") = "Admin"
+                    Else
+                        Exit Sub
+                    End If
             End Select
             approvaldrv.Row.Item("assetpurchaseid") = drv.Item("id")
             approvaldrv.Row.Item("status") = drv.Item("status")
