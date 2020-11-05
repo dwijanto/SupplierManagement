@@ -560,7 +560,7 @@ Public Class FormOtherTask
     End Sub
 
     Private Sub applyFilter()
-        Dim myarr() = {"applicantname", "vendorname", "shortname", "paymentmethodname"}
+        Dim myarr() = {"applicantname", "vendorname", "shortname", "paymentmethodname", "vendorcodesearch", "invoice", "assetpurchaseid", "aeb"}
         If ToolStripComboBox1.SelectedIndex >= 0 Then
             Dim myfilter = String.Format("{0} like '*{1}*'", myarr(ToolStripComboBox1.SelectedIndex), ToolStripTextBox1.Text)
             BSHistory.Filter = myfilter

@@ -59,7 +59,7 @@ Public Class AssetPurchaseModel
             'mysb.Append(String.Format("select u.*,doc.getassetpurchasestatusname(u.status) as statusname from {0} u {1} order by {2}", TableName, Criteria, SortField))
             mysb.Append(String.Format("select u.*,v.vendorname::character varying,v.shortname,tp.projectcode,tp.projectname,doc.getassetpurchasestatusname(u.status) as statusname," &
                                       " doc.getcategoryofassetname(u.categoryofasset) as categoryofassetname,doc.gettypeofinvestmentname(u.typeofinvestment) as typeofinvestmentname," &
-                                      " doc.getpaymentmethodname(u.paymentmethodid) as paymentmethodname  from {0} u " &
+                                      " doc.getpaymentmethodname(u.paymentmethodid) as paymentmethodname,doc.getinvoiceno(u.id) as invoice,v.vendorcode::text as vendorcodesearch from {0} u " &
                                       " left join doc.toolingproject tp on tp.id = u.projectid " &
                                       " left join vendor v on v.vendorcode = u.vendorcode {1} order by {2}", TableName, Criteria, SortField))
             sqlstr = mysb.ToString
