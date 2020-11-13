@@ -79,8 +79,8 @@ Public Class ExportVendorInformationModification
                     oSheet.Range("banknameold").Value = dtdrv.Row.Item("oldvalue")
                     oSheet.Range("banknamenew").Value = dtdrv.Row.Item("newvalue")
                 Case 12
-                    oSheet.Range("bankaddressnew").Value = dtdrv.Row.Item("oldvalue")
-                    oSheet.Range("bankaddressold").Value = dtdrv.Row.Item("newvalue")
+                    oSheet.Range("bankaddressold").Value = dtdrv.Row.Item("oldvalue")
+                    oSheet.Range("bankaddressnew").Value = dtdrv.Row.Item("newvalue")
                 Case 13
                     oSheet.Range("bankswiftcodeold").Value = dtdrv.Row.Item("oldvalue")
                     oSheet.Range("bankswiftcodenew").Value = dtdrv.Row.Item("newvalue")
