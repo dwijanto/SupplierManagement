@@ -37,12 +37,12 @@ Public Class ClassSupplierDashBoard
     Sub DoWork()
         If HelperClass1.UserInfo.IsAdmin Then
             sb.Append("select null::text as shortname union all (select distinct shortname::text from vendor  where not shortname isnull order by shortname);")
-            sb.Append("select null as vendorcode,''::text as description,''::text as vendorname,null::text as shortname union all (select vendorcode, vendorcode::text || ' - ' || vendorname::text as description,vendorname::text,shortname::text  from vendor order by vendorname);")
+            sb.Append("select null as vendorcode,''::text as description,''::text as vendorname,null::text as shortname,null::text as shortname2 union all (select vendorcode, vendorcode::text || ' - ' || vendorname::text as description,vendorname::text,shortname::text,shortname2::text  from vendor order by vendorname);")
 
         Else
             sb.Append(String.Format("select null::text as shortname union all  (select distinct shortname::text from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid" &
                  " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$' and not shortname isnull order by shortname);", HelperClass1.UserInfo.userid))
-            sb.Append(String.Format("select null as vendorcode,''::text as description,''::text as vendorname,null::text as shortname union all (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text  from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid" &
+            sb.Append(String.Format("select null as vendorcode,''::text as description,''::text as vendorname,null::text as shortname,null::text as shortname2 union all (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text,shortname2::text  from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid" &
                       " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$' and not shortname isnull  order by vendorname);", HelperClass1.UserInfo.userid))
 
         End If

@@ -8,6 +8,7 @@ Public Class UCSupplierDashboard
     Dim BrandBSFilter As String
     Dim RangeCodeBSFilter As String
 
+
     Delegate Sub ProgressReportDelegate(ByVal id As Integer, ByVal message As String)
 
     Dim myThread As New System.Threading.Thread(AddressOf DoQuery)
@@ -34,8 +35,16 @@ Public Class UCSupplierDashboard
 
 
     Public BSShortNameHelper As BindingSource
-    Public BSVendorHelper As BindingSource
-
+    'Public BSVendorHelper As BindingSource
+    Dim _bsvendorhelper As BindingSource
+    Public Property BSVendorHelper As BindingSource
+        Get
+            Return _bsvendorhelper
+        End Get
+        Set(ByVal value As BindingSource)
+            _bsvendorhelper = value
+        End Set
+    End Property
 
     Public BSSBUHelper As BindingSource
     Public BSFamilyHelper As BindingSource
@@ -432,7 +441,7 @@ Public Class UCSupplierDashboard
                                 VendorName = drv.Item("vendorname")
                                 TextBox2.Text = VendorName
                                 TextBox1.Text = ""
-                                SupplierInfo.TextBox1.Text = "" + drv.Item("shortname")
+                                SupplierInfo.TextBox1.Text = "" + drv.Item("shortname2")
                                 SupplierInfo.TextBox2.Text = "" + Vendorcode.ToString
                                 SupplierInfo.TextBox3.Text = "" + VendorName
                                 SupplierInfo.Shortname = "" + drv.Item("shortname")

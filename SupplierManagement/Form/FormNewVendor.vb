@@ -506,10 +506,10 @@ Public Class FormNewVendor
                 Dim remarks As String = InputBox("Please input some comment.")
                 Dim myAddition As Integer
                 Select Case drv.Row.Item("status")
-                    Case 1
+                    Case 1, 4
                         myAddition = 2
                     Case 6
-                        myAddition = -1
+                        myAddition = -1                        
                     Case Else
                         myAddition = 1
                 End Select

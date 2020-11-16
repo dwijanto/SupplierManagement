@@ -5540,3 +5540,6 @@ Parameter name: sourceFileName**
 2020-10-06 09:55:08.459 AM	send	SMTP Send
 2020-10-06 09:55:18.581 AM	send	SMTP Send Done
 2020-10-06 09:56:06.884 AM	doWork	Send email Amortization to ControllingDept
+2020-11-16 10:18:02.328 AM	SendEmail	SendTo: inchan@groupeseb.com, SendTo Name: INGRID CHAN, StatusName: Validated by Purchasing Director
+2020-11-16 10:26:45.917 AM	SendEmail	SendTo: cchow@groupeseb.com;echan@groupeseb.com;pchan@groupeseb.com, SendTo Name: All, StatusName: Validated by Financial Controller
+2020-11-16 10:34:53.570 AM	SendEmail	SendTo: dlie@groupeseb.com;afok@groupeseb.com;ttom@groupeseb.com, SendTo Name: All, StatusName: Vendor Code Created in SAP
