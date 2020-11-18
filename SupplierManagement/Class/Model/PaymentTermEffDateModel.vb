@@ -25,7 +25,7 @@ Public Class PaymentTermEffDateModel
         Dim myret As Boolean = False
         Using conn As Object = myadapter.getConnection
             conn.Open()
-            Dim sqlstr = String.Format("select pd.vendorcode::text,pd.id,pd.paymenttermid,pd.effectivedate,v.shortname::text, v.vendorname,pt.payt || ' - ' || pt.details as paymenttermdesc from doc.paymenttermdate pd" &
+            Dim sqlstr = String.Format("select pd.vendorcode::text,pd.id,pd.paymenttermid,pd.effectivedate,v.shortname2::text as shortname, v.vendorname,pt.payt || ' - ' || pt.details as paymenttermdesc from doc.paymenttermdate pd" &
                                        " left join vendor v on v.vendorcode = pd.vendorcode" &
                                        " left join paymentterm pt on pt.paymenttermid = pd.paymenttermid" &
                                        "  order by {0};", SortField)

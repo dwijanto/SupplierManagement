@@ -33,7 +33,7 @@ Public Class VendorPMModel
             '                           " left join officerseb spm on spm.ofsebid = o.parent" &
             '                           " left join masteruser mus on mus.id = spm.muid order by {0};", SortField)
             Dim sqlstr = String.Format("select vp.id,vp.pmid,vp.vendorcode::text, coalesce(vp.pmeffectivedate,(select applicantdate from doc.vendorinfmodi where vendorcode = vp.vendorcode limit 1))as pmeffectivedate," &
-                                       " coalesce(vp.spmeffectivedate,(select applicantdate from doc.vendorinfmodi where vendorcode = vp.vendorcode limit 1))as spmeffectivedate,mu.username as pm,mus.username as spm,v.vendorname::text,v.shortname::text  from doc.vendorpm vp " &
+                                       " coalesce(vp.spmeffectivedate,(select applicantdate from doc.vendorinfmodi where vendorcode = vp.vendorcode limit 1))as spmeffectivedate,mu.username as pm,mus.username as spm,v.vendorname::text,v.shortname2::text as shortname from doc.vendorpm vp " &
                                        " left join vendor v on v.vendorcode = vp.vendorcode" &
                                        " left join officerseb o on o.ofsebid = vp.pmid" &
                                        " left join masteruser mu on mu.id = o.muid" &

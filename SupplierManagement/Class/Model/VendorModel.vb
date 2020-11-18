@@ -22,7 +22,7 @@ Public Class VendorModel
         Using conn As Object = myadapter.getConnection
             conn.Open()
             'Dim sqlstr = String.Format("select v.*,v.vendorcode::text || ' - ' || v.vendorname::text as vendordesc from vendor v order by {0}", SortField)
-            Dim vendorfamilysql = String.Format("select vf.id,vf.vendorcode,vf.familyid,f.familyname, vf.familyid ||  ' - ' || f.familyname as familydesc,v.vendorname::text,v.shortname::text,vf.vendorcode || ' - ' || v.vendorname::text || (" &
+            Dim vendorfamilysql = String.Format("select vf.id,vf.vendorcode,vf.familyid,f.familyname, vf.familyid ||  ' - ' || f.familyname as familydesc,v.vendorname::text,v.shortname2::text as shortname,vf.vendorcode || ' - ' || v.vendorname::text || (" &
                                     " case when vf.familyid isnull then ' '  else  ' - '  ||  vf.familyid ||  ' - ' || f.familyname  end )  || (case when mu.username isnull then ' ' else ' - ' || mu.username end ) as description from doc.vendorfamily vf" &
                                     " left join vendor v on v.vendorcode = vf.vendorcode left join family f on f.familyid = vf.familyid left join doc.familypm fpm on fpm.familyid = vf.familyid" &
                                     " left join officerseb o on o.ofsebid = fpm.pmid left join masteruser mu on mu.id = o.muid order by vf.vendorcode,vf.familyid;")
