@@ -115,7 +115,8 @@ Public Class VendorModel
         Dim myret As Boolean = False
         Using conn As Object = myadapter.getConnection
             conn.Open()
-            Dim sqlstr = String.Format("select 0 as vendorcode,''::text as displayname,''::text as vendorname  union all (select vendorcode, vendorcode::text || ' - ' || trim(vendorname)  || (case when shortname isnull then '' else  ' - ' || shortname end) as displayname ,vendorname from vendor order by vendorname)")
+            'Dim sqlstr = String.Format("select 0 as vendorcode,''::text as displayname,''::text as vendorname, ''::text as shortname  union all (select vendorcode, vendorcode::text || ' - ' || trim(vendorname)  || (case when shortname2 isnull then '' else  ' - ' || shortname2 end) as displayname ,vendorname, shortname2 from vendor order by vendorname)")
+            Dim sqlstr = String.Format("select 0 as vendorcode,''::text as displayname,''::text as vendorname, ''::text as shortname  union all (select vendorcode, vendorcode::text || ' - ' || trim(vendorname)  || coalesce(' - ' || shortname2,'') as displayname ,vendorname, shortname2 from vendor order by vendorname)")
             dataadapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)
             dataadapter.SelectCommand.CommandType = CommandType.Text
             dataadapter.Fill(MyDS, TableName)

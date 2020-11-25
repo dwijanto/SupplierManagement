@@ -27,11 +27,13 @@ Public Class FormVendorInformationModification
     Private _txEnum As TxEnum
     Private _p2 As Integer
 
+
     Delegate Sub ProgressReportDelegate(ByVal id As Integer, ByVal message As String)
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
 
     Private _vendorcode As Long
     Private _vendorname As String
+    Private _shortname As String
     Private myAdapter As New VendorInformationModificationAdapter
     Private myUserAdapter As New UserAdapter
     Private VendorFamilySubFamilyVCAdapter1 As New VendorFamilySubFamilyVCAdapter
@@ -71,6 +73,7 @@ Public Class FormVendorInformationModification
         InitializeComponent()
         _vendorcode = VendorDR.Item("vendorcode")
         _vendorname = VendorDR.Item("vendorname")
+        _shortname = VendorDR.Item("shortname")
         _referenceEnum = ReferenceEnum
         Me.TxTypeEnum = TxTypeEnum
         Me.HdId = ID
@@ -168,6 +171,7 @@ Public Class FormVendorInformationModification
 
                                 drv.Row.Item("vendorcode") = _vendorcode
                                 drv.Row.Item("vendorname") = _vendorname
+                                drv.Row.Item("shortname") = _shortname
                                 drv.Row.Item("vendorcodename") = String.Format("{0} - {1}", _vendorcode, _vendorname)
                                 Dim crcy As String = VendorCurrAdapter1.getLatesVendorCurr(_vendorcode)
                                 drv.Row.Item("currency") = IIf(IsNothing(crcy), "USD", crcy)
