@@ -23,13 +23,6 @@ Partial Class FormAssetsPurchase
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -68,6 +61,13 @@ Partial Class FormAssetsPurchase
         Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.AssetsPurchaseTabPage = New System.Windows.Forms.TabPage()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
@@ -145,22 +145,6 @@ Partial Class FormAssetsPurchase
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Balance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1ToolingList = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UpdateToolingIdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -207,10 +191,6 @@ Partial Class FormAssetsPurchase
         Me.Column27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.ContextMenuStrip1AssetTracking = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.Label41 = New System.Windows.Forms.Label()
         Me.TextBox35 = New System.Windows.Forms.TextBox()
@@ -247,6 +227,10 @@ Partial Class FormAssetsPurchase
         Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContextMenuStrip1AssetTracking = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
@@ -299,6 +283,24 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Column18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cost = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Balance = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.AssetsPurchaseTabPage.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -319,9 +321,9 @@ Partial Class FormAssetsPurchase
         Me.AmortizationTabPage.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ContextMenuStrip1AssetTracking.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1AssetTracking.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1108,7 +1110,7 @@ Partial Class FormAssetsPurchase
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
         Me.DataGridView1.ColumnHeadersHeight = 35
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column17, Me.Column2, Me.Column18, Me.Column20, Me.Column9, Me.Column10, Me.Column1, Me.Column5, Me.Column6, Me.Column7, Me.Cost, Me.Column4, Me.Column3, Me.Column19, Me.Column21, Me.Balance})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column17, Me.Column2, Me.Column18, Me.Column20, Me.Column9, Me.Column10, Me.Column1, Me.Column5, Me.Column6, Me.Column7, Me.Column34, Me.Column35, Me.Cost, Me.Column4, Me.Column3, Me.Column19, Me.Column21, Me.Balance})
         Me.DataGridView1.ContextMenuStrip = Me.ContextMenuStrip1ToolingList
         Me.DataGridView1.Location = New System.Drawing.Point(8, 49)
         Me.DataGridView1.Name = "DataGridView1"
@@ -1116,149 +1118,22 @@ Partial Class FormAssetsPurchase
         Me.DataGridView1.Size = New System.Drawing.Size(1097, 524)
         Me.DataGridView1.TabIndex = 97
         '
-        'Column17
-        '
-        Me.Column17.DataPropertyName = "toolinglistid"
-        Me.Column17.HeaderText = "Tooling Id"
-        Me.Column17.Name = "Column17"
-        Me.Column17.Width = 200
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "commontool"
-        Me.Column2.HeaderText = "Common Tool"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column2.Width = 50
-        '
-        'Column18
-        '
-        Me.Column18.DataPropertyName = "sebmodelno"
-        Me.Column18.HeaderText = "Seb Model/No"
-        Me.Column18.Name = "Column18"
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "suppliermodelreference"
-        Me.Column20.HeaderText = "Supplier Model Reference"
-        Me.Column20.Name = "Column20"
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "suppliermoldno"
-        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column9.HeaderText = "Supplier Mould No"
-        Me.Column9.Name = "Column9"
-        Me.Column9.Width = 120
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "toolsdescription"
-        Me.Column10.HeaderText = "Tool Description"
-        Me.Column10.Name = "Column10"
-        Me.Column10.Width = 150
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "material"
-        Me.Column1.HeaderText = "Material"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 80
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "cavities"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column5.HeaderText = "Cavities"
-        Me.Column5.Name = "Column5"
-        Me.Column5.Width = 50
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "numberoftools"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column6.HeaderText = "Number of tools"
-        Me.Column6.Name = "Column6"
-        Me.Column6.Width = 50
-        '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "dailycaps"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle4.Format = "N0"
-        DataGridViewCellStyle4.NullValue = Nothing
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column7.HeaderText = "Daily Capacity"
-        Me.Column7.Name = "Column7"
-        Me.Column7.Width = 50
-        '
-        'Cost
-        '
-        Me.Cost.DataPropertyName = "cost"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N2"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.Cost.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Cost.HeaderText = "Cost (USD)"
-        Me.Cost.Name = "Cost"
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "purchasedate"
-        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column4.HeaderText = "Purchase Date"
-        Me.Column4.Name = "Column4"
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "location"
-        Me.Column3.HeaderText = "Location"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Width = 80
-        '
-        'Column19
-        '
-        Me.Column19.DataPropertyName = "comments"
-        Me.Column19.HeaderText = "Seb Asia Comment"
-        Me.Column19.Name = "Column19"
-        '
-        'Column21
-        '
-        Me.Column21.HeaderText = "Remarks"
-        Me.Column21.Name = "Column21"
-        '
-        'Balance
-        '
-        Me.Balance.DataPropertyName = "balance"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "#,##0.00"
-        Me.Balance.DefaultCellStyle = DataGridViewCellStyle7
-        Me.Balance.HeaderText = "Balance"
-        Me.Balance.Name = "Balance"
-        Me.Balance.Width = 120
-        '
         'ContextMenuStrip1ToolingList
         '
         Me.ContextMenuStrip1ToolingList.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DeleteToolStripMenuItem, Me.UpdateToolingIdToolStripMenuItem})
         Me.ContextMenuStrip1ToolingList.Name = "ContextMenuStrip1ToolingList"
-        Me.ContextMenuStrip1ToolingList.Size = New System.Drawing.Size(170, 48)
+        Me.ContextMenuStrip1ToolingList.Size = New System.Drawing.Size(168, 48)
         '
         'DeleteToolStripMenuItem
         '
         Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
-        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'UpdateToolingIdToolStripMenuItem
         '
         Me.UpdateToolingIdToolStripMenuItem.Name = "UpdateToolingIdToolStripMenuItem"
-        Me.UpdateToolingIdToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.UpdateToolingIdToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.UpdateToolingIdToolStripMenuItem.Text = "Update Tooling Id"
         '
         'AttachmentTabPage
@@ -1738,30 +1613,6 @@ Partial Class FormAssetsPurchase
         Me.ListBox1.Size = New System.Drawing.Size(168, 199)
         Me.ListBox1.TabIndex = 47
         '
-        'ContextMenuStrip1AssetTracking
-        '
-        Me.ContextMenuStrip1AssetTracking.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.UpdateToolStripMenuItem, Me.DeleteToolStripMenuItem1})
-        Me.ContextMenuStrip1AssetTracking.Name = "ContextMenuStrip1AssetTracking"
-        Me.ContextMenuStrip1AssetTracking.Size = New System.Drawing.Size(113, 70)
-        '
-        'AddToolStripMenuItem
-        '
-        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
-        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
-        Me.AddToolStripMenuItem.Text = "Add"
-        '
-        'UpdateToolStripMenuItem
-        '
-        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
-        Me.UpdateToolStripMenuItem.Text = "Update"
-        '
-        'DeleteToolStripMenuItem1
-        '
-        Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
-        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
-        Me.DeleteToolStripMenuItem1.Text = "Delete"
-        '
         'Label42
         '
         Me.Label42.AutoSize = True
@@ -2080,13 +1931,37 @@ Partial Class FormAssetsPurchase
         Me.Column31.Name = "Column31"
         Me.Column31.ReadOnly = True
         '
+        'ContextMenuStrip1AssetTracking
+        '
+        Me.ContextMenuStrip1AssetTracking.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddToolStripMenuItem, Me.UpdateToolStripMenuItem, Me.DeleteToolStripMenuItem1})
+        Me.ContextMenuStrip1AssetTracking.Name = "ContextMenuStrip1AssetTracking"
+        Me.ContextMenuStrip1AssetTracking.Size = New System.Drawing.Size(113, 70)
+        '
+        'AddToolStripMenuItem
+        '
+        Me.AddToolStripMenuItem.Name = "AddToolStripMenuItem"
+        Me.AddToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.AddToolStripMenuItem.Text = "Add"
+        '
+        'UpdateToolStripMenuItem
+        '
+        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
+        Me.UpdateToolStripMenuItem.Text = "Update"
+        '
+        'DeleteToolStripMenuItem1
+        '
+        Me.DeleteToolStripMenuItem1.Name = "DeleteToolStripMenuItem1"
+        Me.DeleteToolStripMenuItem1.Size = New System.Drawing.Size(112, 22)
+        Me.DeleteToolStripMenuItem1.Text = "Delete"
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(114, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(112, 22)
         Me.ToolStripButton1.Text = "Upload Tooling List"
         '
         'ToolStripButton4
@@ -2146,7 +2021,7 @@ Partial Class FormAssetsPurchase
         Me.ToolStripButton6.Image = CType(resources.GetObject("ToolStripButton6.Image"), System.Drawing.Image)
         Me.ToolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton6.Name = "ToolStripButton6"
-        Me.ToolStripButton6.Size = New System.Drawing.Size(53, 22)
+        Me.ToolStripButton6.Size = New System.Drawing.Size(52, 22)
         Me.ToolStripButton6.Text = "Validate"
         Me.ToolStripButton6.Visible = False
         '
@@ -2517,6 +2392,145 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
         Me.DataGridViewTextBoxColumn35.ReadOnly = True
         '
+        'Column17
+        '
+        Me.Column17.DataPropertyName = "toolinglistid"
+        Me.Column17.HeaderText = "Tooling Id"
+        Me.Column17.Name = "Column17"
+        Me.Column17.Width = 200
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "commontool"
+        Me.Column2.HeaderText = "Common Tool"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column2.Width = 50
+        '
+        'Column18
+        '
+        Me.Column18.DataPropertyName = "sebmodelno"
+        Me.Column18.HeaderText = "Seb Model/No"
+        Me.Column18.Name = "Column18"
+        '
+        'Column20
+        '
+        Me.Column20.DataPropertyName = "suppliermodelreference"
+        Me.Column20.HeaderText = "Supplier Model Reference"
+        Me.Column20.Name = "Column20"
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "suppliermoldno"
+        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column9.HeaderText = "Supplier Mould No"
+        Me.Column9.Name = "Column9"
+        Me.Column9.Width = 120
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "toolsdescription"
+        Me.Column10.HeaderText = "Tool Description"
+        Me.Column10.Name = "Column10"
+        Me.Column10.Width = 150
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "material"
+        Me.Column1.HeaderText = "Material"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 80
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "cavities"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column5.HeaderText = "Cavities"
+        Me.Column5.Name = "Column5"
+        Me.Column5.Width = 50
+        '
+        'Column6
+        '
+        Me.Column6.DataPropertyName = "numberoftools"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column6.HeaderText = "Number of tools"
+        Me.Column6.Name = "Column6"
+        Me.Column6.Width = 50
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "dailycaps"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle4.Format = "N0"
+        DataGridViewCellStyle4.NullValue = Nothing
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Column7.HeaderText = "Daily Capacity"
+        Me.Column7.Name = "Column7"
+        Me.Column7.Width = 50
+        '
+        'Column34
+        '
+        Me.Column34.DataPropertyName = "originalcurrency"
+        Me.Column34.HeaderText = "Original Currency"
+        Me.Column34.Name = "Column34"
+        '
+        'Column35
+        '
+        Me.Column35.DataPropertyName = "originalcost"
+        Me.Column35.HeaderText = "Original Cost"
+        Me.Column35.Name = "Column35"
+        '
+        'Cost
+        '
+        Me.Cost.DataPropertyName = "cost"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle5.Format = "N2"
+        DataGridViewCellStyle5.NullValue = Nothing
+        Me.Cost.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Cost.HeaderText = "Cost (USD)"
+        Me.Cost.Name = "Cost"
+        '
+        'Column4
+        '
+        Me.Column4.DataPropertyName = "purchasedate"
+        DataGridViewCellStyle6.Format = "dd-MMM-yyyy"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column4.HeaderText = "Purchase Date"
+        Me.Column4.Name = "Column4"
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "location"
+        Me.Column3.HeaderText = "Location"
+        Me.Column3.Name = "Column3"
+        Me.Column3.Width = 80
+        '
+        'Column19
+        '
+        Me.Column19.DataPropertyName = "comments"
+        Me.Column19.HeaderText = "Seb Asia Comment"
+        Me.Column19.Name = "Column19"
+        '
+        'Column21
+        '
+        Me.Column21.HeaderText = "Remarks"
+        Me.Column21.Name = "Column21"
+        '
+        'Balance
+        '
+        Me.Balance.DataPropertyName = "balance"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle7.Format = "#,##0.00"
+        Me.Balance.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Balance.HeaderText = "Balance"
+        Me.Balance.Name = "Balance"
+        Me.Balance.Width = 120
+        '
         'FormAssetsPurchase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2558,9 +2572,9 @@ Partial Class FormAssetsPurchase
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ContextMenuStrip1AssetTracking.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1AssetTracking.ResumeLayout(False)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
@@ -2682,22 +2696,6 @@ Partial Class FormAssetsPurchase
     Friend WithEvents Column22 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column16 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column20 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Cost As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Balance As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
@@ -2801,4 +2799,22 @@ Partial Class FormAssetsPurchase
     Friend WithEvents Button11 As System.Windows.Forms.Button
     Friend WithEvents Button10 As System.Windows.Forms.Button
     Friend WithEvents DataGridViewTextBoxColumn35 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column17 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Column18 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column20 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column34 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column35 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Cost As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column19 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column21 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Balance As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

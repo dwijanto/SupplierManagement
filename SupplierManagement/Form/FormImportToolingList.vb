@@ -72,6 +72,224 @@ Public Class FormImportToolingList
             Me.ProgressReport(5, "Opening File")
             oWb = oXl.Workbooks.Open(openfiledialog1.FileName)
             Filename = openfiledialog1.FileName
+            FileNameTXT = IO.Path.GetDirectoryName(Filename) & "\" & IO.Path.GetFileNameWithoutExtension(openfiledialog1.FileName) & ".txt"
+
+            oWb.SaveAs(Filename:=FileNameTXT, FileFormat:=Excel.XlFileFormat.xlUnicodeText)
+            oXl.ScreenUpdating = True
+            Dim lineno As Integer = 0
+            If Not IsNothing(ToolingListBS.Current) Then
+                ToolingListBS.MoveLast()
+                Dim dr = ToolingListBS.Current
+                lineno = dr.item("lineno")
+            End If
+            ' Using objTFParser = New FileIO.TextFieldParser(openfiledialog1.FileName)
+            Using objTFParser = New FileIO.TextFieldParser(FileNameTXT)
+                With objTFParser
+                    .TextFieldType = FileIO.FieldType.Delimited
+                    .SetDelimiters(Chr(9))
+                    .HasFieldsEnclosedInQuotes = True
+                    Dim count As Long = 0
+                    ProgressReport(1, "Read Data")
+                    ProgressReport(2, "Read Data")
+
+                    Do Until .EndOfData
+                        myrecord = .ReadFields
+
+                        Dim mymodel As New ToolingListModel With {.SebModelNo = myrecord(0),
+                                                                  .SupplierModelReference = myrecord(1),
+                                                                  .SEBAsiaItemNumber = myrecord(2),
+                                                                  .SEBAsiaAssetNumber = myrecord(3),
+                                                                  .SupplierMoldNumber = myrecord(4),
+                                                                  .TooolsDescription = myrecord(5),
+                                                                  .Material = myrecord(6),
+                                                                  .Cavities = myrecord(7),
+                                                                  .NumberOfTools = myrecord(8),
+                                                                  .DailyCapacitiy = myrecord(9),
+                                                                  .OriginalCurrency = myrecord(10),
+                                                                  .OriginalCost = myrecord(11),
+                                                                  .CostUSD = myrecord(12),
+                                                                  .PurchaseDate = myrecord(13),
+                                                                  .Location = myrecord(14),
+                                                                  .SEBAsiaComment = myrecord(15),
+                                                                  .ToolingId = myrecord(16),
+                                                                  .AssetsCostClassification = myrecord(17),
+                                                                  .CommonTool = myrecord(18),
+                                                                  .Check = myrecord(19)}
+
+
+
+
+                        If count >= 1 Then
+                            If mymodel.SupplierMoldNumber <> "" Then 'Supplier Mould Number cannot be blank
+                                'ToolingListBS Filtered by AssetPurchaseId
+                                Dim found As Integer = ToolingListBS.Find("suppliermoldno", mymodel.SupplierMoldNumber)
+                                Dim drv As DataRowView
+                                If found = -1 Then
+                                    lineno = lineno + 1
+                                    drv = ToolingListBS.AddNew()
+                                    drv.BeginEdit()
+                                    drv.Row.Item("lineno") = lineno
+
+                                    drv.Row.Item("assetpurchaseid") = DS.Tables(0).Rows(0).Item("id")
+                                    'if tooling modified then get from excel
+                                    drv.Item("toolinglistid") = String.Format("{0}_{1:0000}", DS.Tables(0).Rows(0).Item("assetpurchaseid"), lineno)
+                                    If DS.Tables(0).Rows(0).Item("typeofinvestment") = 2 Then
+                                        Dim mytemp As String = String.Empty
+                                        If mymodel.AssetsCostClassification = "" Then 'AssetCostClassification
+                                            If mymodel.ToolingId <> "" Then 'ToolingId
+                                                'Has Original
+                                                mytemp = validstrdb(mymodel.ToolingId) 'ToolingId
+                                                drv.Item("toolinglistid") = mytemp
+                                                drv.Item("typeofinvestment") = 2
+                                            Else
+                                                'Missing Original, by pass checking
+                                                If mymodel.AssetsCostClassification = "" Then 'by pass for SETUP AssetCostClassification
+                                                    If MessageBox.Show("Missing ToolingList id. The system will generate a new one. Is it ok?", "Missing Tooling List Id", MessageBoxButtons.OKCancel) = DialogResult.OK Then
+                                                        drv.Item("typeofinvestment") = 100 'no need to check for missing the original id 
+                                                    Else
+                                                        drv.CancelEdit()
+                                                        Err.Raise(1, Description:="Import process cancelled by user.")
+                                                    End If
+                                                End If
+
+
+                                            End If
+                                        End If
+
+                                    Else
+                                        drv.Item("typeofinvestment") = 1
+                                        If mymodel.CommonTool <> "" Then 'Common Tool
+                                            If mymodel.ToolingId = "" Then 'ToolingId
+                                                If MessageBox.Show("Missing ToolingList id for Common tool. The system will generate a new one. Is it ok?", "Missing Tooling List Id", MessageBoxButtons.OKCancel) = DialogResult.Cancel Then
+                                                    drv.CancelEdit()
+                                                    Err.Raise(1, Description:="Import process cancelled by user.")
+                                                Else
+                                                    drv.Item("typeofinvestment") = 0
+                                                End If
+                                            Else
+                                                drv.Item("toolinglistid") = validstrdb(mymodel.ToolingId) 'ToolingId
+
+                                            End If
+                                        End If
+
+                                    End If
+
+                                Else
+                                    ToolingListBS.Position = found
+                                    drv = ToolingListBS.Current
+                                    If myrecord.Length > 16 Then '14
+                                        If mymodel.ToolingId <> "" Then 'ToolingId
+                                            drv.Item("toolinglistid") = validstrdb(mymodel.ToolingId)
+                                        End If
+                                    End If
+                                End If
+
+                                If myrecord.Length > 16 Then '16
+                                    If mymodel.AssetsCostClassification <> "" Then 'AssetsCostClassification
+                                        drv.Item("toolinglistid") = "S" + drv.Item("toolinglistid")
+
+                                    End If
+                                End If
+
+                                Try
+                                    drv.Row.RowError = ""
+                                    drv.Item("sebmodelno") = validstrdb(mymodel.SebModelNo)
+                                    drv.Item("suppliermodelreference") = validstrdb(mymodel.SupplierModelReference)
+                                    drv.Item("suppliermoldno") = validstrdb(mymodel.SupplierMoldNumber)
+                                    drv.Item("toolsdescription") = validstrdb(mymodel.TooolsDescription)
+                                    drv.Item("material") = validstrdb(mymodel.Material)
+                                    drv.Item("cavities") = validstrdb(mymodel.Cavities)
+                                    drv.Item("numberoftools") = validintdb(mymodel.NumberOfTools)
+                                    drv.Item("dailycaps") = validstrdb(mymodel.DailyCapacitiy)
+                                    drv.Item("originalcurrency") = validstrdb(mymodel.OriginalCurrency)
+                                    drv.Item("originalcost") = validnumdb(mymodel.OriginalCost)
+                                    drv.Item("cost") = validnumdb(mymodel.CostUSD)
+                                    drv.Item("balance") = validnumdb(mymodel.CostUSD)
+                                    drv.Item("purchasedate") = validdatedb(mymodel.PurchaseDate)
+                                    drv.Item("location") = validstrdb(mymodel.Location)
+                                    drv.Item("comments") = validstrdb(mymodel.SEBAsiaComment)
+                                    drv.Item("vendorcode") = DS.Tables(0).Rows(0).Item("vendorcode")
+                                    drv.Item("displaymember") = drv.Item("toolinglistid")
+                                    drv.Item("commontool") = IIf(mymodel.CommonTool <> "", True, False)
+                                    drv.EndEdit()
+                                Catch ex As Exception
+                                    drv.CancelEdit()
+                                    errormsg = ex.Message
+                                    mymessage = errormsg
+                                    ProgressReport(1, errormsg)
+                                    Me.DialogResult = Windows.Forms.DialogResult.None
+                                    ProgressReport(3, "Set Continuous Again")
+                                    Exit Sub
+                                End Try
+                            Else
+                                If MessageBox.Show("Missing Supplier Mould No, Skip the current record?", "Missing Supplier Mould", MessageBoxButtons.OKCancel) = DialogResult.Cancel Then
+                                    Err.Raise(1, Description:="Import process cancelled by user.")
+                                    Exit Sub
+                                End If
+                            End If
+                        End If
+
+                        count += 1
+                    Loop
+                End With
+            End Using
+            ToolingListBS.EndEdit()
+            ProgressReport(1, "Add Records Done.")
+            ProgressReport(3, "Set Continuous Again")
+            myret = True
+            Me.DialogResult = Windows.Forms.DialogResult.OK
+        Catch ex As Exception
+            ToolingListBS.EndEdit()
+            errormsg = ex.Message
+            mymessage = errormsg
+            ProgressReport(1, errormsg)
+            Me.DialogResult = Windows.Forms.DialogResult.None
+            ProgressReport(3, "Set Continuous Again")
+        Finally
+            'ProgressReport(3, "Releasing Memory...")
+            'clear excel from memory
+            oXl.Quit()
+            releaseComObject(oSheet)
+            releaseComObject(oWb)
+            releaseComObject(oXl)
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+            Try
+                'to make sure excel is no longer in memory
+                EndTask(hwnd, True, True)
+            Catch ex As Exception
+            End Try
+            Cursor.Current = Cursors.Default
+        End Try
+    End Sub
+
+    Private Sub doWork1()
+        Dim mystr As New StringBuilder
+        Dim myInsert As New System.Text.StringBuilder
+        Dim myrecord() As String
+
+
+        'OpenExcelFile -> saveas txt
+        Dim myret As Boolean = False
+        Dim oXl As Excel.Application = Nothing
+        Dim oWb As Excel.Workbook = Nothing
+        Dim oSheet As Excel.Worksheet = Nothing
+        Dim SheetName As String = vbEmpty
+        Dim hwnd As System.IntPtr
+        Dim errormsg As String = String.Empty
+        Dim FileNameTXT As String = String.Empty
+        Dim Filename As String = String.Empty
+        Try
+            'Create Object Excel 
+            Me.ProgressReport(5, "CreateObject..")
+            oXl = CType(CreateObject("Excel.Application"), Excel.Application)
+            hwnd = oXl.Hwnd
+            oXl.ScreenUpdating = False
+            oXl.Visible = False
+            oXl.DisplayAlerts = False
+            Me.ProgressReport(5, "Opening File")
+            oWb = oXl.Workbooks.Open(openfiledialog1.FileName)
+            Filename = openfiledialog1.FileName
             'FileNameTXT = IO.FileInfo(filename)openfiledialog1.FileName.Replace(".xlsx", ".txt")
             FileNameTXT = IO.Path.GetDirectoryName(Filename) & "\" & IO.Path.GetFileNameWithoutExtension(openfiledialog1.FileName) & ".txt"
             'oWb.SaveAs(Filename:=FileNameTXT, FileFormat:=Excel.XlFileFormat.xlTextMSDOS)
@@ -134,7 +352,7 @@ Public Class FormImportToolingList
 
                                             End If
                                         End If
-                                        
+
                                         'drv.Item("toolinglistid") = mytemp
                                     Else
                                         'drv.Item("toolinglistid") = String.Format("{0}_{1:0000}", DS.Tables(0).Rows(0).Item("assetpurchaseid"), lineno)
@@ -225,32 +443,32 @@ Public Class FormImportToolingList
             End Using
 
             'update record
-        'If myInsert.Length > 0 Then
-        '    ProgressReport(1, "Start Add New Records")
-        '    mystr.Append(String.Format("delete from doc.groupvendor where groupid = {0};", assetpurchaseid))
-        '    Dim sqlstr As String = "copy doc.groupvendor(vendorcode,groupid) from stdin with null as 'Null';"
-        '    Dim ra As Long = 0
-        '    Dim errmessage As String = String.Empty
-        '    Dim myret As Boolean = False
+            'If myInsert.Length > 0 Then
+            '    ProgressReport(1, "Start Add New Records")
+            '    mystr.Append(String.Format("delete from doc.groupvendor where groupid = {0};", assetpurchaseid))
+            '    Dim sqlstr As String = "copy doc.groupvendor(vendorcode,groupid) from stdin with null as 'Null';"
+            '    Dim ra As Long = 0
+            '    Dim errmessage As String = String.Empty
+            '    Dim myret As Boolean = False
 
-        '    Try
-        '        If RadioButton1.Checked Then
-        '            ProgressReport(1, "Replace Record Please wait!")
-        '            ra = DbAdapter1.ExNonQuery(mystr.ToString)
-        '        End If
-        '        ProgressReport(1, "Add Record Please wait!")
-        '        errmessage = DbAdapter1.copy(sqlstr, myInsert.ToString, myret)
-        '        If myret Then
-        '            ProgressReport(1, "Add Records Done.")
-        '        Else
-        '            ProgressReport(1, errmessage)
-        '        End If
-        '    Catch ex As Exception
-        '        ProgressReport(1, ex.Message)
+            '    Try
+            '        If RadioButton1.Checked Then
+            '            ProgressReport(1, "Replace Record Please wait!")
+            '            ra = DbAdapter1.ExNonQuery(mystr.ToString)
+            '        End If
+            '        ProgressReport(1, "Add Record Please wait!")
+            '        errmessage = DbAdapter1.copy(sqlstr, myInsert.ToString, myret)
+            '        If myret Then
+            '            ProgressReport(1, "Add Records Done.")
+            '        Else
+            '            ProgressReport(1, errmessage)
+            '        End If
+            '    Catch ex As Exception
+            '        ProgressReport(1, ex.Message)
 
-        '    End Try
+            '    End Try
 
-        'End If
+            'End If
             ToolingListBS.EndEdit()
             ProgressReport(1, "Add Records Done.")
             ProgressReport(3, "Set Continuous Again")
@@ -280,7 +498,6 @@ Public Class FormImportToolingList
             Cursor.Current = Cursors.Default
         End Try
     End Sub
-
     Private Sub ProgressReport(ByVal id As Integer, ByVal message As String)
         If Me.InvokeRequired Then
             Dim d As New ProgressReportDelegate(AddressOf ProgressReport)
@@ -302,4 +519,26 @@ Public Class FormImportToolingList
     End Sub
 
   
+End Class
+Public Class ToolingListModel
+    Public Property SebModelNo As String
+    Public Property SupplierModelReference As String
+    Public Property SEBAsiaItemNumber As String
+    Public Property SEBAsiaAssetNumber As String
+    Public Property SupplierMoldNumber As String
+    Public Property TooolsDescription As String
+    Public Property Material As String
+    Public Property Cavities As String
+    Public Property NumberOfTools As String
+    Public Property DailyCapacitiy As String
+    Public Property OriginalCurrency As String
+    Public Property OriginalCost As String
+    Public Property CostUSD As String
+    Public Property PurchaseDate As String
+    Public Property Location As String
+    Public Property SEBAsiaComment As String
+    Public Property ToolingId As String
+    Public Property AssetsCostClassification As String
+    Public Property CommonTool As String
+    Public Property Check As String
 End Class

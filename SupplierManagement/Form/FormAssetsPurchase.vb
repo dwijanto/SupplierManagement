@@ -200,7 +200,7 @@ Public Class FormAssetsPurchase
                         " where(ap.id = {0})" &
                         " group by tp.toolinglistid" &
                         " ) " &
-                        " select tl.id,tl.assetpurchaseid,tm.sebmodelno,tm.suppliermodelreference,tm.suppliermoldno,tm.toolsdescription,tm.material,tm.cavities,tm.numberoftools,tm.dailycapacity,tl.cost,tm.purchasedate ,tm.location,tm.comments ,tl.lineno,tl.vendorcode,tl.toolinglistid,tm.dailycaps,tm.commontool ,0 as typeofinvestment ," &
+                        " select tl.id,tl.assetpurchaseid,tm.sebmodelno,tm.suppliermodelreference,tm.suppliermoldno,tm.toolsdescription,tm.material,tm.cavities,tm.numberoftools,tm.dailycapacity,tl.originalcurrency,tl.originalcost,tl.cost,tm.purchasedate ,tm.location,tm.comments ,tl.lineno,tl.vendorcode,tl.toolinglistid,tm.dailycaps,tm.commontool ,0 as typeofinvestment ," &
                         " case" &
                         " when c.total isnull then tl.cost " &
                         " else tl.cost - c.total " &

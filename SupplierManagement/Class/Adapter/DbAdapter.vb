@@ -2798,6 +2798,8 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "toolinglistid").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "typeofinvestment").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "commontool").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "originalcurrency").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "originalcost").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
@@ -2823,6 +2825,8 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "toolinglistid").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "typeofinvestment").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Boolean, 0, "commontool").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "originalcurrency").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "originalcost").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 

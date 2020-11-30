@@ -70,7 +70,7 @@ Partial Class FormImportToolingList
         Me.Controls.Add(Me.StatusStrip1)
         Me.Name = "FormImportToolingList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FormImportToolingList"
+        Me.Text = "FormImportToolingList - V2"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
