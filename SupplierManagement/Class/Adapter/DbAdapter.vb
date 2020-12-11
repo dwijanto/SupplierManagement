@@ -2581,7 +2581,7 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "vendorcode").SourceVersion = DataRowVersion.Original
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "vendorcode").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "vendorname").SourceVersion = DataRowVersion.Current
-                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "shortname2").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "shortname").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "ssmid").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "pmid").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "ssmeffectivedate").SourceVersion = DataRowVersion.Current
@@ -2592,7 +2592,7 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand = New NpgsqlCommand(sqlstr, conn)
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "vendorcode").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "vendorname").SourceVersion = DataRowVersion.Current
-                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "shortname2").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "shortname").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "ssmid").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "pmid").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "ssmeffectivedate").SourceVersion = DataRowVersion.Current
@@ -2715,6 +2715,11 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "status").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "approvalname2").SourceVersion = DataRowVersion.Current
 
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "paymententity").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "toolingsupplier").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "expectedtoolingfinishdate").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "origin").SourceVersion = DataRowVersion.Current
+
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "assetpurchaseid").Direction = ParameterDirection.InputOutput
 
@@ -2761,6 +2766,11 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Integer, 0, "status").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "approvalname2").SourceVersion = DataRowVersion.Current
 
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "paymententity").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "toolingsupplier").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "expectedtoolingfinishdate").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "origin").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "printdate").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "assetpurchaseid").Direction = ParameterDirection.InputOutput
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
@@ -2989,6 +2999,20 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure
                 mye.ra = DataAdapter.Update(mye.dataset.Tables("AssetPurchaseAction"))
+
+
+                'ProformaInvoice
+                sqlstr = "doc.sp_insertproformainvoice"
+                DataAdapter.InsertCommand = New NpgsqlCommand(sqlstr, conn)
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "assetpurchaseid").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "proformainvoice").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "creator").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "cretiondate").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
+                DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure
+                mye.ra = DataAdapter.Update(mye.dataset.Tables("ProformaInvoice"))
+
+
 
                 mytransaction.Commit()
                 myret = True

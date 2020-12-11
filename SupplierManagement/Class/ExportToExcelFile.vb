@@ -425,6 +425,10 @@ Public Class ExportToExcelFile
             If FileName.Contains("xlsm") Then
 
                 oWb.SaveAs(FileName, FileFormat:=Excel.XlFileFormat.xlOpenXMLWorkbookMacroEnabled)
+            ElseIf FileName.Contains(".pdf") Then
+                ' oWb.SaveAs(FileName, FileFormat:=Excel.XlFileFormat.)
+
+                oWb.Worksheets(1).ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, FileName, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
             Else
                 oWb.SaveAs(FileName)
             End If

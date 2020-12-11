@@ -2,6 +2,7 @@
 Imports System.Text
 Imports SupplierManagement.PublicClass
 Imports SupplierManagement.SharedClass
+Imports Microsoft.Office.Interop
 Public Enum TypeOfInvestmentEnum
     NewAsset = 1
     ToolingModification = 2
@@ -9,9 +10,7 @@ Public Enum TypeOfInvestmentEnum
     IncreaseCapacity = 4
 End Enum
 Public Class FormAssetsPurchase
-
-
-
+    Dim myProformaPO As proformaPO
     Public Property myId As Long
     Delegate Sub ProgressReportDelegate(ByVal id As Integer, ByVal message As String)
     Dim myThread As New System.Threading.Thread(AddressOf DoWork)
@@ -53,9 +52,13 @@ Public Class FormAssetsPurchase
     Dim ParamBS As BindingSource
     Dim CM1 As CurrencyManager
 
-
+    Dim ProformaInvoiceBS As BindingSource
+    Dim OriginalCost As Decimal
+    Dim OriginalCurrency As String
     Dim FromApproval As Boolean = False
     Dim FromApprovalHistory As Boolean = False
+
+
     Public Sub New()
 
         ' This call is required by the designer.
@@ -181,13 +184,16 @@ Public Class FormAssetsPurchase
                                 " where not familyname isnull and  not fg.groupingcode isnull" &
                                 " order by sbuname,familyid,familyname)," &
                                 " c as (select sum(cost) as toolingcost,assetpurchaseid from doc.toolinglist where assetpurchaseid = {0} group by assetpurchaseid)" &
-                                " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username from doc.assetpurchase ap" &
+                                " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username,null::character varying as toolingsuppliername," &
+                                " ts.toolingsuppliername,ts.address,ts.deliveryaddress,ts.telephone,ts.fax,ts.tel" &
+                                " from doc.assetpurchase ap" &
                                 " left join doc.toolingproject tp on tp.id = ap.projectid" &
                                 " left join  v on v.vendorcode = ap.vendorcode" &
                                 " left join f on f.familyid = tp.familyid" &
                                 " left join c on c.assetpurchaseid = ap.id" &
                                 " left join doc.user u on u.userid = ap.creator" &
                                 " left join doc.user u1 on u1.userid = ap.creator" &
+                                " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                                 " where ap.id = {0};", myId))
         'sb.Append(String.Format("select tldt.*,tlhd.assetpurchaseid,tlhd.sebmodelno,tlhd.suppliermodelreference,tlhd.purchasedate,tlhd.location from doc.toolinglistdt tldt left join doc.toolinglisthd tlhd on tldt.toolinglisthdid = tlhd.id where assetpurchaseid = {0} order by lineno;", myId))
         'sb.Append(String.Format("select tl.*,ap.assetpurchaseid || to_char(lineno,'_0000FM') as toolingid from doc.toolinglist tl left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid  where ap.id = {0} order by lineno;", myId))
@@ -298,6 +304,8 @@ Public Class FormAssetsPurchase
         myUser = HelperClass1.UserId.ToLower
         '15 FormInvoiceCurrencyList
         sb.Append(String.Format("select cvalue from doc.paramhd where paramname = 'forminputinvoicecurrencylist';"))
+        '16 ProformaInvoice
+        sb.Append(String.Format("select false as download,p.* from doc.proformainvoice p where assetpurchaseid = {0};", myId))
 
         If DbAdapter1.TbgetDataSet(sb.ToString, DS, mymessage) Then
             Try
@@ -377,6 +385,13 @@ Public Class FormAssetsPurchase
                 DS.Tables(13).TableName = "AgreementTX"
                 DS.Tables(14).TableName = "AssetPurchaseAction"
 
+                DS.Tables(16).TableName = "ProformaInvoice"
+                Dim pk16(0) As DataColumn
+                pk16(0) = DS.Tables(16).Columns("id")
+                DS.Tables(16).PrimaryKey = pk16
+                DS.Tables(16).Columns("id").AutoIncrement = True
+                DS.Tables(16).Columns("id").AutoIncrementSeed = -1
+                DS.Tables(16).Columns("id").AutoIncrementStep = -1
 
                 'Create Constraint -- create Constraints before you create DataRelation
                 'DS.Tables(2).Constraints.Add("ToolingPaymentFK", DS.Tables(3).Columns("id"), DS.Tables(2).Columns("invoiceid"))
@@ -390,6 +405,7 @@ Public Class FormAssetsPurchase
                 Dim TICol As DataColumn
                 Dim ATCol As DataColumn
                 Dim TRCol As DataColumn
+                Dim PICol As DataColumn 'ProformaInvoice
 
 
                 'Create Relation ToolingProject -> Asset Purchase
@@ -426,6 +442,12 @@ Public Class FormAssetsPurchase
                 APCol = DS.Tables(0).Columns("id")
                 TRCol = DS.Tables(12).Columns("assetpurchaseid")
                 rel = New DataRelation("APTRRel", APCol, TRCol)
+                DS.Relations.Add(rel)
+
+                'create relation AssetPurchase and ProformaInvoice
+                APCol = DS.Tables(0).Columns("id")
+                PICol = DS.Tables(16).Columns("assetpurchaseid")
+                rel = New DataRelation("APPIRel", APCol, PICol)
                 DS.Relations.Add(rel)
 
             Catch ex As Exception
@@ -482,7 +504,11 @@ Public Class FormAssetsPurchase
                             AgreementTXBS = New BindingSource
                             AssetPurchaseActionBS = New BindingSource
 
+                            ProformaInvoiceBS = New BindingSource
+
                             APBS.DataSource = DS.Tables("AssetPurchase")
+
+
 
                             TypeOfInvestmentBS.DataSource = TypeOfInvestmentList 'DS.Tables("TypeOfInvestment") 'TypeOfInvestmentList
                             DocumentTypeBS.DataSource = DocumentTypeList
@@ -506,6 +532,8 @@ Public Class FormAssetsPurchase
                             AgreementTXBS.DataSource = DS.Tables("AgreementTx")
                             AssetPurchaseActionBS.DataSource = DS.Tables("AssetPurchaseAction")
 
+                            ProformaInvoiceBS.DataSource = APBS
+                            ProformaInvoiceBS.DataMember = "APPIRel"
 
                             If IsNothing(APBS.Current) Then
                                 Dim drv As DataRowView = APBS.AddNew()
@@ -546,6 +574,9 @@ Public Class FormAssetsPurchase
 
                             DataGridView5.AutoGenerateColumns = False
                             DataGridView5.DataSource = AssetPurchaseActionBS
+
+                            DataGridView6.AutoGenerateColumns = False
+                            DataGridView6.DataSource = ProformaInvoiceBS
 
                             Me.Show()
                             Application.DoEvents()
@@ -772,12 +803,17 @@ Public Class FormAssetsPurchase
         'TextBox8.DataBindings.Clear()
 
         ComboBox3.DataBindings.Clear()
-        'ComboBox4.DataBindings.Clear()
+
         ComboBox5.DataBindings.Clear()
         ComboBox7.DataBindings.Clear()
         ComboBox6.DataBindings.Clear()
         ListBox1.DataBindings.Clear()
         Button5.DataBindings.Clear()
+
+        ComboBox4.DataBindings.Clear()
+        TextBox39.DataBindings.Clear()
+        TextBox42.DataBindings.Clear()
+        DateTimePicker3.DataBindings.Clear()
 
         'Related Information
         TextBox7.DataBindings.Clear()
@@ -911,6 +947,10 @@ Public Class FormAssetsPurchase
 
         TextBox32.DataBindings.Add(New Binding("Text", AttachmentBS, "docname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
+        ComboBox4.DataBindings.Add(New Binding("Text", APBS, "paymententity", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox39.DataBindings.Add(New Binding("Text", APBS, "toolingsuppliername", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+        DateTimePicker3.DataBindings.Add(New Binding("Text", APBS, "expectedtoolingfinishdate", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+        TextBox42.DataBindings.Add(New Binding("Text", APBS, "origin", True, DataSourceUpdateMode.OnPropertyChanged, ""))
     End Sub
     Private Sub enabledComponents()
         TextBox1.Enabled = Not IsNothing(APBS.Current)
@@ -930,9 +970,15 @@ Public Class FormAssetsPurchase
         TextBox9.Enabled = Not IsNothing(APBS.Current)
         ComboBox1.Enabled = Not IsNothing(APBS.Current)
         'TextBox8.Enabled = Not IsNothing(APBS.Current)
-        'ComboBox4.Enabled = Not IsNothing(APBS.Current)
+
         ComboBox5.Enabled = Not IsNothing(APBS.Current)
         Button5.Enabled = Not IsNothing(APBS.Current)
+
+        ComboBox4.Enabled = Not IsNothing(APBS.Current)
+        TextBox39.Enabled = Not IsNothing(APBS.Current)
+        TextBox42.Enabled = Not IsNothing(APBS.Current)
+        DateTimePicker3.Enabled = Not IsNothing(APBS.Current)
+
 
         'Related Information
         TextBox7.Enabled = Not IsNothing(APBS.Current)
@@ -1765,6 +1811,22 @@ Public Class FormAssetsPurchase
 
                 End Try
                 ProgressReport(2, String.Format("Record Count : {0}, Total Invoice (USD): {1:#,##0.00}", DataGridView3.RowCount, TotalInvoice))
+            Case "Proforma Purchase Order"
+                Dim TotalCost As Decimal = 0
+                Dim TotalBalance As Decimal = 0
+                Try
+                    If Not IsNothing(ToolingListDTBS) Then
+                        For Each drv As DataRowView In ToolingListDTBS.List
+                            TotalCost = TotalCost + drv.Item("originalcost")
+                            TotalBalance = TotalBalance + drv.Item("balance")
+                            OriginalCurrency = "" & drv.Item("originalcurrency")
+                        Next
+                        OriginalCost = TotalCost
+
+                    End If
+                Catch ex As Exception
+
+                End Try
             Case Else
                 ProgressReport(2, "")
         End Select
@@ -2258,6 +2320,155 @@ Public Class FormAssetsPurchase
     Private Sub ContextMenuStrip1Attachment_Opening(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ContextMenuStrip1Attachment.Opening
 
     End Sub
+
+    Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
+        Dim dr As DataRowView
+        If ProformaInvoiceBS.Count > 0 Then
+            If MessageBox.Show(String.Format("Any modification in existing Proforma Purchase Order? {0}Click button Yes to create new one.", vbCrLf), "Proforma Purchase Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                dr = CreateProformaInvoice()
+                dr.EndEdit()
+
+                ToolStripButton2.PerformClick()
+                GeneratePDF(dr.Row("proformainvoice"))
+            End If
+        Else
+            dr = CreateProformaInvoice()
+            dr.EndEdit()
+            Dim apdr = APBS.Current
+            apdr.row.item("printdate") = Today.Date
+            ToolStripButton2.PerformClick()
+            GeneratePDF(dr.Row("proformainvoice"))
+        End If
+        'AddNew ProformaInvoice
+
+
+        'Generate PDF file
+
+    End Sub
+
+    Private Function CreateProformaInvoice() As DataRowView
+        Dim lineNo As Integer
+        Dim APdr As DataRowView = APBS.Current
+        lineNo = ProformaInvoiceBS.Count
+        Dim dr = ProformaInvoiceBS.AddNew
+        dr.item("proformainvoice") = String.Format("{0}_{1:yyyyMMdd}_{2:0000}", APdr.Row.Item("vendorcode"), APdr.Row.Item("applicantdate"), lineNo + 1)
+        dr.item("creator") = HelperClass1.UserId
+        dr.item("creationdate") = Today.Date
+
+        myProformaPO = New proformaPO With {.proformapurchaseorder = dr.item("proformainvoice"),
+                                            .address = "" & APdr.Row.Item("address"),
+                                            .applicantdate = APdr.Row.Item("applicantdate"),
+                                            .applicantname = APdr.Row.Item("applicantname"),
+                                            .assetdescription = APdr.Row.Item("assetdescription"),
+                                            .deliveryaddress = "" & APdr.Row.Item("deliveryaddress"),
+                                            .fax = "" & APdr.Row.Item("fax"),
+                                            .tel = "" & APdr.Row.Item("tel"),
+                                            .origin = "" & APdr.Row.Item("origin"),
+                                            .suppliercode = "" & APdr.Row.Item("toolingsupplier"),
+                                            .suppliername = "" & APdr.Row.Item("toolingsuppliername"),
+                                            .totaltoolingcost = OriginalCost,
+                                            .originalcurrency = OriginalCurrency}
+        If Not IsDBNull(APdr.Row.Item("expectedtoolingfinishdate")) Then
+            myProformaPO.expectedtoolingfinishdate = APdr.Row.Item("expectedtoolingfinishdate")
+        End If
+        If Not IsDBNull(APdr.Row.Item("printdate")) Then
+            myProformaPO.printtdate = APdr.Row.Item("printdate")
+        End If
+
+        Return dr
+    End Function
+
+    Private Sub Button15_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnPreviewPPO.Click
+        Dim dr = ProformaInvoiceBS.Current
+        If Not IsNothing(dr) Then
+            Dim Filename = String.Format("{0}\{1}.pdf", HelperClass1.proformapo, dr.item("proformainvoice"))
+            HelperClass1.previewdoc(Filename)
+        End If
+        
+    End Sub
+
+    Private Sub GeneratePDF(ByVal p1 As Object)
+        Dim ReportName As String = String.Format("{0}.pdf", p1)
+        Dim filename = String.Format("{0}\{1}", HelperClass1.proformapo, ReportName)
+        Dim myPdfCallback As FormatReportDelegate
+        myPdfCallback = AddressOf CreateNewPDF
+        Dim mypdf = New ExportToExcelFile(Me, HelperClass1.proformapo, ReportName, myPdfCallback, template:="\templates\ProformaPOTemplate.xltx")
+        mypdf.CreateForm(filename, New EventArgs)
+    End Sub
+
+    Private Sub CreateNewPDF(ByRef sender As Object, ByRef e As EventArgs)
+        Dim owb = DirectCast(sender, Excel.Workbook)
+        Dim osheet As Excel.Worksheet = owb.Worksheets(1)
+
+        osheet.Range("applicantdate").Value = myProformaPO.applicantdate
+        osheet.Range("printdate").Value = myProformaPO.printtdate
+        osheet.Range("proformapurchaseorder").Value = myProformaPO.proformapurchaseorder
+        osheet.Range("expectedtoolingfinishdate").Value = myProformaPO.expectedtoolingfinishdate
+        osheet.Range("origin").Value = myProformaPO.origin
+        osheet.Range("applicantname").Value = myProformaPO.applicantname
+        osheet.Range("suppliercode").Value = myProformaPO.suppliercode
+        osheet.Range("suppliername").Value = myProformaPO.suppliername
+        osheet.Range("address").Value = myProformaPO.address
+        osheet.Range("tel").Value = myProformaPO.tel
+        osheet.Range("fax").Value = myProformaPO.fax
+        osheet.Range("originalcurrency").Value = myProformaPO.originalcurrency
+        osheet.Range("assetdescription").Value = myProformaPO.assetdescription
+        osheet.Range("deliveryaddress").Value = myProformaPO.deliveryaddress
+        osheet.Range("totaltoolingcost").Value = myProformaPO.totaltoolingcost
+
+    End Sub
+
+
+    Private Sub BtnDownloadProformaPO_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDownloadProformaPO.Click
+        Me.validate()
+        Dim DownloadCheckbox As Boolean = False
+        For Each drv As DataRowView In ProformaInvoiceBS.List
+            If drv.Row.Item("download") Then
+                DownloadCheckbox = True
+            End If
+        Next
+        If DownloadCheckbox Then
+            If Not myThreadDownload.IsAlive Then
+                'get Folder
+
+                Dim myfolder = New SaveFileDialog
+                myfolder.FileName = "SaveFile"
+                If myfolder.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    ToolStripStatusLabel1.Text = ""
+                    SelectedFolder = IO.Path.GetDirectoryName(myfolder.FileName)
+                    myThreadDownload = New Thread(AddressOf DoDownloadProformaPO)
+                    myThreadDownload.Start()
+                End If
+
+            Else
+                MessageBox.Show("Please wait until the current process is finished.")
+            End If
+        Else
+            MessageBox.Show("Please select file to download.")
+        End If
+        
+    End Sub
+
+    Private Sub DoDownloadProformaPO()
+        Dim i As Integer = 0
+        For Each drv As DataRowView In ProformaInvoiceBS.List
+            If drv.Row.Item("download") Then
+                i = i + 1
+                Dim filename = String.Format("{0}\{1}.pdf", HelperClass1.proformapo, drv.Row.Item("proformainvoice"))
+                ProgressReport(1, String.Format("Downloading ::{0} of {1} {2}", i, ProformaInvoiceBS.Count, drv.Row.Item("proformainvoice")))
+                Dim filesource As String = String.Format("{0}", filename)
+                Dim FileTarget As String = String.Format("{0}\{1}.pdf", SelectedFolder, drv.Row.Item("proformainvoice"))
+                Try
+                    FileIO.FileSystem.CopyFile(filesource, FileTarget, True)
+                Catch ex As Exception
+
+                End Try
+
+            End If
+        Next
+        ProgressReport(1, "Done. Please check your folder ::" & SelectedFolder)
+    End Sub
+
 End Class
 
 Public Class TypeOfInvestment
@@ -2269,8 +2480,6 @@ Public Class TypeOfInvestment
         Me.TypeOfInvestmentName = _TypeOfInvestmentName
     End Sub
 End Class
-
-
 
 Public Class DocumentType
     Public Property DocumentTypeId As Integer
@@ -2289,4 +2498,22 @@ Public Class PaymentMethod
         Me.PaymentMethodDesc = _paymentmethoddesc
         Me.PaymentMethodId = _paymentmethodid
     End Sub
+End Class
+
+Public Class proformaPO
+    Public Property applicantdate As Date
+    Public Property printtdate As Date
+    Public Property proformapurchaseorder As String
+    Public Property expectedtoolingfinishdate As Date
+    Public Property origin As String
+    Public Property applicantname As String
+    Public Property suppliercode As String
+    Public Property suppliername As String
+    Public Property address As String
+    Public Property fax As String
+    Public Property tel As String
+    Public Property assetdescription As String
+    Public Property deliveryaddress As String
+    Public Property totaltoolingcost As Decimal
+    Public Property originalcurrency As String
 End Class

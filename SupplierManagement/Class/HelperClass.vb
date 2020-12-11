@@ -11,6 +11,7 @@ Public Class HelperClass
     Private disposedValue As Boolean ' To detect redundant calls
 
 
+
     ' IDisposable
     Protected Overridable Sub Dispose(ByVal disposing As Boolean)
         If Not Me.disposedValue Then
@@ -45,6 +46,7 @@ Public Class HelperClass
     Public template As String
     Public document As String
     Public attachment As String
+    Public proformapo As String
 
     Public Shared myInstance As HelperClass
     Public Shared Function getInstance() As HelperClass
@@ -235,6 +237,30 @@ Public Class HelperClass
                     MessageBox.Show("File too big.Please download.")
                 End If
             End If
+            myret = True
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+        Return myret
+    End Function
+
+    Public Function previewdoc(ByVal filename As String)
+        Dim myret As Boolean = False
+        Try
+            Dim filesource As String = filename
+            If FileIO.FileSystem.GetFileInfo(filesource).Length / 1048576 < 5 Then
+                Dim mytemp = String.Format("{1}{0}", filename, IO.Path.GetTempPath())
+
+                FileIO.FileSystem.CopyFile(filesource, mytemp, True)
+                Dim p As New System.Diagnostics.Process
+                'p.StartInfo.FileName = "\\172.22.10.44\SharedFolder\PriceCMMF\New\template\Supplier Management Task User Guide-Admin.pdf"
+                p.StartInfo.FileName = mytemp
+                p.Start()
+
+            Else
+                MessageBox.Show("File too big.Please download.")
+            End If
+
             myret = True
         Catch ex As Exception
             MessageBox.Show(ex.Message)

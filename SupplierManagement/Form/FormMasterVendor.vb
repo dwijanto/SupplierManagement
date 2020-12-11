@@ -138,9 +138,9 @@ Public Class FormMasterVendor
 
                             TextBox1.DataBindings.Add(New Binding("Text", VBS, "vendorcode", True, DataSourceUpdateMode.OnPropertyChanged, ""))
                             TextBox2.DataBindings.Add(New Binding("Text", VBS, "vendorname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
-                            TextBox3.DataBindings.Add(New Binding("Text", VBS, "shortname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+                            TextBox3.DataBindings.Add(New Binding("Text", VBS, "shortname2", True, DataSourceUpdateMode.OnPropertyChanged, ""))
                             TextBox4.DataBindings.Add(New Binding("Text", VBS, "officername", True, DataSourceUpdateMode.OnPropertyChanged, ""))
-                            TextBox5.DataBindings.Add(New Binding("Text", VBS, "shortname2", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+                            TextBox5.DataBindings.Add(New Binding("Text", VBS, "shortname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
                             DateTimePicker1.DataBindings.Add(New Binding("Text", VBS, "ssmeffectivedate", True, DataSourceUpdateMode.OnPropertyChanged, ""))
                             DateTimePicker2.DataBindings.Add(New Binding("Text", VBS, "pmeffectivedate", True, DataSourceUpdateMode.OnPropertyChanged, ""))

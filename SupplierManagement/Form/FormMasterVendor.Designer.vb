@@ -25,11 +25,6 @@ Partial Class FormMasterVendor
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMasterVendor))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
@@ -67,6 +62,11 @@ Partial Class FormMasterVendor
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -99,46 +99,6 @@ Partial Class FormMasterVendor
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(871, 322)
         Me.DataGridView1.TabIndex = 149
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "vendorcode"
-        Me.Column1.HeaderText = "Vendor Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "vendorname"
-        Me.Column3.HeaderText = "Vendor Name"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 300
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "shortname2"
-        Me.Column5.HeaderText = "Short Name"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "ssm"
-        Me.Column10.HeaderText = "SPM"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        Me.Column10.Visible = False
-        Me.Column10.Width = 150
-        '
-        'Column11
-        '
-        Me.Column11.DataPropertyName = "pm"
-        Me.Column11.HeaderText = "PM"
-        Me.Column11.Name = "Column11"
-        Me.Column11.ReadOnly = True
-        Me.Column11.Visible = False
-        Me.Column11.Width = 150
         '
         'ToolStrip1
         '
@@ -228,7 +188,7 @@ Partial Class FormMasterVendor
         Me.ToolStripButton7.Image = CType(resources.GetObject("ToolStripButton7.Image"), System.Drawing.Image)
         Me.ToolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton7.Name = "ToolStripButton7"
-        Me.ToolStripButton7.Size = New System.Drawing.Size(128, 19)
+        Me.ToolStripButton7.Size = New System.Drawing.Size(128, 22)
         Me.ToolStripButton7.Text = "Master Vendor History"
         '
         'StatusStrip1
@@ -471,6 +431,46 @@ Partial Class FormMasterVendor
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Visible = False
         Me.DataGridViewTextBoxColumn5.Width = 150
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "vendorcode"
+        Me.Column1.HeaderText = "Vendor Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "vendorname"
+        Me.Column3.HeaderText = "Vendor Name"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 300
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "shortname"
+        Me.Column5.HeaderText = "Short Name"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "ssm"
+        Me.Column10.HeaderText = "SPM"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        Me.Column10.Visible = False
+        Me.Column10.Width = 150
+        '
+        'Column11
+        '
+        Me.Column11.DataPropertyName = "pm"
+        Me.Column11.HeaderText = "PM"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        Me.Column11.Visible = False
+        Me.Column11.Width = 150
         '
         'FormMasterVendor
         '

@@ -53,6 +53,7 @@ Public Class FormMenu
             HelperClass1.template = "\\172.22.10.77\SharedFolder\PriceCMMF\New\template"
             HelperClass1.document = "\\172.22.10.77\SharedFolder\PriceCMMF\New\documents"
             HelperClass1.attachment = "\\172.22.10.77\SharedFolder\PriceCMMF\New\attachment"
+            HelperClass1.proformapo = "\\172.22.10.77\SharedFolder\PriceCMMF\New\proformapo"
             Try
                 loglogin(DbAdapter1.userid)
             Catch ex As Exception
