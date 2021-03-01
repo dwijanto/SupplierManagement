@@ -119,7 +119,7 @@ Public Class FormFactoryAndContact
         '         " LEFT JOIN masteruser mu1 ON mu1.id = o1.muid {0}" &
         '         " order by vendorcode;", myCriteria))
         'viewvendorpmeffectivedate replace viewvendorfamilypmeffectivedate
-        sb.Append(String.Format(" select v.vendorcode,v.vendorname::text,v.shortname::text,mu2.username as ssm,vfp.spmeffectivedate,mu1.username as gsm,gsm.effectivedate as gsmeffectivedate,mu.username as pm,vfp.pmeffectivedate,v.shortname2,true as status" &
+        sb.Append(String.Format(" select v.vendorcode,v.vendorname::text,v.shortname3::text as shortname,mu2.username as ssm,vfp.spmeffectivedate,mu1.username as gsm,gsm.effectivedate as gsmeffectivedate,mu.username as pm,vfp.pmeffectivedate,v.shortname2,true as status" &
                 " from vendor v" &
                 " LEFT JOIN doc.viewvendorpmeffectivedate vfp ON vfp.vendorcode = v.vendorcode" &
                 " LEFT JOIN officerseb os ON os.ofsebid = vfp.pmid" &
@@ -328,7 +328,7 @@ Public Class FormFactoryAndContact
                     Dim drv As DataRowView = BSshortNameHelper.Current
                     TextBox1.Text = "" + drv.Item("shortname")
                     TextBox2.Text = ""
-                    myCriteria = String.Format("where v.shortname = '{0}'", TextBox1.Text)
+                    myCriteria = String.Format("where v.shortname3 = '{0}'", TextBox1.Text)
                     If TextBox1.Text <> "" Then
                         RefreshDataGrid()
                     Else
@@ -393,7 +393,7 @@ Public Class FormFactoryAndContact
         sb = New StringBuilder
         'sb.Append(String.Format("select vf.*,v.shortname::text,v.vendorname from doc.vendorfactory vf" &
         '                        " left join vendor v on v.vendorcode = vf.vendorcode {0};", myCriteria2))
-        sb.Append(String.Format("select distinct vf.*,v.shortname::text,v.vendorname from doc.vendorfactory vf" &
+        sb.Append(String.Format("select distinct vf.*,v.shortname3::text as shortname,v.vendorname from doc.vendorfactory vf" &
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0};", myCriteria))
         sb.Append(String.Format("with h as (select  id,max(stamp) as modifieddate from doc.factorydtl_audit group by id order by id ) select distinct f.*,h.modifieddate from doc.factorydtl f" &
                                 " left join h on h.id = f.id" &
@@ -403,7 +403,7 @@ Public Class FormFactoryAndContact
                                 " left join doc.factorydtl f on f.factoryhdid = fh.id" &
                                 " left join doc.vendorfactory vf on vf.factoryid = f.id" &
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0}; ", myCriteria))
-        sb.Append(String.Format("select vc.*,v.shortname::text,v.vendorname from doc.vendorcontact vc" &
+        sb.Append(String.Format("select vc.*,v.shortname3::text as shortname,v.vendorname from doc.vendorcontact vc" &
                                 " left join vendor v on v.vendorcode = vc.vendorcode {0};", myCriteria))
         sb.Append(String.Format("with h as (select  id,max(stamp) as modifieddate from doc.contact_audit group by id order by id ) select distinct c.*,h.modifieddate from doc.contact c" &
                                 " left join h on h.id = c.id" &
@@ -674,7 +674,7 @@ Public Class FormFactoryAndContact
         ToolStripStatusLabel1.Text = ""
         ToolStripStatusLabel2.Text = ""
         If TextBox1.Text <> "" Then
-            sb.Append(String.Format(" and v.shortname = '{0}'", TextBox1.Text))
+            sb.Append(String.Format(" and v.shortname3 = '{0}'", TextBox1.Text))
             'sb.Append(String.Format(" where v.shortname = '{0}'", TextBox1.Text))
         ElseIf TextBox2.Text <> "" Then
             sb.Append(String.Format(" and v.vendorname = '{0}'", TextBox2.Text.Replace("'", "''")))
@@ -736,7 +736,7 @@ Public Class FormFactoryAndContact
         '                                           " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
         '                                           " left join doc.paramdt pt on pt.ivalue = vs.producttypeid and pt.paramhdid = 3" &
         '                                            " where  not (vf.factoryid isnull and  vc.contactid isnull) {0} order by v.vendorcode", sb.ToString)
-        sqlstrReport = String.Format("select distinct v.vendorcode,vendorname::text,v.shortname::text," &
+        sqlstrReport = String.Format("select distinct v.vendorcode,vendorname::text,v.shortname3::text as shortname," &
                                                    " mu2.username as spm,vfp.spmeffectivedate, mu1.username as gsm,gsm.effectivedate as gsmeffectivedate,mu.username as pm,vfp.pmeffectivedate," &
                                                    " pt.paramname as producttype,pr.paramname as status, fhd.customname,fdt.chinesename,fdt.englishname,fdt.englishaddress,fdt.chineseaddress,fdt.area,fdt.city,fdt.main,fdt.modifiedby,doc.getstampfactorydtlaudit(fdt.id) as modifieddate,prov.paramname as province,cty.paramname as country,c.contactname,c.title,c.email,c.officeph,c.factoryph,c.officemb,c.factorymb,upper(c.isecoqualitycontact::text) as isecoqualitycontact from vendor v " &
                                                    "LEFT JOIN doc.viewvendorpmeffectivedate vfp ON vfp.vendorcode = v.vendorcode " &

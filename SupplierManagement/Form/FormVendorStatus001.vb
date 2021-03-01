@@ -59,7 +59,7 @@ Public Class FormVendorStatus001
                   "             left join doc.paramhd ph on ph.paramhdid = p.paramhdid where ph.paramname = 'producttype'), " &
                   "     pvs as (select p.paramname as statusname, p.ivalue as status from doc.paramdt p " &
                   "             left join doc.paramhd ph on ph.paramhdid = p.paramhdid where  ph.paramname = 'vendorstatus')" &
-                  " select vs.vendorcode::text,v.vendorname::text,v.shortname::text,vs.status,pvs.statusname,ppt.producttype, rank,vs.latestupdate,vs.usermodified, vs.producttypeid" &
+                  " select vs.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,vs.status,pvs.statusname,ppt.producttype, rank,vs.latestupdate,vs.usermodified, vs.producttypeid, vs.remark" &
                   " from doc.vendorstatus vs " &
                   " left join vendor v on v.vendorcode = vs.vendorcode " &
                   " left join pvs on pvs.status = vs.status" &
@@ -151,8 +151,10 @@ Public Class FormVendorStatus001
 
                             ToolStripComboBox1.SelectedIndex = 1
                             TextBox1.DataBindings.Clear()
+                            TextBox2.DataBindings.Clear()
 
                             TextBox1.DataBindings.Add(New Binding("Text", VSBS, "rank", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+                            TextBox2.DataBindings.Add(New Binding("Text", VSBS, "remark", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
                             If IsNothing(VSBS.Current) Then
                                 ComboBox1.SelectedIndex = -1

@@ -588,3 +588,4 @@ C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Deb
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.UCNSGeneralContract.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.FormReportCMMF3750.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.FormSupplierListTO.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Debug\SupplierManagement.FormToolingSupplier.resources

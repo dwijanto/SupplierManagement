@@ -163,7 +163,7 @@ Partial Class FormVendorCurr
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripButton4, Me.ToolStripButton5, Me.ToolStripButton6, Me.ToolStripTextBox1})
         Me.ToolStrip1.Location = New System.Drawing.Point(3, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(513, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(482, 25)
         Me.ToolStrip1.TabIndex = 0
         '
         'ToolStripButton1

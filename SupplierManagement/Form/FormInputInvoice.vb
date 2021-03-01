@@ -79,6 +79,11 @@ Public Class FormInputInvoice
         TextBox37.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "balance", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
         TextBox38.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "invoiceamount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
         TextBox1.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "totalamount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
+
+        TextBox4.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "proformainvoice", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox5.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "currency", True, DataSourceUpdateMode.OnPropertyChanged))
+        TextBox6.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "amount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
+
         TextBox33.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "invoiceno", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox18.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "pct", True, DataSourceUpdateMode.OnPropertyChanged, "", "##0.00"))
         TextBox34.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "description", True, DataSourceUpdateMode.OnPropertyChanged, ""))
@@ -183,6 +188,7 @@ Public Class FormInputInvoice
                 myrow.EndEdit()
             Next
             TextBox1.Text = getTotal()
+            TextBox3.Text = getTotal("CNY")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Batch Payment")
         End Try
@@ -293,6 +299,7 @@ Public Class FormInputInvoice
             ' MessageBox.Show(ex.Message)
         End Try
         TextBox1.Text = getTotal()
+        TextBox3.Text = getTotal("CNY")
         DataGridView3.Invalidate()
 
     End Sub
@@ -324,6 +331,7 @@ Public Class FormInputInvoice
 
     Private Sub TextBox38_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox38.TextChanged
         TextBox1.Text = getTotal()
+        TextBox3.Text = getTotal("CNY")
         Try
             'Dim pos = toolingBS.Find("id", DirectCast(ToolingPaymentBS.Current, DataRowView).Row.Item("toolinglistid"))
             'toolingBS.Position = pos
@@ -339,6 +347,21 @@ Public Class FormInputInvoice
             For Each drv As DataRowView In ToolingPaymentBS.List
                 myret = myret + drv.Item("invoiceamount") * drv.Item("exrate")
             Next           
+        Catch ex As Exception
+
+        End Try
+        Return Format(myret, "#,##0.00")
+    End Function
+
+    Private Function getTotal(ByVal curr As String) As String
+        Dim myret As Decimal = 0
+        Try
+            For Each drv As DataRowView In ToolingPaymentBS.List
+                If drv.Item("currency") = curr Then
+                    myret = myret + drv.Item("invoiceamount")
+                End If
+
+            Next
         Catch ex As Exception
 
         End Try

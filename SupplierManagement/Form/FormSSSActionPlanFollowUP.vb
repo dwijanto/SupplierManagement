@@ -349,9 +349,9 @@ Public Class FormSSSActionPlanFollowUP
                 myCriteria.Append(" and ")
             End If
             'myCriteria.Append(String.Format("vendorname = '{0}'", TextBox2.Text))
-            myCriteria.Append(String.Format("shortname in (select shortname from vendor where vendorname in ({0}))", VendornameCriteriaList))
+            myCriteria.Append(String.Format("shortname in (select shortname3 as shortname from vendor where vendorname in ({0}))", VendornameCriteriaList))
             SortNameCriteriaList.Clear()
-            SortNameCriteriaList.Append(String.Format("select shortname from vendor where vendorname in ({0})", VendornameCriteriaList))
+            SortNameCriteriaList.Append(String.Format("select shortname3 as shortname from vendor where vendorname in ({0})", VendornameCriteriaList))
         End If
 
         If TextBox3.Text.Length > 0 Then

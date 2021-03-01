@@ -35,7 +35,7 @@ Public Class SupplierGSMAdapter
     Public Function loaddata() As Boolean Implements IAdapter.loaddata
         Dim myret As Boolean = False
         Dim sb As New StringBuilder
-        sb.Append("select vg.id, vg.vendorcode::text,vg.gsmid,vg.effectivedate,v.vendorname::text,v.shortname2::text as shortname,mu.username as gsm from doc.vendorgsm vg" &
+        sb.Append("select vg.id, vg.vendorcode::text,vg.gsmid,vg.effectivedate,v.vendorname::text,v.shortname3::text as shortname,mu.username as gsm from doc.vendorgsm vg" &
                   " left join officerseb o on o.ofsebid = vg.gsmid" &
                   " left join masteruser mu on mu.id = o.muid" &
                   " left join vendor v on v.vendorcode = vg.vendorcode;")
@@ -43,7 +43,7 @@ Public Class SupplierGSMAdapter
                   " left join masteruser mu on mu.id = o.muid" &
                   " left join teamtitle tt on tt.teamtitleid = o.teamtitleid" &
                   " where teamtitleshortname = 'GSM' and mu.isactive;")
-        sb.Append("select vendorcode,vendorname::text ,vendorcode::text || ' - ' || vendorname::text as description , shortname::text from vendor order by vendorcode;")
+        sb.Append("select vendorcode,vendorname::text ,vendorcode::text || ' - ' || vendorname::text as description , shortname3::text as shortname from vendor order by vendorcode;")
 
         Dim sqlstr = sb.ToString
         DS = New DataSet

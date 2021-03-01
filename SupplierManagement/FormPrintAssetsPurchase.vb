@@ -15,27 +15,26 @@ Public Class FormPrintAssetsPurchase
     Dim TIBS As New BindingSource
     Dim APACTBS As New BindingSource
 
-    Dim InvArr(,) As String = {{"invoicedate1", "invoiceno1", "invoicedescription1", "totalinvoiceamount1"},
-                               {"invoicedate2", "invoiceno2", "invoicedescription2", "totalinvoiceamount2"},
-                               {"invoicedate3", "invoiceno3", "invoicedescription3", "totalinvoiceamount3"},
-                               {"invoicedate4", "invoiceno4", "invoicedescription4", "totalinvoiceamount4"},
-                               {"invoicedate5", "invoiceno5", "invoicedescription5", "totalinvoiceamount5"},
-                               {"invoicedate6", "invoiceno6", "invoicedescription6", "totalinvoiceamount6"},
-                               {"invoicedate7", "invoiceno7", "invoicedescription7", "totalinvoiceamount7"},
-                               {"invoicedate8", "invoiceno8", "invoicedescription8", "totalinvoiceamount8"},
-                               {"invoicedate9", "invoiceno9", "invoicedescription9", "totalinvoiceamount9"},
-                               {"invoicedate10", "invoiceno10", "invoicedescription10", "totalinvoiceamount10"},
-                               {"invoicedate11", "invoiceno11", "invoicedescription11", "totalinvoiceamount11"},
-                               {"invoicedate12", "invoiceno12", "invoicedescription12", "totalinvoiceamount12"},
-                               {"invoicedate13", "invoiceno13", "invoicedescription13", "totalinvoiceamount13"},
-                               {"invoicedate14", "invoiceno14", "invoicedescription14", "totalinvoiceamount14"},
-                               {"invoicedate15", "invoiceno15", "invoicedescription15", "totalinvoiceamount15"},
-                               {"invoicedate16", "invoiceno16", "invoicedescription16", "totalinvoiceamount16"},
-                               {"invoicedate17", "invoiceno17", "invoicedescription17", "totalinvoiceamount17"},
-                               {"invoicedate18", "invoiceno18", "invoicedescription18", "totalinvoiceamount18"},
-                               {"invoicedate19", "invoiceno19", "invoicedescription19", "totalinvoiceamount19"},
-                               {"invoicedate20", "invoiceno20", "invoicedescription20", "totalinvoiceamount20"}
-                               }
+    Dim InvArr(,) As String = {{"invoicedate1", "invoiceno1", "invoicedescription1", "totalinvoiceamount1", "invoicecurrency1", "invoiceamount1", "proformainvoice1", "currency1", "amount1"},
+                               {"invoicedate2", "invoiceno2", "invoicedescription2", "totalinvoiceamount2", "invoicecurrency2", "invoiceamount2", "proformainvoice2", "currency2", "amount2"},
+                               {"invoicedate3", "invoiceno3", "invoicedescription3", "totalinvoiceamount3", "invoicecurrency3", "invoiceamount3", "proformainvoice3", "currency3", "amount3"},
+                               {"invoicedate4", "invoiceno4", "invoicedescription4", "totalinvoiceamount4", "invoicecurrency4", "invoiceamount4", "proformainvoice4", "currency4", "amount4"},
+                               {"invoicedate5", "invoiceno5", "invoicedescription5", "totalinvoiceamount5", "invoicecurrency5", "invoiceamount5", "proformainvoice5", "currency5", "amount5"},
+                               {"invoicedate6", "invoiceno6", "invoicedescription6", "totalinvoiceamount6", "invoicecurrency6", "invoiceamount6", "proformainvoice6", "currency6", "amount6"},
+                               {"invoicedate7", "invoiceno7", "invoicedescription7", "totalinvoiceamount7", "invoicecurrency7", "invoiceamount7", "proformainvoice7", "currency7", "amount7"},
+                               {"invoicedate8", "invoiceno8", "invoicedescription8", "totalinvoiceamount8", "invoicecurrency8", "invoiceamount8", "proformainvoice8", "currency8", "amount8"},
+                               {"invoicedate9", "invoiceno9", "invoicedescription9", "totalinvoiceamount9", "invoicecurrency9", "invoiceamount9", "proformainvoice9", "currency9", "amount9"},
+                               {"invoicedate10", "invoiceno10", "invoicedescription10", "totalinvoiceamount10", "invoicecurrency10", "invoiceamount10", "proformainvoice10", "currency10", "amount10"},
+                               {"invoicedate11", "invoiceno11", "invoicedescription11", "totalinvoiceamount11", "invoicecurrency11", "invoiceamount11", "proformainvoice11", "currency11", "amount11"},
+                               {"invoicedate12", "invoiceno12", "invoicedescription12", "totalinvoiceamount12", "invoicecurrency12", "invoiceamount12", "proformainvoice12", "currency12", "amount12"},
+                               {"invoicedate13", "invoiceno13", "invoicedescription13", "totalinvoiceamount13", "invoicecurrency13", "invoiceamount13", "proformainvoice13", "currency13", "amount13"},
+                               {"invoicedate14", "invoiceno14", "invoicedescription14", "totalinvoiceamount14", "invoicecurrency14", "invoiceamount14", "proformainvoice14", "currency14", "amount14"},
+                               {"invoicedate15", "invoiceno15", "invoicedescription15", "totalinvoiceamount15", "invoicecurrency15", "invoiceamount15", "proformainvoice15", "currency15", "amount15"},
+                               {"invoicedate16", "invoiceno16", "invoicedescription16", "totalinvoiceamount16", "invoicecurrency16", "invoiceamount16", "proformainvoice16", "currency16", "amount16"},
+                               {"invoicedate17", "invoiceno17", "invoicedescription17", "totalinvoiceamount17", "invoicecurrency17", "invoiceamount17", "proformainvoice17", "currency17", "amount17"},
+                               {"invoicedate18", "invoiceno18", "invoicedescription18", "totalinvoiceamount18", "invoicecurrency18", "invoiceamount18", "proformainvoice18", "currency18", "amount18"},
+                               {"invoicedate19", "invoiceno19", "invoicedescription19", "totalinvoiceamount19", "invoicecurrency19", "invoiceamount19", "proformainvoice19", "currency19", "amount19"},
+                               {"invoicedate20", "invoiceno20", "invoicedescription20", "totalinvoiceamount20", "invoicecurrency20", "invoiceamount20", "proformainvoice20", "currency20", "amount20"}}
 
     Public Sub New(ByVal ds As DataSet)
 
@@ -114,7 +113,7 @@ Public Class FormPrintAssetsPurchase
 
         osheet.Range("applicationdate").Value = String.Format("{0:dd-MMM-yyyy}", APdrv.Row.Item("applicantdate"))
         osheet.Range("applicantname").Value = String.Format("{0}", APdrv.Row.Item("applicantname"))
-        osheet.Range("approvalname").Value = String.Format("{0}", APdrv.Row.Item("approvalname"))
+        osheet.Range("approvalname").Value = String.Format("{0}", APdrv.Row.Item("approvalemail"))
         osheet.Range("creator").Value = APdrv.Row.Item("username")
         osheet.Range("dept").Value = TPdrv.Row.Item("dept")
         osheet.Range("assetdescription").Value = APdrv.Row.Item("assetdescription")
@@ -123,6 +122,7 @@ Public Class FormPrintAssetsPurchase
         osheet.Range("projectcodename").Value = TPdrv.Row.Item("projectcode")
         osheet.Range("projectcodename2").Value = TPdrv.Row.Item("projectname")
         osheet.Range("paymentmethod").Value = APdrv.Row.Item("paymentmethod")
+        osheet.Range("paymententity").Value = APdrv.Row.Item("paymententity")
 
         Select Case APdrv.Row.Item("typeofinvestment")
             Case 1
@@ -137,6 +137,7 @@ Public Class FormPrintAssetsPurchase
         osheet.Range("reasonforpurchase").Value = APdrv.Row.Item("reason")
         osheet.Range("suppliername").Value = VCdrv.Row.Item("vendorname")
         osheet.Range("suppliercode").Value = APdrv.Row.Item("vendorcode")
+        osheet.Range("toolingsupplier").Value = APdrv.Row.Item("toolingsupplierdescription")
 
         osheet.Range("amortizationperiod1").Value = APdrv.Row.Item("amortperiod_1")
         osheet.Range("amorizationqty1").Value = APdrv.Row.Item("amortqty_1")
@@ -161,6 +162,17 @@ Public Class FormPrintAssetsPurchase
                 osheet.Range(InvArr(i, 1)).Value = drv.Row.Item("invoiceno")
                 osheet.Range(InvArr(i, 2)).Value = drv.Row.Item("description")
                 osheet.Range(InvArr(i, 3)).Value = drv.Row.Item("totalamount")
+                If Not IsDBNull(drv.Row.Item("totalamountcny")) Then
+                    If drv.Row.Item("totalamountcny") > 0 Then
+                        osheet.Range(InvArr(i, 4)).Value = "CNY"
+                        osheet.Range(InvArr(i, 5)).Value = drv.Row.Item("totalamountcny")
+                    End If
+
+                    osheet.Range(InvArr(i, 6)).Value = drv.Row.Item("proformainvoice")
+                    osheet.Range(InvArr(i, 7)).Value = drv.Row.Item("currency")
+                    osheet.Range(InvArr(i, 8)).Value = drv.Row.Item("amount")
+                End If
+                
                 i = i + 1
             Catch ex As Exception
                 MessageBox.Show("Your invoice number more than available row in the template.")
@@ -169,7 +181,7 @@ Public Class FormPrintAssetsPurchase
 
         Next
         For a = i To 20
-            osheet.Rows(String.Format("{0}:{0}", 35 + i, 35 + i)).delete()
+            osheet.Rows(String.Format("{0}:{0}", 36 + i, 36 + i)).delete()
         Next
 
         If Not IsDBNull(APdrv.Row.Item("budgetamount")) Then

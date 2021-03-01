@@ -144,7 +144,7 @@ Public Class FormUser
         sb.Append("select u.userid,username,u.email,isadmin,isfinance,allowupdatedocument,isguest,id,o.teamtitleid,o.ofsebid,m.newemail,u.isactive from doc.user u" &
                   " left join officerseb o on o.userid = u.userid " &
                   " left join doc.emailmapping m on m.oldemail = u.email order by id;")
-        sb.Append("select u.username,g.groupname,v.vendorcode::text,v.vendorname::text,v.shortname::text from doc.groupuser gu" &
+        sb.Append("select u.username,g.groupname,v.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname from doc.groupuser gu" &
                   " left join doc.groupvendor gv on gv.groupid = gu.groupid" &
                   " left join doc.groupauth g on g.groupid = gu.groupid" &
                   " left join vendor v on v.vendorcode = gv.vendorcode" &

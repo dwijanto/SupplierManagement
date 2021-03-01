@@ -108,6 +108,7 @@
     <Compile Include="Class\Model\PaymentTermModel.vb" />
     <Compile Include="Class\Model\PriceChangeHDModel.vb" />
     <Compile Include="Class\Model\SubFamilyVCModel.vb" />
+    <Compile Include="Class\Model\ToolingSupplierModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
     <Compile Include="Class\Model\VendorCurrModel.vb" />
     <Compile Include="Class\Model\VendorFamilyPMExModel.vb" />
@@ -137,6 +138,7 @@
     <Compile Include="Class\TXAdapter\PaymentTermAdapter.vb" />
     <Compile Include="Class\TXAdapter\PaymentTermEffDateAdapter.vb" />
     <Compile Include="Class\TXAdapter\SubFamilyVCAdapter.vb" />
+    <Compile Include="Class\TXAdapter\ToolingSupplierAdapter.vb" />
     <Compile Include="Class\TXAdapter\UserAdapter.vb" />
     <Compile Include="Class\TXAdapter\VendorCurrAdapter.vb" />
     <Compile Include="Class\TXAdapter\VendorFamilyPMExAdapter.vb" />
@@ -538,6 +540,12 @@
       <DependentUpon>FormSupplierListTO.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormSupplierListTO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormToolingSupplier.Designer.vb">
+      <DependentUpon>FormToolingSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormToolingSupplier.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormVendorFamilyPMEx.Designer.vb">
@@ -1674,6 +1682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormSupplierPhotos.resx">
       <DependentUpon>FormSupplierPhotos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormToolingSupplier.resx">
+      <DependentUpon>FormToolingSupplier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormUpdateFamily.resx">
       <DependentUpon>FormUpdateFamily.vb</DependentUpon>

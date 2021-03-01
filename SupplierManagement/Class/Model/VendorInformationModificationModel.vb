@@ -43,7 +43,7 @@ Public Class VendorInformationModificationModel
 
             Dim mycriteria = String.Format("where v.vendorcode = {0}", _vendorcode)
             'Header 00
-            sb.Append(String.Format("select u.*,v.vendorcode::text || ' - ' || v.vendorname::text as vendorcodename,v.vendorname::text,v.shortname::text,spm.username as spmusername,pd.username as pdusername,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,app.email as appemail, doc.getmodifiedfield(u.id) as modifiedfield from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
+            sb.Append(String.Format("select u.*,v.vendorcode::text || ' - ' || v.vendorname::text as vendorcodename,v.vendorname::text,v.shortname3::text as shortname,spm.username as spmusername,pd.username as pdusername,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,app.email as appemail, doc.getmodifiedfield(u.id) as modifiedfield from {0} u left join vendor v on v.vendorcode = u.vendorcode" &
                                     " left join doc.user spm on lower(spm.userid) = lower(u.approvaldept)" &
                                     " left join doc.user pd on lower(pd.userid) = lower(u.approvaldept2)" &
                                     " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
@@ -55,10 +55,10 @@ Public Class VendorInformationModificationModel
                                     " left join doc.modificationtype m on m.id = u.fieldid" &
                                     " where u.hdid = {1} order by linenumber;", "doc.vendorinfmodidt", hdid))
             'Vendor 02
-            sb.Append(String.Format("select distinct vf.*,v.shortname::text,v.vendorname,true as status from doc.vendorfactory vf" &
+            sb.Append(String.Format("select distinct vf.*,v.shortname3::text as shortname,v.vendorname,true as status from doc.vendorfactory vf" &
                                 " left join vendor v on v.vendorcode = vf.vendorcode {0};", mycriteria))
             'VendorContact 03
-            sb.Append(String.Format("select vc.*,v.shortname::text,v.vendorname from doc.vendorcontact vc" &
+            sb.Append(String.Format("select vc.*,v.shortname3::text as shortname,v.vendorname from doc.vendorcontact vc" &
                                 " left join vendor v on v.vendorcode = vc.vendorcode " &
                                 " left join doc.contact c on c.id = vc.contactid" &
                                 " {0} and c.isecoqualitycontact = true;", mycriteria))
@@ -111,7 +111,7 @@ Public Class VendorInformationModificationModel
             '                       " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
             '                       " left join doc.user avp on lower(avp.userid) = lower(u.approvalvp) " &
             '                       " left join doc.user cr on lower(cr.userid) = lower(u.creator) ) select * from q {1};", tablename, Criteria))
-            sb.Append(String.Format("with q as (select u.*,v.vendorcode::text as vendorcodetext,v.vendorname::text,v.shortname::text,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
+            sb.Append(String.Format("with q as (select u.*,v.vendorcode::text as vendorcodetext,v.vendorname::text,v.shortname3::text as shortname,adb.username as dbusername,afc.username as fcusername,avp.username as vpusername ,doc.getstatusvendorinfmodi(u.status) as lateststatus,cr.username as creatorname, doc.getmodifiedfield(u.id) as modifiedfield from {0} u " &
                                     " left join vendor v on v.vendorcode = u.vendorcode" &
                                  " left join doc.user adb on lower(adb.userid) = lower(u.approvaldb)" &
                                  " left join doc.user afc on lower(afc.userid) = lower(u.approvalfc)" &
@@ -165,7 +165,7 @@ Public Class VendorInformationModificationModel
         '                          " left join doc.user afc on afc.userid = u.approvalfc" &
         '                          " left join doc.user avp on avp.userid = u.approvalvp " &
         '                          " left join doc.user cr on cr.userid = u.creator ) select * from q {1};", tablename, criteria))
-        sb.Append(String.Format("with q as (select u.id,u.suppliermodificationid,u.vendorcode as vendorcode,v.vendorname::text,v.shortname::text,u.applicantname," &
+        sb.Append(String.Format("with q as (select u.id,u.suppliermodificationid,u.vendorcode as vendorcode,v.vendorname::text,v.shortname3::text as shortname,u.applicantname," &
                                 " case m.informationtype when 1 then 'Basic Information' when 2 then 'Bank Information' else '' end as modificationtype," &
                                 " m.modifytype,dt.newvalue,m.sensitivitylevel,u.applicantdate,doc.getstatusvendorinfmodi(u.status) as lateststatus,doc.getlateststatusmodifieddate(u.id,u.status) as lateststatusmodifieddate,cr.username as creatorname " &
                                 " from doc.vendorinfmodi u left join doc.vendorinfmodidt dt on dt.hdid = u.id left join doc.modificationtype m on m.id = dt.fieldid" &
@@ -225,11 +225,11 @@ Public Class VendorInformationModificationModel
             '                        " where groupname = 'Approval Database')" &
             '                        " and (status = 4 or status = 7 or (status = 6 and sensitivitylevel = 2 ) or (status = 3 and sensitivitylevel = 3 )  or (status = 6 and sensitivitylevel = 1 and turnovervalue < 5000000)) ) or (vim.approvalfc = lower(u.userid) and status = 5 ) " &
             '                        " or (vim.approvalvp = lower(u.userid) and status = 6)) {1};", userid.ToLower, criteria))
-            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname,doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
+            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname3::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname,doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
                                     " left join vendor v on v.vendorcode = vim.vendorcode" &
                                     " left join doc.vendorinfomodiext e on e.extid = vim.id" &
                                     " left join doc.user u on lower(u.userid) = '{0}'" &
-                                    " where not status in(13,14) and ( (lower(vim.creator) = lower(u.userid) and (status >= 8 and status <= 12 )) " &
+                                    " where not status in(13,14,15) and ( (lower(vim.creator) = lower(u.userid) and (status >= 8 and status <= 12 )) " &
                                     " or (vim.approvaldept = lower(u.userid) and (status = 1 or status = 2)) or (vim.approvaldept2 = lower(u.userid) and status = 3 ) " &
                                     " or (lower(u.userid) in (select lower(u.userid) from doc.groupuser gu" &
                                     " left join doc.user u on u.id = gu.userid" &
@@ -256,7 +256,7 @@ Public Class VendorInformationModificationModel
             '                       " or (lower(vim.approvaldb) = lower(u.userid) and (status >=5 and status <=14))" &
             '                       " or (lower(vim.approvalfc) = lower(u.userid) and (status >=6 and status <=14))" &
             '                       " or (lower(vim.approvalvp) = lower(u.userid) and (status >=7 and status <=14)) {1};", userid.ToLower, criteria))
-            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
+            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname3::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
                                    " left join vendor v on v.vendorcode = vim.vendorcode" &
                                     " left join doc.vendorinfomodiext e on e.extid = vim.id" &
                                    " left join doc.user u on lower(u.userid) = '{0}'" &
@@ -290,7 +290,7 @@ Public Class VendorInformationModificationModel
             'sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,v.vendorname::text,v.shortname::text,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield from doc.vendorinfmodi vim" &
             '                        " left join vendor v on v.vendorcode = vim.vendorcode" &
             '                        " where (status <= 12) {0};", criteria))
-            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
+            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname3::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
                                     " left join vendor v on v.vendorcode = vim.vendorcode" &
                                     " left join doc.vendorinfomodiext e on e.extid = vim.id" &
                                     " where (not status in(13,14)) {0};", criteria))
@@ -298,7 +298,7 @@ Public Class VendorInformationModificationModel
             '                        " left join vendor v on v.vendorcode = vim.vendorcode" &
             '                        " left join doc.vendorinfomodiext e on e.extid = vim.id" &
             '                        " where (status <= 12) {0};", criteria))
-            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
+            sb.Append(String.Format("select vim.id,vim.vendorcode::text,vim.suppliermodificationid,vim.applicantname,vim.applicantdate,vim.familycode,vim.subfamilycode,vim.ismissing,vim.currency,vim.turnovertype,vim.yearreference,vim.turnovervalue,vim.ecoqualitycontactname,vim.ecoqualitycontactemail,vim.sensitivitylevel,vim.approvaldept,vim.approvaldept2,vim.approvaldb,vim.approvalfc,vim.approvalvp,vim.status,vim.creator,coalesce(v.vendorname::text,e.vendorname::text) as vendorname,coalesce(v.shortname3::text,e.shortname::text) as shortname,doc.getstatusvendorinfmodi(vim.status)::text as statusname, doc.getmodifiedfield(vim.id) as modifiedfield,e.extid from doc.vendorinfmodi vim" &
                                    " left join vendor v on v.vendorcode = vim.vendorcode" &
                                     " left join doc.vendorinfomodiext e on e.extid = vim.id" &
                                    " where (status in(13,14)) {0};", criteria))

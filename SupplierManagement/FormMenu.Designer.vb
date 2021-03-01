@@ -235,6 +235,7 @@ Partial Class FormMenu
         Me.Panel13 = New System.Windows.Forms.Panel()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Button13 = New System.Windows.Forms.Button()
+        Me.ToolingSupplierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
@@ -277,7 +278,7 @@ Partial Class FormMenu
         '
         Me.SupplierDocumentsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UploadDocumentToolStripMenuItem, Me.SupplierDashboardToolStripMenuItem, Me.FactoryContactToolStripMenuItem1, Me.SupplierPhotosToolStripMenuItem, Me.SSSActionPlanFollowUpToolStripMenuItem, Me.CreateVendorInformationModificationToolStripMenuItem, Me.FindVendorInformationModificationToolStripMenuItem, Me.VendorInformationApprovalToolStripMenuItem, Me.CreateNewVendorToolStripMenuItem, Me.FindNewVendorToolStripMenuItem})
         Me.SupplierDocumentsToolStripMenuItem.Name = "SupplierDocumentsToolStripMenuItem"
-        Me.SupplierDocumentsToolStripMenuItem.Size = New System.Drawing.Size(167, 20)
+        Me.SupplierDocumentsToolStripMenuItem.Size = New System.Drawing.Size(166, 20)
         Me.SupplierDocumentsToolStripMenuItem.Tag = ""
         Me.SupplierDocumentsToolStripMenuItem.Text = "Supplier Management Tasks"
         '
@@ -445,7 +446,7 @@ Partial Class FormMenu
         '
         'MasterVendorToolStripMenuItem
         '
-        Me.MasterVendorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterVendorToolStripMenuItem1, Me.MasterDataToolStripMenuItem, Me.VendorStatusToolStripMenuItem1, Me.SupplierPanelToolStripMenuItem1, Me.ImportTurnoverToolStripMenuItem, Me.ImportNQSUToolStripMenuItem, Me.ImportLogisticsToolStripMenuItem, Me.ImportProjectPDToolStripMenuItem, Me.ImportVendorPaymentTermToolStripMenuItem, Me.ImportSEBPlatformToolStripMenuItem, Me.ImportCitiProgramToolStripMenuItem, Me.ImportBudgetForecastToolStripMenuItem, Me.SupplierGSMToolStripMenuItem, Me.SupplierFamilyToolStripMenuItem, Me.SupplierFamilyExceptionToolStripMenuItem, Me.SupplierPMToolStripMenuItem, Me.SupplierCurrencyToolStripMenuItem, Me.SupplierPaymentTermEffectiveDateToolStripMenuItem})
+        Me.MasterVendorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MasterVendorToolStripMenuItem1, Me.MasterDataToolStripMenuItem, Me.VendorStatusToolStripMenuItem1, Me.SupplierPanelToolStripMenuItem1, Me.ImportTurnoverToolStripMenuItem, Me.ImportNQSUToolStripMenuItem, Me.ImportLogisticsToolStripMenuItem, Me.ImportProjectPDToolStripMenuItem, Me.ImportVendorPaymentTermToolStripMenuItem, Me.ImportSEBPlatformToolStripMenuItem, Me.ImportCitiProgramToolStripMenuItem, Me.ImportBudgetForecastToolStripMenuItem, Me.SupplierGSMToolStripMenuItem, Me.SupplierFamilyToolStripMenuItem, Me.SupplierFamilyExceptionToolStripMenuItem, Me.SupplierPMToolStripMenuItem, Me.SupplierCurrencyToolStripMenuItem, Me.SupplierPaymentTermEffectiveDateToolStripMenuItem, Me.ToolingSupplierToolStripMenuItem})
         Me.MasterVendorToolStripMenuItem.Name = "MasterVendorToolStripMenuItem"
         Me.MasterVendorToolStripMenuItem.Size = New System.Drawing.Size(226, 22)
         Me.MasterVendorToolStripMenuItem.Text = "Supplier"
@@ -453,126 +454,126 @@ Partial Class FormMenu
         'MasterVendorToolStripMenuItem1
         '
         Me.MasterVendorToolStripMenuItem1.Name = "MasterVendorToolStripMenuItem1"
-        Me.MasterVendorToolStripMenuItem1.Size = New System.Drawing.Size(266, 22)
+        Me.MasterVendorToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.MasterVendorToolStripMenuItem1.Tag = "FormMasterVendor"
         Me.MasterVendorToolStripMenuItem1.Text = "Master Supplier"
         '
         'MasterDataToolStripMenuItem
         '
         Me.MasterDataToolStripMenuItem.Name = "MasterDataToolStripMenuItem"
-        Me.MasterDataToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.MasterDataToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.MasterDataToolStripMenuItem.Tag = "FormSupplierMasterData"
         Me.MasterDataToolStripMenuItem.Text = "Master Data"
         '
         'VendorStatusToolStripMenuItem1
         '
         Me.VendorStatusToolStripMenuItem1.Name = "VendorStatusToolStripMenuItem1"
-        Me.VendorStatusToolStripMenuItem1.Size = New System.Drawing.Size(266, 22)
+        Me.VendorStatusToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.VendorStatusToolStripMenuItem1.Tag = "FormVendorStatus001"
         Me.VendorStatusToolStripMenuItem1.Text = "Supplier Status"
         '
         'SupplierPanelToolStripMenuItem1
         '
         Me.SupplierPanelToolStripMenuItem1.Name = "SupplierPanelToolStripMenuItem1"
-        Me.SupplierPanelToolStripMenuItem1.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierPanelToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
         Me.SupplierPanelToolStripMenuItem1.Tag = "FormSupplierPanel"
         Me.SupplierPanelToolStripMenuItem1.Text = "Supplier Panel"
         '
         'ImportTurnoverToolStripMenuItem
         '
         Me.ImportTurnoverToolStripMenuItem.Name = "ImportTurnoverToolStripMenuItem"
-        Me.ImportTurnoverToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportTurnoverToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportTurnoverToolStripMenuItem.Tag = "FormImportTurnover"
         Me.ImportTurnoverToolStripMenuItem.Text = "Import Turnover"
         '
         'ImportNQSUToolStripMenuItem
         '
         Me.ImportNQSUToolStripMenuItem.Name = "ImportNQSUToolStripMenuItem"
-        Me.ImportNQSUToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportNQSUToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportNQSUToolStripMenuItem.Tag = "FormImportNQSU"
         Me.ImportNQSUToolStripMenuItem.Text = "Import NQSU"
         '
         'ImportLogisticsToolStripMenuItem
         '
         Me.ImportLogisticsToolStripMenuItem.Name = "ImportLogisticsToolStripMenuItem"
-        Me.ImportLogisticsToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportLogisticsToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportLogisticsToolStripMenuItem.Tag = "FormImportLogistics"
         Me.ImportLogisticsToolStripMenuItem.Text = "Import Logistics"
         '
         'ImportProjectPDToolStripMenuItem
         '
         Me.ImportProjectPDToolStripMenuItem.Name = "ImportProjectPDToolStripMenuItem"
-        Me.ImportProjectPDToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportProjectPDToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportProjectPDToolStripMenuItem.Tag = "FormImportProjectStatus"
         Me.ImportProjectPDToolStripMenuItem.Text = "Import Project Status"
         '
         'ImportVendorPaymentTermToolStripMenuItem
         '
         Me.ImportVendorPaymentTermToolStripMenuItem.Name = "ImportVendorPaymentTermToolStripMenuItem"
-        Me.ImportVendorPaymentTermToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportVendorPaymentTermToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportVendorPaymentTermToolStripMenuItem.Tag = "FormImportVendorPaymentTerm"
         Me.ImportVendorPaymentTermToolStripMenuItem.Text = "Import Vendor PaymentTerm"
         '
         'ImportSEBPlatformToolStripMenuItem
         '
         Me.ImportSEBPlatformToolStripMenuItem.Name = "ImportSEBPlatformToolStripMenuItem"
-        Me.ImportSEBPlatformToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportSEBPlatformToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportSEBPlatformToolStripMenuItem.Tag = "FormImportSebAsiaPlatform"
         Me.ImportSEBPlatformToolStripMenuItem.Text = "Import SEB Asia Platform"
         '
         'ImportCitiProgramToolStripMenuItem
         '
         Me.ImportCitiProgramToolStripMenuItem.Name = "ImportCitiProgramToolStripMenuItem"
-        Me.ImportCitiProgramToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportCitiProgramToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportCitiProgramToolStripMenuItem.Tag = "FormImportCitiProgram"
         Me.ImportCitiProgramToolStripMenuItem.Text = "Import Citi Program"
         '
         'ImportBudgetForecastToolStripMenuItem
         '
         Me.ImportBudgetForecastToolStripMenuItem.Name = "ImportBudgetForecastToolStripMenuItem"
-        Me.ImportBudgetForecastToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.ImportBudgetForecastToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.ImportBudgetForecastToolStripMenuItem.Tag = "FormImportBudgetForecast"
         Me.ImportBudgetForecastToolStripMenuItem.Text = "Import Budget && Forecast"
         '
         'SupplierGSMToolStripMenuItem
         '
         Me.SupplierGSMToolStripMenuItem.Name = "SupplierGSMToolStripMenuItem"
-        Me.SupplierGSMToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierGSMToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierGSMToolStripMenuItem.Tag = "FormSupplierGSM"
         Me.SupplierGSMToolStripMenuItem.Text = "Supplier GSM"
         '
         'SupplierFamilyToolStripMenuItem
         '
         Me.SupplierFamilyToolStripMenuItem.Name = "SupplierFamilyToolStripMenuItem"
-        Me.SupplierFamilyToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierFamilyToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierFamilyToolStripMenuItem.Tag = "FormVendorFamilyPM"
         Me.SupplierFamilyToolStripMenuItem.Text = "Supplier Family (FP)"
         '
         'SupplierFamilyExceptionToolStripMenuItem
         '
         Me.SupplierFamilyExceptionToolStripMenuItem.Name = "SupplierFamilyExceptionToolStripMenuItem"
-        Me.SupplierFamilyExceptionToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierFamilyExceptionToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierFamilyExceptionToolStripMenuItem.Tag = "FormVendorFamilyPMEx"
         Me.SupplierFamilyExceptionToolStripMenuItem.Text = "Supplier Family Exception"
         '
         'SupplierPMToolStripMenuItem
         '
         Me.SupplierPMToolStripMenuItem.Name = "SupplierPMToolStripMenuItem"
-        Me.SupplierPMToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierPMToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierPMToolStripMenuItem.Tag = "FormVendorPM"
         Me.SupplierPMToolStripMenuItem.Text = "Supplier PM (CP)"
         '
         'SupplierCurrencyToolStripMenuItem
         '
         Me.SupplierCurrencyToolStripMenuItem.Name = "SupplierCurrencyToolStripMenuItem"
-        Me.SupplierCurrencyToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierCurrencyToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierCurrencyToolStripMenuItem.Tag = "FormVendorCurr"
         Me.SupplierCurrencyToolStripMenuItem.Text = "Supplier Currency"
         '
         'SupplierPaymentTermEffectiveDateToolStripMenuItem
         '
         Me.SupplierPaymentTermEffectiveDateToolStripMenuItem.Name = "SupplierPaymentTermEffectiveDateToolStripMenuItem"
-        Me.SupplierPaymentTermEffectiveDateToolStripMenuItem.Size = New System.Drawing.Size(266, 22)
+        Me.SupplierPaymentTermEffectiveDateToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.SupplierPaymentTermEffectiveDateToolStripMenuItem.Tag = "FormPTEffectivedate"
         Me.SupplierPaymentTermEffectiveDateToolStripMenuItem.Text = "Supplier PaymentTerm EffectiveDate"
         '
@@ -705,7 +706,7 @@ Partial Class FormMenu
         '
         Me.CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1UserToolStripMenuItem, Me.A2GroupToolStripMenuItem})
         Me.CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem.Name = "CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem"
-        Me.CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateNewUserAccountAndUserAccessRightbySBToolStripMenuItem.Text = "Create new user account and User access right (by SBU, Product Type)"
         '
         'A1UserToolStripMenuItem
@@ -726,7 +727,7 @@ Partial Class FormMenu
         '
         Me.CreateModifySupplierAndSupplierAssignmentToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1MasterSupplierToolStripMenuItem, Me.A2SupplierGSMToolStripMenuItem, Me.A3SupplierFamilyToolStripMenuItem, Me.A4SupplierFamilyToolStripMenuItem, Me.A5ToolStripMenuItem, Me.A6SupplierPanelToolStripMenuItem})
         Me.CreateModifySupplierAndSupplierAssignmentToolStripMenuItem.Name = "CreateModifySupplierAndSupplierAssignmentToolStripMenuItem"
-        Me.CreateModifySupplierAndSupplierAssignmentToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateModifySupplierAndSupplierAssignmentToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateModifySupplierAndSupplierAssignmentToolStripMenuItem.Text = "Create / Modify Supplier and Supplier assignment (FP Only)"
         '
         'A1MasterSupplierToolStripMenuItem
@@ -775,7 +776,7 @@ Partial Class FormMenu
         '
         Me.CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1MasterSupplierToolStripMenuItem1, Me.A2SupplierPMToolStripMenuItem, Me.A3SupplierStatusToolStripMenuItem, Me.A4SupplierPanelToolStripMenuItem})
         Me.CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem.Name = "CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem"
-        Me.CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateModifySupplierAndSupplierAssignmentCPOnlyToolStripMenuItem.Text = "Create / Modify Supplier and Supplier assignment (CP Only)"
         '
         'A1MasterSupplierToolStripMenuItem1
@@ -810,7 +811,7 @@ Partial Class FormMenu
         '
         Me.CreateModifySupplierCurrencyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1SupplierCurToolStripMenuItem})
         Me.CreateModifySupplierCurrencyToolStripMenuItem.Name = "CreateModifySupplierCurrencyToolStripMenuItem"
-        Me.CreateModifySupplierCurrencyToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateModifySupplierCurrencyToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateModifySupplierCurrencyToolStripMenuItem.Text = "Create / Modify Supplier Currency"
         '
         'A1SupplierCurToolStripMenuItem
@@ -824,7 +825,7 @@ Partial Class FormMenu
         '
         Me.CreateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1CountryToolStripMenuItem, Me.A2ProvinceToolStripMenuItem, Me.A3FactoryContactHistoryToolStripMenuItem})
         Me.CreateToolStripMenuItem.Name = "CreateToolStripMenuItem"
-        Me.CreateToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateToolStripMenuItem.Text = "Create Factory && Contact Master and Generate History"
         '
         'A1CountryToolStripMenuItem
@@ -850,13 +851,13 @@ Partial Class FormMenu
         '
         Me.CreateTheDocumentTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1DocTypeToolStripMenuItem})
         Me.CreateTheDocumentTypeToolStripMenuItem.Name = "CreateTheDocumentTypeToolStripMenuItem"
-        Me.CreateTheDocumentTypeToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.CreateTheDocumentTypeToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.CreateTheDocumentTypeToolStripMenuItem.Text = "Create the Document Type"
         '
         'A1DocTypeToolStripMenuItem
         '
         Me.A1DocTypeToolStripMenuItem.Name = "A1DocTypeToolStripMenuItem"
-        Me.A1DocTypeToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
+        Me.A1DocTypeToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.A1DocTypeToolStripMenuItem.Tag = "FormMasterDocType"
         Me.A1DocTypeToolStripMenuItem.Text = "A1: DocType"
         '
@@ -864,69 +865,69 @@ Partial Class FormMenu
         '
         Me.MaintainMasterToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1FamilyGroupSBUToolStripMenuItem, Me.A2PanelStatusToolStripMenuItem, Me.A3SupplierCategoryToolStripMenuItem, Me.A4MasterStatusToolStripMenuItem, Me.A5TechnologyToolStripMenuItem, Me.A6DataTypeToolStripMenuItem, Me.A7PaymentTermToolStripMenuItem, Me.A8VendorModificationTypeMasterToolStripMenuItem, Me.A9ModificationDocumentTypeMasterToolStripMenuItem})
         Me.MaintainMasterToolStripMenuItem.Name = "MaintainMasterToolStripMenuItem"
-        Me.MaintainMasterToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.MaintainMasterToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.MaintainMasterToolStripMenuItem.Text = "Maintain Master"
         '
         'A1FamilyGroupSBUToolStripMenuItem
         '
         Me.A1FamilyGroupSBUToolStripMenuItem.Name = "A1FamilyGroupSBUToolStripMenuItem"
-        Me.A1FamilyGroupSBUToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A1FamilyGroupSBUToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A1FamilyGroupSBUToolStripMenuItem.Tag = "FormUpdateFamily"
         Me.A1FamilyGroupSBUToolStripMenuItem.Text = "A1: Family Group SBU"
         '
         'A2PanelStatusToolStripMenuItem
         '
         Me.A2PanelStatusToolStripMenuItem.Name = "A2PanelStatusToolStripMenuItem"
-        Me.A2PanelStatusToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A2PanelStatusToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A2PanelStatusToolStripMenuItem.Tag = "FormPanelStatus"
         Me.A2PanelStatusToolStripMenuItem.Text = "A2: Panel Status"
         '
         'A3SupplierCategoryToolStripMenuItem
         '
         Me.A3SupplierCategoryToolStripMenuItem.Name = "A3SupplierCategoryToolStripMenuItem"
-        Me.A3SupplierCategoryToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A3SupplierCategoryToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A3SupplierCategoryToolStripMenuItem.Tag = "FormSupplierCategory"
         Me.A3SupplierCategoryToolStripMenuItem.Text = "A3: Supplier Category"
         '
         'A4MasterStatusToolStripMenuItem
         '
         Me.A4MasterStatusToolStripMenuItem.Name = "A4MasterStatusToolStripMenuItem"
-        Me.A4MasterStatusToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A4MasterStatusToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A4MasterStatusToolStripMenuItem.Tag = "FormMasterStatus"
         Me.A4MasterStatusToolStripMenuItem.Text = "A4: Master Status"
         '
         'A5TechnologyToolStripMenuItem
         '
         Me.A5TechnologyToolStripMenuItem.Name = "A5TechnologyToolStripMenuItem"
-        Me.A5TechnologyToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A5TechnologyToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A5TechnologyToolStripMenuItem.Tag = "FormMasterTechnology"
         Me.A5TechnologyToolStripMenuItem.Text = "A5: Technology"
         '
         'A6DataTypeToolStripMenuItem
         '
         Me.A6DataTypeToolStripMenuItem.Name = "A6DataTypeToolStripMenuItem"
-        Me.A6DataTypeToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A6DataTypeToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A6DataTypeToolStripMenuItem.Tag = "FormDataType"
         Me.A6DataTypeToolStripMenuItem.Text = "A6: Data Type"
         '
         'A7PaymentTermToolStripMenuItem
         '
         Me.A7PaymentTermToolStripMenuItem.Name = "A7PaymentTermToolStripMenuItem"
-        Me.A7PaymentTermToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A7PaymentTermToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A7PaymentTermToolStripMenuItem.Tag = "FormPaymentTerm"
         Me.A7PaymentTermToolStripMenuItem.Text = "A7: Payment Term"
         '
         'A8VendorModificationTypeMasterToolStripMenuItem
         '
         Me.A8VendorModificationTypeMasterToolStripMenuItem.Name = "A8VendorModificationTypeMasterToolStripMenuItem"
-        Me.A8VendorModificationTypeMasterToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A8VendorModificationTypeMasterToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A8VendorModificationTypeMasterToolStripMenuItem.Tag = "FormModificationTypeMaster"
         Me.A8VendorModificationTypeMasterToolStripMenuItem.Text = "A8: Modification Type Master"
         '
         'A9ModificationDocumentTypeMasterToolStripMenuItem
         '
         Me.A9ModificationDocumentTypeMasterToolStripMenuItem.Name = "A9ModificationDocumentTypeMasterToolStripMenuItem"
-        Me.A9ModificationDocumentTypeMasterToolStripMenuItem.Size = New System.Drawing.Size(288, 22)
+        Me.A9ModificationDocumentTypeMasterToolStripMenuItem.Size = New System.Drawing.Size(287, 22)
         Me.A9ModificationDocumentTypeMasterToolStripMenuItem.Tag = "FormParamDTL"
         Me.A9ModificationDocumentTypeMasterToolStripMenuItem.Text = "A9: Modification Document Type Master"
         '
@@ -934,62 +935,62 @@ Partial Class FormMenu
         '
         Me.ImportDataToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.A1ImportTurnoverToolStripMenuItem, Me.A2ImportNQSUToolStripMenuItem, Me.A3ImportLogisticsToolStripMenuItem, Me.A4ImportProjectStatusToolStripMenuItem, Me.A5ImportVendorPaymentTermToolStripMenuItem, Me.A6ImportSEBAsiaPlatformToolStripMenuItem, Me.A7ImportCitiProgramToolStripMenuItem, Me.A8ImportBudgetForecastToolStripMenuItem})
         Me.ImportDataToolStripMenuItem.Name = "ImportDataToolStripMenuItem"
-        Me.ImportDataToolStripMenuItem.Size = New System.Drawing.Size(442, 22)
+        Me.ImportDataToolStripMenuItem.Size = New System.Drawing.Size(441, 22)
         Me.ImportDataToolStripMenuItem.Text = "Import Data"
         '
         'A1ImportTurnoverToolStripMenuItem
         '
         Me.A1ImportTurnoverToolStripMenuItem.Name = "A1ImportTurnoverToolStripMenuItem"
-        Me.A1ImportTurnoverToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A1ImportTurnoverToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A1ImportTurnoverToolStripMenuItem.Tag = "FormImportTurnover"
         Me.A1ImportTurnoverToolStripMenuItem.Text = "A1: Import Turnover"
         '
         'A2ImportNQSUToolStripMenuItem
         '
         Me.A2ImportNQSUToolStripMenuItem.Name = "A2ImportNQSUToolStripMenuItem"
-        Me.A2ImportNQSUToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A2ImportNQSUToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A2ImportNQSUToolStripMenuItem.Tag = "FormImportNQSU"
         Me.A2ImportNQSUToolStripMenuItem.Text = "A2: Import NQSU"
         '
         'A3ImportLogisticsToolStripMenuItem
         '
         Me.A3ImportLogisticsToolStripMenuItem.Name = "A3ImportLogisticsToolStripMenuItem"
-        Me.A3ImportLogisticsToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A3ImportLogisticsToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A3ImportLogisticsToolStripMenuItem.Tag = "FormImportLogistics"
         Me.A3ImportLogisticsToolStripMenuItem.Text = "A3: Import Logistics"
         '
         'A4ImportProjectStatusToolStripMenuItem
         '
         Me.A4ImportProjectStatusToolStripMenuItem.Name = "A4ImportProjectStatusToolStripMenuItem"
-        Me.A4ImportProjectStatusToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A4ImportProjectStatusToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A4ImportProjectStatusToolStripMenuItem.Tag = "FormImportProjectStatus"
         Me.A4ImportProjectStatusToolStripMenuItem.Text = "A4: Import Project Status"
         '
         'A5ImportVendorPaymentTermToolStripMenuItem
         '
         Me.A5ImportVendorPaymentTermToolStripMenuItem.Name = "A5ImportVendorPaymentTermToolStripMenuItem"
-        Me.A5ImportVendorPaymentTermToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A5ImportVendorPaymentTermToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A5ImportVendorPaymentTermToolStripMenuItem.Tag = "FormImportVendorPaymentTerm"
         Me.A5ImportVendorPaymentTermToolStripMenuItem.Text = "A5: Import Vendor PaymentTerm"
         '
         'A6ImportSEBAsiaPlatformToolStripMenuItem
         '
         Me.A6ImportSEBAsiaPlatformToolStripMenuItem.Name = "A6ImportSEBAsiaPlatformToolStripMenuItem"
-        Me.A6ImportSEBAsiaPlatformToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A6ImportSEBAsiaPlatformToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A6ImportSEBAsiaPlatformToolStripMenuItem.Tag = "FormImportSebAsiaPlatform"
         Me.A6ImportSEBAsiaPlatformToolStripMenuItem.Text = "A6: Import SEB Asia Platform"
         '
         'A7ImportCitiProgramToolStripMenuItem
         '
         Me.A7ImportCitiProgramToolStripMenuItem.Name = "A7ImportCitiProgramToolStripMenuItem"
-        Me.A7ImportCitiProgramToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A7ImportCitiProgramToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A7ImportCitiProgramToolStripMenuItem.Tag = "FormImportCitiProgram"
         Me.A7ImportCitiProgramToolStripMenuItem.Text = "A7: Import Citi Program"
         '
         'A8ImportBudgetForecastToolStripMenuItem
         '
         Me.A8ImportBudgetForecastToolStripMenuItem.Name = "A8ImportBudgetForecastToolStripMenuItem"
-        Me.A8ImportBudgetForecastToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.A8ImportBudgetForecastToolStripMenuItem.Size = New System.Drawing.Size(246, 22)
         Me.A8ImportBudgetForecastToolStripMenuItem.Tag = "FormImportBudgetForecast"
         Me.A8ImportBudgetForecastToolStripMenuItem.Text = "A8: Import Budget && Forecast"
         '
@@ -1003,35 +1004,35 @@ Partial Class FormMenu
         'SupplierDocumentRawDataToolStripMenuItem
         '
         Me.SupplierDocumentRawDataToolStripMenuItem.Name = "SupplierDocumentRawDataToolStripMenuItem"
-        Me.SupplierDocumentRawDataToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierDocumentRawDataToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierDocumentRawDataToolStripMenuItem.Tag = "FormSupplierDocumentRawData"
         Me.SupplierDocumentRawDataToolStripMenuItem.Text = "Supplier Document Raw Data"
         '
         'SupplierDocumentSIFIDToolStripMenuItem
         '
         Me.SupplierDocumentSIFIDToolStripMenuItem.Name = "SupplierDocumentSIFIDToolStripMenuItem"
-        Me.SupplierDocumentSIFIDToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierDocumentSIFIDToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierDocumentSIFIDToolStripMenuItem.Tag = "FormSupplierDocumentSIFID"
         Me.SupplierDocumentSIFIDToolStripMenuItem.Text = "Supplier Document SIF && ID"
         '
         'SupplierDocumentSocialAuditToolStripMenuItem
         '
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Name = "SupplierDocumentSocialAuditToolStripMenuItem"
-        Me.SupplierDocumentSocialAuditToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierDocumentSocialAuditToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Tag = "FormSupplierDocumentSocialAudit"
         Me.SupplierDocumentSocialAuditToolStripMenuItem.Text = "Supplier Document Social Audit"
         '
         'SupplierDocumentContractToolStripMenuItem
         '
         Me.SupplierDocumentContractToolStripMenuItem.Name = "SupplierDocumentContractToolStripMenuItem"
-        Me.SupplierDocumentContractToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierDocumentContractToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierDocumentContractToolStripMenuItem.Tag = "FormSupplierDocumentContract"
         Me.SupplierDocumentContractToolStripMenuItem.Text = "Supplier Document Contract"
         '
         'DocumentCountToolStripMenuItem
         '
         Me.DocumentCountToolStripMenuItem.Name = "DocumentCountToolStripMenuItem"
-        Me.DocumentCountToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.DocumentCountToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.DocumentCountToolStripMenuItem.Tag = "FormReportDocumentCount"
         Me.DocumentCountToolStripMenuItem.Text = "Document Count"
         Me.DocumentCountToolStripMenuItem.Visible = False
@@ -1040,55 +1041,55 @@ Partial Class FormMenu
         '
         Me.SearchInterfaceToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ContractToolStripMenuItem, Me.DocumentToolStripMenuItem})
         Me.SearchInterfaceToolStripMenuItem.Name = "SearchInterfaceToolStripMenuItem"
-        Me.SearchInterfaceToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SearchInterfaceToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SearchInterfaceToolStripMenuItem.Text = "Status Summary Report"
         '
         'ContractToolStripMenuItem
         '
         Me.ContractToolStripMenuItem.Name = "ContractToolStripMenuItem"
-        Me.ContractToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.ContractToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
         Me.ContractToolStripMenuItem.Tag = "FormFullContract"
         Me.ContractToolStripMenuItem.Text = "By Full Contract"
         '
         'DocumentToolStripMenuItem
         '
         Me.DocumentToolStripMenuItem.Name = "DocumentToolStripMenuItem"
-        Me.DocumentToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.DocumentToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
         Me.DocumentToolStripMenuItem.Tag = "FormDocType"
         Me.DocumentToolStripMenuItem.Text = "By Document Type"
         '
         'SearchDocumentToolStripMenuItem
         '
         Me.SearchDocumentToolStripMenuItem.Name = "SearchDocumentToolStripMenuItem"
-        Me.SearchDocumentToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SearchDocumentToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SearchDocumentToolStripMenuItem.Tag = "FormSearchDocument"
         Me.SearchDocumentToolStripMenuItem.Text = "Search Document"
         '
         'MasterSupplierToolStripMenuItem
         '
         Me.MasterSupplierToolStripMenuItem.Name = "MasterSupplierToolStripMenuItem"
-        Me.MasterSupplierToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.MasterSupplierToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.MasterSupplierToolStripMenuItem.Tag = "FormReportMasterSupplier"
         Me.MasterSupplierToolStripMenuItem.Text = "Supplier Master List"
         '
         'AssetsPurchaseReportToolStripMenuItem
         '
         Me.AssetsPurchaseReportToolStripMenuItem.Name = "AssetsPurchaseReportToolStripMenuItem"
-        Me.AssetsPurchaseReportToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.AssetsPurchaseReportToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.AssetsPurchaseReportToolStripMenuItem.Text = "Assets Purchase Report"
         Me.AssetsPurchaseReportToolStripMenuItem.Visible = False
         '
         'SupplierFamilyAssignmenttToolStripMenuItem
         '
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Name = "SupplierFamilyAssignmenttToolStripMenuItem"
-        Me.SupplierFamilyAssignmenttToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierFamilyAssignmenttToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Tag = "FormReportVendorFamilyAssignment"
         Me.SupplierFamilyAssignmenttToolStripMenuItem.Text = "Supplier Family Assignment"
         '
         'CMMF3750ToolStripMenuItem
         '
         Me.CMMF3750ToolStripMenuItem.Name = "CMMF3750ToolStripMenuItem"
-        Me.CMMF3750ToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.CMMF3750ToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.CMMF3750ToolStripMenuItem.Tag = "FormReportCMMF3750"
         Me.CMMF3750ToolStripMenuItem.Text = "CMMF 3750"
         Me.CMMF3750ToolStripMenuItem.Visible = False
@@ -1096,7 +1097,7 @@ Partial Class FormMenu
         'SupplierListWithTONQSUSSLToolStripMenuItem
         '
         Me.SupplierListWithTONQSUSSLToolStripMenuItem.Name = "SupplierListWithTONQSUSSLToolStripMenuItem"
-        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Size = New System.Drawing.Size(244, 22)
+        Me.SupplierListWithTONQSUSSLToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.SupplierListWithTONQSUSSLToolStripMenuItem.Tag = "FormSupplierListTO"
         Me.SupplierListWithTONQSUSSLToolStripMenuItem.Text = "Supplier List with TO, NQSU, SSL"
         '
@@ -2003,6 +2004,13 @@ Partial Class FormMenu
         Me.Button13.TabIndex = 0
         Me.Button13.UseVisualStyleBackColor = False
         '
+        'ToolingSupplierToolStripMenuItem
+        '
+        Me.ToolingSupplierToolStripMenuItem.Name = "ToolingSupplierToolStripMenuItem"
+        Me.ToolingSupplierToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.ToolingSupplierToolStripMenuItem.Tag = "FormToolingSupplier"
+        Me.ToolingSupplierToolStripMenuItem.Text = "Tooling Supplier"
+        '
         'FormMenu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2272,5 +2280,6 @@ Partial Class FormMenu
     Friend WithEvents SupplierInformationApprovalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AssetPurchaseApprovalToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SupplierListWithTONQSUSSLToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolingSupplierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

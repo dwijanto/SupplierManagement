@@ -278,17 +278,17 @@ Public Class FormSupplierDashboard
         'SIF
         If Not IsNothing(_shortname) Then
             VendorQueryType = VendorQuery.shortname
-            mycriteria = String.Format(" where v.shortname = '{0}' ", _shortname)
+            mycriteria = String.Format(" where v.shortname3 = '{0}' ", _shortname)
             mycriteria2 = String.Format(" where myyear <= {0} ", Year(_currentdate))
-            toCriteria = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, ProductTypeCriteria)
-            tocriteriafp = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, " and (fpcp in ('FP') ) ")
-            tocriteriafpcp = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, " and (fpcp in ('FP','CP') ) ")
-            toCriteria2 = String.Format(" where v.shortname = '{0}'", _shortname)
+            toCriteria = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname3 = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, ProductTypeCriteria)
+            tocriteriafp = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname3 = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, " and (fpcp in ('FP') ) ")
+            tocriteriafpcp = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.shortname3 = '{2}' {3}", Year(_currentdate), _currentdate, _shortname, " and (fpcp in ('FP','CP') ) ")
+            toCriteria2 = String.Format(" where v.shortname3 = '{0}'", _shortname)
             'sb.Append(String.Format("select shortname,myyear,sum(turnovery) as turnovery,sum(turnovery1) as turnovery1,sum(turnovery2) as turnovery2,sum(turnovery3) as turnovery3 ,sum(turnovery4) as turnovery4 from (select distinct v.shortname,s.* from doc.sif s left join doc.document d on d.id = s.documentid " &
             '          " left join doc.vendordoc vd on vd.documentid = d.id left join vendor v on v.vendorcode = vd.vendorcode {0} " &
             '          " )foo {1}" &
             '          " group by shortname,myyear order by myyear desc limit 1;", mycriteria, mycriteria2))
-            sb.Append(String.Format("with sif as (select distinct shortname,s.* from   (select v.shortname,first_value(s.documentid)  over(partition by myyear order by myyear,s.documentid desc) as docid,myyear from doc.sif s" &
+            sb.Append(String.Format("with sif as (select distinct shortname3 as shortname,s.* from   (select v.shortname3,first_value(s.documentid)  over(partition by myyear order by myyear,s.documentid desc) as docid,myyear from doc.sif s" &
                                     " left join doc.document d on d.id = s.documentid  left join doc.vendordoc vd on vd.documentid = d.id  left join vendor v on v.vendorcode = vd.vendorcode {0} order by myyear desc) as foo" &
                                     " left join doc.sif s on s.documentid = foo.docid ) " &
                                     " select shortname,myyear,sum(turnovery) as turnovery,sum(turnovery1) as turnovery1,sum(turnovery2) as turnovery2,sum(turnovery3) as turnovery3 ,sum(turnovery4) as turnovery4 from sif " &
@@ -302,7 +302,7 @@ Public Class FormSupplierDashboard
             tocriteriafpcp = String.Format(" where year = {0} and period <= {1:yyyyMM} and v.vendorcode = {2} {3}", Year(_currentdate), _currentdate, _vendorcode, " and (fpcp in ('FP','CP') ) ")
 
             toCriteria2 = String.Format(" where v.vendorcode = {0} ", _vendorcode)
-            sb.Append(String.Format("select v.shortname,vd.vendorcode,s.* from doc.sif s" &
+            sb.Append(String.Format("select v.shortname3 as shortname,vd.vendorcode,s.* from doc.sif s" &
                   " left join doc.document d on d.id = s.documentid" &
                   " left join doc.vendordoc vd on vd.documentid = d.id" &
                   " left join vendor v on v.vendorcode = vd.vendorcode {0};", mycriteria))
@@ -421,7 +421,7 @@ Public Class FormSupplierDashboard
         'YearToDate
         Dim groupby As String
         If VendorQueryType = VendorQuery.shortname Then
-            groupby = "v.shortname"
+            groupby = "v.shortname3"
         Else
             groupby = "v.vendorcode"
         End If
@@ -449,7 +449,7 @@ Public Class FormSupplierDashboard
         'YearToDate
         sb.Append(String.Format("select  pp.* " &
                                 " from doc.pdproject pp" &
-                                " left join vendor v on v.shortname = pp.shortname" &
+                                " left join vendor v on v.shortname3 = pp.shortname" &
                                 " left join doc.vendorstatus vs on vs.vendorcode = v.vendorcode" &
                                 " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
                                 " {0} and period = {1:yyyyMM} {2} {3}" &
@@ -459,7 +459,7 @@ Public Class FormSupplierDashboard
         For i = 1 To 4
             sb.Append(String.Format("select  pp.* " &
                                " from doc.pdproject pp" &
-                               " left join vendor v on v.shortname = pp.shortname " &
+                               " left join vendor v on v.shortname3 = pp.shortname " &
                                " left join doc.vendorstatus vs on vs.vendorcode = v.vendorcode" &
                                 " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
                                " {0} and year = {1} {2} order by period desc " &
@@ -478,25 +478,25 @@ Public Class FormSupplierDashboard
                   " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2" &
                   "{0} {1};", toCriteria2, StatusFilter))
 
-        sb.Append(String.Format("with data as (select distinct v.shortname,first_value(vd.documentid) over (partition by v.shortname,doctypeid order by docdate desc) as id,doctypeid from doc.vendordoc vd" &
+        sb.Append(String.Format("with data as (select distinct v.shortname3 as shortname,first_value(vd.documentid) over (partition by v.shortname3,doctypeid order by docdate desc) as id,doctypeid from doc.vendordoc vd" &
                   " left join doc.document d on d.id = vd.documentid " &
                   " left join doc.doctype dt on dt.id = d.doctypeid" &
                   " left join vendor v on v.vendorcode = vd.vendorcode" &
                   " where doctypeid in ({1},{2},{3})" &
-                  " order by shortname)" &
+                  " order by v.shortname3)" &
                   " select * from data left join doc.document d on d.id = data.id left join doc.generalcontract gc on gc.documentid = d.id " &
                   " left join paymentterm p on p.paymenttermid = gc.paymentcode left join doc.qualityappendix qa on qa.documentid = d.id " &
                   " left join doc.supplychain sc on sc.documentid = d.id left join doc.docexpired de on de.documentid = d.id" &
                   "  where shortname = '{0}' ;", UcSupplierInfo1.Shortname, CONTRACT_GENERAL_CONTRACT, CONTRACT_QUALITY_APPENDIX, CONTRACT_SUPPLY_CHAIN_APPENDIX))
         '36 AuthLetter & 18 Project Spec
-        sb.Append(String.Format("with data as (select v.shortname,vd.documentid as id,doctypeid from doc.vendordoc vd" &
+        sb.Append(String.Format("with data as (select v.shortname3 as shortname,vd.documentid as id,doctypeid from doc.vendordoc vd" &
                   " left join doc.document d on d.id = vd.documentid left join doc.doctype dt on dt.id = d.doctypeid " &
-                  " left join vendor v on v.vendorcode = vd.vendorcode where doctypeid in ({1},{2}) order by shortname)" &
+                  " left join vendor v on v.vendorcode = vd.vendorcode where doctypeid in ({1},{2}) order by v.shortname3)" &
                   " select d.doctypeid,d.docdate,dp.projectname,d.remarks,v.version,de.expireddate,docdate::text ||  case when remarks isnull then '' else ' ' || remarks end || case when version isnull then '' else ' ' || version end || ' ' ||projectname || case when expireddate isnull then '' else ' ' || expireddate end as description, d.id,d.docname,d.docext ,ps.returnrate " &
                   " from data  left join doc.document d on d.id = data.id left join doc.project dp on dp.documentid = d.id" &
                   " left join doc.projectspecification ps on ps.documentid = d.id left join doc.docexpired de on de.documentid = d.id left join doc.version v on v.documentid = d.id" &
                   " where shortname = '{0}' order by d.doctypeid,docdate desc;", UcSupplierInfo1.Shortname, PROJECT_SPECIFICATION, AUTHORIZATION_LETTERS))
-        sb.Append(String.Format("select cp.*,v.shortname from doc.citiprogram cp" &
+        sb.Append(String.Format("select cp.*,v.shortname3 as shortname from doc.citiprogram cp" &
                   " left join vendor v on v.vendorcode = cp.vendorcode {0} {1};", toCriteria2, ProductTypeCriteria))
 
         'Tooling Header
@@ -541,7 +541,7 @@ Public Class FormSupplierDashboard
         '          " order by v.vendorcode;", toCriteria2))
 
         'viewvendorpmeffectivedate replace viewvendorfamilypmeffectivedate
-        sb.Append(String.Format(" select v.vendorcode,v.vendorname::text,v.shortname::text,spm.username::text as ssm,v.ssmidpl as ssmid,ve.spmeffectivedate as ssmeffectivedate," &
+        sb.Append(String.Format(" select v.vendorcode,v.vendorname::text,v.shortname3::text as shortname,spm.username::text as ssm,v.ssmidpl as ssmid,ve.spmeffectivedate as ssmeffectivedate," &
                                 " pm.username::text as pm,v.pmid as pmid,ve.pmeffectivedate,gsm.username::text as gsm,vgsm.effectivedate ,v.shortname2,true as status " &
                                 " from vendor v " &
                                 " left join doc.viewvendorpmeffectivedate ve on ve.vendorcode  = v.vendorcode" &
@@ -710,24 +710,24 @@ Public Class FormSupplierDashboard
         Next
 
         'ContractTerm
-        sb.Append(String.Format("with data as (select distinct v.shortname,first_value(vd.documentid) over (partition by v.shortname,doctypeid order by docdate desc) as id," &
+        sb.Append(String.Format("with data as (select distinct v.shortname3 as shortname,first_value(vd.documentid) over (partition by v.shortname3,doctypeid order by docdate desc) as id," &
                   " doctypeid from doc.vendordoc vd left join doc.document d on d.id = vd.documentid  left join doc.doctype dt on dt.id = d.doctypeid " &
-                  " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by shortname) select go.*,p.payt || ' - ' || p.details as paymentterm from data " &
+                  " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by v.shortname3) select go.*,p.payt || ' - ' || p.details as paymentterm from data " &
                   " left join doc.document d on d.id = data.id left join doc.generalcontract gc on gc.documentid = d.id  " &
                   " left join paymentterm p on p.paymenttermid = gc.paymentcode left join doc.qualityappendix qa on qa.documentid = d.id  " &
                   " inner join doc.generalcontractother go on go.documentid = data.id left join paymentterm pt on pt.paymenttermid = go.paymentcode" &
                   " where shortname = '{0}';", UcSupplierInfo1.Shortname, CONTRACT_GENERAL_CONTRACT))
-        sb.Append(String.Format("with data as (select distinct v.shortname,first_value(vd.documentid) over (partition by v.shortname,doctypeid order by docdate desc) as id," &
+        sb.Append(String.Format("with data as (select distinct v.shortname3 as shortname,first_value(vd.documentid) over (partition by v.shortname3,doctypeid order by docdate desc) as id," &
           " doctypeid from doc.vendordoc vd left join doc.document d on d.id = vd.documentid  left join doc.doctype dt on dt.id = d.doctypeid " &
-          " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by shortname) select qo.* from data " &
+          " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by v.shortname3) select qo.* from data " &
           " left join doc.document d on d.id = data.id left join doc.generalcontract gc on gc.documentid = d.id  " &
           " left join paymentterm p on p.paymenttermid = gc.paymentcode left join doc.qualityappendix qa on qa.documentid = d.id  " &
           " inner join doc.qualityappendixother qo on qo.documentid = data.id " &
           " where shortname = '{0}';", UcSupplierInfo1.Shortname, CONTRACT_QUALITY_APPENDIX))
 
-        sb.Append(String.Format("with data as (select distinct v.shortname,first_value(vd.documentid) over (partition by v.shortname,doctypeid order by docdate desc) as id," &
+        sb.Append(String.Format("with data as (select distinct v.shortname3 as shortname,first_value(vd.documentid) over (partition by v.shortname3,doctypeid order by docdate desc) as id," &
           " doctypeid from doc.vendordoc vd left join doc.document d on d.id = vd.documentid  left join doc.doctype dt on dt.id = d.doctypeid " &
-          " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by shortname) select sc.*,'Lead Time' as leadtimehd,'SASL' as saslhd from data " &
+          " left join vendor v on v.vendorcode = vd.vendorcode  where doctypeid = {1} order by v.shortname3) select sc.*,'Lead Time' as leadtimehd,'SASL' as saslhd from data " &
           " left join doc.document d on d.id = data.id left join doc.generalcontract gc on gc.documentid = d.id  " &
           " left join paymentterm p on p.paymenttermid = gc.paymentcode " &
           " inner join doc.supplychainother sc on sc.documentid = d.id left join doc.docexpired de on de.documentid = d.id  " &
@@ -864,7 +864,7 @@ Public Class FormSupplierDashboard
         End If
 
         'Vendor Currency
-        sb.Append(String.Format("select vc.* ,v.shortname from doc.vendorcurr vc left join vendor v on v.vendorcode = vc.vendorcode {0}  order by effectivedate desc ;", toCriteria2))
+        sb.Append(String.Format("select vc.* ,v.shortname3 as shortname from doc.vendorcurr vc left join vendor v on v.vendorcode = vc.vendorcode {0}  order by effectivedate desc ;", toCriteria2))
         DS = New DataSet
         Dim mymessage As String = String.Empty
         If DbAdapter1.TbgetDataSet(sb.ToString, DS, mymessage) Then

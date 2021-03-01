@@ -27,7 +27,7 @@ Public Class VendorCurrModel
         Dim myret As Boolean = False
         Using conn As Object = myadapter.getConnection
             conn.Open()
-            Dim sqlstr = String.Format("select vc.vendorcode::character varying,vc.id,vc.crcy,vc.effectivedate,v.vendorname,v.shortname2 as shortname from doc.vendorcurr vc" &
+            Dim sqlstr = String.Format("select vc.vendorcode::character varying,vc.id,vc.crcy,vc.effectivedate,v.vendorname,v.shortname3 as shortname from doc.vendorcurr vc" &
                                        " left join vendor v on v.vendorcode = vc.vendorcode" &
                                        " order by {0};", SortField)
             dataadapter.SelectCommand = myadapter.getCommandObject(sqlstr, conn)

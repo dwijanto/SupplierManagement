@@ -419,7 +419,7 @@ Public Class UCSupplierDashboard
                                 'GetPanelStatusSupplier()
                             End If
                             'Criteria = String.Format("where shortname = '{0}' and tu.year >= {1} - 4", TextBox1.Text, Year(currentDate))
-                            Criteria = String.Format("where shortname = '{0}'", TextBox1.Text)
+                            Criteria = String.Format("where shortname3 = '{0}'", TextBox1.Text)
                         End If
 
                     End If
@@ -441,7 +441,7 @@ Public Class UCSupplierDashboard
                                 VendorName = drv.Item("vendorname")
                                 TextBox2.Text = VendorName
                                 TextBox1.Text = ""
-                                SupplierInfo.TextBox1.Text = "" + drv.Item("shortname2")
+                                SupplierInfo.TextBox1.Text = "" + drv.Item("shortname")
                                 SupplierInfo.TextBox2.Text = "" + Vendorcode.ToString
                                 SupplierInfo.TextBox3.Text = "" + VendorName
                                 SupplierInfo.Shortname = "" + drv.Item("shortname")
@@ -1714,7 +1714,7 @@ Public Class UCSupplierDashboard
         Dim criteria As String = String.Empty
         Select Case QueryType
             Case QueryTypeEnum.shortname
-                criteria = String.Format(" shortname = '{0}' ", ShortName.Replace("'", "''"))
+                criteria = String.Format(" shortname3 = '{0}' ", ShortName.Replace("'", "''"))
             Case QueryTypeEnum.vendorcode
                 criteria = String.Format(" v.vendorcode = {0} ", Vendorcode)
         End Select
@@ -1737,13 +1737,13 @@ Public Class UCSupplierDashboard
         '                        " order by year desc limit 5;", criteria, Year(currentDate)))
         sb.Append(String.Format("with " &
                                 " s as (select generate_series({1}-4,{1}) as m order by m desc)," &
-                                " vc as (select distinct shortname from vendor v where {0})," &
-                                " d as (select date_part('Year',validfrom) as year,ph.validfrom,v.shortname,v.vendorcode,sc.category::text,ps.paneldescription as fppanelstatus,ps2.paneldescription as cppanelstatus from doc.panelhistory ph" &
+                                " vc as (select distinct shortname3 as shortname from vendor v where {0})," &
+                                " d as (select date_part('Year',validfrom) as year,ph.validfrom,v.shortname3 as shortname,v.vendorcode,sc.category::text,ps.paneldescription as fppanelstatus,ps2.paneldescription as cppanelstatus from doc.panelhistory ph" &
                                 " left join vendor v on v.vendorcode = ph.vendorcode " &
                                 " left join supplierscategory sc on sc.supplierscategoryid = ph.suppliercategoryid" &
                                 " left join doc.panelstatus ps on ps.id = ph.fp" &
                                 " left join doc.panelstatus ps2 on ps2.id = ph.cp" &
-                                " inner join vc on vc.shortname = v.shortname " &
+                                " inner join vc on vc.shortname = v.shortname3 " &
                                 " order by validfrom desc)," &
                                 " k as (select distinct year, first_value(category) over (partition by year order by validfrom desc) as category," &
                                 " first_value(fppanelstatus) over (partition by year order by validfrom desc) as fppanelstatus," &
@@ -1758,22 +1758,22 @@ Public Class UCSupplierDashboard
                                 ";", criteria, Year(currentDate)))
         '" where not category isnull" &
         sb.Append(String.Format("with " &
-                                " vc as (select distinct shortname from vendor v where {0})" &
+                                " vc as (select distinct shortname3 as shortname from vendor v where {0})" &
                                 " select distinct case lineno when 1 then 'CP Main Technology' else 'CP Technology' end as technology, t.technologyname ,lineno" &
                                 " from doc.vendortechnology vt " &
                                 " left join doc.technology t on t.id = vt.technologyid" &
                                 " left join vendor v on v.vendorcode = vt.vendorcode" &
-                                " inner join vc on vc.shortname = v.shortname " &
+                                " inner join vc on vc.shortname = v.shortname3 " &
                                 " order by lineno;", criteria))
 
         sb.Append(String.Format("with " &
-                                " vc as (select distinct shortname from vendor v where {0})" &
+                                " vc as (select distinct shortname3 as shortname from vendor v where {0})" &
                   "select v.vendorcode,v.vendorname::character varying,ph.validfrom::date,sc.category::text,ps.paneldescription as fppanelstatus,ps2.paneldescription as cppanelstatus from doc.panelhistory ph" &
                   " left join vendor v on v.vendorcode = ph.vendorcode" &
                   " left join supplierscategory sc on sc.supplierscategoryid = ph.suppliercategoryid" &
                   " left join doc.panelstatus ps on ps.id = ph.fp" &
                   " left join doc.panelstatus ps2 on ps2.id = ph.cp" &
-                  " inner join vc on vc.shortname = v.shortname " &
+                  " inner join vc on vc.shortname = v.shortname3 " &
                   " order by validfrom desc;", criteria))
         Dim myDS = New DataSet
         If DbAdapter1.TbgetDataSet(sb.ToString, myDS, mymessage) Then

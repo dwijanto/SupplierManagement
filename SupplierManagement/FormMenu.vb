@@ -439,6 +439,8 @@ Public Class FormMenu
 
             AddHandler AssetPurchaseApprovalToolStripMenuItem1.Click, AddressOf ToolStripMenuItem_Click
 
+            AddHandler ToolingSupplierToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
+
             'AddHandler FindAssetPurchaseToolStripMenuItem.Click, AddressOf ToolStripMenuItem_Click
             'Admin
             MasterToolStripMenuItem.Visible = HelperClass1.UserInfo.IsAdmin 'And Not HelperClass1.UserInfo.isOfficer
@@ -450,6 +452,8 @@ Public Class FormMenu
             GroupBox4.Visible = HelperClass1.UserInfo.IsAdmin
             DocumentCountToolStripMenuItem.Visible = False
             AdminActionToolStripMenuItem.Visible = HelperClass1.UserInfo.IsAdmin
+
+
 
             DataTypeToolStripMenuItem.Visible = HelperClass1.UserInfo.IsAdmin
             'AssetManagementToolStripMenuItem.Visible = HelperClass1.UserInfo.IsAdmin
@@ -570,6 +574,10 @@ Public Class FormMenu
     End Sub
 
     Private Sub SupplierListWithTONQSUSSLToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SupplierListWithTONQSUSSLToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ToolingSupplierToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolingSupplierToolStripMenuItem.Click
 
     End Sub
 End Class

@@ -25,7 +25,7 @@ Public Class VendorFamilyPMExModel
         Dim myret As Boolean = False
         Using conn As Object = myadapter.getConnection
             conn.Open()
-            Dim sqlstr = String.Format("select vf.id,vf.familyid,vf.vendorcode::text,f.familyname::text,case when vf.familyid = 0  then 'To Be Define' else f.familyid || ' - ' || f.familyname end as familydesc,case when vf.familyid = 0  then 'To Be Define' else mu.username end as pm,v.vendorname::text,v.shortname2::text as shortname,vf.pmid  from doc.vendorfamilypm vf " &
+            Dim sqlstr = String.Format("select vf.id,vf.familyid,vf.vendorcode::text,f.familyname::text,case when vf.familyid = 0  then 'To Be Define' else f.familyid || ' - ' || f.familyname end as familydesc,case when vf.familyid = 0  then 'To Be Define' else mu.username end as pm,v.vendorname::text,v.shortname3::text as shortname,vf.pmid  from doc.vendorfamilypm vf " &
                                        " left join vendor v on v.vendorcode = vf.vendorcode" &
                                        " left join doc.familypm fp on fp.familyid = vf.familyid" &
                                        " left join family f on f.familyid = vf.familyid" &

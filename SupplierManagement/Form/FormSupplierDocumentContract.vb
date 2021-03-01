@@ -71,7 +71,7 @@ Public Class FormSupplierDocumentContract
             " where doctypeid in ({0},{1},{2});", CONTRACT_GENERAL_CONTRACT, CONTRACT_QUALITY_APPENDIX, CONTRACT_SUPPLY_CHAIN_APPENDIX)
 
         If Not HelperClass1.UserInfo.IsAdmin Then
-            sqlstr = String.Format("with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sqlstr = String.Format("with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname)," &
                                    " foo as (select * from doc.countdocumentpm union all  select * from doc.vendormissingdocumentpm)" &

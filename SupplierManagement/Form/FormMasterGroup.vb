@@ -214,7 +214,12 @@ Public Class FormMasterGroup
             Dim myform As New FormGroupVendor
             myform.groupid = drv.Row.Item("groupid")
             myform.groupname = drv.Row.Item("groupname")
-            myform.Show()
+            If myform.groupid <> 0 Then
+                myform.Show()
+            Else
+                MessageBox.Show("Please commit the current record.")
+            End If
+
         End If
         
     End Sub

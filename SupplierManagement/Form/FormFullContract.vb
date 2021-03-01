@@ -61,12 +61,12 @@ Public Class FormFullContract
         'viewvendorpm replace viewvendorfamilypm
         Dim sqlstr As String = "select distinct v1.vendorcode::text || ' - ' || v1.vendorname as name, v1.vendorcode ,v1.vendorname::text from doc.vendordoc vd " &
                                " left join vendor v on v.vendorcode = vd.vendorcode" &
-                               " left join vendor v1 on v1.shortname = v.shortname" &
+                               " left join vendor v1 on v1.shortname3 = v.shortname3" &
                                " order by v1.vendorname::text;" &
-                               " select distinct v1.shortname::text from doc.vendordoc vd" &
+                               " select distinct v1.shortname3::text as shortname from doc.vendordoc vd" &
                                " left join vendor v on v.vendorcode = vd.vendorcode " &
-                               " left join vendor v1 on v1.shortname = v.shortname " &
-                               " order by v1.shortname::text; " &
+                               " left join vendor v1 on v1.shortname3 = v.shortname3 " &
+                               " order by v1.shortname3::text; " &
                                " select distinct mu2.username as spm from doc.vendordoc vd" &
                                " left join doc.viewvendorpm v on v.vendorcode = vd.vendorcode " &
                                " left join officerseb o on o.ofsebid = v.pmid " &
@@ -95,23 +95,23 @@ Public Class FormFullContract
             '                   " left join vendor v on v.vendorcode = vd.vendorcode " &
             '                   " left join vendor v1 on v1.shortname = v.shortname " &
             '                   " order by v1.shortname::text; " &
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname) " &
                                    "    select distinct v1.vendorcode::text || ' - ' || v1.vendorname as name, v1.vendorcode ,v1.vendorname::text from doc.vendordoc vd " &
                                    " inner join va on va.vendorcode = vd.vendorcode" &
                                " left join vendor v on v.vendorcode = va.vendorcode" &
-                               " left join vendor v1 on v1.shortname = v.shortname" &
+                               " left join vendor v1 on v1.shortname3 = v.shortname3" &
                                " order by v1.vendorname::text;", HelperClass1.UserInfo.userid))
 
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname) " &
-                                   "   select distinct v1.shortname::text from doc.vendordoc vd" &
+                                   "   select distinct v1.shortname3::text from doc.vendordoc vd" &
                                    " inner join va on va.vendorcode = vd.vendorcode" &
                                " left join vendor v on v.vendorcode = va.vendorcode " &
-                               " left join vendor v1 on v1.shortname = v.shortname " &
-                               " order by v1.shortname::text;", HelperClass1.UserInfo.userid))
+                               " left join vendor v1 on v1.shortname3 = v.shortname3 " &
+                               " order by v1.shortname3::text;", HelperClass1.UserInfo.userid))
             sqlstr = " select distinct o.officersebname::text as spm from doc.vendordoc vd" &
                    " left join vendor v on v.vendorcode = vd.vendorcode " &
                    " left join officerseb o on o.ofsebid = v.ssmidpl " &
@@ -297,16 +297,16 @@ Public Class FormFullContract
         ToolStripStatusLabel2.Text = ""
 
         If HelperClass1.UserInfo.IsAdmin Then
-            sb.Append("SELECT clt.docid, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, NULL::integer AS countbydoc, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
+            sb.Append("SELECT clt.docid, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname3::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, NULL::integer AS countbydoc, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
                   " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,clt.isfull AS countcontractisfull, " &
                   " clt.countcontractisfull AS countcontractfull,  countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname, spp.rank,vsbu.sbuname ")
 
         Else
             
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname) " &
-                "SELECT clt.docid, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, NULL::integer AS countbydoc, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
+                "SELECT clt.docid, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname3::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, NULL::integer AS countbydoc, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
                   " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,clt.isfull AS countcontractisfull, " &
                   " clt.countcontractisfull AS countcontractfull,  countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname, spp.rank,vsbu.sbuname ", HelperClass1.UserInfo.userid))
 
@@ -396,7 +396,7 @@ Public Class FormFullContract
                  " LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode" &
                  " LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text" &
                  " LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid" &
-                 " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname::text" &
+                 " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname3::text" &
                  " LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype" &
                  " FROM doc.paramdt pd" &
                  " LEFT JOIN doc.paramhd ph ON ph.paramhdid = pd.paramhdid" &
@@ -413,7 +413,7 @@ Public Class FormFullContract
         End If
 
         If TextBox3.Text <> "" Then
-            sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname::text")
+            sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname3::text")
         End If
 
         'If TextBox4.Text <> "" Then
@@ -470,7 +470,7 @@ Public Class FormFullContract
             'sb.Append(" and vsbu.sbuname ~'" & TextBox8.Text.Replace("'", "''") & "'")
         End If
         sb.Append(nonblankdoc)
-        sb.Append(" ORDER BY v.shortname::text, dt.doctypename;")
+        sb.Append(" ORDER BY v.shortname3::text, dt.doctypename;")
         Dim mysaveform As New SaveFileDialog
         mysaveform.FileName = String.Format("FullContract{0:yyyyMMdd}.xlsm", Date.Today)
         sqlstr = sb.ToString

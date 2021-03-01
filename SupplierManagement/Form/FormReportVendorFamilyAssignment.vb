@@ -17,7 +17,7 @@
                 " where ph.paramname = 'vendorstatus' order by pd.ivalue)," &
                 " type as (select p.paramname as producttype, p.ivalue as producttypeid from doc.paramdt p " &
                 " left join doc.paramhd ph on ph.paramhdid = p.paramhdid where ph.paramname = 'producttype')," &
-                " fg as (select vf.vendorcode,v.vendorname::text,v.shortname2::text,s.statusname,tp.producttype," &
+                " fg as (select vf.vendorcode,v.vendorname::text,v.shortname3::text as shortname,s.statusname,tp.producttype," &
                 " vf.familyid as familylv,f.familyname as familylv1desc,ss.sbuname::text,mu.username as pm," &
                 " mu2.username as spm,mu3.username as gsm,vf.pmeffectivedate,vf.spmeffectivedate,vgsm.effectivedate as gsmeffectivedate" &
                 "  from doc.vendorfamily vf" &
@@ -27,7 +27,7 @@
                 " left join officerseb o on o.ofsebid = fp.pmid left join masteruser mu on mu.id = o.muid left join officerseb spm on spm.ofsebid = o.parent" &
                 " left join masteruser mu2 on mu2.id = spm.muid left join doc.vendorgsm vgsm on vgsm.vendorcode = vf.vendorcode left join officerseb gsm on gsm.ofsebid = vgsm.gsmid" &
                 " left join masteruser mu3 on mu3.id = gsm.muid order by vendorname)," &
-                " cp as (select vp.vendorcode,v.vendorname::text,v.shortname2::text,s.statusname,tp.producttype,null::integer as familylv,null::text as familylv1desc,null::text as sbuname,mu.username as pm," &
+                " cp as (select vp.vendorcode,v.vendorname::text,v.shortname3::text as shortname,s.statusname,tp.producttype,null::integer as familylv,null::text as familylv1desc,null::text as sbuname,mu.username as pm," &
                 " mu2.username as spm,mu3.username as gsm,vp.pmeffectivedate,vp.spmeffectivedate,vgsm.effectivedate as gsmeffectivedate from doc.vendorpm vp" &
                 " left join vendor v on v.vendorcode = vp.vendorcode left join doc.vendorstatus vs on vs.vendorcode = vp.vendorcode left join status s on s.statusid = vs.status" &
                 " left join type tp on tp.producttypeid = vs.producttypeid left join officerseb o on o.ofsebid = vp.pmid left join masteruser mu on mu.id = o.muid" &
@@ -40,7 +40,7 @@
                 " where ph.paramname = 'vendorstatus' order by pd.ivalue)," &
                 " type as (select p.paramname as producttype, p.ivalue as producttypeid from doc.paramdt p " &
                 " left join doc.paramhd ph on ph.paramhdid = p.paramhdid where ph.paramname = 'producttype')," &
-                " fg as (select vf.vendorcode,v.vendorname::text,v.shortname2::text,s.statusname,tp.producttype," &
+                " fg as (select vf.vendorcode,v.vendorname::text,v.shortname3::text as shortname,s.statusname,tp.producttype," &
                 " vf.familyid as familylv,f.familyname as familylv1desc,ss.sbuname::text,mu.username as pm," &
                 " mu2.username as spm,mu3.username as gsm,vf.pmeffectivedate,vf.spmeffectivedate,vgsm.effectivedate as gsmeffectivedate" &
                 "  from doc.vendorfamilyex vf" &
@@ -50,7 +50,7 @@
                 " left join officerseb o on o.ofsebid = vf.pmid left join masteruser mu on mu.id = o.muid left join officerseb spm on spm.ofsebid = o.parent" &
                 " left join masteruser mu2 on mu2.id = spm.muid left join doc.vendorgsm vgsm on vgsm.vendorcode = vf.vendorcode left join officerseb gsm on gsm.ofsebid = vgsm.gsmid" &
                 " left join masteruser mu3 on mu3.id = gsm.muid order by vendorname)," &
-                " cp as (select vp.vendorcode,v.vendorname::text,v.shortname2::text,s.statusname,tp.producttype,null::integer as familylv,null::text as familylv1desc,null::text as sbuname,mu.username as pm," &
+                " cp as (select vp.vendorcode,v.vendorname::text,v.shortname3::text as shortname,s.statusname,tp.producttype,null::integer as familylv,null::text as familylv1desc,null::text as sbuname,mu.username as pm," &
                 " mu2.username as spm,mu3.username as gsm,vp.pmeffectivedate,vp.spmeffectivedate,vgsm.effectivedate as gsmeffectivedate from doc.vendorpm vp" &
                 " left join vendor v on v.vendorcode = vp.vendorcode left join doc.vendorstatus vs on vs.vendorcode = vp.vendorcode left join status s on s.statusid = vs.status" &
                 " left join type tp on tp.producttypeid = vs.producttypeid left join officerseb o on o.ofsebid = vp.pmid left join masteruser mu on mu.id = o.muid" &

@@ -21,7 +21,7 @@ Public Class FormUpdateToolingStatus
     'Investment Order No.
     'Finance Asset No
     'Tooling PO No.
-    Dim myarray() = {"", "lower(tl.toolinglistid)", "lower(doc.getstatusname(tm.status))", "lower(ap.assetpurchaseid)", "lower(projectcode)", "lower(projectname)", "v.vendorcode::text", "lower(v.vendorname::text)", "lower(v.shortname::text)", "lower(doc.gettypeofinvestmentname(ap.typeofinvestment::int))", "lower(aeb)", "lower(investmentorderno)", "lower(financeassetno)", "lower(toolingpono)"}
+    Dim myarray() = {"", "lower(tl.toolinglistid)", "lower(doc.getstatusname(tm.status))", "lower(ap.assetpurchaseid)", "lower(projectcode)", "lower(projectname)", "v.vendorcode::text", "lower(v.vendorname::text)", "lower(v.shortname3::text)", "lower(doc.gettypeofinvestmentname(ap.typeofinvestment::int))", "lower(aeb)", "lower(investmentorderno)", "lower(financeassetno)", "lower(toolingpono)"}
     Private Sqlstr As String
     Dim SqlstrReport As String
     Dim ToolingStatusList As List(Of ToolingStatus)
@@ -195,7 +195,7 @@ Public Class FormUpdateToolingStatus
                        " where not invoiceid isnull" &
                        " group by tl.toolinglistid,tl.assetpurchaseid )" &
                        " select tl.toolinglistid,doc.getstatusname(tm.status) as status,tm.commontool, ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                       " v.vendorname::text,v.shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                       " v.vendorname::text,v.shortname3 as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                        " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                        " doc.getinvoiceno(ap.id) as invoiceno, tpy.invoiceamount,(1- (tl.cost - tpy.invoiceamount) / case tl.cost when 0 then 1 else tl.cost end )  as paid,(tl.cost - tpy.invoiceamount) as balance,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate " &
                        " from  doc.toolingproject tp " &
@@ -210,7 +210,7 @@ Public Class FormUpdateToolingStatus
                        " left join inv on inv.id = ap.id" &
                        " where not ap.id isnull and not tl.toolinglistid isnull {0} order by tl.toolinglistid ;", sb.ToString)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
-            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
                         " ,inv as( select id,count(invoiceid) as countinv from (" &
@@ -229,7 +229,7 @@ Public Class FormUpdateToolingStatus
                        " where not invoiceid isnull" &
                        " group by tl.toolinglistid,tl.assetpurchaseid )" &
                        " select tl.toolinglistid,doc.getstatusname(tm.status) as status,tm.commontool, ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                       " v.vendorname::text,v.shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                       " v.vendorname::text,v.shortname3 as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                        " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                        " doc.getinvoiceno(ap.id) as invoiceno, tpy.invoiceamount,(1- (tl.cost - tpy.invoiceamount) / case tl.cost when 0 then 1 else tl.cost end )  as paid,(tl.cost - tpy.invoiceamount) as balance,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate " &
                        " from  doc.toolingproject tp " &
@@ -267,7 +267,7 @@ Public Class FormUpdateToolingStatus
                        " where not invoiceid isnull" &
                        " group by tl.toolinglistid)" &
                        " select tl.toolinglistid,doc.getstatusname(tm.status) as status,tm.commontool, ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                       " v.vendorname::text,v.shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                       " v.vendorname::text,v.shortname3 as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                        " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                        " doc.getinvoiceno(ap.id) as invoiceno, tpy.invoiceamount,(1- (tl.cost - tpy.invoiceamount) / case tl.cost when 0 then 1 else tl.cost end )  as paid,(tl.cost - tpy.invoiceamount) as balance,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate " &
                        " from  doc.toolingproject tp " &
@@ -282,7 +282,7 @@ Public Class FormUpdateToolingStatus
                        " left join inv on inv.id = ap.id" &
                        " where not ap.id isnull and not tl.toolinglistid isnull {0} order by tl.toolinglistid ;", sb.ToString)
         If Not HelperClass1.UserInfo.IsAdmin Then
-            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
                         " ,inv as( select id,count(invoiceid) as countinv from (" &
@@ -301,7 +301,7 @@ Public Class FormUpdateToolingStatus
                        " where not invoiceid isnull" &
                        " group by tl.toolinglistid)" &
                        " select tl.toolinglistid,doc.getstatusname(tm.status) as status,tm.commontool, ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                       " v.vendorname::text,v.shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                       " v.vendorname::text,v.shortname3 as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                        " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                        " doc.getinvoiceno(ap.id) as invoiceno, tpy.invoiceamount,(1- (tl.cost - tpy.invoiceamount) / case tl.cost when 0 then 1 else tl.cost end )  as paid,(tl.cost - tpy.invoiceamount) as balance,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate " &
                        " from  doc.toolingproject tp " &
@@ -343,7 +343,7 @@ Public Class FormUpdateToolingStatus
         sb.Clear()
         ProgressReport(7, "InitFilter")
 
-        Dim sqlstr = String.Format("select distinct tl.toolinglistid, tm.commontool, tm.status as toolingstatus,doc.getstatusname(tm.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname::text,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,doc.getinvoiceno(ap.id) as invoiceno " &
+        Dim sqlstr = String.Format("select distinct tl.toolinglistid, tm.commontool, tm.status as toolingstatus,doc.getstatusname(tm.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,doc.getinvoiceno(ap.id) as invoiceno " &
                   " from  doc.toolingproject tp" &
                   " left join doc.assetpurchase ap on ap.projectid =  tp.id" &
                   " left join doc.toolinglist tl on tl.assetpurchaseid = ap.id" &
@@ -351,10 +351,10 @@ Public Class FormUpdateToolingStatus
                   " left join vendor v on v.vendorcode = ap.vendorcode" &
                   " where not tl.toolinglistid isnull {0} order by ap.id desc;", sb.ToString.ToLower)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
-            sqlstr = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sqlstr = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
-                  "select distinct tl.toolinglistid, tm.commontool, tm.status as toolingstatus,doc.getstatusname(tm.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname::text,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,doc.getinvoiceno(ap.id) as invoiceno " &
+                  "select distinct tl.toolinglistid, tm.commontool, tm.status as toolingstatus,doc.getstatusname(tm.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,doc.getinvoiceno(ap.id) as invoiceno " &
                   " from  doc.toolingproject tp" &
                   " left join doc.assetpurchase ap on ap.projectid =  tp.id" &
                   " left join doc.toolinglist tl on tl.assetpurchaseid = ap.id" &

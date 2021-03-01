@@ -19,7 +19,7 @@ Public Class FormReportAssetsPurchase
     Dim AEBBS As BindingSource
 
     Dim myarray() = {"", "lower(ap.assetpurchaseid)", "lower(projectcode)", "lower(projectname)", "lower(familyname)", "lower(sbuname)", "lower(applicantname)",
-                     "v.vendorcode::text", "lower(v.vendorname::text)", "lower(v.shortname::text)", "lower(doc.gettypeofinvestmentname(ap.typeofinvestment::int))", "lower(aeb)", "lower(doc.getinvoiceno(ap.id::bigint))", "lower(investmentorderno)", "lower(financeassetno)", "lower(toolingpono)", "lower(creator)", "av.agreement::text", "adt.material::text"}
+                     "v.vendorcode::text", "lower(v.vendorname::text)", "lower(v.shortname3::text)", "lower(doc.gettypeofinvestmentname(ap.typeofinvestment::int))", "lower(aeb)", "lower(doc.getinvoiceno(ap.id::bigint))", "lower(investmentorderno)", "lower(financeassetno)", "lower(toolingpono)", "lower(creator)", "av.agreement::text", "adt.material::text", "lower(ap.paymententity)", "ap.toolingsupplier"}
     Private Sqlstr As String
     Dim SqlstrReport As String
     Public Sub New()
@@ -181,13 +181,13 @@ Public Class FormReportAssetsPurchase
                                      " left join doc.toolingpayment tp on tp.toolinglistid = tl.id" &
                                      " group by assetpurchaseid" &
                                      " ) " &
-                                     " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text,v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount,tl.totalofnotoolings,tl.totaltoolingcost as totaltoolingcostusd,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,inv.totalinvoiceamount as totalinvoiceamountusd,inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalanceusd,(ap.budgetamount * ap.exchangerate )-tl.totaltoolingcost as budgetbalancevstotalcostusd, (ap.budgetamount * ap.exchangerate )-inv.totalinvoiceamount as budgetbalancevsinvoiceamountusd, ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator" &
+                                     " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount,tl.totalofnotoolings,tl.totaltoolingcost as totaltoolingcostusd,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,inv.totalinvoiceamount as totalinvoiceamountusd,inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalanceusd,(ap.budgetamount * ap.exchangerate )-tl.totaltoolingcost as budgetbalancevstotalcostusd, (ap.budgetamount * ap.exchangerate )-inv.totalinvoiceamount as budgetbalancevsinvoiceamountusd, ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator" &
                                      " from  doc.toolingproject tp left join doc.assetpurchase ap on ap.projectid =  tp.id left join vendor v on v.vendorcode = ap.vendorcode left join doc.familygroupsbu fgs on fgs.familyid = tp.familyid left join family f on f.familyid = tp.familyid left join sbusap s on s.sbuid = fgs.sbusapid " &
                                      " left join tl on tl.assetpurchaseid = ap.id" &
                                      " left join inv on inv.assetpurchaseid = ap.id" &
             " where not ap.id isnull {0} order by ap.id desc;", sb.ToString)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
-            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
                                     " , tl as (" &
@@ -200,7 +200,7 @@ Public Class FormReportAssetsPurchase
                                      " left join doc.toolingpayment tp on tp.toolinglistid = tl.id" &
                                      " group by assetpurchaseid" &
                                      " ) " &
-                                     " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text,v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount,tl.totalofnotoolings,tl.totaltoolingcost as totaltoolingcostusd,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,inv.totalinvoiceamount as totalinvoiceamountusd,inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalanceusd,(ap.budgetamount * ap.exchangerate )-tl.totaltoolingcost as budgetbalancevstotalcostusd, (ap.budgetamount * ap.exchangerate )-inv.totalinvoiceamount as budgetbalancevsinvoiceamountusd, ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator" &
+                                     " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount,tl.totalofnotoolings,tl.totaltoolingcost as totaltoolingcostusd,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,inv.totalinvoiceamount as totalinvoiceamountusd,inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalanceusd,(ap.budgetamount * ap.exchangerate )-tl.totaltoolingcost as budgetbalancevstotalcostusd, (ap.budgetamount * ap.exchangerate )-inv.totalinvoiceamount as budgetbalancevsinvoiceamountusd, ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator" &
                                      " from  doc.toolingproject tp left join doc.assetpurchase ap on ap.projectid =  tp.id " &
                                      " inner join va on va.vendorcode = ap.vendorcode " &
                                      " left join vendor v on v.vendorcode = va.vendorcode left join doc.familygroupsbu fgs on fgs.familyid = tp.familyid left join family f on f.familyid = tp.familyid left join sbusap s on s.sbuid = fgs.sbusapid " &
@@ -321,9 +321,10 @@ Public Class FormReportAssetsPurchase
                       " order by ap.id) as invoice" &
                       " group by id )  " &
                       " select tl.toolinglistid as toolingid, case when commontool then true else null end as commontool,case when substring(tl.toolinglistid,1,1) = 'S' then true else null end as setupcost ,ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                      " v.vendorname::text,v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount," &
+                      " v.vendorname::text,v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount," &
                       " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
-                      " ti.invoiceno,tpymt.currency as originalinvoicecurr,tpymt.exrate as invoiceexrate, tpymt.invoiceamount,tpymt.invoiceamount * tpymt.exrate as invoiceamountusd,(1- (tl.cost - (tpymt.invoiceamount * tpymt.exrate)) / (case tl.cost when 0 then 1 else tl.cost end ) )  as paid,(tl.cost - (tpymt.invoiceamount * tpymt.exrate )) as balanceusd,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator " &
+                      " ti.invoiceno,tpymt.currency as originalinvoicecurr,tpymt.exrate as invoiceexrate, tpymt.invoiceamount,tpymt.invoiceamount * tpymt.exrate as invoiceamountusd,(1- (tl.cost - (tpymt.invoiceamount * tpymt.exrate)) / (case tl.cost when 0 then 1 else tl.cost end ) )  as paid,(tl.cost - (tpymt.invoiceamount * tpymt.exrate )) as balanceusd,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator ," &
+                      " ap.paymententity,ts.toolingsupplierid,ts.toolingsuppliername,ti.proformainvoice,ti.currency,ti.amount" &
                       " from  doc.toolingproject tp " &
                       " left join doc.assetpurchase ap on ap.projectid =  tp.id " &
                       " left join doc.toolinglist tl on tl.assetpurchaseid = ap.id" &
@@ -334,6 +335,7 @@ Public Class FormReportAssetsPurchase
                       " left join doc.toolingpayment tpymt on tpymt.toolinglistid = tl.id" &
                       " left join doc.toolinginvoice ti on ti.id = tpymt.invoiceid" &
                       " left join inv on inv.id = ap.id" &
+                      " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                       " where not ap.id isnull and not tl.toolinglistid isnull {0} order by tl.toolinglistid ;", sb.ToString)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
             'SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
@@ -369,7 +371,7 @@ Public Class FormReportAssetsPurchase
             '          " left join toolpay tpy on tpy.toolinglistid = tl.toolinglistid and tpy.assetpurchaseid = tl.assetpurchaseid" &
             '          " left join inv on inv.id = ap.id" &
             '          " where not ap.id isnull and not tl.toolinglistid isnull {0} order by tl.toolinglistid ;", sb.ToString, HelperClass1.UserInfo.userid)
-            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname)  " &
                       ", inv as( select id,count(invoiceid) as countinv from (" &
@@ -381,9 +383,10 @@ Public Class FormReportAssetsPurchase
                       " order by ap.id) as invoice" &
                       " group by id )  " &
                       " select tl.toolinglistid as toolingid, case when commontool then true else null end as commontool,case when substring(tl.toolinglistid,1,1) = 'S' then true else null end as setupcost , ap.assetpurchaseid,tp.projectcode,tp.projectname,tp.ppps,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text," &
-                      " v.vendorname::text,v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount," &
+                      " v.vendorname::text,v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount," &
                       " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                       " ti.invoiceno,tpymt.currency as originalinvoicecurr,tpymt.exrate as invoiceexrate, tpymt.invoiceamount, tpymt.invoiceamount as invoiceamountusd,(1- (tl.cost - (tpymt.invoiceamount * tpymt.exrate)) / (case tl.cost when 0 then 1 else tl.cost end ) )  as paid,(tl.cost - (tpymt.invoiceamount * tpymt.exrate)) as balanceusd,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator " &
+                      " ,ap.paymententity,ts.toolingsupplierid,ts.toolingsuppliername,ti.proformainvoice,ti.currency,ti.amount" &
                       " from  doc.toolingproject tp " &
                       " left join doc.assetpurchase ap on ap.projectid =  tp.id " &
                       " left join doc.toolinglist tl on tl.assetpurchaseid = ap.id" &
@@ -395,6 +398,7 @@ Public Class FormReportAssetsPurchase
                       " left join inv on inv.id = ap.id" &
                       " left join doc.toolingpayment tpymt on tpymt.toolinglistid = tl.id" &
                       " left join doc.toolinginvoice ti on ti.id = tpymt.invoiceid" &
+                      " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                       " where not ap.id isnull and not tl.toolinglistid isnull {0} order by tl.toolinglistid ;", sb.ToString, HelperClass1.UserInfo.userid)
         End If
         myReportType = ReportType.ToolingList
@@ -431,7 +435,7 @@ Public Class FormReportAssetsPurchase
         '          " left join family f on f.familyid = tp.familyid" &
         '          " left join sbusap s on s.sbuid = fgs.sbusapid" &
         '          " where not ap.id isnull {0} order by ap.id desc;", sb.ToString.ToLower)
-        Dim sqlstr = String.Format("select distinct doc.getassetpurchasestatusname(ap.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname::text,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,ap.creator " &
+        Dim sqlstr = String.Format("select distinct doc.getassetpurchasestatusname(ap.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,ap.creator " &
                   " from  doc.toolingproject tp" &
                   " left join doc.assetpurchase ap on ap.projectid =  tp.id" &
                   " left join vendor v on v.vendorcode = ap.vendorcode" &
@@ -442,13 +446,14 @@ Public Class FormReportAssetsPurchase
                   " left join agvalue av on av.trackingno = at.trackingno" &
                   " left join agreementdt adt on adt.agreement = av.agreement" &
                   " left join doc.assetattachment ast on ast.assetpurchaseid = ap.id" &
+                  " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                   " where not ap.id isnull {0} order by ap.id desc;", sb.ToString.ToLower)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
 
-            sqlstr = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sqlstr = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
-                       " select distinct doc.getassetpurchasestatusname(ap.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname::text,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,ap.creator " &
+                       " select distinct doc.getassetpurchasestatusname(ap.status) as statusname,ap.id, ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,ap.applicantdate::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.investmentorderno,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.applicantdate,ap.creator " &
                        " from  doc.toolingproject tp" &
                        " left join doc.assetpurchase ap on ap.projectid =  tp.id" &
                        " inner join va on va.vendorcode = ap.vendorcode" &
@@ -460,6 +465,7 @@ Public Class FormReportAssetsPurchase
                        " left join agvalue av on av.trackingno = at.trackingno" &
                        " left join agreementdt adt on adt.agreement = av.agreement" &
                        " left join doc.assetattachment ast on ast.assetpurchaseid = ap.id" &
+                       " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                        " where not ap.id isnull {0} order by ap.id desc;", sb.ToString.ToLower, HelperClass1.UserInfo.userid)
         End If
         
@@ -559,7 +565,7 @@ Public Class FormReportAssetsPurchase
                                      " inv as( select assetpurchaseid,sum(tp.invoiceamount * tp.exrate) as totalinvoiceamount from doc.toolinglist tl " &
                                      " left join doc.toolingpayment tp on tp.toolinglistid = tl.id group by assetpurchaseid ) " &
                                      " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text," &
-                                     " v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                                     " v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                                      " tl.totalofnotoolings,tl.totaltoolingcost,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null " &
                                      " else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice," &
                                      " inv.totalinvoiceamount, inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalance," &
@@ -577,7 +583,7 @@ Public Class FormReportAssetsPurchase
                                      " left join family f on f.familyid = tp.familyid left join sbusap s on s.sbuid = fgs.sbusapid  left join tl on tl.assetpurchaseid = ap.id " &
                                      " left join inv on inv.assetpurchaseid = ap.id where not ap.id isnull {0} and ap.paymentmethodid = {1:d} ", sb.ToString, PaymentMethodIDEnum.Amortization)
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
-            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            SqlstrReport = String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{1}$'   order by vendorname) " &
                                     " , tl as (" &
@@ -591,7 +597,7 @@ Public Class FormReportAssetsPurchase
                                      " group by assetpurchaseid" &
                                      " ) " &
                                      " select ap.assetpurchaseid,tp.projectcode,tp.projectname,f.familyname::character varying,s.sbuname2,ap.applicantname,ap.creator,ap.applicantdate::text,ap.vendorcode::text,v.vendorname::text," &
-                                     " v.shortname::text,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
+                                     " v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetamount * ap.exchangerate as budgetamount," &
                                      " tl.totalofnotoolings,tl.totaltoolingcost,doc.getinvoiceno(ap.id),case doc.getinvoiceno(ap.id) when '' then null " &
                                      " else array_length(regexp_split_to_array(doc.getinvoiceno(ap.id),','),1) end as noofinvoice," &
                                      " inv.totalinvoiceamount, inv.totalinvoiceamount/tl.totaltoolingcost as totalpaid,tl.totaltoolingcost- inv.totalinvoiceamount as totalcostpaymentbalance," &
@@ -658,23 +664,23 @@ Public Class FormReportAssetsPurchase
         Dim mymessage As String = String.Empty
         sb.Clear()
         sb.Append(String.Format("with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description," &
-                                   " v.vendorname::text,shortname::text from vendor v order by vendorname)  " &
+                                   " v.vendorname::text,shortname3::text as shortname from vendor v order by vendorname)  " &
                                    " select distinct va.shortname from doc.assetpurchase ap " &
                                    " inner join va on va.vendorcode = ap.vendorcode order by va.shortname;"))
         sb.Append(String.Format("with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description," &
-                                " v.vendorname::text,shortname::text from vendor v order by vendorname)  " &
+                                " v.vendorname::text,shortname3::text as shortname from vendor v order by vendorname)  " &
                                 " select distinct ap.aeb " &
                                 " from doc.assetpurchase ap " &
                                 " inner join va on va.vendorcode = ap.vendorcode  order by ap.aeb;"))
 
         If Not HelperClass1.UserInfo.IsAdmin And Not (HelperClass1.UserInfo.IsFinance) Then
             sb.Clear()
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname) " &
                        " select distinct va.shortname " &
                        " from doc.assetpurchase ap inner join va on va.vendorcode = ap.vendorcode order by va.shortname;", HelperClass1.UserInfo.userid))
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where u.userid ~ '{0}$'   order by vendorname) " &
                        " select distinct ap.aeb " &

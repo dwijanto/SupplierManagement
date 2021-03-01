@@ -16,8 +16,8 @@ Public Class FormSupplierListTO
     Dim AppliedShortNameFilter As String = String.Empty
     Dim AppliedSupplierNameFilter As String = String.Empty
     Dim AppliedProductTypeFilter As String = String.Empty
-    Dim GroupBy As String = "v.shortname"
-    Dim VendorInfo As String = "doc.getvendorcode(shortname,'(Active supplier,Active tooling supplier)')"
+    Dim GroupBy As String = "v.shortname3"
+    Dim VendorInfo As String = "doc.getvendorcode(shortname3,'(Active supplier,Active tooling supplier)')"
 
     Dim AllFilter As New StringBuilder
     Dim NQSUFilter As New StringBuilder
@@ -67,7 +67,7 @@ Public Class FormSupplierListTO
             If sb.Length > 0 Then
                 sb.Append(" union all ")
             End If
-            sb.Append(String.Format("select {3},{4},'{0:00} {1} Actual Qty' as description, sum(qty) as value from doc.turnover t" &
+            sb.Append(String.Format("select {3} as shortname,{4},'{0:00} {1} Actual Qty' as description, sum(qty) as value from doc.turnover t" &
                                     " left join vendor v on v.vendorcode = t.vendorcode" &
                                     " left join family f on f.familyid = t.comfam" &
                                     " where Year = {1} {2} group by {3}", counter, i, AllFilter.ToString, GroupBy, VendorInfo))
@@ -188,7 +188,7 @@ Public Class FormSupplierListTO
                                     " left join vendor v on v.vendorcode = t.vendorcode " &
                                     " left join doc.vendorstatus vs on vs.vendorcode = v.vendorcode " &
                                     " left join doc.paramdt pr on pr.ivalue = vs.status and pr.paramhdid = 2 " &
-                                    " where year = {0} {3} {5} group by {2},year order by shortname)", i, counter, GroupBy, ProductTypeFilter, VendorInfo, LogisticsFilter))
+                                    " where year = {0} {3} {5} group by {2},year order by shortname3)", i, counter, GroupBy, ProductTypeFilter, VendorInfo, LogisticsFilter))
             counter += 1
         Next
         Dim sqlstr = sb.ToString
@@ -357,7 +357,7 @@ Public Class FormSupplierListTO
            
         Next
         If sb.Length > 0 Then
-            ShortNameFilter = String.Format(" and lower(v.shortname) in ({0})", sb.ToString)
+            ShortNameFilter = String.Format(" and lower(v.shortname3) in ({0})", sb.ToString)
             AllFilter.Append(ShortNameFilter)
             NQSUFilter.Append(ShortNameFilter)
             LogisticsFilter.Append(ShortNameFilter)
@@ -435,9 +435,9 @@ Public Class FormSupplierListTO
                       " b as (select distinct familyname from doc.budgetforecast b left join family f on f.familyid = b.comfam where not sbu isnull), " &
                       " u as (select * from t union all select * from b) select distinct familyname as name from t order by familyname;")
         'Shortname
-        sqlstr.Append("with t as (select distinct shortname from doc.turnover t " &
-                      " left join vendor v on v.vendorcode = t.vendorcode where not shortname isnull), b as (select distinct shortname from doc.budgetforecast b" &
-                      " left join vendor v on v.vendorcode = b.vendorcode where not shortname isnull), u as (select * from t union all select * from b)" &
+        sqlstr.Append("with t as (select distinct shortname3 as shortname from doc.turnover t " &
+                      " left join vendor v on v.vendorcode = t.vendorcode where not shortname3 isnull), b as (select distinct shortname3 as shortname from doc.budgetforecast b" &
+                      " left join vendor v on v.vendorcode = b.vendorcode where not shortname3 isnull), u as (select * from t union all select * from b)" &
                       " select distinct shortname as name from t order by shortname;")
         'Vendorname
         'sqlstr.Append("with t as (select distinct t.vendorcode  from doc.turnover t " &

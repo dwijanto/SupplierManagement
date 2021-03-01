@@ -78,12 +78,12 @@ Public Class FormSearchDocument
         'viewvendorpm replace viewvendorfamilypm
         Dim sqlstr As String = "select distinct v1.vendorcode::text || ' - ' || v1.vendorname as name, v1.vendorcode ,v1.vendorname::text from doc.vendordoc vd " &
                        " left join vendor v on v.vendorcode = vd.vendorcode" &
-                       " left join vendor v1 on v1.shortname = v.shortname" &
+                       " left join vendor v1 on v1.shortname3 = v.shortname3" &
                        " order by v1.vendorname::text;" &
-                       " select distinct v1.shortname::text from doc.vendordoc vd" &
+                       " select distinct v1.shortname3::text as shortname from doc.vendordoc vd" &
                        " left join vendor v on v.vendorcode = vd.vendorcode " &
-                       " left join vendor v1 on v1.shortname = v.shortname " &
-                       " order by v1.shortname::text; " &
+                       " left join vendor v1 on v1.shortname3 = v.shortname3 " &
+                       " order by v1.shortname3::text; " &
                        " select distinct mu2.username as spm from doc.vendordoc vd" &
                        " left join doc.viewvendorpm v on v.vendorcode = vd.vendorcode " &
                        " left join officerseb o on o.ofsebid = v.pmid " &
@@ -134,23 +134,23 @@ Public Class FormSearchDocument
             '                   " order by v1.shortname::text; " &
 
 
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname " &
                                   " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                   " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where lower(u.userid) ~ '{0}$'   order by vendorname) " &
                                   "    select distinct v1.vendorcode::text || ' - ' || v1.vendorname as name, v1.vendorcode ,v1.vendorname::text from doc.vendordoc vd " &
                                   " inner join va on va.vendorcode = vd.vendorcode" &
                               " left join vendor v on v.vendorcode = va.vendorcode" &
-                              " left join vendor v1 on v1.shortname = v.shortname" &
+                              " left join vendor v1 on v1.shortname3 = v.shortname3" &
                               " order by v1.vendorname::text;", HelperClass1.UserInfo.userid.ToLower))
 
-            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+            sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where lower(u.userid) ~ '{0}$'   order by vendorname) " &
-                                   "   select distinct v1.shortname::text from doc.vendordoc vd" &
+                                   "   select distinct v1.shortname3::text as shortname from doc.vendordoc vd" &
                                    " inner join va on va.vendorcode = vd.vendorcode" &
                                " left join vendor v on v.vendorcode = va.vendorcode " &
-                               " left join vendor v1 on v1.shortname = v.shortname " &
-                               " order by v1.shortname::text;", HelperClass1.UserInfo.userid.ToLower))
+                               " left join vendor v1 on v1.shortname3 = v.shortname3 " &
+                               " order by v1.shortname3::text;", HelperClass1.UserInfo.userid.ToLower))
             'sqlstr = " select distinct o.officersebname::text as spm from doc.vendordoc vd" &
             '                   " left join vendor v on v.vendorcode = vd.vendorcode " &
             '                   " left join officerseb o on o.ofsebid = v.ssmidpl " &
@@ -537,7 +537,7 @@ Public Class FormSearchDocument
 
         If Not CheckBox3.Checked Then
             If HelperClass1.UserInfo.IsAdmin Then
-                sb.Append("SELECT false as download, clt.id, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname::text AS shortname, o.officersebname::text AS spm, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, coalesce(d.uploaddate,vm.applicantdate) as uploaddate, coalesce(d.userid,creator) as userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
+                sb.Append("SELECT false as download, clt.id, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname3::text AS shortname, o.officersebname::text AS spm, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, coalesce(d.uploaddate,vm.applicantdate) as uploaddate, coalesce(d.userid,creator) as userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
                  " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,null::integer  AS countcontractisfull, " &
                  " null::integer AS countcontractfull,  null::integer as countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname, spp.rank,vsbu.sbuname ")
                 sb.Append(" from doc.allvendordocument clt")
@@ -610,7 +610,7 @@ Public Class FormSearchDocument
                           " LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode" &
                           " LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text" &
                           " LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid" &
-                          " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname::text" &
+                          " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname3::text" &
                           " left join doc.vendorinfmodiattachment vat on vat.documentid = d.id" &
                           " left join doc.vendorinfmodi vm on vm.id = vat.vendorinfmodiid" &
                           " LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype" &
@@ -620,10 +620,10 @@ Public Class FormSearchDocument
                           " left join doc.vendorsbu vsbu on vsbu.vendorcode = clt.vendorcode" &
                           " WHERE(Not clt.vendorcode Is NULL)")
             Else
-                sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+                sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                    " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                    " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where lower(u.userid) ~ '{0}$'   order by vendorname) ", HelperClass1.UserInfo.userid.ToLower) &
-                    "SELECT false as download, clt.id, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, coalesce(d.uploaddate,vm.applicantdate) as uploaddate, coalesce(d.userid,creator) as userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
+                    "SELECT false as download, clt.id, clt.vendorcode, v.vendorname::text AS vendorname, v.shortname3::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, coalesce(d.uploaddate,vm.applicantdate) as uploaddate, coalesce(d.userid,creator) as userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4, scy.category, ps1.panelstatus AS panelstatus1, ps1.paneldescription AS paneldescription1, ps2.panelstatus AS panelstatus2, ps2.paneldescription AS paneldescription2, " &
                  " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,null::integer  AS countcontractisfull, " &
                  " null::integer AS countcontractfull,  null::integer as countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname, spp.rank,vsbu.sbuname ")
                 sb.Append(" from doc.allvendordocument clt")
@@ -701,7 +701,7 @@ Public Class FormSearchDocument
                           " LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode" &
                           " LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text" &
                           " LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid" &
-                          " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname::text" &
+                          " LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname3::text" &
                           " left join doc.vendorinfmodiattachment vat on vat.documentid = d.id" &
                           " left join doc.vendorinfmodi vm on vm.id = vat.vendorinfmodiid" &
                           " LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype" &
@@ -752,7 +752,7 @@ Public Class FormSearchDocument
             End If
 
             If TextBox3.Text <> "" Then
-                sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname::text")
+                sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname3::text")
             End If
 
             'If TextBox4.Text <> "" Then
@@ -835,7 +835,7 @@ Public Class FormSearchDocument
                 sb.Append(String.Format(" and  d.docdate >='{0:yyyy-MM-dd}' and d.docdate <='{1:yyyy-MM-dd}'", DateTimePicker1.Value.Date, DateTimePicker2.Value.Date))
             End If
 
-            sb.Append(" ORDER BY v.shortname::text, dt.doctypename;")
+            sb.Append(" ORDER BY v.shortname3::text, dt.doctypename;")
         Else
             If HelperClass1.UserInfo.IsAdmin Then
                 'sb.Append("with basedata as (select distinct shortname,doctypeid,id from (select shortname,doctypeid, d.docdate, first_value(d.id) over (partition by doctypeid,shortname order by doctypeid,shortname,docdate desc) as id from doc.allvendordocument av" &
@@ -851,10 +851,10 @@ Public Class FormSearchDocument
                 sb.Append("with basedata as (select distinct shortname,doctypeid,id from (select shortname,doctypeid, d.docdate, first_value(d.id) over (partition by doctypeid,shortname order by doctypeid,shortname,docdate desc) as id from doc.allvendordocument av" &
                      " left join doc.document d on d.id = av.id" &
                      " order by doctypeid,shortname,docdate desc)foo order by shortname,doctypeid,id)" &
-                     " SELECT false as download, clt.id, v.vendorcode,v.vendorname::text AS vendorname, v.shortname::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4," &
+                     " SELECT false as download, clt.id, v.vendorcode,v.vendorname::text AS vendorname, v.shortname3::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4," &
                      " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,null::integer  AS countcontractisfull,  null::integer AS countcontractfull,  null::integer as countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname" &
                      " from basedata clt" &
-                     " left join doc.document d on d.id = clt.id  LEFT JOIN vendor v ON v.shortname = clt.shortname" &
+                     " left join doc.document d on d.id = clt.id  LEFT JOIN vendor v ON v.shortname3 = clt.shortname" &
                      " LEFT JOIN doc.viewvendorpm vfp ON vfp.vendorcode = v.vendorcode" &
                           " LEFT JOIN officerseb os ON os.ofsebid = vfp.pmid" &
                           " LEFT JOIN masteruser mu ON mu.id = os.muid" &
@@ -864,22 +864,22 @@ Public Class FormSearchDocument
                           " LEFT JOIN officerseb o1 ON o1.ofsebid = gsm.gsmid" &
                           " LEFT JOIN masteruser mu1 ON mu1.id = o1.muid" &
                      " LEFT JOIN doc.version vr ON vr.documentid = d.id LEFT JOIN doc.generalcontract gt ON gt.documentid = d.id LEFT JOIN paymentterm pt ON pt.paymenttermid = gt.paymentcode LEFT JOIN doc.supplychain sc ON sc.documentid = d.id LEFT JOIN doc.qualityappendix q ON q.documentid = d.id LEFT JOIN doc.project p ON p.documentid = d.id LEFT JOIN doc.projectspecification ps ON p.documentid = d.id LEFT JOIN doc.socialaudit sa ON sa.documentid = d.id LEFT JOIN doc.sef sef ON sef.documentid = d.id LEFT JOIN doc.sif sif ON sif.documentid = d.id LEFT JOIN doc.doctype dt ON dt.id = d.doctypeid LEFT JOIN doc.doclevel dl ON dl.id = d.doclevelid LEFT JOIN doc.docexpired de ON de.documentid = d.id " &
-                     " LEFT JOIN doc.tvendorgroupsbu vg1 ON vg1.vendorcode = v.vendorcode AND vg1.groupsbuname = 'FP'::text LEFT JOIN doc.tvendorgroupsbu vg2 ON vg2.vendorcode = v.vendorcode AND vg2.groupsbuname = 'CP'::text LEFT JOIN doc.tvendorgroupsbu vg3 ON vg3.vendorcode = v.vendorcode AND vg3.groupsbuname = 'SP'::text LEFT JOIN doc.tvendorgroupsbu vg4 ON vg4.vendorcode = v.vendorcode AND vg4.groupsbuname = 'MOULD'::text LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname::text LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype FROM doc.paramdt pd LEFT JOIN doc.paramhd ph ON ph.paramhdid = pd.paramhdid WHERE ph.paramname::text = 'producttype'::text) pdt ON pdt.ivalue = vs.producttypeid where not clt.id isnull")
+                     " LEFT JOIN doc.tvendorgroupsbu vg1 ON vg1.vendorcode = v.vendorcode AND vg1.groupsbuname = 'FP'::text LEFT JOIN doc.tvendorgroupsbu vg2 ON vg2.vendorcode = v.vendorcode AND vg2.groupsbuname = 'CP'::text LEFT JOIN doc.tvendorgroupsbu vg3 ON vg3.vendorcode = v.vendorcode AND vg3.groupsbuname = 'SP'::text LEFT JOIN doc.tvendorgroupsbu vg4 ON vg4.vendorcode = v.vendorcode AND vg4.groupsbuname = 'MOULD'::text LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname3::text LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype FROM doc.paramdt pd LEFT JOIN doc.paramhd ph ON ph.paramhdid = pd.paramhdid WHERE ph.paramname::text = 'producttype'::text) pdt ON pdt.ivalue = vs.producttypeid where not clt.id isnull")
 
             Else
-                sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname::text" &
+                sb.Append(String.Format(" with va as (select distinct v.vendorcode, v.vendorcode::text || ' - ' || v.vendorname::text as description,v.vendorname::text,shortname3::text as shortname" &
                                   " from doc.groupvendor gv left join vendor  v on v.vendorcode = gv.vendorcode left join doc.groupauth g on g.groupid = gv.groupid " &
                                   " left join doc.groupuser gu on gu.groupid = gv.groupid left join doc.user u on u.id = gu.userid where lower(u.userid) ~ '{0}$'   order by vendorname) ", HelperClass1.UserInfo.userid.ToLower))
                 'viewvendorpm replace viewvendorfamilypm
                 sb.Append(", basedata as (select distinct shortname,doctypeid,id from (select shortname,doctypeid, d.docdate, first_value(d.id) over (partition by doctypeid,shortname order by doctypeid,shortname,docdate desc) as id from doc.allvendordocument av" &
                       " left join doc.document d on d.id = av.id" &
                       " order by doctypeid,shortname,docdate desc)foo order by shortname,doctypeid,id)" &
-                      " SELECT distinct false as download, clt.id, v.vendorcode,v.vendorname::text AS vendorname, v.shortname::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4," &
+                      " SELECT distinct false as download, clt.id, v.vendorcode,v.vendorname::text AS vendorname, v.shortname3::text AS shortname, mu1.username AS gsm, mu2.username AS spm, mu.username AS pm, d.id AS documentid, dt.doctypename, dl.levelname, de.expireddate, d.docdate, d.docname, d.docext, d.uploaddate, d.userid, d.remarks, vr.version, (pt.payt::text || ' - '::text) || pt.details::text AS paymentterm, sc.leadtime, sc.sasl, q.nqsu, p.projectname,ps.returnrate, sa.auditby, sa.audittype, sa.auditgrade, sef.score, sif.myyear, sif.turnovery, sif.turnovery1, sif.turnovery2, sif.turnovery3, sif.turnovery4, sif.ratioy, sif.ratioy1, sif.ratioy2, sif.ratioy3, sif.ratioy4," &
                       " CASE WHEN dt.id = 32 THEN 1 ELSE NULL::integer END AS generalcontract, CASE WHEN dt.id = 33 THEN 1 ELSE NULL::integer END AS qualityappendix, CASE WHEN dt.id = 35 THEN 1 ELSE NULL::integer END AS supplychainappendix,null::integer  AS countcontractisfull,  null::integer AS countcontractfull,  null::integer as countcontractnotfull, vg1.groupsbuname AS fp, vg2.groupsbuname AS cp, vg3.groupsbuname AS sp, vg4.groupsbuname AS mould, doc.groupact(vg1.groupsbuname::character varying, vg2.groupsbuname::character varying, vg3.groupsbuname::character varying, vg4.groupsbuname::character varying, si.fpcp::character varying) AS groupact, pdt.producttype, pr.paramname AS statusname" &
                       " from basedata clt" &
                       " left join doc.document d on d.id = clt.id  " &
                       " inner join va on va.shortname = clt.shortname" &
-                      " LEFT JOIN vendor v ON v.shortname = va.shortname" &
+                      " LEFT JOIN vendor v ON v.shortname3 = va.shortname" &
                       " LEFT JOIN doc.viewvendorpm vfp ON vfp.vendorcode = v.vendorcode" &
                           " LEFT JOIN officerseb os ON os.ofsebid = vfp.pmid" &
                           " LEFT JOIN masteruser mu ON mu.id = os.muid" &
@@ -889,7 +889,7 @@ Public Class FormSearchDocument
                           " LEFT JOIN officerseb o1 ON o1.ofsebid = gsm.gsmid" &
                           " LEFT JOIN masteruser mu1 ON mu1.id = o1.muid" &
                       " LEFT JOIN doc.version vr ON vr.documentid = d.id LEFT JOIN doc.generalcontract gt ON gt.documentid = d.id LEFT JOIN paymentterm pt ON pt.paymenttermid = gt.paymentcode LEFT JOIN doc.supplychain sc ON sc.documentid = d.id LEFT JOIN doc.qualityappendix q ON q.documentid = d.id LEFT JOIN doc.project p ON p.documentid = d.id LEFT JOIN doc.projectspecification ps ON p.documentid = d.id LEFT JOIN doc.socialaudit sa ON sa.documentid = d.id LEFT JOIN doc.sef sef ON sef.documentid = d.id LEFT JOIN doc.sif sif ON sif.documentid = d.id LEFT JOIN doc.doctype dt ON dt.id = d.doctypeid LEFT JOIN doc.doclevel dl ON dl.id = d.doclevelid LEFT JOIN doc.docexpired de ON de.documentid = d.id " &
-                      " LEFT JOIN doc.tvendorgroupsbu vg1 ON vg1.vendorcode = v.vendorcode AND vg1.groupsbuname = 'FP'::text LEFT JOIN doc.tvendorgroupsbu vg2 ON vg2.vendorcode = v.vendorcode AND vg2.groupsbuname = 'CP'::text LEFT JOIN doc.tvendorgroupsbu vg3 ON vg3.vendorcode = v.vendorcode AND vg3.groupsbuname = 'SP'::text LEFT JOIN doc.tvendorgroupsbu vg4 ON vg4.vendorcode = v.vendorcode AND vg4.groupsbuname = 'MOULD'::text LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname::text LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype FROM doc.paramdt pd LEFT JOIN doc.paramhd ph ON ph.paramhdid = pd.paramhdid WHERE ph.paramname::text = 'producttype'::text) pdt ON pdt.ivalue = vs.producttypeid where not clt.id isnull")
+                      " LEFT JOIN doc.tvendorgroupsbu vg1 ON vg1.vendorcode = v.vendorcode AND vg1.groupsbuname = 'FP'::text LEFT JOIN doc.tvendorgroupsbu vg2 ON vg2.vendorcode = v.vendorcode AND vg2.groupsbuname = 'CP'::text LEFT JOIN doc.tvendorgroupsbu vg3 ON vg3.vendorcode = v.vendorcode AND vg3.groupsbuname = 'SP'::text LEFT JOIN doc.tvendorgroupsbu vg4 ON vg4.vendorcode = v.vendorcode AND vg4.groupsbuname = 'MOULD'::text LEFT JOIN doc.vendorstatus vs ON vs.vendorcode = v.vendorcode LEFT JOIN doc.paramhd ph ON ph.paramname::text = 'vendorstatus'::text LEFT JOIN doc.paramdt pr ON pr.ivalue = vs.status AND pr.paramhdid = ph.paramhdid LEFT JOIN doc.shortnameinfo si ON si.shortname = v.shortname3::text LEFT JOIN ( SELECT pd.ivalue, pd.paramname AS producttype FROM doc.paramdt pd LEFT JOIN doc.paramhd ph ON ph.paramhdid = pd.paramhdid WHERE ph.paramname::text = 'producttype'::text) pdt ON pdt.ivalue = vs.producttypeid where not clt.id isnull")
 
             End If
             If TextBox9.Text <> "" Then
@@ -902,7 +902,7 @@ Public Class FormSearchDocument
             '    sb.Append(" and '" & TextBox9.Text & "'" & " ~(replace(replace(dt.doctypename,'(','\('),')','\)'))")
             'End If
             If TextBox3.Text <> "" Then
-                sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname::text")
+                sb.Append(" and '" & TextBox3.Text.Replace("'", "''") & "' ~ v.shortname3::text")
             End If
             If TextBox1.Text <> "" Then
                 sb.Append(" and '" & TextBox1.Text.Replace("'", "''") & "' ~ v.vendorcode::text")

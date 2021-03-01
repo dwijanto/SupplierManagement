@@ -31,12 +31,12 @@ Public Class FormSupplierPanel
 
         Dim mymessage As String = String.Empty
         sb.Clear()
-        sb.Append("select sp.vendorcode::text,sp.vendorcode::text as vendorcodetext,v.vendorname::text,v.shortname::text,sc.category::text,sp.supplierscategoryid,sp.fp,ps.paneldescription as fppanel,sp.cp,ps2.paneldescription as cppanel,sp.rank,sp.supplierspanelid from supplierspanel sp " &
+        sb.Append("select sp.vendorcode::text,sp.vendorcode::text as vendorcodetext,v.vendorname::text,v.shortname3::text as shortname,sc.category::text,sp.supplierscategoryid,sp.fp,ps.paneldescription as fppanel,sp.cp,ps2.paneldescription as cppanel,sp.rank,sp.supplierspanelid from supplierspanel sp " &
                    " inner join supplierscategory sc on sc.supplierscategoryid = sp.supplierscategoryid " &
                    " left join vendor v on v.vendorcode = sp.vendorcode " &
                    " left join doc.panelstatus ps on ps.id = sp.fp " &
                    " left join doc.panelstatus ps2 on ps2.id = sp.cp order by vendorname;")
-        sb.Append("select null::text as vendorcode,''::text as description,''::text as vendorname ,''::text as shortname union all (select vendorcode::text, vendorcode::text || ' - ' || vendorname::text as description,vendorname::text,shortname::text from vendor order by vendorname);")
+        sb.Append("select null::text as vendorcode,''::text as description,''::text as vendorname ,''::text as shortname union all (select vendorcode::text, vendorcode::text || ' - ' || vendorname::text as description,vendorname::text,shortname3::text as shortname from vendor order by vendorname);")
         sb.Append("select null as supplierscategoryid,''::text as category union all (select supplierscategoryid ,category::text from supplierscategory order by category);")
         sb.Append("select null::integer as id, ''::character varying as paneldescription union all (select id, paneldescription from doc.panelstatus where panelstatus = 'FP' order by panelstatus,paneldescription) ;")
         sb.Append("select null::integer as id, ''::character varying as paneldescription union all (select id, paneldescription from doc.panelstatus where panelstatus = 'CP' order by panelstatus,paneldescription);")

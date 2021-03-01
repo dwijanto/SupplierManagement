@@ -22,7 +22,7 @@ Public Class SubFamilyVCModel
     End Property
 
     Public Function getSubFamilyVCBS() As BindingSource
-        Dim sqlstr As String = String.Format("select *,subfamilyvc || ' - ' || description as subfamilyvcdesc from doc.subfamilyvc fvc" &
+        Dim sqlstr As String = String.Format("select subfamilyvc,description,substring(subfamilyvc,1,5) as familyvc,subfamilyvc || ' - ' || description as subfamilyvcdesc from doc.subfamilyvc fvc" &
                                        " order by {0};", SortField)
         Dim DS As New DataSet
         Dim bs As New BindingSource

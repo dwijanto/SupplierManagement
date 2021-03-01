@@ -184,15 +184,17 @@ Public Class FormAssetsPurchase
                                 " where not familyname isnull and  not fg.groupingcode isnull" &
                                 " order by sbuname,familyid,familyname)," &
                                 " c as (select sum(cost) as toolingcost,assetpurchaseid from doc.toolinglist where assetpurchaseid = {0} group by assetpurchaseid)" &
-                                " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username,null::character varying as toolingsuppliername," &
-                                " ts.toolingsuppliername,ts.address,ts.deliveryaddress,ts.telephone,ts.fax,ts.tel" &
+                                " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username," &
+                                " ts.toolingsuppliername,ts.address,ts.deliveryaddress,ts.fax,ts.tel,ts.toolingsupplierid || ' - ' || ts.toolingsuppliername as toolingsupplierdescription" &
+                                " ,u1.email as approvalemail, u2.email as approvalemail2" &
                                 " from doc.assetpurchase ap" &
                                 " left join doc.toolingproject tp on tp.id = ap.projectid" &
                                 " left join  v on v.vendorcode = ap.vendorcode" &
                                 " left join f on f.familyid = tp.familyid" &
                                 " left join c on c.assetpurchaseid = ap.id" &
                                 " left join doc.user u on u.userid = ap.creator" &
-                                " left join doc.user u1 on u1.userid = ap.creator" &
+                                " left join doc.user u1 on u1.username = ap.approvalname" &
+                                " left join doc.user u2 on u1.username = ap.approvalname2" &
                                 " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
                                 " where ap.id = {0};", myId))
         'sb.Append(String.Format("select tldt.*,tlhd.assetpurchaseid,tlhd.sebmodelno,tlhd.suppliermodelreference,tlhd.purchasedate,tlhd.location from doc.toolinglistdt tldt left join doc.toolinglisthd tlhd on tldt.toolinglisthdid = tlhd.id where assetpurchaseid = {0} order by lineno;", myId))
@@ -206,19 +208,27 @@ Public Class FormAssetsPurchase
                         " where(ap.id = {0})" &
                         " group by tp.toolinglistid" &
                         " ) " &
+                        "  ,costcny as  (select sum(tp.invoiceamount) as totalcny,tp.toolinglistid from doc.toolingpayment tp " &
+                        " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
+                        " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid where(ap.id = {0}) and currency = 'CNY'" &
+                        " group by tp.toolinglistid )" &
                         " select tl.id,tl.assetpurchaseid,tm.sebmodelno,tm.suppliermodelreference,tm.suppliermoldno,tm.toolsdescription,tm.material,tm.cavities,tm.numberoftools,tm.dailycapacity,tl.originalcurrency,tl.originalcost,tl.cost,tm.purchasedate ,tm.location,tm.comments ,tl.lineno,tl.vendorcode,tl.toolinglistid,tm.dailycaps,tm.commontool ,0 as typeofinvestment ," &
                         " case" &
                         " when c.total isnull then tl.cost " &
                         " else tl.cost - c.total " &
-                        " end as balance ,tl.toolinglistid || ' - ' || tl.suppliermoldno || ' - ' || tl.toolsdescription as displaymember from doc.toolinglist tl " &
+                        " end as balance ," &
+                        " case when cn.totalcny isnull then tl.originalcost  else tl.originalcost - cn.totalcny  end as balancecny ," &
+                        " tl.toolinglistid || ' - ' || tl.suppliermoldno || ' - ' || tl.toolsdescription as displaymember from doc.toolinglist tl " &
                         " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid  " &
                         " left join cost c on c.toolinglistid = tl.id" &
+                        " left join costcny cn on cn.toolinglistid = tl.id " &
                         " left join doc.toolinglistmst tm on tm.toolinglistid = tl.toolinglistid" &
                         " where ap.id = {0} order by lineno;", myId))
 
         'sb.Append(String.Format("select tp.*,tl.toolinglistid as displaymember,tl.suppliermoldno,null::numeric as pct,tl.toolsdescription from doc.toolingpayment tp" &
         '                        " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
         '                        " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
+
         '                        " where(ap.id = {0});", myId))
 
         '2
@@ -239,12 +249,20 @@ Public Class FormAssetsPurchase
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
                                 " where (ap.id = {0}) " &
+                                " group by ti.id )," &
+                                " totcny as (select ti.id,sum(tp.invoiceamount) as totalamountcny from  " &
+                                " doc.toolinginvoice ti" &
+                                " left join doc.toolingpayment tp on tp.invoiceid = ti.id" &
+                                " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
+                                " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
+                                " where (ap.id = {0}) and tp.currency='CNY' " &
                                 " group by ti.id )" &
-                                " select distinct ti.*,tot.totalamount,null::numeric as pct,ap.id as apid from doc.toolinginvoice ti" &
+                                " select distinct ti.*,tot.totalamount,totcny.totalamountcny,null::numeric as pct,ap.id as apid from doc.toolinginvoice ti" &
                                 " left join doc.toolingpayment tp on tp.invoiceid = ti.id" &
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
                                 " left join tot on tot.id = ti.id" &
+                                " left join totcny on tot.id = ti.id" &
                                 " where(ap.id = {0}) order by invoicedate desc,invoiceno;", myId))
         '4
         sb.Append("with f as (select (s.sbuname2 || ' - ' || f.familyid || ' - ' || upper(familyname::text) || '(' || fg.groupingcode || ')') as familydescription ,s.sbuname2,f.familyid,f.familyname::Text,fg.groupingcode from doc.familygroupsbu fg" &
@@ -948,7 +966,7 @@ Public Class FormAssetsPurchase
         TextBox32.DataBindings.Add(New Binding("Text", AttachmentBS, "docname", True, DataSourceUpdateMode.OnPropertyChanged, ""))
 
         ComboBox4.DataBindings.Add(New Binding("Text", APBS, "paymententity", True, DataSourceUpdateMode.OnPropertyChanged))
-        TextBox39.DataBindings.Add(New Binding("Text", APBS, "toolingsuppliername", True, DataSourceUpdateMode.OnPropertyChanged, ""))
+        TextBox39.DataBindings.Add(New Binding("Text", APBS, "toolingsupplierdescription", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         DateTimePicker3.DataBindings.Add(New Binding("Text", APBS, "expectedtoolingfinishdate", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox42.DataBindings.Add(New Binding("Text", APBS, "origin", True, DataSourceUpdateMode.OnPropertyChanged, ""))
     End Sub
@@ -1788,29 +1806,37 @@ Public Class FormAssetsPurchase
             Case "Tooling List"
                 Dim TotalCost As Decimal = 0
                 Dim TotalBalance As Decimal = 0
+                Dim TotalCostCNY As Decimal = 0
+                Dim TotalBalanceCNY As Decimal = 0
                 Try
                     If Not IsNothing(ToolingListDTBS) Then
                         For Each drv As DataRowView In ToolingListDTBS.List
                             TotalCost = TotalCost + drv.Item("cost")
                             TotalBalance = TotalBalance + drv.Item("balance")
+                            If drv.Row.Item("originalcurrency") = "CNY" Then
+                                TotalCostCNY = TotalCostCNY + drv.Item("originalcost")
+                            End If
+                            TotalBalanceCNY = TotalBalanceCNY + drv.Item("balancecny")
                         Next
                     End If
                 Catch ex As Exception
 
                 End Try
-                ProgressReport(2, String.Format("Record Count : {0}, Total Tooling cost (USD): {1:#,##0.00}, Balance (USD) : {2:#,##0.00}", DataGridView1.RowCount, TotalCost, TotalBalance))
+                ProgressReport(2, String.Format("Record Count : {0}, Total Tooling cost (USD): {1:#,##0.00}, Balance (USD) : {2:#,##0.00}, Total cost (CNY) : {3:#,##0.00}, Balance (CNY) : {4:#,##0.00}", DataGridView1.RowCount, TotalCost, TotalBalance, TotalCostCNY, TotalBalanceCNY))
             Case "Payment & History"
                 Dim TotalInvoice = 0
+                Dim TotalInvoiceCNY = 0
                 Try
                     If Not IsNothing(ToolingInvoiceBS) Then
                         For Each drv As DataRowView In ToolingInvoiceBS.List
                             TotalInvoice = TotalInvoice + drv.Item("totalamount")
+                            TotalInvoiceCNY = TotalInvoiceCNY + drv.Item("totalamountcny")
                         Next
                     End If
                 Catch ex As Exception
 
                 End Try
-                ProgressReport(2, String.Format("Record Count : {0}, Total Invoice (USD): {1:#,##0.00}", DataGridView3.RowCount, TotalInvoice))
+                ProgressReport(2, String.Format("Record Count : {0}, Total Invoice (in USD): {1:#,##0.00}, Total Invoice (CNY) = {2:#,##0.00}", DataGridView3.RowCount, TotalInvoice, TotalInvoiceCNY))
             Case "Proforma Purchase Order"
                 Dim TotalCost As Decimal = 0
                 Dim TotalBalance As Decimal = 0
@@ -1827,6 +1853,7 @@ Public Class FormAssetsPurchase
                 Catch ex As Exception
 
                 End Try
+                ProgressReport(2, String.Format("Proforma Invoice, Total Cost: {0:#,##0.00}, Original Currency = {1}", TotalCost, OriginalCurrency))
             Case Else
                 ProgressReport(2, "")
         End Select
@@ -2357,7 +2384,7 @@ Public Class FormAssetsPurchase
 
         myProformaPO = New proformaPO With {.proformapurchaseorder = dr.item("proformainvoice"),
                                             .address = "" & APdr.Row.Item("address"),
-                                            .applicantdate = APdr.Row.Item("applicantdate"),
+                                            .applicantdate = APdr.Row.Item("applicantdate"),                                            
                                             .applicantname = APdr.Row.Item("applicantname"),
                                             .assetdescription = APdr.Row.Item("assetdescription"),
                                             .deliveryaddress = "" & APdr.Row.Item("deliveryaddress"),
@@ -2373,6 +2400,8 @@ Public Class FormAssetsPurchase
         End If
         If Not IsDBNull(APdr.Row.Item("printdate")) Then
             myProformaPO.printtdate = APdr.Row.Item("printdate")
+        Else
+            myProformaPO.printtdate = Date.Today
         End If
 
         Return dr
@@ -2469,6 +2498,21 @@ Public Class FormAssetsPurchase
         ProgressReport(1, "Done. Please check your folder ::" & SelectedFolder)
     End Sub
 
+    Private Sub Button12_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button12.Click
+        Dim ToolingSupplierController = New ToolingSupplierAdapter
+        Dim bshelper = ToolingSupplierController.GetToolingSupplierBS
+        Dim myform = New FormHelper(bshelper)
+        myform.DataGridView1.Columns(0).DataPropertyName = "description"
+        If myform.ShowDialog = DialogResult.OK Then
+            Dim drv As DataRowView = bshelper.Current
+            Dim mydrv As DataRowView = APBS.Current
+
+            mydrv.Row.Item("toolingsupplier") = drv.Row.Item("toolingsupplierid")
+            mydrv.Row.Item("toolingsuppliername") = drv.Row.Item("toolingsuppliername")
+            TextBox39.Text = drv.Row.Item("description")
+
+        End If
+    End Sub
 End Class
 
 Public Class TypeOfInvestment

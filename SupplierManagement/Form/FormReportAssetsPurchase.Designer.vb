@@ -22,8 +22,8 @@ Partial Class FormReportAssetsPurchase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
@@ -64,30 +64,8 @@ Partial Class FormReportAssetsPurchase
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -110,6 +88,28 @@ Partial Class FormReportAssetsPurchase
         Me.Column20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -355,7 +355,7 @@ Partial Class FormReportAssetsPurchase
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(234, 39)
         Me.Button3.TabIndex = 138
-        Me.Button3.Text = "Export Tooling List to Excel"
+        Me.Button3.Text = "Export Tooling List && Payment Record to Excel"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button2
@@ -436,7 +436,7 @@ Partial Class FormReportAssetsPurchase
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Items.AddRange(New Object() {"", "Asset Purchase ID", "Project Code", "Project Name", "Family", "SBU", "Applicant Name", "Supplier Code", "Supplier Name", "Short Name", "Type of Investment", "AEB No.", "Invoice No.", "Investment Order No.", "Finance Asset No", "Tooling PO No.", "Creator", "Amort. SAP Contract No", "CMMF"})
+        Me.ComboBox3.Items.AddRange(New Object() {"", "Asset Purchase ID", "Project Code", "Project Name", "Family", "SBU", "Applicant Name", "Supplier Code", "Supplier Name", "Short Name", "Type of Investment", "AEB No.", "Invoice No.", "Investment Order No.", "Finance Asset No", "Tooling PO No.", "Creator", "Amort. SAP Contract No", "CMMF", "Payment Entity", "Tooling Supplier"})
         Me.ComboBox3.Location = New System.Drawing.Point(176, 93)
         Me.ComboBox3.Name = "ComboBox3"
         Me.ComboBox3.Size = New System.Drawing.Size(179, 21)
@@ -522,6 +522,11 @@ Partial Class FormReportAssetsPurchase
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(997, 17)
         Me.ToolStripStatusLabel2.Spring = True
         '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -541,10 +546,164 @@ Partial Class FormReportAssetsPurchase
         Me.DataGridView1.Size = New System.Drawing.Size(1090, 190)
         Me.DataGridView1.TabIndex = 73
         '
-        'ToolStripProgressBar1
+        'Column1
         '
-        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.Column1.DataPropertyName = "assetpurchaseid"
+        Me.Column1.HeaderText = "Asset Purchase Id"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 200
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "projectcode"
+        Me.Column2.HeaderText = "Project Code"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.DataPropertyName = "projectname"
+        Me.Column3.HeaderText = "Project Name"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.DataPropertyName = "applicantdate"
+        Me.Column4.HeaderText = "Applicant Date"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column10
+        '
+        Me.Column10.DataPropertyName = "familyname"
+        Me.Column10.HeaderText = "Family"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        '
+        'Column12
+        '
+        Me.Column12.DataPropertyName = "sbuname2"
+        Me.Column12.HeaderText = "SBU"
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        '
+        'Column13
+        '
+        Me.Column13.DataPropertyName = "applicantname"
+        Me.Column13.HeaderText = "Applicant Name"
+        Me.Column13.Name = "Column13"
+        Me.Column13.ReadOnly = True
+        '
+        'Column14
+        '
+        Me.Column14.DataPropertyName = "vendorcode"
+        Me.Column14.HeaderText = "Supplier Code"
+        Me.Column14.Name = "Column14"
+        Me.Column14.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.DataPropertyName = "vendorname"
+        Me.Column5.HeaderText = "Supplier"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.Width = 250
+        '
+        'Column18
+        '
+        Me.Column18.DataPropertyName = "shortname"
+        Me.Column18.HeaderText = "Short Name"
+        Me.Column18.Name = "Column18"
+        Me.Column18.ReadOnly = True
+        '
+        'Column15
+        '
+        Me.Column15.DataPropertyName = "typeofinvestmentname"
+        Me.Column15.HeaderText = "Type Of Investment"
+        Me.Column15.Name = "Column15"
+        Me.Column15.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.DataPropertyName = "aeb"
+        Me.Column6.HeaderText = "AEB No"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column16
+        '
+        Me.Column16.DataPropertyName = "getinvoiceno"
+        Me.Column16.HeaderText = "Invoice No."
+        Me.Column16.Name = "Column16"
+        Me.Column16.ReadOnly = True
+        '
+        'Column21
+        '
+        Me.Column21.DataPropertyName = "noofinvoice"
+        Me.Column21.HeaderText = "No of Invoice"
+        Me.Column21.Name = "Column21"
+        Me.Column21.ReadOnly = True
+        '
+        'Column7
+        '
+        Me.Column7.DataPropertyName = "investmentorderno"
+        Me.Column7.HeaderText = "Investment Order No."
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.DataPropertyName = "financeassetno"
+        Me.Column9.HeaderText = "Finance Asset No."
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        '
+        'Column19
+        '
+        Me.Column19.DataPropertyName = "sapcapdate"
+        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
+        Me.Column19.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column19.HeaderText = "SAP Cap Date"
+        Me.Column19.Name = "Column19"
+        Me.Column19.ReadOnly = True
+        '
+        'Column8
+        '
+        Me.Column8.DataPropertyName = "toolingpono"
+        Me.Column8.HeaderText = "Tooling PO No."
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column17
+        '
+        Me.Column17.DataPropertyName = "applicantdate"
+        Me.Column17.HeaderText = "Application Date"
+        Me.Column17.Name = "Column17"
+        Me.Column17.ReadOnly = True
+        '
+        'Column20
+        '
+        Me.Column20.DataPropertyName = "creator"
+        Me.Column20.HeaderText = "Creator"
+        Me.Column20.Name = "Column20"
+        Me.Column20.ReadOnly = True
+        '
+        'Column22
+        '
+        Me.Column22.DataPropertyName = "statusname"
+        Me.Column22.HeaderText = "Status"
+        Me.Column22.Name = "Column22"
+        Me.Column22.ReadOnly = True
+        '
+        'Column11
+        '
+        Me.Column11.DataPropertyName = "id"
+        Me.Column11.HeaderText = "Id"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        Me.Column11.Visible = False
         '
         'DataGridViewTextBoxColumn1
         '
@@ -705,165 +864,6 @@ Partial Class FormReportAssetsPurchase
         Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
         Me.DataGridViewTextBoxColumn22.ReadOnly = True
         Me.DataGridViewTextBoxColumn22.Visible = False
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "assetpurchaseid"
-        Me.Column1.HeaderText = "Asset Purchase Id"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 200
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "projectcode"
-        Me.Column2.HeaderText = "Project Code"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.DataPropertyName = "projectname"
-        Me.Column3.HeaderText = "Project Name"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.DataPropertyName = "applicantdate"
-        Me.Column4.HeaderText = "Applicant Date"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column10
-        '
-        Me.Column10.DataPropertyName = "familyname"
-        Me.Column10.HeaderText = "Family"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        '
-        'Column12
-        '
-        Me.Column12.DataPropertyName = "sbuname2"
-        Me.Column12.HeaderText = "SBU"
-        Me.Column12.Name = "Column12"
-        Me.Column12.ReadOnly = True
-        '
-        'Column13
-        '
-        Me.Column13.DataPropertyName = "applicantname"
-        Me.Column13.HeaderText = "Applicant Name"
-        Me.Column13.Name = "Column13"
-        Me.Column13.ReadOnly = True
-        '
-        'Column14
-        '
-        Me.Column14.DataPropertyName = "vendorcode"
-        Me.Column14.HeaderText = "Supplier Code"
-        Me.Column14.Name = "Column14"
-        Me.Column14.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.DataPropertyName = "vendorname"
-        Me.Column5.HeaderText = "Supplier"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 250
-        '
-        'Column18
-        '
-        Me.Column18.DataPropertyName = "shortname"
-        Me.Column18.HeaderText = "Short Name"
-        Me.Column18.Name = "Column18"
-        Me.Column18.ReadOnly = True
-        '
-        'Column15
-        '
-        Me.Column15.DataPropertyName = "typeofinvestmentname"
-        Me.Column15.HeaderText = "Type Of Investment"
-        Me.Column15.Name = "Column15"
-        Me.Column15.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.DataPropertyName = "aeb"
-        Me.Column6.HeaderText = "AEB No"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column16
-        '
-        Me.Column16.DataPropertyName = "getinvoiceno"
-        Me.Column16.HeaderText = "Invoice No."
-        Me.Column16.Name = "Column16"
-        Me.Column16.ReadOnly = True
-        '
-        'Column21
-        '
-        Me.Column21.DataPropertyName = "noofinvoice"
-        Me.Column21.HeaderText = "No of Invoice"
-        Me.Column21.Name = "Column21"
-        Me.Column21.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.DataPropertyName = "investmentorderno"
-        Me.Column7.HeaderText = "Investment Order No."
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column9
-        '
-        Me.Column9.DataPropertyName = "financeassetno"
-        Me.Column9.HeaderText = "Finance Asset No."
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        '
-        'Column19
-        '
-        Me.Column19.DataPropertyName = "sapcapdate"
-        DataGridViewCellStyle1.Format = "dd-MMM-yyyy"
-        Me.Column19.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column19.HeaderText = "SAP Cap Date"
-        Me.Column19.Name = "Column19"
-        Me.Column19.ReadOnly = True
-        '
-        'Column8
-        '
-        Me.Column8.DataPropertyName = "toolingpono"
-        Me.Column8.HeaderText = "Tooling PO No."
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column17
-        '
-        Me.Column17.DataPropertyName = "applicantdate"
-        Me.Column17.HeaderText = "Application Date"
-        Me.Column17.Name = "Column17"
-        Me.Column17.ReadOnly = True
-        '
-        'Column20
-        '
-        Me.Column20.DataPropertyName = "creator"
-        Me.Column20.HeaderText = "Creator"
-        Me.Column20.Name = "Column20"
-        Me.Column20.ReadOnly = True
-        '
-        'Column22
-        '
-        Me.Column22.DataPropertyName = "statusname"
-        Me.Column22.HeaderText = "Status"
-        Me.Column22.Name = "Column22"
-        Me.Column22.ReadOnly = True
-        '
-        'Column11
-        '
-        Me.Column11.DataPropertyName = "id"
-        Me.Column11.HeaderText = "Id"
-        Me.Column11.Name = "Column11"
-        Me.Column11.ReadOnly = True
-        Me.Column11.Visible = False
         '
         'FormReportAssetsPurchase
         '

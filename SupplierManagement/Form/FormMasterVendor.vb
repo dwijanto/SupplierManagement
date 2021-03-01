@@ -14,7 +14,7 @@ Public Class FormMasterVendor
     Dim bsSSM As BindingSource
     Dim bsPM As BindingSource
     Dim myDict As Dictionary(Of String, Integer)
-    Dim myFields As String() = {"vendorcode", "vendorname", "shortname2", "ssm", "pm"}
+    Dim myFields As String() = {"vendorcode", "vendorname", "shortname", "ssm", "pm"}
 
 
     Private Sub FormSupplierCategory_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -29,7 +29,7 @@ Public Class FormMasterVendor
 
         Dim mymessage As String = String.Empty
         sb.Clear()
-        sb.Append(" select v.vendorcode::text,v.vendorname::text,v.shortname::text,ssm.officersebname as ssm,v.ssmidpl as ssmid,v.ssmeffectivedate,pm.officersebname as pm,v.pmid as pmid,v.pmeffectivedate,o.officername::text,v.shortname2" &
+        sb.Append(" select v.vendorcode::text,v.vendorname::text,v.shortname3::text as shortname,ssm.officersebname as ssm,v.ssmidpl as ssmid,v.ssmeffectivedate,pm.officersebname as pm,v.pmid as pmid,v.pmeffectivedate,o.officername::text,v.shortname2" &
                   " from vendor v" &
                   " left join officerseb ssm on ssm.ofsebid = v.ssmidpl" &
                   " left join officerseb pm on pm.ofsebid = v.pmid" &
@@ -436,7 +436,7 @@ Public Class FormMasterVendor
         Dim mymessage As String = String.Empty
 
 
-        Dim Sqlstr = "select vendorcode,vendorname,shortname2 as shortname,latestupdate,vendornameold,shortname2old as shortname,latestupdateold from vendor_audit;"
+        Dim Sqlstr = "select vendorcode,vendorname,shortname3 as shortname,latestupdate,vendornameold,shortname3old as shortnameold,latestupdateold from vendor_audit;"
 
         Dim mysaveform As New SaveFileDialog
         mysaveform.FileName = String.Format("ReportHistoryVendor{0:yyyyMMdd}.xlsx", Date.Today)

@@ -85,7 +85,7 @@ Public Class FormSupplierMasterData
                                              " select * from cp)," &
                                              " nopm as(select  vendorcode from doc.vendorstatus except select vendorcode from fgcp)," &
                                              " allvendor as(select vendorcode,familyid,pmid from fgcp union all (select vendorcode,null::integer,null::integer from nopm order by vendorcode) )" &
-                                             " select distinct vp.vendorcode,v.vendorname,v.shortname,mu1.username as gsm,mu2.username as spm,mu.username as pm,f.familyid,f.familyname,vvs.status,vpt.producttype from allvendor vp" &
+                                             " select distinct vp.vendorcode,v.vendorname,v.shortname3 as shortname,mu1.username as gsm,mu2.username as spm,mu.username as pm,f.familyid,f.familyname,vvs.status,vpt.producttype from allvendor vp" &
                                              " left join vendor v on v.vendorcode = vp.vendorcode" &
                                              " left join family f on f.familyid = vp.familyid " &
                                              " left join officerseb o on o.ofsebid = vp.pmid" &

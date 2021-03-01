@@ -253,6 +253,7 @@ Public Class FormVendorInformationModification
                         ToolStripButton7.Visible = False 'Reject
                         ToolStripButton8.Visible = False 'Complete
 
+
                         Select Case TxTypeEnum
                             Case TxEnum.NewRecord, TxEnum.UpdateRecord
                                 If IsDBNull(drv.Row.Item("status")) Then
