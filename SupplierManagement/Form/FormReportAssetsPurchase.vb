@@ -324,7 +324,7 @@ Public Class FormReportAssetsPurchase
                       " v.vendorname::text,v.shortname3::text as shortname,doc.gettypeofinvestmentname(ap.typeofinvestment::int) as typeofinvestmentname,ap.aeb,ap.budgetcurr as originalbudgetcurrency,ap.budgetamount as originalbudgetamount,ap.exchangerate as budgetexrate,ap.budgetamount * ap.exchangerate as budgetamount," &
                       " tl.sebmodelno,tl.suppliermodelreference,tl.suppliermoldno,tl.toolsdescription,tl.material,tl.cavities,tl.numberoftools,tl.dailycaps,tl.cost,tl.purchasedate,tl.location,tl.comments,inv.countinv," &
                       " ti.invoiceno,tpymt.currency as originalinvoicecurr,tpymt.exrate as invoiceexrate, tpymt.invoiceamount,tpymt.invoiceamount * tpymt.exrate as invoiceamountusd,(1- (tl.cost - (tpymt.invoiceamount * tpymt.exrate)) / (case tl.cost when 0 then 1 else tl.cost end ) )  as paid,(tl.cost - (tpymt.invoiceamount * tpymt.exrate )) as balanceusd,  ap.investmentorderno,ap.toolingpono,ap.financeassetno,ap.sapcapdate,ap.creator ," &
-                      " ap.paymententity,ts.toolingsupplierid,ts.toolingsuppliername,ti.proformainvoice,ti.currency,ti.amount" &
+                      " ap.paymententity,ts.toolingsupplierid,ts.toolingsuppliername,ti.proformainvoice as proformapo,ti.currency as pocurrency,ti.amount as poamount" &
                       " from  doc.toolingproject tp " &
                       " left join doc.assetpurchase ap on ap.projectid =  tp.id " &
                       " left join doc.toolinglist tl on tl.assetpurchaseid = ap.id" &

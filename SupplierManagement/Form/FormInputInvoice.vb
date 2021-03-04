@@ -77,7 +77,7 @@ Public Class FormInputInvoice
 
         TextBox36.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "cost", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
         TextBox37.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "balance", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
-        TextBox38.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "invoiceamount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
+        TextBox38.DataBindings.Add(New Binding("Text", ToolingPaymentBS, "invoiceamountusd", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
         TextBox1.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "totalamount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
 
         TextBox4.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "proformainvoice", True, DataSourceUpdateMode.OnPropertyChanged))
@@ -292,9 +292,10 @@ Public Class FormInputInvoice
         If TextBox2.Text = "" Then
             TextBox2.Text = 0
         End If
-        Try          
+        Try
             'TextBox38.Text = Format(drv.Item("invoiceamount") * drv.Item("exrate"), "#,##0.00")
-            TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * drv.Item("exrate"), "#,##0.00")
+            'TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * drv.Item("exrate"), "#,##0.00")
+            TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * TextBox19.Text, "#,##0.00")
         Catch ex As Exception
             ' MessageBox.Show(ex.Message)
         End Try
@@ -315,8 +316,8 @@ Public Class FormInputInvoice
         Dim drv As DataRowView = ToolingPaymentBS.Current
 
         Try
-            TextBox2.Text = Format(TextBox36.Text * drv.Item("pct") / 100, "#,##0.00")
-            TextBox38.Text = Format(drv.Item("invoiceamount") * drv.Item("exrate"), "#,##0.00")
+            'TextBox2.Text = Format((TextBox36.Text / drv.Item("exrate")) * drv.Item("pct") / 100, "#,##0.00")
+            'TextBox38.Text = Format(drv.Item("invoiceamount") * drv.Item("exrate"), "#,##0.00")
 
         Catch ex As Exception
             ' MessageBox.Show(ex.Message)

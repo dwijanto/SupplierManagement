@@ -26,6 +26,12 @@ Partial Class FormInputInvoice
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -75,12 +81,6 @@ Partial Class FormInputInvoice
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.GroupBox6.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -116,6 +116,54 @@ Partial Class FormInputInvoice
         Me.GroupBox6.TabIndex = 101
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Invoice Header"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(553, 123)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(131, 20)
+        Me.TextBox6.TabIndex = 16
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(505, 126)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(43, 13)
+        Me.Label6.TabIndex = 17
+        Me.Label6.Text = "Amount"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(431, 123)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(63, 20)
+        Me.TextBox5.TabIndex = 14
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(376, 126)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(49, 13)
+        Me.Label5.TabIndex = 15
+        Me.Label5.Text = "Currency"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(154, 123)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(216, 20)
+        Me.TextBox4.TabIndex = 12
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(81, 126)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(67, 13)
+        Me.Label4.TabIndex = 13
+        Me.Label4.Text = "Proforma PO"
         '
         'Label3
         '
@@ -401,6 +449,7 @@ Partial Class FormInputInvoice
         Me.TextBox35.Name = "TextBox35"
         Me.TextBox35.Size = New System.Drawing.Size(63, 20)
         Me.TextBox35.TabIndex = 104
+        Me.TextBox35.Visible = False
         '
         'Label39
         '
@@ -411,6 +460,7 @@ Partial Class FormInputInvoice
         Me.Label39.Size = New System.Drawing.Size(64, 13)
         Me.Label39.TabIndex = 117
         Me.Label39.Text = "Invoice in %"
+        Me.Label39.Visible = False
         '
         'Button6
         '
@@ -524,7 +574,7 @@ Partial Class FormInputInvoice
         '
         Me.TextBox19.Location = New System.Drawing.Point(689, 107)
         Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.TextBox19.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.TextBox19.Size = New System.Drawing.Size(50, 20)
         Me.TextBox19.TabIndex = 107
         Me.TextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -583,54 +633,6 @@ Partial Class FormInputInvoice
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 150
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(154, 123)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(216, 20)
-        Me.TextBox4.TabIndex = 12
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(61, 126)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 13)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Proforma Invoice"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(431, 123)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(63, 20)
-        Me.TextBox5.TabIndex = 14
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(376, 126)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(49, 13)
-        Me.Label5.TabIndex = 15
-        Me.Label5.Text = "Currency"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(553, 123)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(131, 20)
-        Me.TextBox6.TabIndex = 16
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(505, 126)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(43, 13)
-        Me.Label6.TabIndex = 17
-        Me.Label6.Text = "Amount"
         '
         'FormInputInvoice
         '

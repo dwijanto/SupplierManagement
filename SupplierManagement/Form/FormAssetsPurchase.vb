@@ -233,11 +233,11 @@ Public Class FormAssetsPurchase
 
         '2
         sb.Append(String.Format("with cost as (" &
-                                " select sum(tp.invoiceamount) as total,tp.toolinglistid  from doc.toolingpayment tp " &
+                                " select sum(tp.invoiceamount * tp.exrate) as total,tp.toolinglistid  from doc.toolingpayment tp " &
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid " &
                                 " where(ap.id = {0}) group by tp.toolinglistid )  " &
-                                " select tp.*,tl.toolinglistid as displaymember,tl.suppliermoldno,tl.toolsdescription,tl.cost,case when c.total isnull then tl.cost  else tl.cost - c.total  end as balance,(tp.invoiceamount / (case when tl.cost = 0 then 1 else tl.cost end)) * 100 as pct from doc.toolingpayment tp " &
+                                " select tp.*,tl.toolinglistid as displaymember,tl.suppliermoldno,tl.toolsdescription,tl.cost,case when c.total isnull then tl.cost  else tl.cost - c.total  end as balance,(tp.invoiceamount * tp.exrate / (case when tl.cost = 0 then 1 else tl.cost end)) * 100 as pct ,tp.invoiceamount * tp.exrate as invoiceamountusd from doc.toolingpayment tp " &
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid " &
                                 " left join cost c on c.toolinglistid = tl.id" &
