@@ -202,7 +202,7 @@ Public Class FormAssetsPurchase
         'sb.Append(String.Format("select tl.*,0 as typeofinvestment from doc.toolinglist tl left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid  where ap.id = {0} order by lineno;", myId))
 
         '1
-        sb.Append(String.Format("with cost as (select sum(tp.invoiceamount) as total,tp.toolinglistid  from doc.toolingpayment tp" &
+        sb.Append(String.Format("with cost as (select sum(tp.invoiceamount * tp.exrate) as total,tp.toolinglistid  from doc.toolingpayment tp" &
                         " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
                         " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
                         " where(ap.id = {0})" &

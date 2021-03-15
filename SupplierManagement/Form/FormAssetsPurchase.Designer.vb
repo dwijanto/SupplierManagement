@@ -36,6 +36,10 @@ Partial Class FormAssetsPurchase
         Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -78,10 +82,6 @@ Partial Class FormAssetsPurchase
         Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.AssetsPurchaseTabPage = New System.Windows.Forms.TabPage()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
@@ -211,6 +211,14 @@ Partial Class FormAssetsPurchase
         Me.DeleteAttachmentToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PaymentHistoryTabPage = New System.Windows.Forms.TabPage()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1Invoice = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.NewRecordInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -333,14 +341,6 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.AssetsPurchaseTabPage.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -523,9 +523,9 @@ Partial Class FormAssetsPurchase
         Me.GroupBox5.Controls.Add(Me.TextBox30)
         Me.GroupBox5.Controls.Add(Me.Label27)
         Me.GroupBox5.Controls.Add(Me.TextBox29)
-        Me.GroupBox5.Location = New System.Drawing.Point(10, 403)
+        Me.GroupBox5.Location = New System.Drawing.Point(4, 430)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(1099, 170)
+        Me.GroupBox5.Size = New System.Drawing.Size(1099, 146)
         Me.GroupBox5.TabIndex = 20
         Me.GroupBox5.TabStop = False
         '
@@ -1667,6 +1667,82 @@ Partial Class FormAssetsPurchase
         Me.DataGridView3.Size = New System.Drawing.Size(1106, 555)
         Me.DataGridView3.TabIndex = 99
         '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "commontool"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Common Tool"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewCheckBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "invoiceno"
+        DataGridViewCellStyle13.Format = "dd-MMM-yyyy"
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle13
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Supplier Invoice Number"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 150
+        '
+        'Column22
+        '
+        Me.Column22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column22.DataPropertyName = "description"
+        Me.Column22.HeaderText = "Invoice Description"
+        Me.Column22.Name = "Column22"
+        Me.Column22.ReadOnly = True
+        Me.Column22.Width = 300
+        '
+        'Column16
+        '
+        Me.Column16.DataPropertyName = "totalamount"
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle14.Format = "#,##0.00"
+        Me.Column16.DefaultCellStyle = DataGridViewCellStyle14
+        Me.Column16.HeaderText = "Invoice Amount (in USD)"
+        Me.Column16.Name = "Column16"
+        Me.Column16.ReadOnly = True
+        '
+        'Column38
+        '
+        Me.Column38.DataPropertyName = "totalamountcny"
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle15.Format = "#,##0.00"
+        Me.Column38.DefaultCellStyle = DataGridViewCellStyle15
+        Me.Column38.HeaderText = "Invoice Amount (CNY)"
+        Me.Column38.Name = "Column38"
+        Me.Column38.ReadOnly = True
+        '
+        'Column37
+        '
+        Me.Column37.DataPropertyName = "proformainvoice"
+        Me.Column37.HeaderText = "Proforma PO"
+        Me.Column37.Name = "Column37"
+        Me.Column37.ReadOnly = True
+        Me.Column37.Width = 200
+        '
+        'Column39
+        '
+        Me.Column39.DataPropertyName = "currency"
+        Me.Column39.HeaderText = "PO Currency"
+        Me.Column39.Name = "Column39"
+        Me.Column39.ReadOnly = True
+        Me.Column39.Width = 70
+        '
+        'Column40
+        '
+        Me.Column40.DataPropertyName = "amount"
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle16.Format = "#,##0.00"
+        Me.Column40.DefaultCellStyle = DataGridViewCellStyle16
+        Me.Column40.HeaderText = "PO Amount"
+        Me.Column40.Name = "Column40"
+        Me.Column40.ReadOnly = True
+        Me.Column40.Width = 70
+        '
         'ContextMenuStrip1Invoice
         '
         Me.ContextMenuStrip1Invoice.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewRecordInvoiceToolStripMenuItem, Me.DeleteInvoiceToolStripMenuItem})
@@ -2778,82 +2854,6 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
         Me.DataGridViewTextBoxColumn39.ReadOnly = True
         Me.DataGridViewTextBoxColumn39.Width = 200
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "commontool"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Common Tool"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewCheckBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "invoiceno"
-        DataGridViewCellStyle13.Format = "dd-MMM-yyyy"
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Supplier Invoice Number"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 150
-        '
-        'Column22
-        '
-        Me.Column22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column22.DataPropertyName = "description"
-        Me.Column22.HeaderText = "Invoice Description"
-        Me.Column22.Name = "Column22"
-        Me.Column22.ReadOnly = True
-        Me.Column22.Width = 300
-        '
-        'Column16
-        '
-        Me.Column16.DataPropertyName = "totalamount"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle14.Format = "#,##0.00"
-        Me.Column16.DefaultCellStyle = DataGridViewCellStyle14
-        Me.Column16.HeaderText = "Invoice Amount (in USD)"
-        Me.Column16.Name = "Column16"
-        Me.Column16.ReadOnly = True
-        '
-        'Column38
-        '
-        Me.Column38.DataPropertyName = "totalamountcny"
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle15.Format = "#,##0.00"
-        Me.Column38.DefaultCellStyle = DataGridViewCellStyle15
-        Me.Column38.HeaderText = "Invoice Amount (CNY)"
-        Me.Column38.Name = "Column38"
-        Me.Column38.ReadOnly = True
-        '
-        'Column37
-        '
-        Me.Column37.DataPropertyName = "proformainvoice"
-        Me.Column37.HeaderText = "Proforma PO"
-        Me.Column37.Name = "Column37"
-        Me.Column37.ReadOnly = True
-        Me.Column37.Width = 200
-        '
-        'Column39
-        '
-        Me.Column39.DataPropertyName = "currency"
-        Me.Column39.HeaderText = "PO Currency"
-        Me.Column39.Name = "Column39"
-        Me.Column39.ReadOnly = True
-        Me.Column39.Width = 70
-        '
-        'Column40
-        '
-        Me.Column40.DataPropertyName = "amount"
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle16.Format = "#,##0.00"
-        Me.Column40.DefaultCellStyle = DataGridViewCellStyle16
-        Me.Column40.HeaderText = "PO Amount"
-        Me.Column40.Name = "Column40"
-        Me.Column40.ReadOnly = True
-        Me.Column40.Width = 70
         '
         'FormAssetsPurchase
         '
