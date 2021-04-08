@@ -13,6 +13,7 @@ Public Class FormInputInvoice
         If ToolingPaymentBS.Count > 0 Then
             Try
                 InvDrv.Item("totalamount") = getTotal()
+                InvDrv.Item("totalamountcny") = getTotal("CNY")
                 InvDrv.EndEdit()
                 'toolingInvoiceBS.EndEdit()
                 'ToolingPaymentBS.EndEdit()
@@ -81,7 +82,9 @@ Public Class FormInputInvoice
         TextBox1.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "totalamount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
 
         TextBox4.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "proformainvoice", True, DataSourceUpdateMode.OnPropertyChanged))
-        TextBox5.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "currency", True, DataSourceUpdateMode.OnPropertyChanged))
+        'TextBox5.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "currency", True, DataSourceUpdateMode.OnPropertyChanged))
+
+        TextBox5.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "exrate", True, DataSourceUpdateMode.OnPropertyChanged))
         TextBox6.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "amount", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00"))
 
         TextBox33.DataBindings.Add(New Binding("Text", ToolinginvoiceBS, "invoiceno", True, DataSourceUpdateMode.OnPropertyChanged, ""))
@@ -110,6 +113,13 @@ Public Class FormInputInvoice
         ComboBox2.SelectedIndex = -1
         ComboBox2.DataBindings.Add("SelectedValue", ToolingPaymentBS, "currency", True, DataSourceUpdateMode.OnPropertyChanged)
         'ComboBox4.DataBindings.Add("SelectedValue", APBS, "applicantname", True, DataSourceUpdateMode.OnPropertyChanged)
+
+        'ComboBox9.DataBindings.Add()
+        ComboBox9.DataSource = CurrencyList
+        ComboBox9.DisplayMember = "currency"
+        ComboBox9.ValueMember = "currency"
+        ComboBox9.SelectedIndex = -1
+        ComboBox9.DataBindings.Add("SelectedValue", ToolinginvoiceBS, "currency", True, DataSourceUpdateMode.OnPropertyChanged)
         myparent = sender
 
         If HelperClass1.UserInfo.IsFinance Then
@@ -166,11 +176,14 @@ Public Class FormInputInvoice
                 Dim myrow As DataRowView = ToolingPaymentBS.AddNew
                 'myrow.EndEdit()
                 'myrow.BeginEdit()
-                myrow.Row.Item("exrate") = 1
-                myrow.Row.Item("invoiceamount") = (drv.Item("pct") / 100) * mydrv.Item("cost")
+                'myrow.Row.Item("exrate") = 1 'TextBox5.Text
+                myrow.Row.Item("exrate") = TextBox5.Text
+                'myrow.Row.Item("invoiceamount") = (drv.Item("pct") / 100) * mydrv.Item("cost")
+                myrow.Row.Item("invoiceamount") = (drv.Item("pct") / 100) * mydrv.Item("originalcost")
                 myrow.Row.Item("toolinglistid") = mydrv.Item("id")
 
-                myrow.Row.Item("currency") = "USD"
+                'myrow.Row.Item("currency") = "USD"
+                myrow.Row.Item("currency") = ComboBox9.Text
 
                 myrow.Row.Item("pct") = drv.Item("pct")
                 myrow.Item("displaymember") = mydrv.Item("toolinglistid")
@@ -182,8 +195,10 @@ Public Class FormInputInvoice
                 'toolingBS.Position = mypos
                 'Dim drvTooling As DataRowView = toolingBS.Current
                 'get data from 
-                TextBox36.Text = Format(mydrv.Item("cost"), "#,##0.00")
-                TextBox37.Text = Format(mydrv.Item("balance"), "#,##0.00")
+                'TextBox36.Text = Format(mydrv.Item("cost"), "#,##0.00")
+                TextBox36.Text = Format(mydrv.Item("originalcost") * myrow.Row.Item("exrate"), "#,##0.00")
+                'TextBox37.Text = Format(mydrv.Item("balance") , "#,##0.00")
+                TextBox37.Text = (mydrv.Item("originalcost") * myrow.Row.Item("exrate")) - (myrow.Item("invoiceamount") * myrow.Item("exrate")) 'Format(mydrv.Item("balance") , "#,##0.00")
                 TextBox38.Text = Format(myrow.Item("invoiceamount") * myrow.Item("exrate"), "#,##0.00")
                 myrow.EndEdit()
             Next
@@ -287,7 +302,7 @@ Public Class FormInputInvoice
         CheckInitValue()
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox2.TextChanged, TextBox19.TextChanged, TextBox39.TextChanged
+    Private Sub TextBox1_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox2.TextChanged, TextBox19.TextChanged, TextBox39.TextChanged, TextBox5.TextChanged
         Dim drv As DataRowView = ToolingPaymentBS.Current
         If TextBox2.Text = "" Then
             TextBox2.Text = 0
@@ -295,7 +310,8 @@ Public Class FormInputInvoice
         Try
             'TextBox38.Text = Format(drv.Item("invoiceamount") * drv.Item("exrate"), "#,##0.00")
             'TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * drv.Item("exrate"), "#,##0.00")
-            TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * TextBox19.Text, "#,##0.00")
+            'TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * TextBox19.Text, "#,##0.00")
+            TextBox38.Text = Format(IIf(TextBox2.Text = "", 0, TextBox2.Text) * TextBox5.Text, "#,##0.00")
         Catch ex As Exception
             ' MessageBox.Show(ex.Message)
         End Try

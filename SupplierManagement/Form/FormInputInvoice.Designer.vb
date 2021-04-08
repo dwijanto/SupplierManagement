@@ -23,9 +23,11 @@ Partial Class FormInputInvoice
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
@@ -45,11 +47,6 @@ Partial Class FormInputInvoice
         Me.Label35 = New System.Windows.Forms.Label()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.BatchAddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -81,6 +78,11 @@ Partial Class FormInputInvoice
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox6.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
@@ -92,6 +94,8 @@ Partial Class FormInputInvoice
         '
         Me.GroupBox6.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox6.Controls.Add(Me.Label7)
+        Me.GroupBox6.Controls.Add(Me.ComboBox9)
         Me.GroupBox6.Controls.Add(Me.TextBox6)
         Me.GroupBox6.Controls.Add(Me.Label6)
         Me.GroupBox6.Controls.Add(Me.TextBox5)
@@ -117,9 +121,27 @@ Partial Class FormInputInvoice
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Invoice Header"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(538, 130)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(42, 13)
+        Me.Label7.TabIndex = 32
+        Me.Label7.Text = "ExRate"
+        '
+        'ComboBox9
+        '
+        Me.ComboBox9.FormattingEnabled = True
+        Me.ComboBox9.Items.AddRange(New Object() {"USD", "EUR", "CNY"})
+        Me.ComboBox9.Location = New System.Drawing.Point(431, 123)
+        Me.ComboBox9.Name = "ComboBox9"
+        Me.ComboBox9.Size = New System.Drawing.Size(55, 21)
+        Me.ComboBox9.TabIndex = 31
+        '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(553, 123)
+        Me.TextBox6.Location = New System.Drawing.Point(729, 126)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(131, 20)
         Me.TextBox6.TabIndex = 16
@@ -127,7 +149,7 @@ Partial Class FormInputInvoice
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(505, 126)
+        Me.Label6.Location = New System.Drawing.Point(681, 129)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 13)
         Me.Label6.TabIndex = 17
@@ -135,7 +157,7 @@ Partial Class FormInputInvoice
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(431, 123)
+        Me.TextBox5.Location = New System.Drawing.Point(593, 126)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(63, 20)
         Me.TextBox5.TabIndex = 14
@@ -295,48 +317,6 @@ Partial Class FormInputInvoice
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView3.Size = New System.Drawing.Size(873, 193)
         Me.DataGridView3.TabIndex = 102
-        '
-        'Column14
-        '
-        Me.Column14.DataPropertyName = "displaymember"
-        Me.Column14.HeaderText = "Tooling Id"
-        Me.Column14.Name = "Column14"
-        Me.Column14.ReadOnly = True
-        Me.Column14.Width = 200
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "suppliermoldno"
-        Me.Column1.HeaderText = "Supplier Mould No"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.DataPropertyName = "toolsdescription"
-        Me.Column2.HeaderText = "Tools Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 120
-        '
-        'Column15
-        '
-        Me.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column15.DataPropertyName = "description"
-        Me.Column15.HeaderText = "Payment Description"
-        Me.Column15.Name = "Column15"
-        Me.Column15.ReadOnly = True
-        '
-        'Column16
-        '
-        Me.Column16.DataPropertyName = "invoiceamount"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle1.Format = "#,##0.00"
-        Me.Column16.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column16.HeaderText = "Invoice Amount"
-        Me.Column16.Name = "Column16"
-        Me.Column16.ReadOnly = True
-        Me.Column16.Width = 150
         '
         'ContextMenuStrip1
         '
@@ -560,6 +540,7 @@ Partial Class FormInputInvoice
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(55, 21)
         Me.ComboBox2.TabIndex = 106
+        Me.ComboBox2.Visible = False
         '
         'Label23
         '
@@ -569,6 +550,7 @@ Partial Class FormInputInvoice
         Me.Label23.Size = New System.Drawing.Size(77, 13)
         Me.Label23.TabIndex = 128
         Me.Label23.Text = "Ex Rate (USD)"
+        Me.Label23.Visible = False
         '
         'TextBox19
         '
@@ -578,6 +560,7 @@ Partial Class FormInputInvoice
         Me.TextBox19.Size = New System.Drawing.Size(50, 20)
         Me.TextBox19.TabIndex = 107
         Me.TextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TextBox19.Visible = False
         '
         'Label22
         '
@@ -587,6 +570,7 @@ Partial Class FormInputInvoice
         Me.Label22.Size = New System.Drawing.Size(49, 13)
         Me.Label22.TabIndex = 127
         Me.Label22.Text = "Currency"
+        Me.Label22.Visible = False
         '
         'ErrorProvider1
         '
@@ -633,6 +617,48 @@ Partial Class FormInputInvoice
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 150
+        '
+        'Column14
+        '
+        Me.Column14.DataPropertyName = "displaymember"
+        Me.Column14.HeaderText = "Tooling Id"
+        Me.Column14.Name = "Column14"
+        Me.Column14.ReadOnly = True
+        Me.Column14.Width = 200
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "suppliermoldno"
+        Me.Column1.HeaderText = "Supplier Mould No"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.DataPropertyName = "toolsdescription"
+        Me.Column2.HeaderText = "Tools Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 120
+        '
+        'Column15
+        '
+        Me.Column15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column15.DataPropertyName = "description"
+        Me.Column15.HeaderText = "Payment Description"
+        Me.Column15.Name = "Column15"
+        Me.Column15.ReadOnly = True
+        '
+        'Column16
+        '
+        Me.Column16.DataPropertyName = "invoiceamount"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "#,##0.00"
+        Me.Column16.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column16.HeaderText = "Invoice Amount"
+        Me.Column16.Name = "Column16"
+        Me.Column16.ReadOnly = True
+        Me.Column16.Width = 150
         '
         'FormInputInvoice
         '
@@ -713,4 +739,6 @@ Partial Class FormInputInvoice
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents ComboBox9 As System.Windows.Forms.ComboBox
 End Class

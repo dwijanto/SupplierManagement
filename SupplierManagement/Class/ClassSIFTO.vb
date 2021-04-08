@@ -258,7 +258,7 @@ Public Class ClassSIFTO
     Public Sub initLabel() Implements IUTODetail.initLabel
         Label2.Text = "Supplier total (full year) From SIF"
         Label1.Visible = False
-        Label23.Text = "Purchase Amount (USD)"
+        Label23.Text = "Turnover (USD)"
         Label24.Text = "%"
 
         TextBox19.Visible = False

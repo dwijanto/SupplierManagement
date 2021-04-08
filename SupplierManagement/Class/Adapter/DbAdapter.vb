@@ -2721,6 +2721,8 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "toolingsupplier").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "expectedtoolingfinishdate").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "origin").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "originaltoolingcostcurrency").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "otcexrate").SourceVersion = DataRowVersion.Current
 
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "assetpurchaseid").Direction = ParameterDirection.InputOutput
@@ -2773,6 +2775,10 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "expectedtoolingfinishdate").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "origin").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Date, 0, "printdate").SourceVersion = DataRowVersion.Current
+
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "originaltoolingcostcurrency").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "otcexrate").SourceVersion = DataRowVersion.Current
+
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "assetpurchaseid").Direction = ParameterDirection.InputOutput
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
@@ -2865,6 +2871,7 @@ Public Class DbAdapter
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "proformainvoice").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "currency").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "amount").SourceVersion = DataRowVersion.Current
+                DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "exrate").SourceVersion = DataRowVersion.Current
                 DataAdapter.InsertCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Bigint, 0, "id").Direction = ParameterDirection.InputOutput
                 DataAdapter.InsertCommand.CommandType = CommandType.StoredProcedure
 
@@ -2877,6 +2884,7 @@ Public Class DbAdapter
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "proformainvoice").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Varchar, 0, "currency").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "amount").SourceVersion = DataRowVersion.Current
+                DataAdapter.UpdateCommand.Parameters.Add("", NpgsqlTypes.NpgsqlDbType.Numeric, 0, "exrate").SourceVersion = DataRowVersion.Current
                 DataAdapter.UpdateCommand.CommandType = CommandType.StoredProcedure
 
 

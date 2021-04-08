@@ -66,9 +66,9 @@ Partial Class UTODetail
         Me.Label23.AutoSize = True
         Me.Label23.Location = New System.Drawing.Point(120, 13)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(123, 13)
+        Me.Label23.Size = New System.Drawing.Size(82, 13)
         Me.Label23.TabIndex = 50
-        Me.Label23.Text = "Purchase Amount (USD)"
+        Me.Label23.Text = "Turnover (USD)"
         '
         'Label24
         '

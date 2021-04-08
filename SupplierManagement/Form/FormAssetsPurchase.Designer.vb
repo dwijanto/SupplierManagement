@@ -341,6 +341,10 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ComboBox9 = New System.Windows.Forms.ComboBox()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.TextBox43 = New System.Windows.Forms.TextBox()
+        Me.Label52 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.AssetsPurchaseTabPage.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -523,9 +527,9 @@ Partial Class FormAssetsPurchase
         Me.GroupBox5.Controls.Add(Me.TextBox30)
         Me.GroupBox5.Controls.Add(Me.Label27)
         Me.GroupBox5.Controls.Add(Me.TextBox29)
-        Me.GroupBox5.Location = New System.Drawing.Point(4, 430)
+        Me.GroupBox5.Location = New System.Drawing.Point(4, 403)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(1099, 146)
+        Me.GroupBox5.Size = New System.Drawing.Size(1099, 173)
         Me.GroupBox5.TabIndex = 20
         Me.GroupBox5.TabStop = False
         '
@@ -588,6 +592,10 @@ Partial Class FormAssetsPurchase
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.ComboBox9)
+        Me.GroupBox3.Controls.Add(Me.Label51)
+        Me.GroupBox3.Controls.Add(Me.TextBox43)
+        Me.GroupBox3.Controls.Add(Me.Label52)
         Me.GroupBox3.Controls.Add(Me.ComboBox2)
         Me.GroupBox3.Controls.Add(Me.Label20)
         Me.GroupBox3.Controls.Add(Me.TextBox16)
@@ -600,9 +608,9 @@ Partial Class FormAssetsPurchase
         Me.GroupBox3.Controls.Add(Me.Label22)
         Me.GroupBox3.Controls.Add(Me.Label21)
         Me.GroupBox3.Controls.Add(Me.TextBox17)
-        Me.GroupBox3.Location = New System.Drawing.Point(10, 224)
+        Me.GroupBox3.Location = New System.Drawing.Point(10, 204)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(384, 173)
+        Me.GroupBox3.Size = New System.Drawing.Size(384, 193)
         Me.GroupBox3.TabIndex = 16
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Cost Information"
@@ -1074,7 +1082,7 @@ Partial Class FormAssetsPurchase
         Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(10, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(384, 212)
+        Me.GroupBox1.Size = New System.Drawing.Size(384, 192)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Project Information"
@@ -2855,6 +2863,42 @@ Partial Class FormAssetsPurchase
         Me.DataGridViewTextBoxColumn39.ReadOnly = True
         Me.DataGridViewTextBoxColumn39.Width = 200
         '
+        'ComboBox9
+        '
+        Me.ComboBox9.FormattingEnabled = True
+        Me.ComboBox9.Items.AddRange(New Object() {"USD", "EUR", "CNY"})
+        Me.ComboBox9.Location = New System.Drawing.Point(161, 163)
+        Me.ComboBox9.Name = "ComboBox9"
+        Me.ComboBox9.Size = New System.Drawing.Size(55, 21)
+        Me.ComboBox9.TabIndex = 30
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.Location = New System.Drawing.Point(222, 166)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(77, 13)
+        Me.Label51.TabIndex = 28
+        Me.Label51.Text = "Ex Rate (USD)"
+        '
+        'TextBox43
+        '
+        Me.TextBox43.Location = New System.Drawing.Point(305, 163)
+        Me.TextBox43.Name = "TextBox43"
+        Me.TextBox43.Size = New System.Drawing.Size(50, 20)
+        Me.TextBox43.TabIndex = 29
+        Me.TextBox43.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip1.SetToolTip(Me.TextBox43, "Exchange rate (e.g. 1.36)")
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.Location = New System.Drawing.Point(6, 165)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(149, 13)
+        Me.Label52.TabIndex = 27
+        Me.Label52.Text = "Original Tooling Cost Currency"
+        '
         'FormAssetsPurchase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3169,4 +3213,8 @@ Partial Class FormAssetsPurchase
     Friend WithEvents Column37 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column39 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column40 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ComboBox9 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label51 As System.Windows.Forms.Label
+    Friend WithEvents TextBox43 As System.Windows.Forms.TextBox
+    Friend WithEvents Label52 As System.Windows.Forms.Label
 End Class

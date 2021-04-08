@@ -183,7 +183,7 @@ Public Class FormAssetsPurchase
                                 " left join sbusap s on s.sbuid = fg.sbusapid" &
                                 " where not familyname isnull and  not fg.groupingcode isnull" &
                                 " order by sbuname,familyid,familyname)," &
-                                " c as (select sum(cost) as toolingcost,assetpurchaseid from doc.toolinglist where assetpurchaseid = {0} group by assetpurchaseid)" &
+                                " c as (select sum(originalcost * ap.otcexrate) as toolingcost,t.assetpurchaseid from doc.toolinglist t left join doc.assetpurchase ap on ap.id = t.assetpurchaseid where t.assetpurchaseid = {0} group by t.assetpurchaseid)" &
                                 " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username," &
                                 " ts.toolingsuppliername,ts.address,ts.deliveryaddress,ts.fax,ts.tel,ts.toolingsupplierid || ' - ' || ts.toolingsuppliername as toolingsupplierdescription" &
                                 " ,u1.email as approvalemail, u2.email as approvalemail2" &
@@ -202,7 +202,7 @@ Public Class FormAssetsPurchase
         'sb.Append(String.Format("select tl.*,0 as typeofinvestment from doc.toolinglist tl left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid  where ap.id = {0} order by lineno;", myId))
 
         '1
-        sb.Append(String.Format("with cost as (select sum(tp.invoiceamount * tp.exrate) as total,tp.toolinglistid  from doc.toolingpayment tp" &
+        sb.Append(String.Format("with cost as (select sum(tp.invoiceamount * ap.otcexrate) as total,tp.toolinglistid  from doc.toolingpayment tp" &
                         " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
                         " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
                         " where(ap.id = {0})" &
@@ -212,10 +212,10 @@ Public Class FormAssetsPurchase
                         " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
                         " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid where(ap.id = {0}) and currency = 'CNY'" &
                         " group by tp.toolinglistid )" &
-                        " select tl.id,tl.assetpurchaseid,tm.sebmodelno,tm.suppliermodelreference,tm.suppliermoldno,tm.toolsdescription,tm.material,tm.cavities,tm.numberoftools,tm.dailycapacity,tl.originalcurrency,tl.originalcost,tl.cost,tm.purchasedate ,tm.location,tm.comments ,tl.lineno,tl.vendorcode,tl.toolinglistid,tm.dailycaps,tm.commontool ,0 as typeofinvestment ," &
+                        " select tl.id,tl.assetpurchaseid,tm.sebmodelno,tm.suppliermodelreference,tm.suppliermoldno,tm.toolsdescription,tm.material,tm.cavities,tm.numberoftools,tm.dailycapacity,tl.originalcurrency,tl.originalcost,tl.originalcost * ap.otcexrate as cost,tm.purchasedate ,tm.location,tm.comments ,tl.lineno,tl.vendorcode,tl.toolinglistid,tm.dailycaps,tm.commontool ,0 as typeofinvestment ," &
                         " case" &
-                        " when c.total isnull then tl.cost " &
-                        " else tl.cost - c.total " &
+                        " when c.total isnull then tl.originalcost * ap.otcexrate " &
+                        " else (tl.originalcost * ap.otcexrate ) - c.total " &
                         " end as balance ," &
                         " case when cn.totalcny isnull then tl.originalcost  else tl.originalcost - cn.totalcny  end as balancecny ," &
                         " tl.toolinglistid || ' - ' || tl.suppliermoldno || ' - ' || tl.toolsdescription as displaymember from doc.toolinglist tl " &
@@ -237,7 +237,8 @@ Public Class FormAssetsPurchase
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid " &
                                 " where(ap.id = {0}) group by tp.toolinglistid )  " &
-                                " select tp.*,tl.toolinglistid as displaymember,tl.suppliermoldno,tl.toolsdescription,tl.cost,case when c.total isnull then tl.cost  else tl.cost - c.total  end as balance,(tp.invoiceamount * tp.exrate / (case when tl.cost = 0 then 1 else tl.cost end)) * 100 as pct ,tp.invoiceamount * tp.exrate as invoiceamountusd from doc.toolingpayment tp " &
+                                " select tp.*,tl.toolinglistid as displaymember,tl.suppliermoldno,tl.toolsdescription," &
+                                "  tl.cost * ap.otcexrate as cost,case when c.total isnull then tl.originalcost * ap.otcexrate   else (tl.originalcost * ap.otcexrate ) - c.total  end as balance,(tp.invoiceamount * tp.exrate / (case when tl.cost = 0 then 1 else tl.cost end)) * 100 as pct ,tp.invoiceamount * tp.exrate as invoiceamountusd from doc.toolingpayment tp " &
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid " &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid " &
                                 " left join cost c on c.toolinglistid = tl.id" &
@@ -262,7 +263,7 @@ Public Class FormAssetsPurchase
                                 " left join doc.toolinglist tl on tl.id = tp.toolinglistid" &
                                 " left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid" &
                                 " left join tot on tot.id = ti.id" &
-                                " left join totcny on tot.id = ti.id" &
+                                " left join totcny on totcny.id = ti.id" &
                                 " where(ap.id = {0}) order by invoicedate desc,invoiceno;", myId))
         '4
         sb.Append("with f as (select (s.sbuname2 || ' - ' || f.familyid || ' - ' || upper(familyname::text) || '(' || fg.groupingcode || ')') as familydescription ,s.sbuname2,f.familyid,f.familyname::Text,fg.groupingcode from doc.familygroupsbu fg" &
@@ -717,10 +718,17 @@ Public Class FormAssetsPurchase
 
     Private Sub DataGridView3_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView3.CellDoubleClick
         If Not IsNothing(ToolingInvoiceBS.Current) Then
+            Dim drv As DataRowView = ToolingInvoiceBS.Current
             Dim myform As New FormInputInvoice(DS, ToolingInvoiceBS, Me)
             If myform.ShowDialog = Windows.Forms.DialogResult.OK Then
                 'add new record
                 'DataGridView3.Invalidate()
+                Dim apdrv As DataRowView = APBS.Current
+                If drv.Row.RowState = DataRowState.Modified Or drv.Row.RowState = DataRowState.Added Then
+                    If apdrv.Row.Item("otcexrate") <> drv.Row.Item("exrate") Then
+                        apdrv.Row.Item("otcexrate") = drv.Row.Item("exrate")
+                    End If
+                End If
             Else
                 'do nothing
                 'ToolingInvoiceBS.RemoveCurrent()
@@ -760,16 +768,24 @@ Public Class FormAssetsPurchase
         TextBox32.Enabled = False
     End Sub
     Private Sub NewRecordInvoiceToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NewRecordInvoiceToolStripMenuItem.Click
+
         If ToolingListDTBS.Count > 0 Then
             Dim drv As DataRowView = ToolingInvoiceBS.AddNew()
             drv.Item("invoicedate") = Today.Date
             drv.Item("apid") = DirectCast(APBS.Current, DataRowView).Row.Item("id")
             drv.Item("vendorcode") = DirectCast(APBS.Current, DataRowView).Row.Item("vendorcode")
             drv.EndEdit() 'Change RowState status from Detached to Added, to allow add ToolingPayment
+
             Dim myform As New FormInputInvoice(DS, ToolingInvoiceBS, Me)
             If myform.ShowDialog = Windows.Forms.DialogResult.OK Then
                 'add new record
                 'DataGridView3.Invalidate()
+                Dim apdrv As DataRowView = APBS.Current
+                If drv.Row.RowState = DataRowState.Modified Or drv.Row.RowState = DataRowState.Added Then
+                    If apdrv.Row.Item("otcexrate") <> drv.Row.Item("exrate") Then
+                        apdrv.Row.Item("otcexrate") = drv.Row.Item("exrate")
+                    End If
+                End If
             Else
                 'do nothing
                 'ToolingInvoiceBS.RemoveCurrent()
@@ -838,9 +854,11 @@ Public Class FormAssetsPurchase
         TextBox16.DataBindings.Clear()
         TextBox17.DataBindings.Clear()
         ComboBox2.DataBindings.Clear()
+        ComboBox9.DataBindings.Clear()
         TextBox19.DataBindings.Clear()
         TextBox14.DataBindings.Clear()
         TextBox13.DataBindings.Clear()
+        TextBox43.DataBindings.Clear()
 
         'Amortization
         TextBox24.DataBindings.Clear()
@@ -936,8 +954,10 @@ Public Class FormAssetsPurchase
         ' ComboBox2.DisplayMember = "budgetcurr"
         ' ComboBox2.ValueMember = "budgetcurr"
         ComboBox2.DataBindings.Add(New Binding("SelectedItem", APBS, "budgetcurr", True, DataSourceUpdateMode.OnPropertyChanged))
+        ComboBox9.DataBindings.Add(New Binding("SelectedItem", APBS, "originaltoolingcostcurrency", True, DataSourceUpdateMode.OnPropertyChanged))
 
         TextBox19.DataBindings.Add(New Binding("Text", APBS, "exchangerate", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00##"))
+        TextBox43.DataBindings.Add(New Binding("Text", APBS, "otcexrate", True, DataSourceUpdateMode.OnPropertyChanged, "", "#,##0.00##"))
         TextBox14.DataBindings.Add(New Binding("Text", APBS, "investmentorderno", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox13.DataBindings.Add(New Binding("Text", APBS, "toolingpono", True, DataSourceUpdateMode.OnPropertyChanged, ""))
         TextBox7.DataBindings.Add(New Binding("Text", APBS, "financeassetno", True, DataSourceUpdateMode.OnPropertyChanged, ""))
