@@ -186,7 +186,7 @@ Public Class FormAssetsPurchase
                                 " c as (select sum(originalcost * ap.otcexrate) as toolingcost,t.assetpurchaseid from doc.toolinglist t left join doc.assetpurchase ap on ap.id = t.assetpurchaseid where t.assetpurchaseid = {0} group by t.assetpurchaseid)" &
                                 " select ap.*,case ap.paymentmethodid when 1 then 'Amortization' when 2 then 'Invoice Investment' end as paymentmethod,c.toolingcost,tp.projectcode,tp.projectname,tp.dept,tp.ppps,tp.sbuid,tp.familyid,v.vendorname,v.description as vendordescription,f.description as familydescription,f.sbuname2,u.username," &
                                 " ts.toolingsuppliername,ts.address,ts.deliveryaddress,ts.fax,ts.tel,ts.toolingsupplierid || ' - ' || ts.toolingsuppliername as toolingsupplierdescription" &
-                                " ,u1.email as approvalemail, u2.email as approvalemail2" &
+                                " ,u1.email as approvalemail, u2.email as approvalemail2,va.shortname,coalesce(va.street,'') || coalesce(va.city,'') as vaaddress,va.telephone,va.faxnumber " &
                                 " from doc.assetpurchase ap" &
                                 " left join doc.toolingproject tp on tp.id = ap.projectid" &
                                 " left join  v on v.vendorcode = ap.vendorcode" &
@@ -196,6 +196,7 @@ Public Class FormAssetsPurchase
                                 " left join doc.user u1 on u1.username = ap.approvalname" &
                                 " left join doc.user u2 on u1.username = ap.approvalname2" &
                                 " left join doc.toolingsupplier ts on ts.toolingsupplierid = ap.toolingsupplier" &
+                                " left join doc.vendoraddress va on va.vendorcode = ap.vendorcode" &
                                 " where ap.id = {0};", myId))
         'sb.Append(String.Format("select tldt.*,tlhd.assetpurchaseid,tlhd.sebmodelno,tlhd.suppliermodelreference,tlhd.purchasedate,tlhd.location from doc.toolinglistdt tldt left join doc.toolinglisthd tlhd on tldt.toolinglisthdid = tlhd.id where assetpurchaseid = {0} order by lineno;", myId))
         'sb.Append(String.Format("select tl.*,ap.assetpurchaseid || to_char(lineno,'_0000FM') as toolingid from doc.toolinglist tl left join doc.assetpurchase ap on ap.id = tl.assetpurchaseid  where ap.id = {0} order by lineno;", myId))
@@ -2369,28 +2370,29 @@ Public Class FormAssetsPurchase
     End Sub
 
     Private Sub Button14_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button14.Click
-        Dim dr As DataRowView
-        If ProformaInvoiceBS.Count > 0 Then
-            If MessageBox.Show(String.Format("Any modification in existing Proforma Purchase Order? {0}Click button Yes to create new one.", vbCrLf), "Proforma Purchase Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+        If MessageBox.Show("Do you want to Create Proforma Purchase Order?", "Proforma PO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) = Windows.Forms.DialogResult.OK Then
+            Dim dr As DataRowView
+            If ProformaInvoiceBS.Count > 0 Then
+                If MessageBox.Show(String.Format("Any modification in existing Proforma Purchase Order? {0}Click button Yes to create new one.", vbCrLf), "Proforma Purchase Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                    dr = CreateProformaInvoice()
+                    dr.EndEdit()
+
+                    ToolStripButton2.PerformClick()
+                    GeneratePDF(dr.Row("proformainvoice"))
+                End If
+            Else
                 dr = CreateProformaInvoice()
                 dr.EndEdit()
-
+                Dim apdr = APBS.Current
+                apdr.Row.Item("printdate") = Today.Date
                 ToolStripButton2.PerformClick()
                 GeneratePDF(dr.Row("proformainvoice"))
             End If
-        Else
-            dr = CreateProformaInvoice()
-            dr.EndEdit()
-            Dim apdr = APBS.Current
-            apdr.row.item("printdate") = Today.Date
-            ToolStripButton2.PerformClick()
-            GeneratePDF(dr.Row("proformainvoice"))
+            'AddNew ProformaInvoice
+
+
+            'Generate PDF file
         End If
-        'AddNew ProformaInvoice
-
-
-        'Generate PDF file
-
     End Sub
 
     Private Function CreateProformaInvoice() As DataRowView
@@ -2403,20 +2405,34 @@ Public Class FormAssetsPurchase
         dr.item("creationdate") = Today.Date
 
         myProformaPO = New proformaPO With {.proformapurchaseorder = dr.item("proformainvoice"),
-                                            .address = "" & APdr.Row.Item("address"),
-                                            .applicantdate = APdr.Row.Item("applicantdate"),                                            
+                                            .applicantdate = APdr.Row.Item("applicantdate"),
                                             .applicantname = APdr.Row.Item("applicantname"),
                                             .assetdescription = APdr.Row.Item("assetdescription"),
-                                            .deliveryaddress = "" & APdr.Row.Item("deliveryaddress"),
-                                            .fax = "" & APdr.Row.Item("fax"),
-                                            .tel = "" & APdr.Row.Item("tel"),
                                             .origin = "" & APdr.Row.Item("origin"),
                                             .suppliercode = "" & APdr.Row.Item("toolingsupplier"),
                                             .suppliername = "" & APdr.Row.Item("toolingsuppliername"),
                                             .totaltoolingcost = OriginalCost,
                                             .originalcurrency = OriginalCurrency}
+        Select Case APdr.Item("paymententity")
+            Case "SEB Asia"
+                myProformaPO.suppliercode = "" & APdr.Row.Item("vendorcode")
+                myProformaPO.suppliername = "" & APdr.Row.Item("vendorname")
+                myProformaPO.fax = "" & APdr.Row.Item("faxnumber")
+                myProformaPO.tel = "" & APdr.Row.Item("telephone")
+                myProformaPO.address = "" & APdr.Row.Item("vaaddress")
+                myProformaPO.deliveryaddress = "" & APdr.Row.Item("vaaddress")
+                myProformaPO.template = "\templates\ProformaPOSEBAsiaTemplate.xltx"
+            Case "SEB SZ"
+                myProformaPO.suppliercode = "" & APdr.Row.Item("toolingsupplier")
+                myProformaPO.suppliername = "" & APdr.Row.Item("toolingsuppliername")
+                myProformaPO.fax = "" & APdr.Row.Item("fax")
+                myProformaPO.tel = "" & APdr.Row.Item("tel")
+                myProformaPO.address = "" & APdr.Row.Item("address")
+                myProformaPO.deliveryaddress = "" & APdr.Row.Item("deliveryaddress")
+                myProformaPO.template = "\templates\ProformaPOTemplate.xltx"
+        End Select
         If Not IsDBNull(APdr.Row.Item("expectedtoolingfinishdate")) Then
-            myProformaPO.expectedtoolingfinishdate = APdr.Row.Item("expectedtoolingfinishdate")
+            myProformaPO.expectedtoolingfinishdate = APdr.Row.Item("expectedtoolingfinishdate")        
         End If
         If Not IsDBNull(APdr.Row.Item("printdate")) Then
             myProformaPO.printtdate = APdr.Row.Item("printdate")
@@ -2441,7 +2457,8 @@ Public Class FormAssetsPurchase
         Dim filename = String.Format("{0}\{1}", HelperClass1.proformapo, ReportName)
         Dim myPdfCallback As FormatReportDelegate
         myPdfCallback = AddressOf CreateNewPDF
-        Dim mypdf = New ExportToExcelFile(Me, HelperClass1.proformapo, ReportName, myPdfCallback, template:="\templates\ProformaPOTemplate.xltx")
+        'Dim mypdf = New ExportToExcelFile(Me, HelperClass1.proformapo, ReportName, myPdfCallback, template:="\templates\ProformaPOTemplate.xltx")
+        Dim mypdf = New ExportToExcelFile(Me, HelperClass1.proformapo, ReportName, myPdfCallback, template:=myProformaPO.template)
         mypdf.CreateForm(filename, New EventArgs)
     End Sub
 
@@ -2452,7 +2469,12 @@ Public Class FormAssetsPurchase
         osheet.Range("applicantdate").Value = myProformaPO.applicantdate
         osheet.Range("printdate").Value = myProformaPO.printtdate
         osheet.Range("proformapurchaseorder").Value = myProformaPO.proformapurchaseorder
-        osheet.Range("expectedtoolingfinishdate").Value = myProformaPO.expectedtoolingfinishdate
+        If myProformaPO.expectedtoolingfinishdate = #12:00:00 AM# Then
+            osheet.Range("expectedtoolingfinishdate").Value = ""
+        Else
+            osheet.Range("expectedtoolingfinishdate").Value = myProformaPO.expectedtoolingfinishdate
+        End If
+
         osheet.Range("origin").Value = myProformaPO.origin
         osheet.Range("applicantname").Value = myProformaPO.applicantname
         osheet.Range("suppliercode").Value = myProformaPO.suppliercode
@@ -2580,4 +2602,5 @@ Public Class proformaPO
     Public Property deliveryaddress As String
     Public Property totaltoolingcost As Decimal
     Public Property originalcurrency As String
+    Public Property template As String
 End Class

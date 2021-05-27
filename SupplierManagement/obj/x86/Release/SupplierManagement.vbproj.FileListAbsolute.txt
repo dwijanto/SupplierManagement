@@ -589,3 +589,4 @@ C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Rel
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormReportCMMF3750.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormSupplierListTO.resources
 C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormToolingSupplier.resources
+C:\Users\dlie\Documents\GitHub\SupplierManagement\SupplierManagement\obj\x86\Release\SupplierManagement.FormVendorAddress.resources

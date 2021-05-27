@@ -110,6 +110,7 @@
     <Compile Include="Class\Model\SubFamilyVCModel.vb" />
     <Compile Include="Class\Model\ToolingSupplierModel.vb" />
     <Compile Include="Class\Model\UserModel.vb" />
+    <Compile Include="Class\Model\VendorAddressModel.vb" />
     <Compile Include="Class\Model\VendorCurrModel.vb" />
     <Compile Include="Class\Model\VendorFamilyPMExModel.vb" />
     <Compile Include="Class\Model\VendorFamilyPMModel.vb" />
@@ -140,6 +141,7 @@
     <Compile Include="Class\TXAdapter\SubFamilyVCAdapter.vb" />
     <Compile Include="Class\TXAdapter\ToolingSupplierAdapter.vb" />
     <Compile Include="Class\TXAdapter\UserAdapter.vb" />
+    <Compile Include="Class\TXAdapter\VendorAddressAdapter.vb" />
     <Compile Include="Class\TXAdapter\VendorCurrAdapter.vb" />
     <Compile Include="Class\TXAdapter\VendorFamilyPMExAdapter.vb" />
     <Compile Include="Class\TXAdapter\VendorFamilySubFamilyVCAdapter.vb" />
@@ -546,6 +548,12 @@
       <DependentUpon>FormToolingSupplier.vb</DependentUpon>
     </Compile>
     <Compile Include="Form\FormToolingSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormVendorAddress.Designer.vb">
+      <DependentUpon>FormVendorAddress.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormVendorAddress.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\FormVendorFamilyPMEx.Designer.vb">
@@ -1697,6 +1705,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormUserVendorGroup.resx">
       <DependentUpon>FormUserVendorGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormVendorAddress.resx">
+      <DependentUpon>FormVendorAddress.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FormVendorCurr.resx">
       <DependentUpon>FormVendorCurr.vb</DependentUpon>

@@ -277,8 +277,9 @@ Public Class DbAdapter
         result = False
         Dim myReturn As String = ""
         'Convert string to MemoryStream
-        Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.ASCII.GetBytes(InputString))
+        'Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.ASCII.GetBytes(InputString))
         'Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.Default.GetBytes(InputString))
+        Dim MemoryStream1 As New IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(InputString))
         Dim buf(9) As Byte
         Dim CopyInStream As Stream = Nothing
         Dim i As Long

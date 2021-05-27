@@ -580,4 +580,9 @@ Public Class FormMenu
     Private Sub ToolingSupplierToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolingSupplierToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub SupplierAddressToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SupplierAddressToolStripMenuItem.Click
+        Dim myform As New FormVendorAddress
+        myform.Show()
+    End Sub
 End Class

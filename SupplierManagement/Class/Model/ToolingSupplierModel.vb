@@ -3,6 +3,13 @@ Public Class ToolingSupplierModel
     Implements IModel
     Dim myadapter As DbAdapter = DbAdapter.getInstance
 
+    Public Property toolingsupplierid As String
+    Public Property toolingsuppliername As String
+    Public Property address As String
+    Public Property deliveryaddress As String
+    Public Property fax As String
+    Public Property tel As String
+
     Public ReadOnly Property TableName
         Get
             Return "ToolingSupplier"
